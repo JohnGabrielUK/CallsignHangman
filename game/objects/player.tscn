@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://t6dpi31d2sex"]
+
+[ext_resource type="Script" path="res://objects/player.gd" id="1_sptsi"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_5mvcf"]
+height = 1.5
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_jxtfc"]
+radius = 0.25
+height = 1.5
+
+[sub_resource type="SphereMesh" id="SphereMesh_dvgje"]
+radius = 0.125
+height = 0.25
+radial_segments = 16
+rings = 8
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_sptsi")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+shape = SubResource("CylinderShape3D_5mvcf")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+mesh = SubResource("CapsuleMesh_jxtfc")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0.5)
+mesh = SubResource("SphereMesh_dvgje")
