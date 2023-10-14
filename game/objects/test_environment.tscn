@@ -148,6 +148,7 @@ shape = SubResource("BoxShape3D_6litx")
 
 [node name="FixedCamera" parent="CameraTrigger1" instance=ExtResource("1_xwsm6")]
 transform = Transform3D(0.707107, 0.241845, -0.664463, 0, 0.939693, 0.34202, 0.707107, -0.241845, 0.664463, -2, 0.9, 2)
+current = true
 
 [node name="CameraTrigger2" parent="." instance=ExtResource("1_vipos")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 4)

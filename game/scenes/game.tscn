@@ -1,14 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://c0w0dwk2kt8ui"]
+[gd_scene load_steps=4 format=3 uid="uid://c0w0dwk2kt8ui"]
 
 [ext_resource type="PackedScene" uid="uid://t6dpi31d2sex" path="res://objects/player.tscn" id="1_ytbug"]
+[ext_resource type="PackedScene" uid="uid://dcrwutnx4ie42" path="res://objects/scientist.tscn" id="2_gy11l"]
 [ext_resource type="PackedScene" uid="uid://c6v7umskfu1nu" path="res://objects/test_environment.tscn" id="2_tkfk2"]
 
 [node name="Game" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("1_ytbug")]
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.707107, 0.5, -0.5, 0, 0.707107, 0.707107, 0.707107, -0.5, 0.5, -4, 4, 4)
-current = true
+[node name="Scientist" parent="." instance=ExtResource("2_gy11l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 0)
 
 [node name="TestEnvironment" parent="." instance=ExtResource("2_tkfk2")]
