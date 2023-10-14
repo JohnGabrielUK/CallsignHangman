@@ -7,8 +7,17 @@ const FOLLOW_THRESHOLD : float = 1.5
 
 enum State {NOT_YET_MET, FOLLOWING_PLAYER, WAITING}
 
+@export var id : int
+
 @onready var current_state : int = State.NOT_YET_MET
 var following : Node3D
+
+signal dead
+signal rescued
+
+func rescue() -> void:
+	emit_signal("rescued", id)
+	queue_free()
 
 func interact(by_whom : Node3D) -> void:
 	match current_state:

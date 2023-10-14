@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://c6v7umskfu1nu"]
+[gd_scene load_steps=21 format=3 uid="uid://c6v7umskfu1nu"]
 
 [ext_resource type="PackedScene" uid="uid://b3xs7myw6t33d" path="res://objects/camera_trigger.tscn" id="1_vipos"]
 [ext_resource type="PackedScene" uid="uid://bfgu1tbuk3iqa" path="res://objects/fixed_camera.tscn" id="1_xwsm6"]
@@ -53,6 +53,9 @@ size = Vector3(8, 2, 2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_k2tfo"]
 size = Vector3(2, 2, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1hovn"]
+size = Vector3(4, 2, 4)
 
 [node name="TestEnvironment" type="Node3D"]
 
@@ -177,7 +180,17 @@ shape = SubResource("BoxShape3D_k2tfo")
 [node name="FixedCamera" parent="CameraTrigger4" instance=ExtResource("1_xwsm6")]
 transform = Transform3D(0.707107, 0.353553, -0.612372, 0, 0.866026, 0.5, 0.707107, -0.353553, 0.612372, -0.75, 1, 0.5)
 
+[node name="CameraTrigger5" parent="." instance=ExtResource("1_vipos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CameraTrigger5"]
+shape = SubResource("BoxShape3D_1hovn")
+
+[node name="FixedCamera" parent="CameraTrigger5" instance=ExtResource("1_xwsm6")]
+transform = Transform3D(-0.422618, 0.23457, -0.875426, 0, 0.965926, 0.258819, 0.906308, 0.109382, -0.408218, -4, 0.75, -1.5)
+
 [connection signal="player_entered" from="CameraTrigger1" to="CameraTrigger1/FixedCamera" method="_on_player_entered"]
 [connection signal="player_entered" from="CameraTrigger2" to="CameraTrigger2/FixedCamera" method="_on_player_entered"]
 [connection signal="player_entered" from="CameraTrigger3" to="CameraTrigger3/FixedCamera" method="_on_player_entered"]
 [connection signal="player_entered" from="CameraTrigger4" to="CameraTrigger4/FixedCamera" method="_on_player_entered"]
+[connection signal="player_entered" from="CameraTrigger5" to="CameraTrigger5/FixedCamera" method="_on_player_entered"]
