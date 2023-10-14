@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://cdyuudhi3uony"]
+
+[ext_resource type="Script" path="res://objects/spitslash.gd" id="1_ysgay"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_5mvcf"]
+radius = 0.75
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_jxtfc"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_dvgje"]
+radius = 0.2
+height = 0.4
+radial_segments = 16
+rings = 8
+
+[node name="Spitslash" type="CharacterBody3D" groups=["rippable"]]
+script = ExtResource("1_ysgay")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_5mvcf")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_jxtfc")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0.75)
+mesh = SubResource("SphereMesh_dvgje")
