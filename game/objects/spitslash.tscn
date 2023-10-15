@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cdyuudhi3uony"]
+[gd_scene load_steps=7 format=3 uid="uid://cdyuudhi3uony"]
 
 [ext_resource type="Script" path="res://objects/spitslash.gd" id="1_ysgay"]
 
@@ -13,7 +13,31 @@ height = 0.4
 radial_segments = 16
 rings = 8
 
+[sub_resource type="Animation" id="Animation_5elv2"]
+resource_name = "ripped"
+length = 2.5
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 1, 0, 1, 1, 0, 1.93333, 0, 1.5, 1, 0, 2, 0, 2, 1, 0, 0.25, 0)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 1, 1, 0.669131, 0, 0, 0.743145, 1.5, 1, 0.707107, 0, 0, 0.707107)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_andlx"]
+_data = {
+"ripped": SubResource("Animation_5elv2")
+}
+
 [node name="Spitslash" type="CharacterBody3D" groups=["rippable"]]
+visible = false
 script = ExtResource("1_ysgay")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -27,3 +51,10 @@ mesh = SubResource("CapsuleMesh_jxtfc")
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0.75)
 mesh = SubResource("SphereMesh_dvgje")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_andlx")
+}
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

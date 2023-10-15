@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://c0w0dwk2kt8ui"]
+[gd_scene load_steps=10 format=3 uid="uid://c0w0dwk2kt8ui"]
 
 [ext_resource type="PackedScene" uid="uid://t6dpi31d2sex" path="res://objects/player.tscn" id="1_ytbug"]
 [ext_resource type="PackedScene" uid="uid://dcrwutnx4ie42" path="res://objects/scientist.tscn" id="2_gy11l"]
 [ext_resource type="PackedScene" uid="uid://c6v7umskfu1nu" path="res://objects/test_environment.tscn" id="2_tkfk2"]
+[ext_resource type="PackedScene" uid="uid://cdyuudhi3uony" path="res://objects/spitslash.tscn" id="3_uysb2"]
 [ext_resource type="PackedScene" uid="uid://bw5rrpk6hrhtj" path="res://objects/rescue_zone.tscn" id="4_0ni5i"]
 [ext_resource type="PackedScene" uid="uid://b7qd64alhfsdp" path="res://objects/scenario_controller.tscn" id="4_yfld4"]
 [ext_resource type="Script" path="res://objects/scenario_controller.gd" id="5_n211s"]
@@ -20,6 +21,10 @@ size = Vector3(5, 1, 0.2)
 
 [node name="Scientist" parent="." instance=ExtResource("2_gy11l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 0)
+
+[node name="Spitslash" parent="." instance=ExtResource("3_uysb2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 2)
+visible = true
 
 [node name="Map" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_x8dff")

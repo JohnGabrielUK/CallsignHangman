@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://t6dpi31d2sex"]
+[gd_scene load_steps=14 format=3 uid="uid://t6dpi31d2sex"]
 
 [ext_resource type="Script" path="res://objects/player.gd" id="1_sptsi"]
 
@@ -15,6 +15,125 @@ height = 0.25
 radial_segments = 16
 rings = 8
 
+[sub_resource type="Animation" id="Animation_lj3mr"]
+resource_name = "rip_arm"
+length = 1.5
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 1.5, 1, 1, 0, 0, -4.37114e-08)
+
+[sub_resource type="Animation" id="Animation_a1ime"]
+resource_name = "idle"
+length = 2.0
+loop_mode = 1
+step = 0.5
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hand")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0.75, 0.5, 1, 1, 0, 0.6, 0.5, 2, 1, 0, 0.75, 0.5)
+
+[sub_resource type="Animation" id="Animation_pw7sh"]
+resource_name = "draw_weapon"
+length = 0.5
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hand")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0.75, 0.5, 0.5, 1, 0, 1, 0.75)
+
+[sub_resource type="Animation" id="Animation_x54gn"]
+resource_name = "run"
+loop_mode = 1
+step = 0.25
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hand")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.25, 0.5, 0.35, 0.5, 1, -0.25, 0.5, 0.35, 1, 1, 0.25, 0.5, 0.35)
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0.75, 0, 0.5, 1, 0, 0.85, 0, 1, 1, 0, 0.75, 0)
+
+[sub_resource type="Animation" id="Animation_4f8ui"]
+resource_name = "holster_weapon"
+length = 0.5
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hand")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 1, 0.75, 0.5, 1, 0, 0.75, 0.5)
+
+[sub_resource type="Animation" id="Animation_3jc72"]
+resource_name = "run_with_weapon"
+loop_mode = 1
+step = 0.25
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hand")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.25, 0.75, 0.85, 0.5, 1, -0.25, 0.75, 0.85, 1, 1, 0.25, 0.75, 0.85)
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0.75, 0, 0.5, 1, 0, 0.85, 0, 1, 1, 0, 0.75, 0)
+
+[sub_resource type="Animation" id="Animation_dc414"]
+resource_name = "idle_with_weapon"
+loop_mode = 1
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hand")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 1, 0.75, 0.5, 1, 0, 0.9, 0.65, 1, 1, 0, 1, 0.75)
+
+[sub_resource type="Animation" id="Animation_p5y7k"]
+resource_name = "shoot"
+length = 0.25
+step = 0.05
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hand")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 1, 0.75, 0.02, 1, 0, 1.1, 0.75, 0.25, 1, 0, 1, 0.75)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6sjk1"]
+_data = {
+"draw_weapon": SubResource("Animation_pw7sh"),
+"holster_weapon": SubResource("Animation_4f8ui"),
+"idle": SubResource("Animation_a1ime"),
+"idle_with_weapon": SubResource("Animation_dc414"),
+"rip_arm": SubResource("Animation_lj3mr"),
+"run": SubResource("Animation_x54gn"),
+"run_with_weapon": SubResource("Animation_3jc72"),
+"shoot": SubResource("Animation_p5y7k")
+}
+
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_sptsi")
 
@@ -22,10 +141,18 @@ script = ExtResource("1_sptsi")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
 shape = SubResource("CylinderShape3D_5mvcf")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="Body" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
 mesh = SubResource("CapsuleMesh_jxtfc")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0.5)
+[node name="Hand" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0.75)
 mesh = SubResource("SphereMesh_dvgje")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_6sjk1")
+}
+blend_times = [&"idle_with_weapon", &"idle_with_weapon", 0.25, &"idle_with_weapon", &"run", 0.25, &"idle_with_weapon", &"run_with_weapon", 0.25, &"idle_with_weapon", &"idle", 0.25, &"run", &"run", 0.25, &"run", &"run_with_weapon", 0.25, &"run", &"idle", 0.25]
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

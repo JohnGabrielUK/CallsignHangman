@@ -9,11 +9,20 @@ const MAX_SLASH_DISTANCE : float = 3.0
 
 enum State {PATROLLING, CHASING_PLAYER, CHASING_SCIENTIST, SPITTING, SLASHING, HARVESTING, HURT, STUNNED, LOSING_ARM, DYING, DEAD}
 
+@onready var anim_player : AnimationPlayer = $AnimationPlayer
+
 @onready var current_state : int = State.PATROLLING
 var target : Node3D
 var last_seen_position : Vector3
 var interest : float = MAX_INTEREST
 var attack_cooldown : float = MAX_COOLDOWN
+
+func get_arm_type() -> int:
+	return Constants.ArmType.HEAVY
+
+func can_be_ripped() -> bool:
+	return true
+	#return current_state == State.STUNNED
 
 func get_player_if_seen() -> Node3D:
 	return null
@@ -29,6 +38,10 @@ func slash() -> void:
 
 func spit() -> void:
 	pass
+
+func ripped(by_whom : Node3D) -> void:
+	current_state = State.LOSING_ARM
+	anim_player.play("ripped")
 
 func _physics_process_patrolling(delta : float) -> void:
 	var player : Node3D = get_player_if_seen()
@@ -66,3 +79,8 @@ func _physics_process_chasing_player(delta) -> void:
 		if interest <= 0.0:
 			target = null
 			current_state = State.PATROLLING
+
+func _on_animation_player_animation_finished(anim_name : String) -> void:
+	match anim_player:
+		"ripped":
+			current_state = State.DEAD
