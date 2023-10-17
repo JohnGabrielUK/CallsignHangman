@@ -1,0 +1,60 @@
+[gd_scene load_steps=8 format=3 uid="uid://yvlujtua0ltl"]
+
+[ext_resource type="ArrayMesh" uid="uid://c7rmkubbihpwa" path="res://meshes/corridor.mesh" id="1_53cny"]
+[ext_resource type="PackedScene" uid="uid://bvhxtxnr14j3l" path="res://objects/player_spawn_point.tscn" id="2_kmx1e"]
+[ext_resource type="Script" path="res://objects/room.gd" id="2_pwnkx"]
+[ext_resource type="PackedScene" uid="uid://cxpjmmqyln5gd" path="res://objects/room_exit.tscn" id="3_xyofb"]
+[ext_resource type="PackedScene" uid="uid://b3xs7myw6t33d" path="res://objects/camera_trigger.tscn" id="5_0ghx1"]
+[ext_resource type="PackedScene" uid="uid://bfgu1tbuk3iqa" path="res://objects/fixed_camera.tscn" id="6_a3cvw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6v0p6"]
+size = Vector3(2, 2, 5)
+
+[node name="Corridor1" type="Node3D"]
+script = ExtResource("2_pwnkx")
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -18)
+mesh = ExtResource("1_53cny")
+
+[node name="PlayerSpawnPoint1" parent="." instance=ExtResource("2_kmx1e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -14)
+point_towards = Vector3(0, 0, -1)
+
+[node name="PlayerSpawnPoint2" parent="." instance=ExtResource("2_kmx1e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -22)
+spawn_id = 1
+point_towards = Vector3(0, 0, 1)
+
+[node name="RoomExit1" parent="." instance=ExtResource("3_xyofb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -13)
+destination_room = "RoomTwodoors"
+destination_spawn_id = 1
+
+[node name="RoomExit2" parent="." instance=ExtResource("3_xyofb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -23)
+destination_room = "CorridorThreeway4"
+
+[node name="CameraTrigger1" parent="." instance=ExtResource("5_0ghx1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, -16)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CameraTrigger1"]
+shape = SubResource("BoxShape3D_6v0p6")
+
+[node name="FixedCamera" parent="CameraTrigger1" instance=ExtResource("6_a3cvw")]
+transform = Transform3D(-0.939693, -0.0885213, 0.330366, 0, 0.965926, 0.258819, -0.34202, 0.24321, -0.907673, 1, 1.5, -5)
+current = true
+fov = 50.0
+
+[node name="CameraTrigger2" parent="." instance=ExtResource("5_0ghx1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, -20)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CameraTrigger2"]
+shape = SubResource("BoxShape3D_6v0p6")
+
+[node name="FixedCamera" parent="CameraTrigger2" instance=ExtResource("6_a3cvw")]
+transform = Transform3D(0.906308, 0.0733869, 0.416198, 0, 0.984808, -0.173648, -0.422618, 0.157379, 0.892539, 1, -0.5, 6)
+fov = 50.0
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 2.5, -18)

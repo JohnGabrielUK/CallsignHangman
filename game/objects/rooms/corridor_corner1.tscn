@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://ocx2rp7och7p"]
+
+[ext_resource type="ArrayMesh" uid="uid://bdigyvdfk1kq" path="res://meshes/corridor_corner.mesh" id="1_x2wfl"]
+[ext_resource type="PackedScene" uid="uid://bvhxtxnr14j3l" path="res://objects/player_spawn_point.tscn" id="2_o6bhm"]
+[ext_resource type="Script" path="res://objects/room.gd" id="2_ompyw"]
+
+[node name="CorridorCorner1" type="Node3D"]
+script = ExtResource("2_ompyw")
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -6)
+mesh = ExtResource("1_x2wfl")
+
+[node name="PlayerSpawnPoint1" parent="." instance=ExtResource("2_o6bhm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -3)
+point_towards = Vector3(-1, 0, 0)
+
+[node name="PlayerSpawnPoint2" parent="." instance=ExtResource("2_o6bhm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, -10)
+spawn_id = 1
+point_towards = Vector3(0, 0, 1)

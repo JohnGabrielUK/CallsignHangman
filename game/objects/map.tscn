@@ -1,0 +1,64 @@
+[gd_scene load_steps=21 format=3 uid="uid://dbrsdcl853lb8"]
+
+[ext_resource type="PackedScene" uid="uid://5sipovm1dr7i" path="res://objects/rooms/cafeteria.tscn" id="1_panor"]
+[ext_resource type="PackedScene" uid="uid://yvlujtua0ltl" path="res://objects/rooms/corridor1.tscn" id="2_46l8m"]
+[ext_resource type="PackedScene" uid="uid://cw2mpcrq1mrl2" path="res://objects/rooms/corridor2.tscn" id="3_p0ino"]
+[ext_resource type="PackedScene" uid="uid://j806y03p1sdd" path="res://objects/rooms/corridor3.tscn" id="4_4qn57"]
+[ext_resource type="PackedScene" uid="uid://ocx2rp7och7p" path="res://objects/rooms/corridor_corner1.tscn" id="5_fi6os"]
+[ext_resource type="PackedScene" uid="uid://cr10aak1nke0u" path="res://objects/rooms/corridor_corner2.tscn" id="6_wyjp3"]
+[ext_resource type="PackedScene" uid="uid://cr7mklr7ujx2a" path="res://objects/rooms/corridor_threeway1.tscn" id="7_7o2lw"]
+[ext_resource type="PackedScene" uid="uid://b8bbdbn4dexcq" path="res://objects/rooms/corridor_threeway2.tscn" id="8_80cpt"]
+[ext_resource type="PackedScene" uid="uid://dtr6l5ak43dfq" path="res://objects/rooms/corridor_threeway3.tscn" id="9_gxoul"]
+[ext_resource type="PackedScene" uid="uid://2dyehpnt7ngs" path="res://objects/rooms/corridor_threeway4.tscn" id="10_itluu"]
+[ext_resource type="PackedScene" uid="uid://bgot025kb8wix" path="res://objects/rooms/entrance.tscn" id="11_ur7vk"]
+[ext_resource type="PackedScene" uid="uid://bcyywqdke0c30" path="res://objects/rooms/escape_pods.tscn" id="12_k8n1x"]
+[ext_resource type="PackedScene" uid="uid://c32lgth5kw3tp" path="res://objects/rooms/lab1.tscn" id="13_07jlu"]
+[ext_resource type="PackedScene" uid="uid://b566dpoism678" path="res://objects/rooms/lab2.tscn" id="14_e722w"]
+[ext_resource type="PackedScene" uid="uid://cs8tnbbrlc1qw" path="res://objects/rooms/lab3.tscn" id="15_y5bhe"]
+[ext_resource type="PackedScene" uid="uid://d12u7sdar06q0" path="res://objects/rooms/room1.tscn" id="16_cgaia"]
+[ext_resource type="PackedScene" uid="uid://bboq05uaa2ixo" path="res://objects/rooms/room2.tscn" id="17_kmald"]
+[ext_resource type="PackedScene" uid="uid://bolfgyh55asf5" path="res://objects/rooms/room3.tscn" id="18_wvslu"]
+[ext_resource type="PackedScene" uid="uid://ctimqbc00ab2a" path="res://objects/rooms/room4.tscn" id="19_8ditd"]
+[ext_resource type="PackedScene" uid="uid://b0fhbcdukwn2h" path="res://objects/rooms/room_twodoors.tscn" id="20_qk0i4"]
+
+[node name="Map" type="Node3D"]
+
+[node name="Cafeteria" parent="." instance=ExtResource("1_panor")]
+
+[node name="Corridor1" parent="." instance=ExtResource("2_46l8m")]
+
+[node name="Corridor2" parent="." instance=ExtResource("3_p0ino")]
+
+[node name="Corridor3" parent="." instance=ExtResource("4_4qn57")]
+
+[node name="CorridorCorner1" parent="." instance=ExtResource("5_fi6os")]
+
+[node name="CorridorCorner2" parent="." instance=ExtResource("6_wyjp3")]
+
+[node name="CorridorThreeway1" parent="." instance=ExtResource("7_7o2lw")]
+
+[node name="CorridorThreeway2" parent="." instance=ExtResource("8_80cpt")]
+
+[node name="CorridorThreeway3" parent="." instance=ExtResource("9_gxoul")]
+
+[node name="CorridorThreeway4" parent="." instance=ExtResource("10_itluu")]
+
+[node name="Entrance" parent="." instance=ExtResource("11_ur7vk")]
+
+[node name="EscapePods" parent="." instance=ExtResource("12_k8n1x")]
+
+[node name="Lab1" parent="." instance=ExtResource("13_07jlu")]
+
+[node name="Lab2" parent="." instance=ExtResource("14_e722w")]
+
+[node name="Lab3" parent="." instance=ExtResource("15_y5bhe")]
+
+[node name="Room1" parent="." instance=ExtResource("16_cgaia")]
+
+[node name="Room2" parent="." instance=ExtResource("17_kmald")]
+
+[node name="Room3" parent="." instance=ExtResource("18_wvslu")]
+
+[node name="Room4" parent="." instance=ExtResource("19_8ditd")]
+
+[node name="RoomTwodoors" parent="." instance=ExtResource("20_qk0i4")]

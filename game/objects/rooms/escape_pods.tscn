@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://bcyywqdke0c30"]
+
+[ext_resource type="ArrayMesh" uid="uid://bgol4n3u5uqae" path="res://meshes/escape_pods.mesh" id="1_ir5s5"]
+[ext_resource type="PackedScene" uid="uid://bvhxtxnr14j3l" path="res://objects/player_spawn_point.tscn" id="2_q0fnl"]
+[ext_resource type="Script" path="res://objects/room.gd" id="2_vdglb"]
+
+[node name="EscapePods" type="Node3D"]
+script = ExtResource("2_vdglb")
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 13)
+mesh = ExtResource("1_ir5s5")
+
+[node name="PlayerSpawnPoint" parent="." instance=ExtResource("2_q0fnl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 11)
+point_towards = Vector3(0, 0, 1)

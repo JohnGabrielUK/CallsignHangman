@@ -9,15 +9,16 @@ const INTERACT_DISTANCE : float = 2.0
 
 enum State {NORMAL, DRAWING_WEAPON, WEAPON_DRAWN, HOLSTERING_WEAPON, SHOOTING, KNIFE_ATTACK, RIPPING, HIT, DYING, DEAD}
 
+@onready var raycast_interactable : RayCast3D = $RayCast_Interactable
 @onready var anim_player : AnimationPlayer = $AnimationPlayer
 
 @onready var current_state : int = State.NORMAL
 @onready var current_arm : int = Constants.ArmType.NONE
 
 func try_to_interact() -> void:
-	for candidate in get_tree().get_nodes_in_group("interactable"):
-		if candidate.global_position.distance_to(global_position) < INTERACT_DISTANCE:
-			candidate.interact(self)
+	if raycast_interactable.is_colliding():
+		var candidate = raycast_interactable.get_collider()
+		candidate.interact(self)
 
 func try_to_harvest() -> void:
 	for candidate in get_tree().get_nodes_in_group("rippable"):

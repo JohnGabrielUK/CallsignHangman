@@ -1,45 +1,22 @@
-[gd_scene load_steps=10 format=3 uid="uid://c0w0dwk2kt8ui"]
+[gd_scene load_steps=6 format=3 uid="uid://c0w0dwk2kt8ui"]
 
-[ext_resource type="PackedScene" uid="uid://t6dpi31d2sex" path="res://objects/player.tscn" id="1_ytbug"]
-[ext_resource type="PackedScene" uid="uid://dcrwutnx4ie42" path="res://objects/scientist.tscn" id="2_gy11l"]
-[ext_resource type="PackedScene" uid="uid://c6v7umskfu1nu" path="res://objects/test_environment.tscn" id="2_tkfk2"]
-[ext_resource type="PackedScene" uid="uid://cdyuudhi3uony" path="res://objects/spitslash.tscn" id="3_uysb2"]
-[ext_resource type="PackedScene" uid="uid://bw5rrpk6hrhtj" path="res://objects/rescue_zone.tscn" id="4_0ni5i"]
+[ext_resource type="Script" path="res://scenes/game.gd" id="1_007my"]
+[ext_resource type="Environment" uid="uid://ngefto5heafd" path="res://environment.tres" id="4_4mbon"]
 [ext_resource type="PackedScene" uid="uid://b7qd64alhfsdp" path="res://objects/scenario_controller.tscn" id="4_yfld4"]
 [ext_resource type="Script" path="res://objects/scenario_controller.gd" id="5_n211s"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_x8dff"]
-vertices = PackedVector3Array(-8.5, 2.5, -8, -9.5, 2.5, -9.5, -9.5, 2.5, 0, -8.5, 2.5, 0.25, 8.5, 2.5, 8.25, 9.5, 2.5, 9.5, 9.5, 2.5, 0, 8.5, 2.5, -0.25, -8.25, 2.5, 8.5, -8.5, 2.5, 0.25, -9.5, 2.5, 0, -9.5, 2.5, 9.5, 0, 2.5, -9.5, -9.5, 2.5, -9.5, -8.5, 2.5, -8, -0.25, 2.5, -8.25, -8.25, 2.5, 8.5, -9.5, 2.5, 9.5, 0, 2.5, 9.5, 0.25, 2.5, 8.5, 8.25, 2.5, -8.25, 8.5, 2.5, -0.25, 9.5, 2.5, 0, 9.5, 2.5, -9.5, 8.5, 2.5, 8.25, 0.25, 2.5, 8.5, 0, 2.5, 9.5, 9.5, 2.5, 9.5, 0, 2.5, -9.5, -0.25, 2.5, -8.25, 8.25, 2.5, -8.25, 9.5, 2.5, -9.5, -9.25, 0.5, 0, -9.25, 0.5, 9.25, -8.5, 0.5, 9.25, -8.5, 0.5, 0, -8.5, 0.5, 0, -8.5, 0.5, -9.25, -9.25, 0.5, -9.25, -9.25, 0.5, 0, -7.25, 0.5, -9.25, -7.25, 0.5, -8.5, 0, 0.5, -8.5, 0, 0.5, -9.25, 0, 0.5, -8.5, 7.5, 0.5, -8.5, 7.5, 0.5, -9.25, 0, 0.5, -9.25, 8.75, 0.5, 0, 8.75, 0.5, 9.25, 9.5, 0.5, 9.25, 9.5, 0.5, 0, 9.5, 0.5, 0, 9.5, 0.5, -9.25, 8.75, 0.5, -9.25, 8.75, 0.5, 0, 1, 0.5, -4.25, 1.25, 0.5, -3, 1.5, 0.5, -3, 1.5, 0.5, -6.25, 1.5, 0.5, -6.25, 2.75, 0.5, -6.5, 2.75, 0.5, -7.25, -1.5, 0.5, -6.5, -1.5, 0.5, -6.5, 2.75, 0.5, -7.25, -7.25, 0.5, -7.25, -6.25, 0.5, -6.5, 0, 0.5, -4.25, 1, 0.5, -4.25, 1.5, 0.5, -6.25, -1.5, 0.5, -6.5, -1.25, 0.5, -1.75, -0.75, 0.5, -1.75, 0, 0.5, -4.25, -1.5, 0.5, -6.5, -7.25, 0.5, -2.5, -6.5, 0.5, -2.5, -6.25, 0.5, -6.5, -7.25, 0.5, -7.25, 0.25, 0.5, 1.5, 1.5, 0.5, 2, 1.75, 0.5, 1.5, 1.75, 0.5, -1.25, 1.5, 0.5, -3, 1.25, 0.5, -3, 6.5, 0.5, 1.5, 6.75, 0.5, 2.75, 7.5, 0.5, 2.75, 6.75, 0.5, -1.75, 6.25, 0.5, -1.25, 2.75, 0.5, -7.25, 2.75, 0.5, -6.5, 6.75, 0.5, -6.25, 7.5, 0.5, -7.25, 6.25, 0.5, -1.25, 1.75, 0.5, -1.25, 1.75, 0.5, 1.5, 6.5, 0.5, 1.5, 6.75, 0.5, -1.75, 7.5, 0.5, 2.75, 7.5, 0.5, -7.25, 6.75, 0.5, -6.25, -5.5, 2.5, -5.5, -5.5, 2.5, -2.5, -2.5, 2.5, -2.5, -2.5, 2.5, -5.5, 2.5, 2.5, -5.5, 2.5, 2.5, -2.5, 5.5, 2.5, -2.5, 5.5, 2.5, -5.5, -5.25, 0.5, -5.25, -5.25, 0.5, -2.5, -2.5, 0.5, -2.5, -2.5, 0.5, -5.25, 2.75, 0.5, -5.25, 2.75, 0.5, -2.5, 5.5, 0.5, -2.5, 5.5, 0.5, -5.25, -0.75, 0.5, -1.75, -1.25, 0.5, -1.75, -1.75, 0.5, -1.25, -1.25, 0.5, 1.75, 1.5, 0.5, 2, 0.25, 0.5, 1.5, 0, 0.5, 2, -1.25, 0.5, 6.25, 1.75, 0.5, 6.75, -6.25, 0.5, -1.25, -6.5, 0.5, -2.5, -7.25, 0.5, -2.5, -6.5, 0.5, 1.75, -6.5, 0.5, 1.75, -1.25, 0.5, 1.75, -1.75, 0.5, -1.25, -6.25, 0.5, -1.25, 7.5, 0.5, 2.75, 6.75, 0.5, 2.75, 6.75, 0.5, 6.25, 7.5, 0.5, 7.5, 7.5, 0.5, 7.5, 6.25, 0.5, 6.75, 1.75, 0.5, 6.75, 0, 0.5, 7.5, 7.5, 0.5, 7.5, 6.75, 0.5, 6.25, 6.25, 0.5, 6.75, 0, 0.5, 2, -1.25, 0.5, 1.75, -1.25, 0.5, 6.25, -6.5, 0.5, 1.75, -7.25, 0.5, -2.5, -7.25, 0.5, 7.5, -6.5, 0.5, 6.5, -1.75, 0.5, 6.75, -6.5, 0.5, 6.5, -7.25, 0.5, 7.5, 0, 0.5, 7.5, 1.75, 0.5, 6.75, -1.25, 0.5, 6.25, -1.75, 0.5, 6.75, 0, 0.5, 7.5, -5.5, 2.5, 2.5, -5.5, 2.5, 5.5, -2.5, 2.5, 5.5, -2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 5.5, 5.5, 2.5, 5.5, 5.5, 2.5, 2.5, -5.25, 0.5, 2.75, -5.25, 0.5, 5.5, -2.5, 0.5, 5.5, -2.5, 0.5, 2.75, 2.75, 0.5, 2.75, 2.75, 0.5, 5.5, 5.5, 0.5, 5.5, 5.5, 0.5, 2.75, -7.25, 0.5, 8.75, -7.25, 0.5, 9.25, 0, 0.5, 9.25, 0, 0.5, 8.75, 0, 0.5, 9.25, 7.5, 0.5, 9.25, 7.5, 0.5, 8.75, 0, 0.5, 8.75)
-polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Array(7, 6, 4), PackedInt32Array(4, 6, 5), PackedInt32Array(9, 8, 10), PackedInt32Array(10, 8, 11), PackedInt32Array(15, 14, 12), PackedInt32Array(12, 14, 13), PackedInt32Array(19, 18, 16), PackedInt32Array(16, 18, 17), PackedInt32Array(21, 20, 22), PackedInt32Array(22, 20, 23), PackedInt32Array(25, 24, 26), PackedInt32Array(26, 24, 27), PackedInt32Array(29, 28, 30), PackedInt32Array(30, 28, 31), PackedInt32Array(35, 34, 32), PackedInt32Array(32, 34, 33), PackedInt32Array(39, 38, 36), PackedInt32Array(36, 38, 37), PackedInt32Array(43, 42, 40), PackedInt32Array(40, 42, 41), PackedInt32Array(47, 46, 44), PackedInt32Array(44, 46, 45), PackedInt32Array(51, 50, 48), PackedInt32Array(48, 50, 49), PackedInt32Array(55, 54, 52), PackedInt32Array(52, 54, 53), PackedInt32Array(57, 56, 58), PackedInt32Array(58, 56, 59), PackedInt32Array(61, 60, 62), PackedInt32Array(62, 60, 63), PackedInt32Array(67, 66, 64), PackedInt32Array(64, 66, 65), PackedInt32Array(69, 68, 70), PackedInt32Array(70, 68, 71), PackedInt32Array(73, 72, 74), PackedInt32Array(74, 72, 75), PackedInt32Array(77, 76, 78), PackedInt32Array(78, 76, 79), PackedInt32Array(81, 80, 82), PackedInt32Array(82, 80, 83), PackedInt32Array(83, 80, 85), PackedInt32Array(83, 85, 84), PackedInt32Array(87, 86, 88), PackedInt32Array(88, 86, 90), PackedInt32Array(88, 90, 89), PackedInt32Array(92, 91, 93), PackedInt32Array(93, 91, 94), PackedInt32Array(96, 95, 97), PackedInt32Array(97, 95, 98), PackedInt32Array(102, 101, 99), PackedInt32Array(99, 101, 100), PackedInt32Array(106, 105, 103), PackedInt32Array(103, 105, 104), PackedInt32Array(110, 109, 107), PackedInt32Array(107, 109, 108), PackedInt32Array(114, 113, 111), PackedInt32Array(111, 113, 112), PackedInt32Array(118, 117, 115), PackedInt32Array(115, 117, 116), PackedInt32Array(120, 119, 121), PackedInt32Array(121, 119, 122), PackedInt32Array(124, 123, 125), PackedInt32Array(125, 123, 126), PackedInt32Array(126, 123, 127), PackedInt32Array(129, 128, 130), PackedInt32Array(130, 128, 131), PackedInt32Array(135, 134, 132), PackedInt32Array(132, 134, 133), PackedInt32Array(137, 136, 138), PackedInt32Array(138, 136, 139), PackedInt32Array(141, 140, 142), PackedInt32Array(142, 140, 143), PackedInt32Array(146, 145, 144), PackedInt32Array(149, 148, 147), PackedInt32Array(153, 152, 150), PackedInt32Array(150, 152, 151), PackedInt32Array(155, 154, 156), PackedInt32Array(156, 154, 157), PackedInt32Array(160, 159, 161), PackedInt32Array(161, 159, 158), PackedInt32Array(165, 164, 162), PackedInt32Array(162, 164, 163), PackedInt32Array(169, 168, 166), PackedInt32Array(166, 168, 167), PackedInt32Array(173, 172, 170), PackedInt32Array(170, 172, 171), PackedInt32Array(177, 176, 174), PackedInt32Array(174, 176, 175), PackedInt32Array(181, 180, 178), PackedInt32Array(178, 180, 179), PackedInt32Array(185, 184, 182), PackedInt32Array(182, 184, 183)]
 
-[sub_resource type="BoxMesh" id="BoxMesh_fwnal"]
-size = Vector3(5, 1, 0.2)
-
-[node name="Game" type="Node3D"]
-
-[node name="Player" parent="." instance=ExtResource("1_ytbug")]
-
-[node name="Scientist" parent="." instance=ExtResource("2_gy11l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 0)
-
-[node name="Spitslash" parent="." instance=ExtResource("3_uysb2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 2)
-visible = true
+[node name="Game" type="Node3D" groups=["game_controller"]]
+process_mode = 3
+script = ExtResource("1_007my")
 
 [node name="Map" type="NavigationRegion3D" parent="."]
+process_mode = 1
 navigation_mesh = SubResource("NavigationMesh_x8dff")
-
-[node name="TestEnvironment" parent="Map" instance=ExtResource("2_tkfk2")]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Map"]
-transform = Transform3D(0.205128, 0, 0.978735, 0, 1, 0, -0.978735, 0, 0.205128, 0, 0.0733442, -1.15505)
-mesh = SubResource("BoxMesh_fwnal")
-
-[node name="RescueZone" parent="." instance=ExtResource("4_0ni5i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 0)
 
 [node name="ScenarioController" parent="." instance=ExtResource("4_yfld4")]
 script = ExtResource("5_n211s")
 
-[connection signal="dead" from="Scientist" to="ScenarioController" method="_on_scientist_dead"]
-[connection signal="rescued" from="Scientist" to="ScenarioController" method="_on_scientist_rescued"]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("4_4mbon")

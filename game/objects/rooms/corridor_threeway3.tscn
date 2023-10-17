@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://dtr6l5ak43dfq"]
+
+[ext_resource type="ArrayMesh" uid="uid://bri74l141eiov" path="res://meshes/corridor_threeway.mesh" id="1_e04fn"]
+[ext_resource type="Script" path="res://objects/room.gd" id="2_0sexl"]
+[ext_resource type="PackedScene" uid="uid://bvhxtxnr14j3l" path="res://objects/player_spawn_point.tscn" id="2_r1v25"]
+
+[node name="CorridorThreeway3" type="Node3D"]
+script = ExtResource("2_0sexl")
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 23, 0, -3)
+mesh = ExtResource("1_e04fn")
+
+[node name="PlayerSpawnPoint1" parent="." instance=ExtResource("2_r1v25")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 19, 0, -3)
+point_towards = Vector3(1, 0, 0)
+
+[node name="PlayerSpawnPoint2" parent="." instance=ExtResource("2_r1v25")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 23, 0, -7)
+spawn_id = 1
+point_towards = Vector3(0, 0, 1)
+
+[node name="PlayerSpawnPoint3" parent="." instance=ExtResource("2_r1v25")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 23, 0, 1)
+spawn_id = 2
+point_towards = Vector3(0, 0, -1)

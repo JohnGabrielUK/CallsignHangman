@@ -1,0 +1,8 @@
+[gd_resource type="Environment" format=3 uid="uid://ngefto5heafd"]
+
+[resource]
+ssr_enabled = true
+ssao_enabled = true
+ssil_enabled = true
+sdfgi_enabled = true
+glow_enabled = true

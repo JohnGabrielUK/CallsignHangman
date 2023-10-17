@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://d12u7sdar06q0"]
+
+[ext_resource type="ArrayMesh" uid="uid://7lw84wpvvsmk" path="res://meshes/room.mesh" id="1_2ykwl"]
+[ext_resource type="Script" path="res://objects/room.gd" id="2_w4qh7"]
+[ext_resource type="PackedScene" uid="uid://bvhxtxnr14j3l" path="res://objects/player_spawn_point.tscn" id="2_xt5g2"]
+
+[node name="Room1" type="Node3D"]
+script = ExtResource("2_w4qh7")
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, -5)
+mesh = ExtResource("1_2ykwl")
+
+[node name="PlayerSpawnPoint" parent="." instance=ExtResource("2_xt5g2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, -4)
+point_towards = Vector3(0, 0, -1)

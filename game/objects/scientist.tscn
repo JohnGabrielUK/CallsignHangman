@@ -138,6 +138,7 @@ _data = {
 }
 
 [node name="Scientist" type="CharacterBody3D" groups=["interactable"]]
+collision_layer = 17
 script = ExtResource("1_nfk56")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

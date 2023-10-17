@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxpjmmqyln5gd"]
+
+[ext_resource type="Script" path="res://objects/room_exit.gd" id="1_1vjaq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2rkto"]
+size = Vector3(1, 2, 1)
+
+[node name="RoomExit" type="StaticBody3D" groups=["interactable", "room_exit"]]
+collision_layer = 16
+collision_mask = 16
+script = ExtResource("1_1vjaq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_2rkto")
