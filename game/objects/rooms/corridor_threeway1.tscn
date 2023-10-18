@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cr7mklr7ujx2a"]
+[gd_scene load_steps=9 format=3 uid="uid://cr7mklr7ujx2a"]
 
 [ext_resource type="ArrayMesh" uid="uid://bri74l141eiov" path="res://meshes/corridor_threeway.mesh" id="1_beurt"]
 [ext_resource type="PackedScene" uid="uid://bvhxtxnr14j3l" path="res://objects/player_spawn_point.tscn" id="2_4vkas"]
@@ -9,6 +9,9 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_52vfa"]
 size = Vector3(3, 2, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_a2jx6"]
+size = Vector3(5, 2, 3)
 
 [node name="CorridorThreeway1" type="Node3D"]
 script = ExtResource("2_d80a7")
@@ -36,6 +39,15 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -15, 0
 destination_room = "Corridor2"
 destination_spawn_id = 1
 
+[node name="RoomExit2" parent="." instance=ExtResource("4_ihyia")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -20, 0, -3)
+destination_room = "Room1"
+
+[node name="RoomExit3" parent="." instance=ExtResource("4_ihyia")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -20, 0, 7)
+destination_room = "Entrance"
+destination_spawn_id = 1
+
 [node name="CameraTrigger1" parent="." instance=ExtResource("5_3f3bd")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -17, 1, 2)
 
@@ -47,12 +59,36 @@ transform = Transform3D(-0.819152, 0.196175, -0.538986, 0, 0.939693, 0.34202, 0.
 current = true
 fov = 60.0
 
+[node name="CameraTrigger2" parent="." instance=ExtResource("5_3f3bd")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -20, 1, 4)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CameraTrigger2"]
+shape = SubResource("BoxShape3D_a2jx6")
+
+[node name="FixedCamera" parent="CameraTrigger2" instance=ExtResource("6_nmtkj")]
+transform = Transform3D(-0.642788, -0.262003, 0.719846, 0, 0.939693, 0.34202, -0.766045, 0.219846, -0.604023, 3, 1.5, -1)
+current = true
+fov = 60.0
+
+[node name="CameraTrigger3" parent="." instance=ExtResource("5_3f3bd")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -20, 1, -1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CameraTrigger3"]
+shape = SubResource("BoxShape3D_a2jx6")
+
+[node name="FixedCamera" parent="CameraTrigger3" instance=ExtResource("6_nmtkj")]
+transform = Transform3D(-0.5, 0.296198, -0.813798, 0, 0.939693, 0.34202, 0.866025, 0.17101, -0.469846, -6, 1.5, -1)
+current = true
+fov = 60.0
+
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -20, 2.5, -1)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -20, 2.5, 0)
 shadow_enabled = true
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -20, 2.5, 5)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -20, 2.5, 4)
 shadow_enabled = true
 
 [connection signal="player_entered" from="CameraTrigger1" to="CameraTrigger1/FixedCamera" method="_on_player_entered"]
+[connection signal="player_entered" from="CameraTrigger2" to="CameraTrigger2/FixedCamera" method="_on_player_entered"]
+[connection signal="player_entered" from="CameraTrigger3" to="CameraTrigger3/FixedCamera" method="_on_player_entered"]

@@ -1,8 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://b8bbdbn4dexcq"]
+[gd_scene load_steps=10 format=3 uid="uid://b8bbdbn4dexcq"]
 
 [ext_resource type="ArrayMesh" uid="uid://bri74l141eiov" path="res://meshes/corridor_threeway.mesh" id="1_fpun5"]
 [ext_resource type="Script" path="res://objects/room.gd" id="2_6ngxo"]
 [ext_resource type="PackedScene" uid="uid://bvhxtxnr14j3l" path="res://objects/player_spawn_point.tscn" id="2_j0db0"]
+[ext_resource type="PackedScene" uid="uid://cxpjmmqyln5gd" path="res://objects/room_exit.tscn" id="4_y88b3"]
+[ext_resource type="PackedScene" uid="uid://b3xs7myw6t33d" path="res://objects/camera_trigger.tscn" id="5_lkgrk"]
+[ext_resource type="PackedScene" uid="uid://bfgu1tbuk3iqa" path="res://objects/fixed_camera.tscn" id="6_e71u5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dko0t"]
+size = Vector3(3, 2, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5p26t"]
+size = Vector3(3, 2, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_554da"]
+size = Vector3(7, 2, 3)
 
 [node name="CorridorThreeway2" type="Node3D"]
 script = ExtResource("2_6ngxo")
@@ -24,3 +36,66 @@ point_towards = Vector3(1, 0, 0)
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -9, 0, -16)
 spawn_id = 2
 point_towards = Vector3(-1, 0, 0)
+
+[node name="RoomExit1" parent="." instance=ExtResource("4_y88b3")]
+transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, -13, 0, -11)
+destination_room = "CorridorCorner1"
+destination_spawn_id = 1
+
+[node name="RoomExit2" parent="." instance=ExtResource("4_y88b3")]
+transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, -8, 0, -16)
+destination_room = "Lab2"
+
+[node name="RoomExit3" parent="." instance=ExtResource("4_y88b3")]
+transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, -18, 0, -16)
+destination_room = "Room3"
+
+[node name="CameraTrigger1" parent="." instance=ExtResource("5_lkgrk")]
+transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, -13, 1, -13)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CameraTrigger1"]
+shape = SubResource("BoxShape3D_dko0t")
+
+[node name="FixedCamera" parent="CameraTrigger1" instance=ExtResource("6_e71u5")]
+transform = Transform3D(-0.819152, 0.196175, -0.538986, 0, 0.939693, 0.34202, 0.573576, 0.280166, -0.769751, -1, 1.5, -4)
+current = true
+fov = 60.0
+
+[node name="CameraTrigger2" parent="." instance=ExtResource("5_lkgrk")]
+transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, -15, 1, -16)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CameraTrigger2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+shape = SubResource("BoxShape3D_5p26t")
+
+[node name="FixedCamera" parent="CameraTrigger2" instance=ExtResource("6_e71u5")]
+transform = Transform3D(-0.642788, -0.262003, 0.719846, 0, 0.939693, 0.34202, -0.766045, 0.219846, -0.604023, 4, 1.5, -1)
+current = true
+fov = 60.0
+
+[node name="CameraTrigger3" parent="." instance=ExtResource("5_lkgrk")]
+transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, -11, 1, -16)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CameraTrigger3"]
+shape = SubResource("BoxShape3D_554da")
+
+[node name="FixedCamera" parent="CameraTrigger3" instance=ExtResource("6_e71u5")]
+transform = Transform3D(-0.5, 0.296198, -0.813798, 0, 0.939693, 0.34202, 0.866025, 0.17101, -0.469846, -5, 1.5, -1)
+current = true
+fov = 60.0
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, -11, 2.5, -16)
+light_energy = 0.5
+shadow_enabled = true
+omni_range = 4.0
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, -15, 2.5, -16)
+light_energy = 0.5
+shadow_enabled = true
+omni_range = 4.0
+
+[connection signal="player_entered" from="CameraTrigger1" to="CameraTrigger1/FixedCamera" method="_on_player_entered"]
+[connection signal="player_entered" from="CameraTrigger2" to="CameraTrigger2/FixedCamera" method="_on_player_entered"]
+[connection signal="player_entered" from="CameraTrigger3" to="CameraTrigger3/FixedCamera" method="_on_player_entered"]
