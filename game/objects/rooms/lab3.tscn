@@ -1,15 +1,29 @@
-[gd_scene load_steps=4 format=3 uid="uid://cs8tnbbrlc1qw"]
+[gd_scene load_steps=8 format=3 uid="uid://cs8tnbbrlc1qw"]
 
-[ext_resource type="ArrayMesh" uid="uid://bqh2gt0oftjpr" path="res://meshes/lab.mesh" id="1_3ofxu"]
 [ext_resource type="Script" path="res://objects/room.gd" id="2_4v3rp"]
 [ext_resource type="PackedScene" uid="uid://bvhxtxnr14j3l" path="res://objects/player_spawn_point.tscn" id="2_e7g3g"]
+[ext_resource type="PackedScene" uid="uid://bd026w72txmjb" path="res://objects/rooms/building_parts/lab.tscn" id="2_y7vbq"]
+[ext_resource type="Texture2D" uid="uid://jt70f64wlu7s" path="res://materials/rooms/scifi_parts_wall_albedo.png" id="3_o71ng"]
+[ext_resource type="Texture2D" uid="uid://43ydho607sr1" path="res://materials/rooms/scifi_parts_wall_emission_lights_on.png" id="4_wyjnb"]
+[ext_resource type="Texture2D" uid="uid://cls2cel8gtflj" path="res://materials/rooms/scifi_parts_wall_normal.png" id="5_i6jow"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aynkn"]
+resource_name = "Wall"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("3_o71ng")
+roughness = 0.5
+emission_enabled = true
+emission_operator = 1
+emission_texture = ExtResource("4_wyjnb")
+normal_enabled = true
+normal_texture = ExtResource("5_i6jow")
 
 [node name="Lab3" type="Node3D"]
 script = ExtResource("2_4v3rp")
 
-[node name="Mesh" type="MeshInstance3D" parent="."]
-transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 10, 0, -28)
-mesh = ExtResource("1_3ofxu")
+[node name="Mesh" parent="." instance=ExtResource("2_y7vbq")]
+transform = Transform3D(-1, 0, -8.74226e-08, 0, 1, 0, 8.74226e-08, 0, -1, 10, 0, -28)
+surface_material_override/1 = SubResource("StandardMaterial3D_aynkn")
 
 [node name="PlayerSpawnPoint" parent="." instance=ExtResource("2_e7g3g")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 9, 0, -28)

@@ -1,15 +1,29 @@
-[gd_scene load_steps=4 format=3 uid="uid://bcyywqdke0c30"]
+[gd_scene load_steps=8 format=3 uid="uid://bcyywqdke0c30"]
 
-[ext_resource type="ArrayMesh" uid="uid://bgol4n3u5uqae" path="res://meshes/escape_pods.mesh" id="1_ir5s5"]
+[ext_resource type="PackedScene" uid="uid://btuujek5w5yxf" path="res://objects/rooms/building_parts/escape_pods.tscn" id="2_o1ba6"]
 [ext_resource type="PackedScene" uid="uid://bvhxtxnr14j3l" path="res://objects/player_spawn_point.tscn" id="2_q0fnl"]
 [ext_resource type="Script" path="res://objects/room.gd" id="2_vdglb"]
+[ext_resource type="Texture2D" uid="uid://jt70f64wlu7s" path="res://materials/rooms/scifi_parts_wall_albedo.png" id="3_rekp6"]
+[ext_resource type="Texture2D" uid="uid://43ydho607sr1" path="res://materials/rooms/scifi_parts_wall_emission_lights_on.png" id="4_4jonf"]
+[ext_resource type="Texture2D" uid="uid://cls2cel8gtflj" path="res://materials/rooms/scifi_parts_wall_normal.png" id="5_4x0xi"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0qac2"]
+resource_name = "Wall"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("3_rekp6")
+roughness = 0.5
+emission_enabled = true
+emission_operator = 1
+emission_texture = ExtResource("4_4jonf")
+normal_enabled = true
+normal_texture = ExtResource("5_4x0xi")
 
 [node name="EscapePods" type="Node3D"]
 script = ExtResource("2_vdglb")
 
-[node name="Mesh" type="MeshInstance3D" parent="."]
+[node name="Mesh" parent="." instance=ExtResource("2_o1ba6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 13)
-mesh = ExtResource("1_ir5s5")
+surface_material_override/1 = SubResource("StandardMaterial3D_0qac2")
 
 [node name="PlayerSpawnPoint" parent="." instance=ExtResource("2_q0fnl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 11)
