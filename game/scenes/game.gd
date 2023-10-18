@@ -43,7 +43,9 @@ func start_room() -> void:
 	var scene : PackedScene = ResourceLoader.load_threaded_get(ROOMS[room_to_load])
 	current_room = scene.instantiate()
 	map.add_child(current_room)
+	map.bake_navigation_mesh()
 	current_room.spawn_player(spawn_id_to_use)
+	current_room.spawn_scientists()
 	current_state = GameState.IN_GAME
 	get_tree().paused = false
 

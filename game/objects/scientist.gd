@@ -26,9 +26,12 @@ var following : Node3D
 # each other
 @onready var navigation_map_rid = NavigationServer3D.get_maps()[0]
 
+func follow_player_from_spawn(player : Node3D) -> void:
+	following = player
+	current_state = State.FOLLOWING_PLAYER
 
 func rescue() -> void:
-	emit_signal("rescued", id)
+	get_tree().call_group("scenario_controller", "_on_scientist_rescued", id)
 	queue_free()
 
 func switch_animation_if_not_current(anim_name : String, blend_amount : float) -> void:
@@ -38,8 +41,12 @@ func switch_animation_if_not_current(anim_name : String, blend_amount : float) -
 func interact(by_whom : Node3D) -> void:
 	match current_state:
 		State.NOT_YET_MET:
-			current_state = State.FOLLOWING_PLAYER
-			following = by_whom
+			if not GameSession.is_scientist_following_player():
+				current_state = State.FOLLOWING_PLAYER
+				following = by_whom
+				GameSession.scientist_following_player(id)
+			else:
+				pass # TODO: Add flavour text for why this can't be done
 		State.FOLLOWING_PLAYER:
 			current_state = State.WAITING
 		State.WAITING:
