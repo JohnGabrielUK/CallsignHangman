@@ -1,0 +1,1546 @@
+[gd_resource type="Resource" script_class="DialogData" load_steps=128 format=3 uid="uid://dxkjjrap15vxu"]
+
+[ext_resource type="Script" path="res://addons/madtalk/components/resources/DialogNodeData.gd" id="1"]
+[ext_resource type="Script" path="res://addons/madtalk/components/resources/DialogSheetData.gd" id="2"]
+[ext_resource type="Script" path="res://addons/madtalk/components/resources/DialogData.gd" id="3"]
+[ext_resource type="Script" path="res://addons/madtalk/components/resources/DialogNodeItemData.gd" id="4"]
+[ext_resource type="Script" path="res://addons/madtalk/components/resources/DialogNodeOptionData.gd" id="5"]
+
+[sub_resource type="Resource" id="1"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "foo"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "This is an example sheet. You can rename and use it, or discard and create your own."
+message_hide_on_end = 0
+condition_type = 0
+condition_values = []
+effect_type = 0
+effect_values = []
+
+[sub_resource type="Resource" id="4"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = ""
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "Would you like to see more dialog messages?"
+message_hide_on_end = 1
+condition_type = 0
+condition_values = []
+effect_type = 0
+effect_values = []
+
+[sub_resource type="Resource" id="5"]
+script = ExtResource("5")
+text = "Yes"
+connected_to_id = 1
+is_conditional = false
+condition_variable = ""
+condition_operator = "="
+condition_value = ""
+
+[sub_resource type="Resource" id="6"]
+script = ExtResource("5")
+text = "No"
+connected_to_id = -1
+is_conditional = false
+condition_variable = ""
+condition_operator = "="
+condition_value = ""
+
+[sub_resource type="Resource" id="2"]
+script = ExtResource("1")
+sequence_id = 0
+position = Vector2(-20, 120)
+comment = ""
+items = [SubResource("1"), SubResource("4")]
+options = [SubResource("5"), SubResource("6")]
+continue_sequence_id = -1
+continue_port_index = -1
+
+[sub_resource type="Resource" id="7"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "bar"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "The speaker IDs are \"foo\" and \"bar\", but the display names are \"Maria\" and \"Francesco\"."
+message_hide_on_end = 0
+condition_type = 0
+condition_values = []
+effect_type = 0
+effect_values = []
+
+[sub_resource type="Resource" id="8"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "bar"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "This is so you can have fancy nice looking display names, but you don't have to type them all the time in the system."
+message_hide_on_end = 0
+condition_type = 0
+condition_values = []
+effect_type = 0
+effect_values = []
+
+[sub_resource type="Resource" id="9"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = ""
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "A blank speaker ID is valid. If there are no characters with blank ID, it's treated as empty name."
+message_hide_on_end = 0
+condition_type = 0
+condition_values = []
+effect_type = 0
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_m1ifl"]
+script = ExtResource("4")
+item_type = 2
+connected_to_id = -1
+message_speaker_id = ""
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = ""
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 1
+effect_values = ["my_var", 5.0]
+
+[sub_resource type="Resource" id="Resource_68gk6"]
+script = ExtResource("4")
+item_type = 1
+connected_to_id = 6
+message_speaker_id = ""
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = ""
+message_hide_on_end = 0
+condition_type = 2
+condition_values = ["my_var", 6.0]
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_14hyw"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = ""
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "You will not see this message, because the effect and condition above are such that the dialog will always branch."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="11"]
+script = ExtResource("1")
+sequence_id = 1
+position = Vector2(440, 120)
+comment = ""
+items = [SubResource("7"), SubResource("8"), SubResource("9"), SubResource("Resource_m1ifl"), SubResource("Resource_68gk6"), SubResource("Resource_14hyw")]
+options = []
+continue_sequence_id = -1
+continue_port_index = 1
+
+[sub_resource type="Resource" id="Resource_jrxya"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = ""
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "my_var was set to: <<my_var>>
+Since it's less than 6, you see this message."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_ixt6j"]
+script = ExtResource("1")
+sequence_id = 6
+position = Vector2(860, 200)
+comment = ""
+items = [SubResource("Resource_jrxya")]
+options = []
+continue_sequence_id = -1
+continue_port_index = 0
+
+[sub_resource type="Resource" id="3"]
+script = ExtResource("2")
+sheet_id = "1_start_here"
+sheet_description = "Demonstration sheet. You can delete this in your game, or repurpose it."
+next_sequence_id = 8
+nodes = [SubResource("2"), SubResource("11"), SubResource("Resource_ixt6j")]
+
+[sub_resource type="Resource" id="Resource_norp0"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "katrina"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "Hangman, come in. Is that tin can keeping you alive?"
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_1x4gq"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "hangman"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "Affirmative. I'm inbound for Spectare Station."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_7nh5a"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "katrina"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "Thrilled to hear it. You'll puncture through the outer hull. Intel confirms no survivors in the living quarters, so we've depressurised them remotely."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_wbcqj"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "katrina"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "Get into an airlock as quick as you can, then ditch the spacesuit - it'll only slow you down."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_s0qq2"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "hangman"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "I know that much. What next?"
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_bf35f"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "katrina"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "The objective is to locate and evacuate all personnel. The client says everything else can burn. Guess you're cheaper than a lawsuit."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_3ivf3"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "hangman"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "Can't be worth much to them if they didn't even pay for a security team."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_x4kh2"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "katrina"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "They did. Spectare had a full squadron assigned to protect it. Guess how long [i][b]they[/b][/i] lasted."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_ogq0g"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "hangman"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "Goddamn - and you want me to do what twenty guns couldn't?"
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_oef2v"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "katrina"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "Look on the bright side: you won't be going hungry."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_abbef"]
+script = ExtResource("1")
+sequence_id = 0
+position = Vector2(60, 120)
+comment = ""
+items = [SubResource("Resource_norp0"), SubResource("Resource_1x4gq"), SubResource("Resource_7nh5a"), SubResource("Resource_wbcqj"), SubResource("Resource_s0qq2"), SubResource("Resource_bf35f"), SubResource("Resource_3ivf3"), SubResource("Resource_x4kh2"), SubResource("Resource_ogq0g"), SubResource("Resource_oef2v")]
+options = []
+continue_sequence_id = -1
+continue_port_index = 0
+
+[sub_resource type="Resource" id="Resource_xrub7"]
+script = ExtResource("2")
+sheet_id = "briefing"
+sheet_description = "Hangman & Katrina before entering ship "
+next_sequence_id = 1
+nodes = [SubResource("Resource_abbef")]
+
+[sub_resource type="Resource" id="Resource_8d4tu"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "hangman"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "Katrina, do you read? I'm in."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_v4rg3"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "katrina"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "[i]Congratulations![/i] Now get to work. Intel says there are three survivors, but we've only got a fix on one of them. Check your map."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_2w85g"]
+script = ExtResource("4")
+item_type = 2
+connected_to_id = -1
+message_speaker_id = ""
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = ""
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = ["map_fix", ""]
+
+[sub_resource type="Resource" id="Resource_h4dwq"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "hangman"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "Copy that - I see it. I'll call when I've made contact."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_ei5sn"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "katrina"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "Can't wait."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_a377i"]
+script = ExtResource("1")
+sequence_id = 0
+position = Vector2(0, 0)
+comment = ""
+items = [SubResource("Resource_8d4tu"), SubResource("Resource_v4rg3"), SubResource("Resource_2w85g"), SubResource("Resource_h4dwq"), SubResource("Resource_ei5sn")]
+options = []
+continue_sequence_id = -1
+continue_port_index = 0
+
+[sub_resource type="Resource" id="Resource_632yu"]
+script = ExtResource("2")
+sheet_id = "intro"
+sheet_description = "As soon as Hangman is in"
+next_sequence_id = 1
+nodes = [SubResource("Resource_a377i")]
+
+[sub_resource type="Resource" id="Resource_iim00"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "scientist"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "Don't shoot! Don't shoot!"
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_6btup"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "hangman"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "Relax, I'm here to get you out. Where are the others?"
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_rhu3a"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "scientist"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "Oh, thank God. I don't think there are many of us left! Conrad was in the armory when they attacked. I think everyone else locked themselves in their labs."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_gfy57"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "hangman"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "They hunkered down, huh? Makes my job easier. You ready to go?"
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_dxj8d"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "scientist"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "Ah, yes. Well, I suppose there's no hope of recovering this data..."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_hrh5v"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "hangman"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "I think first-hand experience is all the data you need from this experiment, Doctor. Let's go."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_vbiro"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "katrina"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "Your job isn't to be a counsellor, Hangman. Get him to the escape pods."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_dvmoo"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "hangman"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "Alright, we're moving."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_j23wg"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "katrina"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "I've marked your map with the other locations. The rest, you'll have to figure out yourself."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_5kwrt"]
+script = ExtResource("1")
+sequence_id = 0
+position = Vector2(0, 0)
+comment = ""
+items = [SubResource("Resource_iim00"), SubResource("Resource_6btup"), SubResource("Resource_rhu3a"), SubResource("Resource_gfy57"), SubResource("Resource_dxj8d"), SubResource("Resource_hrh5v"), SubResource("Resource_vbiro"), SubResource("Resource_dvmoo"), SubResource("Resource_j23wg")]
+options = []
+continue_sequence_id = -1
+continue_port_index = 0
+
+[sub_resource type="Resource" id="Resource_vccdo"]
+script = ExtResource("2")
+sheet_id = "scientist_a_found"
+sheet_description = "When Scientist A is found"
+next_sequence_id = 1
+nodes = [SubResource("Resource_5kwrt")]
+
+[sub_resource type="Resource" id="Resource_xf1ar"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "scientist"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "I never thought I'd be glad to see these things."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_4ueqs"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "hangman"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "Get in. There's a recovery team waiting for you, they'll pick you up once you're clear of the station."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_bfkcf"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "scientist"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "Alright... ah, it looks a bit more cramped in there than I was expecting."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_cxtqd"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "hangman"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "They're not made for comfort. Now get a move on."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_olu6s"]
+script = ExtResource("4")
+item_type = 2
+connected_to_id = -1
+message_speaker_id = ""
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = ""
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = ["post_escape_pod", "A"]
+
+[sub_resource type="Resource" id="Resource_6iotu"]
+script = ExtResource("1")
+sequence_id = 0
+position = Vector2(20, 120)
+comment = ""
+items = [SubResource("Resource_xf1ar"), SubResource("Resource_4ueqs"), SubResource("Resource_bfkcf"), SubResource("Resource_cxtqd"), SubResource("Resource_olu6s")]
+options = []
+continue_sequence_id = -1
+continue_port_index = 0
+
+[sub_resource type="Resource" id="Resource_82gf4"]
+script = ExtResource("2")
+sheet_id = "scientist_a_pod"
+sheet_description = "When Scientist A reaches an escape pod"
+next_sequence_id = 1
+nodes = [SubResource("Resource_6iotu")]
+
+[sub_resource type="Resource" id="Resource_msnl1"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "katrina"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "Recovery team says they've got him. Guess you didn't want a snack."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_u6pno"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "hangman"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "Will you drop it? I'm not a cannibal."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_o3gcy"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "katrina"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "Hey, if it's either you or a Remo, he might as well die for a good cause, right?"
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_x1njn"]
+script = ExtResource("1")
+sequence_id = 0
+position = Vector2(0, 0)
+comment = ""
+items = [SubResource("Resource_msnl1"), SubResource("Resource_u6pno"), SubResource("Resource_o3gcy")]
+options = []
+continue_sequence_id = -1
+continue_port_index = 0
+
+[sub_resource type="Resource" id="Resource_fxfr7"]
+script = ExtResource("2")
+sheet_id = "one_escapes"
+sheet_description = "When one scientist escapes"
+next_sequence_id = 1
+nodes = [SubResource("Resource_x1njn")]
+
+[sub_resource type="Resource" id="Resource_0v3t5"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "katrina"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "Hangman, hold up. Intel says the corridor ahead is microwaved."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_jpl5c"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "hangman"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "Microwaved? Who the hell turns a room into a microwave?"
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_jhu4n"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "katrina"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "I don't know, but you won't survive in there for long. Either turn it off or find some way not to get cooked in there."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_18vwn"]
+script = ExtResource("1")
+sequence_id = 0
+position = Vector2(0, 0)
+comment = ""
+items = [SubResource("Resource_0v3t5"), SubResource("Resource_jpl5c"), SubResource("Resource_jhu4n")]
+options = []
+continue_sequence_id = -1
+continue_port_index = 0
+
+[sub_resource type="Resource" id="Resource_e0f34"]
+script = ExtResource("2")
+sheet_id = "before_microwave"
+sheet_description = "Before reaching the microwave corridor"
+next_sequence_id = 1
+nodes = [SubResource("Resource_18vwn")]
+
+[sub_resource type="Resource" id="Resource_u4pdg"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "scientist"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "Who's there!?"
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_52cqj"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "hangman"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "Rescue team. You're getting out of here."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_6a62w"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "scientist"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "Rescue? How do I know you're not with the G.R.O.!? They've been after me for years!"
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_eqagv"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "hangman"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "You can go with me or you can take your chances staying here. Take your pick."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_1v5f1"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "katrina"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "Aww. You remembered how to be an asshole."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_et45l"]
+script = ExtResource("1")
+sequence_id = 0
+position = Vector2(0, 0)
+comment = ""
+items = [SubResource("Resource_u4pdg"), SubResource("Resource_52cqj"), SubResource("Resource_6a62w"), SubResource("Resource_eqagv"), SubResource("Resource_1v5f1")]
+options = []
+continue_sequence_id = -1
+continue_port_index = 0
+
+[sub_resource type="Resource" id="Resource_ftjmo"]
+script = ExtResource("2")
+sheet_id = "scientist_b_found"
+sheet_description = "When Scientist B is found"
+next_sequence_id = 1
+nodes = [SubResource("Resource_et45l")]
+
+[sub_resource type="Resource" id="Resource_707oq"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "scientist"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "I shall tell them I want compensation for all this!"
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_cgyfj"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "hangman"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "You and me both, sunshine. Now get in the pod."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_gs0sw"]
+script = ExtResource("4")
+item_type = 2
+connected_to_id = -1
+message_speaker_id = ""
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = ""
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = ["post_escape_pod", "B"]
+
+[sub_resource type="Resource" id="Resource_ybh2f"]
+script = ExtResource("1")
+sequence_id = 0
+position = Vector2(0, 0)
+comment = ""
+items = [SubResource("Resource_707oq"), SubResource("Resource_cgyfj"), SubResource("Resource_gs0sw")]
+options = []
+continue_sequence_id = -1
+continue_port_index = 0
+
+[sub_resource type="Resource" id="Resource_sg4he"]
+script = ExtResource("2")
+sheet_id = "scientist_b_pod"
+sheet_description = "When Scientist B reaches an escape pod"
+next_sequence_id = 1
+nodes = [SubResource("Resource_ybh2f")]
+
+[sub_resource type="Resource" id="Resource_wkeko"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "scientist"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "A rescue! Oh, thank God!"
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_cl8nd"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "hangman"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "Is it just me, or do they all sound the same?"
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_n8w5y"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "katrina"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "Birds of a feather. Now get moving."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_twkyc"]
+script = ExtResource("1")
+sequence_id = 0
+position = Vector2(0, 0)
+comment = ""
+items = [SubResource("Resource_wkeko"), SubResource("Resource_cl8nd"), SubResource("Resource_n8w5y")]
+options = []
+continue_sequence_id = -1
+continue_port_index = 0
+
+[sub_resource type="Resource" id="Resource_s70ww"]
+script = ExtResource("2")
+sheet_id = "scientist_c_found"
+sheet_description = "When Scientist C is found"
+next_sequence_id = 1
+nodes = [SubResource("Resource_twkyc")]
+
+[sub_resource type="Resource" id="Resource_r08nq"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "scientist"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "Thank you so much! I thought it was all over..."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_55j84"]
+script = ExtResource("4")
+item_type = 2
+connected_to_id = -1
+message_speaker_id = ""
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = ""
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = ["post_escape_pod", "C"]
+
+[sub_resource type="Resource" id="Resource_iymlg"]
+script = ExtResource("1")
+sequence_id = 0
+position = Vector2(0, 0)
+comment = ""
+items = [SubResource("Resource_r08nq"), SubResource("Resource_55j84")]
+options = []
+continue_sequence_id = -1
+continue_port_index = 0
+
+[sub_resource type="Resource" id="Resource_2l5rs"]
+script = ExtResource("2")
+sheet_id = "scientist_c_pod"
+sheet_description = "When Scientist C reaches an escape pod"
+next_sequence_id = 1
+nodes = [SubResource("Resource_iymlg")]
+
+[sub_resource type="Resource" id="Resource_iojdx"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "hangman"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "Two pods left. One for each of us."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_t5ndj"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "scientist"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "Those two? Are... are you sure those are the only ones?"
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_yuaj1"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "hangman"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "Oh, don't tell me..."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_jsh8n"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "scientist"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "That one on the right won't work. The locking mechanism is jammed."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_cpax7"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "hangman"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "No..."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_7gits"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "katrina"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "Those pods only fit one. One of you will have to stay behind."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_h0jp8"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "scientist"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "No, no no no... there must be another way, right? Surely!"
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_qxqpq"]
+script = ExtResource("5")
+text = "Save the scientist"
+connected_to_id = 1
+is_conditional = false
+condition_variable = ""
+condition_operator = "="
+condition_value = ""
+
+[sub_resource type="Resource" id="Resource_3lpxs"]
+script = ExtResource("5")
+text = "Kill the scientist"
+connected_to_id = 2
+is_conditional = false
+condition_variable = ""
+condition_operator = "="
+condition_value = ""
+
+[sub_resource type="Resource" id="Resource_naj1q"]
+script = ExtResource("1")
+sequence_id = 0
+position = Vector2(0, 0)
+comment = ""
+items = [SubResource("Resource_iojdx"), SubResource("Resource_t5ndj"), SubResource("Resource_yuaj1"), SubResource("Resource_jsh8n"), SubResource("Resource_cpax7"), SubResource("Resource_7gits"), SubResource("Resource_h0jp8")]
+options = [SubResource("Resource_qxqpq"), SubResource("Resource_3lpxs")]
+continue_sequence_id = -1
+continue_port_index = -1
+
+[sub_resource type="Resource" id="Resource_fn23t"]
+script = ExtResource("4")
+item_type = 2
+connected_to_id = -1
+message_speaker_id = ""
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = ""
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = ["save_scientist", ""]
+
+[sub_resource type="Resource" id="Resource_0nst6"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "katrina"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "You actually let him go, huh?"
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_3umj8"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "hangman"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "e didn't sign up for this. I did."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_vid4b"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "katrina"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "Damn. What about you? What's the plan?"
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_fnmqp"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "hangman"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "No idea. Either I get this pod working, or I find some other way out."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_3qi57"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "katrina"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "I'll see if I can get the rescue team to stick around. Worst case scenario, you can try your luck using the suit again."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_qoj08"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "hangman"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "You're sticking your neck out for me."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_hrpwc"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "katrina"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "I guess I am. Don't make me regret it, Hangman. And... good luck."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_n0obl"]
+script = ExtResource("4")
+item_type = 2
+connected_to_id = -1
+message_speaker_id = ""
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = ""
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = ["final", "saved"]
+
+[sub_resource type="Resource" id="Resource_wnct0"]
+script = ExtResource("1")
+sequence_id = 1
+position = Vector2(580, -60)
+comment = ""
+items = [SubResource("Resource_fn23t"), SubResource("Resource_0nst6"), SubResource("Resource_3umj8"), SubResource("Resource_vid4b"), SubResource("Resource_fnmqp"), SubResource("Resource_3qi57"), SubResource("Resource_qoj08"), SubResource("Resource_hrpwc"), SubResource("Resource_n0obl")]
+options = []
+continue_sequence_id = -1
+continue_port_index = 0
+
+[sub_resource type="Resource" id="Resource_8dkfh"]
+script = ExtResource("4")
+item_type = 2
+connected_to_id = -1
+message_speaker_id = ""
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = ""
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = ["kill_scientist", ""]
+
+[sub_resource type="Resource" id="Resource_63tgq"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "katrina"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "Why am I not surprised."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_uhy1b"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "hangman"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "I'm not throwing my life away for a paycheque. Erase the recording - I'll make it worth your while."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_xgh3p"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "katrina"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "You'd better. The recovery team's waiting, get over there."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_2067g"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "hangman"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "Copy that."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_cch8r"]
+script = ExtResource("4")
+item_type = 2
+connected_to_id = -1
+message_speaker_id = ""
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = ""
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = ["final", "killed_last"]
+
+[sub_resource type="Resource" id="Resource_y88fs"]
+script = ExtResource("1")
+sequence_id = 2
+position = Vector2(560, 660)
+comment = ""
+items = [SubResource("Resource_8dkfh"), SubResource("Resource_63tgq"), SubResource("Resource_uhy1b"), SubResource("Resource_xgh3p"), SubResource("Resource_2067g"), SubResource("Resource_cch8r")]
+options = []
+continue_sequence_id = -1
+continue_port_index = 0
+
+[sub_resource type="Resource" id="Resource_74ncy"]
+script = ExtResource("2")
+sheet_id = "last_pod"
+sheet_description = "When the last scientist reaches an escape pod"
+next_sequence_id = 3
+nodes = [SubResource("Resource_naj1q"), SubResource("Resource_wnct0"), SubResource("Resource_y88fs")]
+
+[sub_resource type="Resource" id="Resource_fij4u"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "katrina"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "Are you kidding me? Not a single survivor!? Get your ass out of there, Hangman - it's your neck on the line, now."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_8nkci"]
+script = ExtResource("4")
+item_type = 2
+connected_to_id = -1
+message_speaker_id = ""
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = ""
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = ["final", "killed_all"]
+
+[sub_resource type="Resource" id="Resource_j68ge"]
+script = ExtResource("1")
+sequence_id = 0
+position = Vector2(0, 0)
+comment = ""
+items = [SubResource("Resource_fij4u"), SubResource("Resource_8nkci")]
+options = []
+continue_sequence_id = -1
+continue_port_index = 0
+
+[sub_resource type="Resource" id="Resource_ieprn"]
+script = ExtResource("2")
+sheet_id = "all_killed"
+sheet_description = "If all scientist are killed"
+next_sequence_id = 1
+nodes = [SubResource("Resource_j68ge")]
+
+[sub_resource type="Resource" id="Resource_4hrb5"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "hangman"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "That's all of them."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_bnwgn"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "katrina"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "That's everyone who isn't dead, you mean."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_k5kln"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "hangman"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "You think the client's going to care? I'm only here so they can save face. They'll point to me and say they did everything they could."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_vfj2t"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "katrina"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "You know what... you're not even wrong. Get in a pod, the recovery team'll pick you up."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_86oth"]
+script = ExtResource("4")
+item_type = 2
+connected_to_id = -1
+message_speaker_id = ""
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = ""
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = ["final", "killed_some"]
+
+[sub_resource type="Resource" id="Resource_8fqr5"]
+script = ExtResource("1")
+sequence_id = 0
+position = Vector2(0, 0)
+comment = ""
+items = [SubResource("Resource_4hrb5"), SubResource("Resource_bnwgn"), SubResource("Resource_k5kln"), SubResource("Resource_vfj2t"), SubResource("Resource_86oth")]
+options = []
+continue_sequence_id = -1
+continue_port_index = 0
+
+[sub_resource type="Resource" id="Resource_8ic8s"]
+script = ExtResource("2")
+sheet_id = "some_killed"
+sheet_description = "At least one scientist is saved, the rest killed"
+next_sequence_id = 1
+nodes = [SubResource("Resource_8fqr5")]
+
+[resource]
+script = ExtResource("3")
+version = 1.0
+sheets = {
+"1_start_here": SubResource("3"),
+"all_killed": SubResource("Resource_ieprn"),
+"before_microwave": SubResource("Resource_e0f34"),
+"briefing": SubResource("Resource_xrub7"),
+"intro": SubResource("Resource_632yu"),
+"last_pod": SubResource("Resource_74ncy"),
+"one_escapes": SubResource("Resource_fxfr7"),
+"scientist_a_found": SubResource("Resource_vccdo"),
+"scientist_a_pod": SubResource("Resource_82gf4"),
+"scientist_b_found": SubResource("Resource_ftjmo"),
+"scientist_b_pod": SubResource("Resource_sg4he"),
+"scientist_c_found": SubResource("Resource_s70ww"),
+"scientist_c_pod": SubResource("Resource_2l5rs"),
+"some_killed": SubResource("Resource_8ic8s")
+}
