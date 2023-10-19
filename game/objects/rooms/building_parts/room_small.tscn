@@ -1,0 +1,47 @@
+[gd_scene load_steps=12 format=3 uid="uid://c2rd6f61gw1hw"]
+
+[ext_resource type="ArrayMesh" uid="uid://cerqqk8urajn2" path="res://meshes/rooms/room_small.mesh" id="1_1fhhp"]
+[ext_resource type="Texture2D" uid="uid://jt70f64wlu7s" path="res://materials/rooms/scifi_parts_wall_albedo.png" id="1_ghepf"]
+[ext_resource type="Texture2D" uid="uid://43ydho607sr1" path="res://materials/rooms/scifi_parts_wall_emission_lights_on.png" id="2_bpgr5"]
+[ext_resource type="Script" path="res://objects/rooms/building_parts/building_part.gd" id="3_2v322"]
+[ext_resource type="Texture2D" uid="uid://cls2cel8gtflj" path="res://materials/rooms/scifi_parts_wall_normal.png" id="3_5pd3m"]
+[ext_resource type="ArrayMesh" uid="uid://bltp53yg3tyyg" path="res://meshes/rooms/door.mesh" id="6_wr0lb"]
+[ext_resource type="Texture2D" uid="uid://dqdfcnkuwcssb" path="res://materials/rooms/scifi_parts_walldoor1_albedo.png" id="7_erjlb"]
+[ext_resource type="Texture2D" uid="uid://cvd4ojjqjue7u" path="res://materials/rooms/scifi_parts_walldoor1_emission_lights_on.png" id="8_0ea3d"]
+[ext_resource type="Texture2D" uid="uid://tbcr4auav4kp" path="res://materials/rooms/scifi_parts_walldoor1_normal.png" id="9_tfmb2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rt5ub"]
+resource_name = "Wall"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_ghepf")
+roughness = 0.5
+emission_enabled = true
+emission_operator = 1
+emission_texture = ExtResource("2_bpgr5")
+normal_enabled = true
+normal_texture = ExtResource("3_5pd3m")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y2muo"]
+resource_name = "WallDoor"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("7_erjlb")
+roughness = 0.5
+emission_enabled = true
+emission_operator = 1
+emission_texture = ExtResource("8_0ea3d")
+normal_enabled = true
+normal_texture = ExtResource("9_tfmb2")
+
+[node name="RoomSmall" type="MeshInstance3D"]
+mesh = ExtResource("1_1fhhp")
+skeleton = NodePath("")
+surface_material_override/1 = SubResource("StandardMaterial3D_rt5ub")
+script = ExtResource("3_2v322")
+WallLightsColor = Color(0, 0, 0, 1)
+DoorLightColors = Array[Color]([Color(0, 0, 0, 1)])
+
+[node name="Door1" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.33333, 1.98723)
+mesh = ExtResource("6_wr0lb")
+skeleton = NodePath("")
+surface_material_override/1 = SubResource("StandardMaterial3D_y2muo")

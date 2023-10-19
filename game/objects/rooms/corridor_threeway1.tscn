@@ -1,11 +1,25 @@
-[gd_scene load_steps=9 format=3 uid="uid://cr7mklr7ujx2a"]
+[gd_scene load_steps=13 format=3 uid="uid://cr7mklr7ujx2a"]
 
-[ext_resource type="ArrayMesh" uid="uid://bri74l141eiov" path="res://meshes/corridor_threeway.mesh" id="1_beurt"]
 [ext_resource type="PackedScene" uid="uid://bvhxtxnr14j3l" path="res://objects/player_spawn_point.tscn" id="2_4vkas"]
 [ext_resource type="Script" path="res://objects/room.gd" id="2_d80a7"]
+[ext_resource type="PackedScene" uid="uid://dsl2k67hr7co4" path="res://objects/rooms/building_parts/corridor_threeway.tscn" id="2_s2ytn"]
+[ext_resource type="Texture2D" uid="uid://jt70f64wlu7s" path="res://materials/rooms/scifi_parts_wall_albedo.png" id="3_1m4by"]
 [ext_resource type="PackedScene" uid="uid://cxpjmmqyln5gd" path="res://objects/room_exit.tscn" id="4_ihyia"]
+[ext_resource type="Texture2D" uid="uid://43ydho607sr1" path="res://materials/rooms/scifi_parts_wall_emission_lights_on.png" id="4_x13sv"]
 [ext_resource type="PackedScene" uid="uid://b3xs7myw6t33d" path="res://objects/camera_trigger.tscn" id="5_3f3bd"]
+[ext_resource type="Texture2D" uid="uid://cls2cel8gtflj" path="res://materials/rooms/scifi_parts_wall_normal.png" id="5_kn3ds"]
 [ext_resource type="PackedScene" uid="uid://bfgu1tbuk3iqa" path="res://objects/fixed_camera.tscn" id="6_nmtkj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iq7gl"]
+resource_name = "Wall"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("3_1m4by")
+roughness = 0.5
+emission_enabled = true
+emission_operator = 1
+emission_texture = ExtResource("4_x13sv")
+normal_enabled = true
+normal_texture = ExtResource("5_kn3ds")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_52vfa"]
 size = Vector3(3, 2, 3)
@@ -16,9 +30,9 @@ size = Vector3(5, 2, 3)
 [node name="CorridorThreeway1" type="Node3D"]
 script = ExtResource("2_d80a7")
 
-[node name="Mesh" type="MeshInstance3D" parent="."]
+[node name="Mesh" parent="." instance=ExtResource("2_s2ytn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 2)
-mesh = ExtResource("1_beurt")
+surface_material_override/1 = SubResource("StandardMaterial3D_iq7gl")
 
 [node name="PlayerSpawnPoint1" parent="." instance=ExtResource("2_4vkas")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, 2)
