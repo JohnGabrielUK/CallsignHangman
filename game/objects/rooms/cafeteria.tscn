@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://5sipovm1dr7i"]
+[gd_scene load_steps=17 format=3 uid="uid://5sipovm1dr7i"]
 
 [ext_resource type="ArrayMesh" uid="uid://cv4nba54a3m4w" path="res://meshes/cafeteria.mesh" id="1_argj2"]
 [ext_resource type="Script" path="res://objects/room.gd" id="2_quymt"]
@@ -6,6 +6,12 @@
 [ext_resource type="PackedScene" uid="uid://cxpjmmqyln5gd" path="res://objects/room_exit.tscn" id="3_kkqhd"]
 [ext_resource type="PackedScene" uid="uid://b3xs7myw6t33d" path="res://objects/camera_trigger.tscn" id="5_13rbo"]
 [ext_resource type="PackedScene" uid="uid://bfgu1tbuk3iqa" path="res://objects/fixed_camera.tscn" id="6_vgrdf"]
+[ext_resource type="PackedScene" uid="uid://bmpl4lv2ptyqw" path="res://meshes/Kyveri-Objets/Create.tscn" id="7_40ch4"]
+[ext_resource type="PackedScene" uid="uid://dxdsf8jm7rapi" path="res://meshes/Kyveri-Objets/computer_terminal.tscn" id="8_6ppne"]
+[ext_resource type="PackedScene" uid="uid://b5npnvyjn223e" path="res://meshes/Kyveri-Objets/Hologram_Sign.tscn" id="9_r02yc"]
+[ext_resource type="PackedScene" uid="uid://bty2d35qogr4u" path="res://meshes/Kyveri-Objets/Vending Machine .tscn" id="10_fnre5"]
+[ext_resource type="PackedScene" uid="uid://bdan348oa8hdf" path="res://meshes/Kyveri-Objets/Bench.tscn" id="11_2w2qp"]
+[ext_resource type="PackedScene" uid="uid://cf7njr3nwf5np" path="res://meshes/Kyveri-Objets/screen.tscn" id="12_x2ngq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_iviiy"]
 size = Vector3(5, 2, 5)
@@ -120,6 +126,36 @@ shadow_enabled = true
 [node name="OmniLight3D3" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, -6.5)
 shadow_enabled = true
+
+[node name="Create" parent="." instance=ExtResource("7_40ch4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.337281, -6.74348)
+
+[node name="Create2" parent="." instance=ExtResource("7_40ch4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.89396, 0.337281, -6.74348)
+
+[node name="Create3" parent="." instance=ExtResource("7_40ch4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.478136, 0.94829, -6.74348)
+
+[node name="Computer_Terminal" parent="." instance=ExtResource("8_6ppne")]
+transform = Transform3D(0.00159787, 0, -0.208068, 0, 0.208074, 0, 0.208068, 0, 0.00159787, 0.649394, 0, -6.76255)
+
+[node name="Hologram_Sign" parent="." instance=ExtResource("9_r02yc")]
+transform = Transform3D(1.46661, 0, 0, 0, 1.46661, 0, 0, 0, 1.46661, -3.05623, 0, -0.44382)
+
+[node name="Vending Machine " parent="." instance=ExtResource("10_fnre5")]
+transform = Transform3D(0.0747525, 0, -0.997202, 0, 1, 0, 0.997202, 0, 0.0747525, -1.72406, -0.0596832, -6.52078)
+
+[node name="Vending Machine 2" parent="." instance=ExtResource("10_fnre5")]
+transform = Transform3D(0.0747525, 0, -0.997202, 0, 1, 0, 0.997202, 0, 0.0747525, -2.65051, -0.0596832, -6.52078)
+
+[node name="Node3D" parent="." instance=ExtResource("11_2w2qp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.86157, 0.0568502, -5.25189)
+
+[node name="screen" parent="." instance=ExtResource("12_x2ngq")]
+transform = Transform3D(-0.0437084, 0.139899, 0.989201, 0.00617549, 0.990166, -0.139763, -0.999025, 0, -0.0441425, -3.17466, 1.91865, -0.576115)
+
+[node name="screen2" parent="." instance=ExtResource("12_x2ngq")]
+transform = Transform3D(0.0108848, 0.989659, -0.143022, -0.991291, -0.00809311, -0.131444, -0.131242, 0.143208, 0.980952, 0.641582, 2.0335, -7.20854)
 
 [connection signal="player_entered" from="CameraTrigger1" to="CameraTrigger1/FixedCamera" method="_on_player_entered"]
 [connection signal="player_entered" from="CameraTrigger2" to="CameraTrigger2/FixedCamera" method="_on_player_entered"]
