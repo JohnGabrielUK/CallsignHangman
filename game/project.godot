@@ -17,6 +17,12 @@ config/icon="res://icon.svg"
 [autoload]
 
 Constants="*res://scripts/constants.gd"
+GameSession="*res://scripts/game_session.gd"
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
 
 [input]
 

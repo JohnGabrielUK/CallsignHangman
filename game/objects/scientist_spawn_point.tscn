@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dynfxgvv5no81"]
+
+[ext_resource type="Script" path="res://objects/scientist_spawn_point.gd" id="1_6udym"]
+
+[node name="ScientistSpawnPoint" type="Node3D" groups=["scientist_spawn_point"]]
+script = ExtResource("1_6udym")

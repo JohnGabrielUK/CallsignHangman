@@ -1,11 +1,47 @@
-[gd_scene load_steps=6 format=3 uid="uid://c0w0dwk2kt8ui"]
+[gd_scene load_steps=7 format=3 uid="uid://c0w0dwk2kt8ui"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_007my"]
 [ext_resource type="Environment" uid="uid://ngefto5heafd" path="res://environment.tres" id="4_4mbon"]
-[ext_resource type="PackedScene" uid="uid://b7qd64alhfsdp" path="res://objects/scenario_controller.tscn" id="4_yfld4"]
-[ext_resource type="Script" path="res://objects/scenario_controller.gd" id="5_n211s"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_x8dff"]
+
+[sub_resource type="Animation" id="Animation_3618s"]
+resource_name = "fade_in"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HUD/Blackout:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_npnwh"]
+resource_name = "fade_out"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HUD/Blackout:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vywsu"]
+_data = {
+"fade_in": SubResource("Animation_3618s"),
+"fade_out": SubResource("Animation_npnwh")
+}
 
 [node name="Game" type="Node3D" groups=["game_controller"]]
 process_mode = 3
@@ -15,8 +51,20 @@ script = ExtResource("1_007my")
 process_mode = 1
 navigation_mesh = SubResource("NavigationMesh_x8dff")
 
-[node name="ScenarioController" parent="." instance=ExtResource("4_yfld4")]
-script = ExtResource("5_n211s")
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("4_4mbon")
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Blackout" type="ColorRect" parent="HUD"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_vywsu")
+}
