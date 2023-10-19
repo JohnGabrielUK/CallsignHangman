@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://43ydho607sr1" path="res://materials/rooms/scifi_parts_wall_emission_lights_on.png" id="4_rh4iv"]
 [ext_resource type="Texture2D" uid="uid://cls2cel8gtflj" path="res://materials/rooms/scifi_parts_wall_normal.png" id="5_gc4cm"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u058f"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cq2wi"]
 resource_name = "Wall"
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("3_olhwv")
@@ -24,7 +24,7 @@ script = ExtResource("2_pbgr7")
 
 [node name="Mesh" parent="." instance=ExtResource("2_iej38")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 13, 0, -3)
-surface_material_override/1 = SubResource("StandardMaterial3D_u058f")
+surface_material_override/1 = SubResource("StandardMaterial3D_cq2wi")
 
 [node name="PlayerSpawnPoint1" parent="." instance=ExtResource("2_siasi")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9, 0, -3)

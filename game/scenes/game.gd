@@ -26,6 +26,7 @@ const ROOMS : Dictionary = {
 enum GameState {IN_GAME, PAUSED, LOADING}
 
 @onready var map : NavigationRegion3D = $Map
+@onready var anim_player : AnimationPlayer = $AnimationPlayer
 
 var current_room : Node3D
 
@@ -48,8 +49,12 @@ func start_room() -> void:
 	current_room.spawn_scientists()
 	current_state = GameState.IN_GAME
 	get_tree().paused = false
+	anim_player.play("fade_in")
 
 func change_room(room : String, spawn_id : int) -> void:
+	get_tree().paused = true
+	anim_player.play("fade_out")
+	await anim_player.animation_finished
 	current_room.queue_free()
 	load_room(room, spawn_id)
 

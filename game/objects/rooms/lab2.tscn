@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 [gd_scene load_steps=12 format=3 uid="uid://b566dpoism678"]
 
 [ext_resource type="PackedScene" uid="uid://bvhxtxnr14j3l" path="res://objects/player_spawn_point.tscn" id="2_22ll8"]
@@ -8,9 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b3xs7myw6t33d" path="res://objects/camera_trigger.tscn" id="4_1o4u1"]
 [ext_resource type="Texture2D" uid="uid://43ydho607sr1" path="res://materials/rooms/scifi_parts_wall_emission_lights_on.png" id="4_77qm2"]
 [ext_resource type="Texture2D" uid="uid://cls2cel8gtflj" path="res://materials/rooms/scifi_parts_wall_normal.png" id="5_32sjg"]
->>>>>>> origin/vela
 [ext_resource type="PackedScene" uid="uid://bfgu1tbuk3iqa" path="res://objects/fixed_camera.tscn" id="5_m411u"]
-[ext_resource type="PackedScene" uid="uid://dynfxgvv5no81" path="res://objects/scientist_spawn_point.tscn" id="6_p00fq"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b74x6"]
 resource_name = "Wall"
@@ -39,11 +36,6 @@ surface_material_override/1 = SubResource("StandardMaterial3D_b74x6")
 [node name="PlayerSpawnPoint" parent="." instance=ExtResource("2_22ll8")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -7, 0, -16)
 point_towards = Vector3(1, 0, 0)
-
-[node name="RoomExit" parent="." instance=ExtResource("4_bo01s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -16)
-destination_room = "CorridorThreeway2"
-destination_spawn_id = 2
 
 [node name="CameraTrigger1" parent="." instance=ExtResource("4_1o4u1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, -18)
@@ -78,10 +70,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 2.5, -18)
 light_energy = 0.5
 shadow_enabled = true
 omni_range = 4.0
-
-[node name="ScientistSpawnPoint" parent="." instance=ExtResource("6_p00fq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -19)
-scientist_id = 1
 
 [connection signal="player_entered" from="CameraTrigger1" to="CameraTrigger1/FixedCamera" method="_on_player_entered"]
 [connection signal="player_entered" from="CameraTrigger2" to="CameraTrigger2/FixedCamera" method="_on_player_entered"]
