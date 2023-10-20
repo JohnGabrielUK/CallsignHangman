@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://d12u7sdar06q0"]
+[gd_scene load_steps=12 format=3 uid="uid://d12u7sdar06q0"]
 
 [ext_resource type="PackedScene" uid="uid://c2rd6f61gw1hw" path="res://objects/rooms/building_parts/room_small.tscn" id="2_jp6tf"]
 [ext_resource type="Script" path="res://objects/room.gd" id="2_w4qh7"]
@@ -6,25 +6,56 @@
 [ext_resource type="Texture2D" uid="uid://jt70f64wlu7s" path="res://materials/rooms/scifi_parts_wall_albedo.png" id="3_l54fr"]
 [ext_resource type="Texture2D" uid="uid://43ydho607sr1" path="res://materials/rooms/scifi_parts_wall_emission_lights_on.png" id="4_hx07p"]
 [ext_resource type="Texture2D" uid="uid://cls2cel8gtflj" path="res://materials/rooms/scifi_parts_wall_normal.png" id="5_nb2tc"]
+[ext_resource type="PackedScene" uid="uid://cxpjmmqyln5gd" path="res://objects/room_exit.tscn" id="7_m816d"]
+[ext_resource type="PackedScene" uid="uid://b3xs7myw6t33d" path="res://objects/camera_trigger.tscn" id="8_aq5ab"]
+[ext_resource type="PackedScene" uid="uid://bfgu1tbuk3iqa" path="res://objects/fixed_camera.tscn" id="9_hs0t3"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qf45x"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hcaa8"]
 resource_name = "Wall"
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("3_l54fr")
 roughness = 0.5
 emission_enabled = true
+emission = Color(0, 1, 0.501961, 1)
 emission_operator = 1
 emission_texture = ExtResource("4_hx07p")
 normal_enabled = true
 normal_texture = ExtResource("5_nb2tc")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mhi6y"]
+size = Vector3(5, 2, 5)
 
 [node name="Room1" type="Node3D"]
 script = ExtResource("2_w4qh7")
 
 [node name="Mesh" parent="." instance=ExtResource("2_jp6tf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, -4.3)
-surface_material_override/1 = SubResource("StandardMaterial3D_qf45x")
+surface_material_override/1 = SubResource("StandardMaterial3D_hcaa8")
+WallLightsColor = Color(0, 1, 0.501961, 1)
+DoorLightColors = Array[Color]([Color(0, 1, 0.501961, 1)])
 
 [node name="PlayerSpawnPoint" parent="." instance=ExtResource("2_xt5g2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, -4)
 point_towards = Vector3(0, 0, -1)
+
+[node name="RoomExit" parent="." instance=ExtResource("7_m816d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, -2)
+destination_room = "CorridorThreeway1"
+destination_spawn_id = 1
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -20, 2.5, -5)
+light_color = Color(0, 0.501961, 0.25098, 1)
+shadow_enabled = true
+
+[node name="CameraTrigger1" parent="." instance=ExtResource("8_aq5ab")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -20, 1, -5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CameraTrigger1"]
+shape = SubResource("BoxShape3D_mhi6y")
+
+[node name="FixedCamera" parent="CameraTrigger1" instance=ExtResource("9_hs0t3")]
+transform = Transform3D(-0.766044, -0.321394, 0.55667, 0, 0.866025, 0.5, -0.642788, 0.383022, -0.663414, 1, 1.5, -2)
+current = true
+
+[connection signal="player_entered" from="CameraTrigger1" to="CameraTrigger1/FixedCamera" method="_on_player_entered"]
