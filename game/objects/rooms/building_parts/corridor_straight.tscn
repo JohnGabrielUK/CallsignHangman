@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cvd4ojjqjue7u" path="res://materials/rooms/scifi_parts_walldoor1_emission_lights_on.png" id="8_g1syv"]
 [ext_resource type="Texture2D" uid="uid://tbcr4auav4kp" path="res://materials/rooms/scifi_parts_walldoor1_normal.png" id="9_i0ebr"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_egj31"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dpd3v"]
 resource_name = "Wall"
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("1_t67rg")
@@ -21,7 +21,7 @@ emission_texture = ExtResource("2_ayiid")
 normal_enabled = true
 normal_texture = ExtResource("3_llnfy")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xtg2x"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_scraf"]
 resource_name = "WallDoor"
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("7_0q87y")
@@ -32,7 +32,7 @@ emission_texture = ExtResource("8_g1syv")
 normal_enabled = true
 normal_texture = ExtResource("9_i0ebr")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o2w5x"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w6w4x"]
 resource_name = "WallDoor"
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("7_0q87y")
@@ -47,7 +47,7 @@ normal_texture = ExtResource("9_i0ebr")
 transform = Transform3D(5.96046e-08, 0, 1, 0, 1, 0, -1, 0, 5.96046e-08, 0, 0, 0)
 mesh = ExtResource("1_lrdts")
 skeleton = NodePath("")
-surface_material_override/1 = SubResource("StandardMaterial3D_egj31")
+surface_material_override/1 = SubResource("StandardMaterial3D_dpd3v")
 script = ExtResource("5_8b3bp")
 WallLightsColor = Color(0, 0, 0, 1)
 DoorLightColors = Array[Color]([Color(0, 0, 0, 1), Color(0, 0, 0, 1)])
@@ -56,10 +56,10 @@ DoorLightColors = Array[Color]([Color(0, 0, 0, 1), Color(0, 0, 0, 1)])
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.38419e-06, 1.33526, -4.55)
 mesh = ExtResource("6_q7mtc")
 skeleton = NodePath("")
-surface_material_override/1 = SubResource("StandardMaterial3D_xtg2x")
+surface_material_override/1 = SubResource("StandardMaterial3D_scraf")
 
 [node name="Door2" type="MeshInstance3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.33526, 4.55)
 mesh = ExtResource("6_q7mtc")
 skeleton = NodePath("")
-surface_material_override/1 = SubResource("StandardMaterial3D_o2w5x")
+surface_material_override/1 = SubResource("StandardMaterial3D_w6w4x")

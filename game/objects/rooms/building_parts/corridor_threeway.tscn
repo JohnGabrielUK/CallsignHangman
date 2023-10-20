@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cvd4ojjqjue7u" path="res://materials/rooms/scifi_parts_walldoor1_emission_lights_on.png" id="8_vl3am"]
 [ext_resource type="Texture2D" uid="uid://tbcr4auav4kp" path="res://materials/rooms/scifi_parts_walldoor1_normal.png" id="9_omd3p"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fpxdy"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ujrae"]
 resource_name = "Wall"
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("1_jds7v")
@@ -21,7 +21,7 @@ emission_texture = ExtResource("2_q7wjq")
 normal_enabled = true
 normal_texture = ExtResource("3_e385n")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7yq7w"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_awm7m"]
 resource_name = "WallDoor"
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("7_vtrfa")
@@ -32,7 +32,7 @@ emission_texture = ExtResource("8_vl3am")
 normal_enabled = true
 normal_texture = ExtResource("9_omd3p")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_llmed"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qti6k"]
 resource_name = "WallDoor"
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("7_vtrfa")
@@ -43,7 +43,7 @@ emission_texture = ExtResource("8_vl3am")
 normal_enabled = true
 normal_texture = ExtResource("9_omd3p")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5s051"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_omu0o"]
 resource_name = "WallDoor"
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("7_vtrfa")
@@ -57,7 +57,7 @@ normal_texture = ExtResource("9_omd3p")
 [node name="CorridorThreeway" type="MeshInstance3D"]
 mesh = ExtResource("1_iklr4")
 skeleton = NodePath("")
-surface_material_override/1 = SubResource("StandardMaterial3D_fpxdy")
+surface_material_override/1 = SubResource("StandardMaterial3D_ujrae")
 script = ExtResource("3_ahxmt")
 WallLightsColor = Color(0, 0, 0, 1)
 DoorLightColors = Array[Color]([Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1)])
@@ -66,16 +66,16 @@ DoorLightColors = Array[Color]([Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.68022e-06, 1.33333, -4.55333)
 mesh = ExtResource("6_mmtlq")
 skeleton = NodePath("")
-surface_material_override/1 = SubResource("StandardMaterial3D_7yq7w")
+surface_material_override/1 = SubResource("StandardMaterial3D_awm7m")
 
 [node name="Door2" type="MeshInstance3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2.70208e-06, 1.33333, 4.55333)
 mesh = ExtResource("6_mmtlq")
 skeleton = NodePath("")
-surface_material_override/1 = SubResource("StandardMaterial3D_llmed")
+surface_material_override/1 = SubResource("StandardMaterial3D_qti6k")
 
 [node name="Door3" type="MeshInstance3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.55333, 1.33333, 0)
 mesh = ExtResource("6_mmtlq")
 skeleton = NodePath("")
-surface_material_override/1 = SubResource("StandardMaterial3D_5s051")
+surface_material_override/1 = SubResource("StandardMaterial3D_omu0o")

@@ -1,14 +1,27 @@
-[gd_scene load_steps=13 format=3 uid="uid://bpw4p7saapb2s"]
+[gd_scene load_steps=16 format=3 uid="uid://bpw4p7saapb2s"]
 
 [ext_resource type="ArrayMesh" uid="uid://dw0ds0etprk5e" path="res://meshes/rooms/cafeteria.mesh" id="1_gi1hu"]
-[ext_resource type="Material" uid="uid://m1hnealulwlx" path="res://materials/rooms/walls.material" id="2_5uylh"]
 [ext_resource type="Script" path="res://objects/rooms/building_parts/building_part.gd" id="2_25jvv"]
+[ext_resource type="Texture2D" uid="uid://jt70f64wlu7s" path="res://materials/rooms/scifi_parts_wall_albedo.png" id="2_abu7f"]
 [ext_resource type="ArrayMesh" uid="uid://bltp53yg3tyyg" path="res://meshes/rooms/door.mesh" id="2_l6lfa"]
+[ext_resource type="Texture2D" uid="uid://43ydho607sr1" path="res://materials/rooms/scifi_parts_wall_emission_lights_on.png" id="3_epdg1"]
 [ext_resource type="Texture2D" uid="uid://dqdfcnkuwcssb" path="res://materials/rooms/scifi_parts_walldoor1_albedo.png" id="3_gfkyo"]
 [ext_resource type="Texture2D" uid="uid://cvd4ojjqjue7u" path="res://materials/rooms/scifi_parts_walldoor1_emission_lights_on.png" id="4_4xs15"]
+[ext_resource type="Texture2D" uid="uid://cls2cel8gtflj" path="res://materials/rooms/scifi_parts_wall_normal.png" id="4_h4x06"]
 [ext_resource type="Texture2D" uid="uid://tbcr4auav4kp" path="res://materials/rooms/scifi_parts_walldoor1_normal.png" id="5_u53q3"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_86pos"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nmfoh"]
+resource_name = "Wall"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("2_abu7f")
+roughness = 0.5
+emission_enabled = true
+emission_operator = 1
+emission_texture = ExtResource("3_epdg1")
+normal_enabled = true
+normal_texture = ExtResource("4_h4x06")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k1kgf"]
 resource_name = "WallDoor"
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("3_gfkyo")
@@ -19,7 +32,7 @@ emission_texture = ExtResource("4_4xs15")
 normal_enabled = true
 normal_texture = ExtResource("5_u53q3")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tsuo1"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r3an0"]
 resource_name = "WallDoor"
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("3_gfkyo")
@@ -30,7 +43,7 @@ emission_texture = ExtResource("4_4xs15")
 normal_enabled = true
 normal_texture = ExtResource("5_u53q3")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jybib"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qi6pk"]
 resource_name = "WallDoor"
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("3_gfkyo")
@@ -41,7 +54,7 @@ emission_texture = ExtResource("4_4xs15")
 normal_enabled = true
 normal_texture = ExtResource("5_u53q3")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oigr8"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2j0aw"]
 resource_name = "WallDoor"
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("3_gfkyo")
@@ -52,7 +65,7 @@ emission_texture = ExtResource("4_4xs15")
 normal_enabled = true
 normal_texture = ExtResource("5_u53q3")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ad3lq"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vthce"]
 resource_name = "WallDoor"
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("3_gfkyo")
@@ -66,7 +79,7 @@ normal_texture = ExtResource("5_u53q3")
 [node name="Cafeteria" type="MeshInstance3D"]
 mesh = ExtResource("1_gi1hu")
 skeleton = NodePath("")
-surface_material_override/1 = ExtResource("2_5uylh")
+surface_material_override/1 = SubResource("StandardMaterial3D_nmfoh")
 script = ExtResource("2_25jvv")
 WallLightsColor = Color(0, 0, 0, 1)
 DoorLightColors = Array[Color]([Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1)])
@@ -75,28 +88,28 @@ DoorLightColors = Array[Color]([Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.55333, 1.33333, -2.41462)
 mesh = ExtResource("2_l6lfa")
 skeleton = NodePath("")
-surface_material_override/1 = SubResource("StandardMaterial3D_86pos")
+surface_material_override/1 = SubResource("StandardMaterial3D_k1kgf")
 
 [node name="CafeteriaDoor2" type="MeshInstance3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.55333, 1.33333, 1.90357)
 mesh = ExtResource("2_l6lfa")
 skeleton = NodePath("")
-surface_material_override/1 = SubResource("StandardMaterial3D_tsuo1")
+surface_material_override/1 = SubResource("StandardMaterial3D_r3an0")
 
 [node name="CafeteriaDoor3" type="MeshInstance3D" parent="."]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 7.55333, 1.33333, -2.41462)
 mesh = ExtResource("2_l6lfa")
 skeleton = NodePath("")
-surface_material_override/1 = SubResource("StandardMaterial3D_jybib")
+surface_material_override/1 = SubResource("StandardMaterial3D_qi6pk")
 
 [node name="CafeteriaDoor4" type="MeshInstance3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7.55333, 1.33333, 1.90357)
 mesh = ExtResource("2_l6lfa")
 skeleton = NodePath("")
-surface_material_override/1 = SubResource("StandardMaterial3D_oigr8")
+surface_material_override/1 = SubResource("StandardMaterial3D_2j0aw")
 
 [node name="CafeteriaDoor5" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.49383, 1.33333, -8.87395)
 mesh = ExtResource("2_l6lfa")
 skeleton = NodePath("")
-surface_material_override/1 = SubResource("StandardMaterial3D_ad3lq")
+surface_material_override/1 = SubResource("StandardMaterial3D_vthce")
