@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bgo2o4fobojh2"]
+
+[ext_resource type="PackedScene" uid="uid://dhubavw17fgqo" path="res://meshes/Kyveri-Objets/screen.glb" id="1_nnftd"]
+
+[node name="screen" type="Node3D"]
+
+[node name="screen" parent="." instance=ExtResource("1_nnftd")]
+transform = Transform3D(0.250849, 0, 0, 0, 0.250849, 0, 0, 0, 0.250849, 0.18031, 0, 0.0736433)

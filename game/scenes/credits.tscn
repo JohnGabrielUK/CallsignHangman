@@ -1,0 +1,59 @@
+[gd_scene load_steps=5 format=3 uid="uid://cqmki2uw7d7x7"]
+
+[ext_resource type="Texture2D" uid="uid://c5vcntoua4b3t" path="res://textures/credits.png" id="1_d42bu"]
+[ext_resource type="Script" path="res://scenes/credits.gd" id="1_hk0pd"]
+
+[sub_resource type="Animation" id="Animation_mcxrb"]
+resource_name = "credits"
+length = 30.0
+step = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 30),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(320, 720), Vector2(320, -1600)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5ksqp"]
+_data = {
+"credits": SubResource("Animation_mcxrb")
+}
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hk0pd")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 320.0
+offset_top = 720.0
+offset_right = 960.0
+offset_bottom = 2319.99
+texture = ExtResource("1_d42bu")
+expand_mode = 4
+stretch_mode = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_5ksqp")
+}

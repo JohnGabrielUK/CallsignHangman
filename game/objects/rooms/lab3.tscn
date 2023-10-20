@@ -1,13 +1,17 @@
-[gd_scene load_steps=8 format=3 uid="uid://cs8tnbbrlc1qw"]
+[gd_scene load_steps=14 format=3 uid="uid://cs8tnbbrlc1qw"]
 
 [ext_resource type="Script" path="res://objects/room.gd" id="2_4v3rp"]
 [ext_resource type="PackedScene" uid="uid://bvhxtxnr14j3l" path="res://objects/player_spawn_point.tscn" id="2_e7g3g"]
+[ext_resource type="PackedScene" uid="uid://cxpjmmqyln5gd" path="res://objects/room_exit.tscn" id="2_ndwmp"]
 [ext_resource type="PackedScene" uid="uid://bd026w72txmjb" path="res://objects/rooms/building_parts/lab.tscn" id="2_y7vbq"]
 [ext_resource type="Texture2D" uid="uid://jt70f64wlu7s" path="res://materials/rooms/scifi_parts_wall_albedo.png" id="3_o71ng"]
 [ext_resource type="Texture2D" uid="uid://43ydho607sr1" path="res://materials/rooms/scifi_parts_wall_emission_lights_on.png" id="4_wyjnb"]
 [ext_resource type="Texture2D" uid="uid://cls2cel8gtflj" path="res://materials/rooms/scifi_parts_wall_normal.png" id="5_i6jow"]
+[ext_resource type="PackedScene" uid="uid://dynfxgvv5no81" path="res://objects/scientist_spawn_point.tscn" id="8_1j8oj"]
+[ext_resource type="PackedScene" uid="uid://b3xs7myw6t33d" path="res://objects/camera_trigger.tscn" id="8_mowi6"]
+[ext_resource type="PackedScene" uid="uid://bfgu1tbuk3iqa" path="res://objects/fixed_camera.tscn" id="9_ftxxe"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aynkn"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y1iph"]
 resource_name = "Wall"
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("3_o71ng")
@@ -18,13 +22,78 @@ emission_texture = ExtResource("4_wyjnb")
 normal_enabled = true
 normal_texture = ExtResource("5_i6jow")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_ri6nd"]
+size = Vector3(7, 2, 7)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7as4p"]
+size = Vector3(7, 2, 3)
+
 [node name="Lab3" type="Node3D"]
 script = ExtResource("2_4v3rp")
 
+[node name="RoomExit" parent="." instance=ExtResource("2_ndwmp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -28)
+destination_room = "CorridorThreeway4"
+destination_spawn_id = 2
+
 [node name="Mesh" parent="." instance=ExtResource("2_y7vbq")]
 transform = Transform3D(-1, 0, -8.74226e-08, 0, 1, 0, 8.74226e-08, 0, -1, 10, 0, -28)
-surface_material_override/1 = SubResource("StandardMaterial3D_aynkn")
+surface_material_override/1 = SubResource("StandardMaterial3D_y1iph")
 
 [node name="PlayerSpawnPoint" parent="." instance=ExtResource("2_e7g3g")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 9, 0, -28)
 point_towards = Vector3(1, 0, 0)
+
+[node name="ScientistSpawnPoint" parent="." instance=ExtResource("8_1j8oj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, -31)
+scientist_id = 2
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 2.5, -25)
+light_color = Color(0.752941, 0.752941, 1, 1)
+light_energy = 0.25
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 2.5, -25)
+light_color = Color(0.752941, 0.752941, 1, 1)
+light_energy = 0.25
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 2.5, -31)
+light_color = Color(0.752941, 0.752941, 1, 1)
+light_energy = 0.25
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 2.5, -31)
+light_color = Color(0.752941, 0.752941, 1, 1)
+light_energy = 0.25
+
+[node name="OmniLight3D5" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 2.5, -28)
+light_color = Color(1, 1, 0.866667, 1)
+light_energy = 2.0
+
+[node name="CameraTrigger1" parent="." instance=ExtResource("8_mowi6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1, -30)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CameraTrigger1"]
+shape = SubResource("BoxShape3D_ri6nd")
+
+[node name="FixedCamera" parent="CameraTrigger1" instance=ExtResource("9_ftxxe")]
+transform = Transform3D(0.766044, -0.166366, 0.620885, 0, 0.965926, 0.258819, -0.642788, -0.198267, 0.739942, 2.5, 1, 5)
+current = true
+fov = 65.0
+
+[node name="CameraTrigger2" parent="." instance=ExtResource("8_mowi6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1, -25)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CameraTrigger2"]
+shape = SubResource("BoxShape3D_7as4p")
+
+[node name="FixedCamera" parent="CameraTrigger2" instance=ExtResource("9_ftxxe")]
+transform = Transform3D(-0.866025, -0.12941, 0.482963, 0, 0.965926, 0.258819, -0.5, 0.224144, -0.836516, 2.5, 1.25, -7)
+current = true
+fov = 60.0
+
+[connection signal="player_entered" from="CameraTrigger1" to="CameraTrigger1/FixedCamera" method="_on_player_entered"]
+[connection signal="player_entered" from="CameraTrigger2" to="CameraTrigger2/FixedCamera" method="_on_player_entered"]

@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxdsf8jm7rapi"]
+
+[ext_resource type="PackedScene" uid="uid://bc76bgk7geh0s" path="res://meshes/Kyveri-Objets/Terminal.glb" id="1_c7vk1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1s2e1"]
+size = Vector3(1.99209, 5.32544, 3.37451)
+
+[node name="Computer_Terminal" type="Node3D"]
+transform = Transform3D(0.208074, 0, 0, 0, 0.208074, 0, 0, 0, 0.208074, 0, 0, 0)
+
+[node name="Terminal2" parent="." instance=ExtResource("1_c7vk1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.36929, -8.53714e-15, 0.247081)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Terminal2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.74329, 1.19209e-07, -0.339029)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Terminal2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.629899, 2.68018, -0.0053933)
+shape = SubResource("BoxShape3D_1s2e1")

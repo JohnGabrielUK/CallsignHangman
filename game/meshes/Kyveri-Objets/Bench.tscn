@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bdan348oa8hdf"]
+
+[ext_resource type="PackedScene" uid="uid://dm13rtp5nfacl" path="res://meshes/Kyveri-Objets/Bench.glb" id="1_gwe2i"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yr5o2"]
+size = Vector3(1.4689, 2.25505, 5.11386)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Bench" parent="." instance=ExtResource("1_gwe2i")]
+transform = Transform3D(0.21742, 0, 0, 0, 0.21742, 0, 0, 0, 0.21742, -0.302631, 0, 0.209045)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Bench"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bench/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.536313, 0.988755, -0.531678)
+shape = SubResource("BoxShape3D_yr5o2")
