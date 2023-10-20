@@ -50,6 +50,8 @@ func start_room() -> void:
 	current_state = GameState.IN_GAME
 	get_tree().paused = false
 	anim_player.play("fade_in")
+	await get_tree().create_timer(0.05).timeout # janky hack, m8
+	get_tree().call_group("camera", "check_for_player")
 
 func change_room(room : String, spawn_id : int) -> void:
 	get_tree().paused = true
@@ -65,4 +67,4 @@ func _physics_process(delta : float) -> void:
 				start_room()
 
 func _ready() -> void:
-	load_room("Cafeteria", 0)
+	load_room("Entrance", 0)

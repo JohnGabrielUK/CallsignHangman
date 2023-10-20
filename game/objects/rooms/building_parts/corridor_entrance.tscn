@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cvd4ojjqjue7u" path="res://materials/rooms/scifi_parts_walldoor1_emission_lights_on.png" id="10_kyhrr"]
 [ext_resource type="Texture2D" uid="uid://tbcr4auav4kp" path="res://materials/rooms/scifi_parts_walldoor1_normal.png" id="11_ewyq6"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ttfx1"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8xjot"]
 resource_name = "Wall"
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("1_iddfd")
@@ -21,7 +21,7 @@ emission_texture = ExtResource("2_pyk0s")
 normal_enabled = true
 normal_texture = ExtResource("3_uljp6")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_we841"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jsw60"]
 resource_name = "WallDoor"
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("9_e4pe3")
@@ -35,7 +35,7 @@ normal_texture = ExtResource("11_ewyq6")
 [node name="CorridorEntrance" type="MeshInstance3D"]
 mesh = ExtResource("1_0wip0")
 skeleton = NodePath("")
-surface_material_override/1 = SubResource("StandardMaterial3D_ttfx1")
+surface_material_override/1 = SubResource("StandardMaterial3D_8xjot")
 script = ExtResource("7_2ltra")
 WallLightsColor = Color(0, 0, 0, 1)
 DoorLightColors = Array[Color]([Color(0, 0, 0, 1)])
@@ -44,4 +44,4 @@ DoorLightColors = Array[Color]([Color(0, 0, 0, 1)])
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1.33333, -4.55333)
 mesh = ExtResource("8_6l6yw")
 skeleton = NodePath("")
-surface_material_override/1 = SubResource("StandardMaterial3D_we841")
+surface_material_override/1 = SubResource("StandardMaterial3D_jsw60")

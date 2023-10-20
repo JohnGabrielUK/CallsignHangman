@@ -10,12 +10,13 @@
 [ext_resource type="Texture2D" uid="uid://cls2cel8gtflj" path="res://materials/rooms/scifi_parts_wall_normal.png" id="5_kn3ds"]
 [ext_resource type="PackedScene" uid="uid://bfgu1tbuk3iqa" path="res://objects/fixed_camera.tscn" id="6_nmtkj"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iq7gl"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_py1ei"]
 resource_name = "Wall"
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("3_1m4by")
 roughness = 0.5
 emission_enabled = true
+emission = Color(1, 0.501961, 0.501961, 1)
 emission_operator = 1
 emission_texture = ExtResource("4_x13sv")
 normal_enabled = true
@@ -32,7 +33,9 @@ script = ExtResource("2_d80a7")
 
 [node name="Mesh" parent="." instance=ExtResource("2_s2ytn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 2)
-surface_material_override/1 = SubResource("StandardMaterial3D_iq7gl")
+surface_material_override/1 = SubResource("StandardMaterial3D_py1ei")
+WallLightsColor = Color(1, 0.501961, 0.501961, 1)
+DoorLightColors = Array[Color]([Color(0, 1, 0.501961, 1), Color(1, 0, 0, 1), Color(0.752941, 1, 1, 1)])
 
 [node name="PlayerSpawnPoint1" parent="." instance=ExtResource("2_4vkas")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, 2)
@@ -80,7 +83,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -20, 1
 shape = SubResource("BoxShape3D_a2jx6")
 
 [node name="FixedCamera" parent="CameraTrigger2" instance=ExtResource("6_nmtkj")]
-transform = Transform3D(-0.642788, -0.262003, 0.719846, 0, 0.939693, 0.34202, -0.766045, 0.219846, -0.604023, 3, 1.5, -1)
+transform = Transform3D(-0.333581, 0.111397, 0.936117, 0.0868241, 0.992404, -0.0871557, -0.938715, 0.052204, -0.340719, 4.41, -0.5, 0)
 current = true
 fov = 60.0
 
@@ -97,10 +100,12 @@ fov = 60.0
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -20, 2.5, 0)
+light_color = Color(1, 0.501961, 0.501961, 1)
 shadow_enabled = true
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -20, 2.5, 4)
+light_color = Color(1, 0.501961, 0.501961, 1)
 shadow_enabled = true
 
 [connection signal="player_entered" from="CameraTrigger1" to="CameraTrigger1/FixedCamera" method="_on_player_entered"]

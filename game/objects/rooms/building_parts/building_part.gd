@@ -25,6 +25,9 @@ func _ready():
 			var mat = child.get_surface_override_material(1).duplicate()
 			child.set_surface_override_material(1, mat)
 			door_materials.append(mat)
+	
+	_update_wall_lights()
+	_update_door_lights()
 
 
 func _update_wall_lights():
