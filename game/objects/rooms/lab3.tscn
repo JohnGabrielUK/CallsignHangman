@@ -1,13 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://cs8tnbbrlc1qw"]
+[gd_scene load_steps=9 format=3 uid="uid://cs8tnbbrlc1qw"]
 
 [ext_resource type="Script" path="res://objects/room.gd" id="2_4v3rp"]
 [ext_resource type="PackedScene" uid="uid://bvhxtxnr14j3l" path="res://objects/player_spawn_point.tscn" id="2_e7g3g"]
+[ext_resource type="PackedScene" uid="uid://cxpjmmqyln5gd" path="res://objects/room_exit.tscn" id="2_ndwmp"]
 [ext_resource type="PackedScene" uid="uid://bd026w72txmjb" path="res://objects/rooms/building_parts/lab.tscn" id="2_y7vbq"]
 [ext_resource type="Texture2D" uid="uid://jt70f64wlu7s" path="res://materials/rooms/scifi_parts_wall_albedo.png" id="3_o71ng"]
 [ext_resource type="Texture2D" uid="uid://43ydho607sr1" path="res://materials/rooms/scifi_parts_wall_emission_lights_on.png" id="4_wyjnb"]
 [ext_resource type="Texture2D" uid="uid://cls2cel8gtflj" path="res://materials/rooms/scifi_parts_wall_normal.png" id="5_i6jow"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aynkn"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vd1kv"]
 resource_name = "Wall"
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("3_o71ng")
@@ -21,10 +22,40 @@ normal_texture = ExtResource("5_i6jow")
 [node name="Lab3" type="Node3D"]
 script = ExtResource("2_4v3rp")
 
+[node name="RoomExit" parent="." instance=ExtResource("2_ndwmp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -28)
+destination_room = "CorridorThreeway4"
+destination_spawn_id = 2
+
 [node name="Mesh" parent="." instance=ExtResource("2_y7vbq")]
 transform = Transform3D(-1, 0, -8.74226e-08, 0, 1, 0, 8.74226e-08, 0, -1, 10, 0, -28)
-surface_material_override/1 = SubResource("StandardMaterial3D_aynkn")
+surface_material_override/1 = SubResource("StandardMaterial3D_vd1kv")
 
 [node name="PlayerSpawnPoint" parent="." instance=ExtResource("2_e7g3g")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 9, 0, -28)
 point_towards = Vector3(1, 0, 0)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 2.5, -25)
+light_color = Color(0.752941, 0.752941, 1, 1)
+light_energy = 0.25
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 2.5, -25)
+light_color = Color(0.752941, 0.752941, 1, 1)
+light_energy = 0.25
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 2.5, -31)
+light_color = Color(0.752941, 0.752941, 1, 1)
+light_energy = 0.25
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 2.5, -31)
+light_color = Color(0.752941, 0.752941, 1, 1)
+light_energy = 0.25
+
+[node name="OmniLight3D5" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 2.5, -28)
+light_color = Color(1, 1, 0.866667, 1)
+light_energy = 2.0
