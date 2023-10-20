@@ -18,11 +18,16 @@ config/icon="res://icon.svg"
 
 Constants="*res://scripts/constants.gd"
 GameSession="*res://scripts/game_session.gd"
+MadTalkGlobals="*res://madtalk/MadTalkGlobals.tscn"
 
 [display]
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/madtalk/plugin.cfg")
 
 [input]
 

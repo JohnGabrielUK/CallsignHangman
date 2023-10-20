@@ -1,0 +1,206 @@
+[gd_scene load_steps=12 format=3 uid="uid://sks6j6y53n1k"]
+
+[ext_resource type="Script" path="res://addons/madtalk/components/DialogNodeItem_message.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://dgal43srcee1q" path="res://addons/madtalk/images/panel_bg.png" id="2"]
+[ext_resource type="FontFile" uid="uid://bhcws34lw0ak5" path="res://addons/madtalk/fonts/FreeSans_tiny.tres" id="3"]
+[ext_resource type="FontFile" path="res://addons/madtalk/fonts/FreeSans_italic_small.tres" id="5"]
+[ext_resource type="FontVariation" uid="uid://18mk4r2e01la" path="res://addons/madtalk/fonts/MessagePreview.tres" id="5_c4t4d"]
+[ext_resource type="FontFile" path="res://addons/madtalk/fonts/FreeSans_bolditalic_small.tres" id="6"]
+[ext_resource type="FontFile" path="res://addons/madtalk/fonts/FreeSans_bold_small.tres" id="7"]
+[ext_resource type="StyleBox" path="res://addons/madtalk/components/resources/RichLabelPreviewStyle.tres" id="15"]
+[ext_resource type="FontFile" path="res://addons/madtalk/fonts/FreeSansBold_tiny.tres" id="17"]
+
+[sub_resource type="StyleBoxFlat" id="1"]
+bg_color = Color(0.741176, 0.741176, 0.741176, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.486275, 0.486275, 0.486275, 1)
+
+[sub_resource type="FontVariation" id="FontVariation_wa622"]
+
+[node name="DialogNodeItem" type="Control"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource("2")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="TitleLine" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 8.0
+offset_top = 14.0
+offset_right = -8.0
+offset_bottom = 15.0
+grow_horizontal = 2
+mouse_filter = 2
+color = Color(0.282353, 0.258824, 0.301961, 1)
+
+[node name="TitleLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 1.0
+offset_right = 49.0
+offset_bottom = 20.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3")
+theme_override_font_sizes/font_size = 9
+text = "Message"
+
+[node name="SpeakerLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 11.0
+offset_right = 61.0
+offset_bottom = 31.0
+theme_override_colors/font_color = Color(0.2, 0.2, 0.2, 1)
+theme_override_fonts/font = ExtResource("3")
+theme_override_font_sizes/font_size = 10
+text = "Speaker:"
+
+[node name="SpeakerNameLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.5
+offset_left = 60.0
+offset_top = 12.0
+offset_right = 24.0
+offset_bottom = 31.0
+theme_override_colors/font_color = Color(0, 0.192157, 0.223529, 1)
+theme_override_fonts/font = ExtResource("17")
+theme_override_font_sizes/font_size = 12
+text = "Speaker"
+
+[node name="SpeakerVarLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 32.0
+offset_top = 11.0
+offset_right = 81.0
+offset_bottom = 31.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.2, 0.2, 0.2, 1)
+theme_override_fonts/font = ExtResource("3")
+theme_override_font_sizes/font_size = 10
+text = "Variant:"
+
+[node name="SpeakerVariantLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 1.0
+offset_left = 70.0
+offset_top = 9.5796
+offset_right = -12.0
+offset_bottom = 32.5796
+theme_override_colors/font_color = Color(0, 0.192157, 0.223529, 1)
+theme_override_fonts/font = ExtResource("3")
+theme_override_font_sizes/font_size = 12
+text = "Variant"
+
+[node name="VoiceLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 24.0
+offset_right = 61.0
+offset_bottom = 44.0
+theme_override_colors/font_color = Color(0.2, 0.2, 0.2, 1)
+theme_override_fonts/font = ExtResource("3")
+theme_override_font_sizes/font_size = 10
+text = "Voice clip:"
+
+[node name="VoiceFileLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 60.0
+offset_top = 24.0
+offset_right = -16.0
+offset_bottom = 44.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.2, 0.373333, 0.4, 1)
+theme_override_fonts/font = ExtResource("3")
+theme_override_font_sizes/font_size = 10
+text = "Speaker"
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 41.0
+offset_right = -5.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("1")
+
+[node name="MessageLabel" type="RichTextLabel" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("5_c4t4d")
+theme_override_fonts/bold_font = ExtResource("7")
+theme_override_fonts/italics_font = ExtResource("5")
+theme_override_fonts/bold_italics_font = ExtResource("6")
+theme_override_font_sizes/normal_font_size = 10
+theme_override_font_sizes/bold_font_size = 12
+theme_override_font_sizes/italics_font_size = 10
+theme_override_font_sizes/bold_italics_font_size = 12
+theme_override_font_sizes/mono_font_size = 10
+theme_override_styles/focus = ExtResource("15")
+theme_override_styles/normal = ExtResource("15")
+bbcode_enabled = true
+text = "Lorem ipsum
+more lore ipsum
+Lorem ipsum for the whole family!"
+
+[node name="HideOnEndLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -57.0
+offset_top = -18.0
+offset_right = -6.0
+offset_bottom = 2.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.2, 0.2, 0.2, 1)
+theme_override_fonts/font = SubResource("FontVariation_wa622")
+theme_override_font_sizes/font_size = 9
+text = "Hide after"
+horizontal_alignment = 2
+
+[connection signal="gui_input" from="." to="." method="_on_DialogNodeItem_gui_input"]
