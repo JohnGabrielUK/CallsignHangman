@@ -1,4 +1,5 @@
 extends CharacterBody3D
+class_name SpitSlash
 
 const TURN_SPEED : float = 8.0
 const PATROL_SPEED : float = 2.0
@@ -8,8 +9,11 @@ const MAX_SLASH_DISTANCE : float = 3.0
 @export var DistanceToCheckpoint := 1.0
 var distance_to_checkpoint_squared = DistanceToCheckpoint*DistanceToCheckpoint
 
-@export var DistanceToAttack := 1.5
-var distance_to_attack_squared := DistanceToAttack*DistanceToAttack
+@export var DistanceToAttackMelee := 1.5
+var distance_to_attack_melee_squared := DistanceToAttackMelee*DistanceToAttackMelee
+
+@export var DistanceToAttackRanged := 7.0
+var distance_to_attack_ranged_squared := DistanceToAttackRanged*DistanceToAttackRanged
 
 @export var SpeedPatrol := 1.0
 @export var SpeedChase := 2.0
@@ -21,11 +25,17 @@ var anim_chase_speed := ANIM_WALK_BASE_SPEED * (SpeedChase / SpeedPatrol) # Used
 @export var IdleTime := 2.0
 var idle_counter := 0.0
 
+@export var RangedAttackTime := 2.0
+var ranged_attack_counter := 0.0
+
 @export var ConfusionTimes = {
 	"chase_from_idle": 0.5,
 	"change_chase_target": 2.0,
 }
 var confusion_counter := 0.0
+
+@export var StunTime := 5.0
+var stun_counter = 0.0
 
 @export var AnimationHitDelayAttackMelee := 0.55
 @export var AnimationHitDelayAttackRanged := 0.4
@@ -34,9 +44,36 @@ var attack_hit_counter := 0.0
 @export var AnimationDelayAttack := 1.0
 var attack_counter := 0.0
 
+@export var HurtTime := 0.3
+var hurt_counter := 0.0
+
+@export var DamageMelee := 2.0
+@export var DamageRanged := 1.0
+
+@export var MaxHealth := 5.0
+var health = MaxHealth
+
+@export var MaxBlood := 5.0
+var blood = MaxBlood
+
+@export_node_path var PatrolPoints: NodePath = ""
+var patrol_points := []
+var next_patrol_point
+
 @onready var anims: AnimationTree = $AnimationTree
 @onready var prey_detector: Area3D = $PreyDetector
+@onready var attack_melee_area: Area3D = $AttackMeleeArea
+@onready var attack_spit_source: Marker3D = $rig_deform/Skeleton3D/BoneHead/SpitSource
 @onready var eyes: Marker3D = $rig_deform/Skeleton3D/BoneHead/Eyes
+
+@onready var model_with_arm = $rig_deform/Skeleton3D/model_with_arm
+@onready var model_no_arm = $rig_deform/Skeleton3D/model_no_arm
+
+@onready var initial_position = global_position
+
+@onready var navigation_map_rid = NavigationServer3D.get_maps()[0]
+
+var template_spit = preload("res://objects/spit.tscn")
 
 enum States {
 	IDLE,
@@ -46,9 +83,11 @@ enum States {
 	ATTACK_RANGE,
 	HURT,
 	STUNNED,
-	DEATH
+	DEATH,
+	VANISH
 } 
 var current_state := States.IDLE
+var state_before_hurt := States.IDLE
 
 var current_prey: CharacterBody3D = null
 var move_target := Vector3.ZERO
@@ -58,12 +97,26 @@ var is_player_at_sight_range := false
 var is_scientist_at_sight_range := false
 var bodies_at_sight_range := []
 
+var vanish_progress := 0.0
+
 func _ready():
 	anims.active = true
+	var patrol_node = get_node_or_null(PatrolPoints)
+	if patrol_node:
+		patrol_points = patrol_node.get_children()
 
 func _physics_process(delta):
+	anims.active = not MadTalkGlobals.is_during_dialog
 	if MadTalkGlobals.is_during_dialog:
 		return
+	
+	# ========================================================================
+	# VANISHING
+	# Does not involve any calculations
+	
+	if current_state == States.VANISH:
+		pass
+	
 	
 	# ========================================================================
 	# ENVIRONMENT AWARENESS
@@ -99,52 +152,150 @@ func _physics_process(delta):
 			if is_player_visible:
 				assign_prey(GameSession.player)
 				change_state_to(States.CHASING)
+			
 			else:
-				idle_counter -= delta
-				if idle_counter <= 0:
-					find_next_patrol_target()
-					change_state_to(States.PATROLLING)
-		
+				var new_target_assigned := false
+				if ((not current_prey) or (not is_prey_visible)) and is_scientist_at_sight_range and (bodies_at_sight_range.size() > 0):
+					for body in bodies_at_sight_range:
+						var is_body_visible = check_prey_line_of_sight(body)
+						if is_body_visible:
+							assign_prey(body)
+							is_prey_visible = true
+							break
+				
+				if not new_target_assigned:
+					if is_prey_visible:
+						change_state_to(States.CHASING)
+					else:
+						idle_counter -= delta
+						if idle_counter <= 0:
+							find_next_patrol_target()
+							change_state_to(States.PATROLLING)
+			
 		States.PATROLLING:
 			if is_player_visible:
 				assign_prey(GameSession.player)
 				change_state_to(States.CHASING)
 			else:
-				must_orient_to_target = true
-				var move_delta = move_target - global_position
-				if move_delta.length_squared() <= distance_to_checkpoint_squared:
-					idle_counter = IdleTime
-					change_state_to(States.IDLE)
-				else:
-					var move_dir = move_delta.normalized()
-					velocity = move_dir * SpeedPatrol
+				var new_target_assigned := false
+				if ((not current_prey) or (not is_prey_visible)) and is_scientist_at_sight_range and (bodies_at_sight_range.size() > 0):
+					for body in bodies_at_sight_range:
+						var is_body_visible = check_prey_line_of_sight(body)
+						if is_body_visible:
+							assign_prey(body)
+							is_prey_visible = true
+							break
+				
+				if not new_target_assigned:
+					if is_prey_visible:
+						change_state_to(States.CHASING)
+					else:
+						var move_target_nav = _find_next_route_target(move_target)
+						if move_target_nav:
+							must_orient_to_target = true
+							var move_delta = move_target_nav - global_position
+							if move_delta.length_squared() <= distance_to_checkpoint_squared:
+								idle_counter = IdleTime
+								change_state_to(States.IDLE)
+							else:
+								var move_dir = move_delta.normalized()
+								velocity = move_dir * SpeedPatrol
 		
 		States.CHASING:
-			if is_player_visible and (current_prey != GameSession.player):
+			if confusion_counter > 0:
+				confusion_counter -= delta
+			
+			elif is_player_visible and (current_prey != GameSession.player):
 				assign_prey(GameSession.player)
 				change_state_to(States.CHASING)
 			else:
 				must_orient_to_target = true
 				move_target = current_prey.global_position
-				var move_delta = move_target - global_position
-				if move_delta.length_squared() <= distance_to_attack_squared:
-					attack_hit_counter = AnimationHitDelayAttackMelee
-					attack_counter = AnimationDelayAttack
-					change_state_to(States.ATTACK_MELEE)
+				
+				ranged_attack_counter -= delta
+				if ranged_attack_counter <= 0:
+					ranged_attack_counter = RangedAttackTime
+					if (global_position - current_prey.global_position).length_squared() <= distance_to_attack_ranged_squared:
+						attack_hit_counter = AnimationHitDelayAttackRanged
+						attack_counter = AnimationDelayAttack
+						change_state_to(States.ATTACK_RANGE)
+				
 				else:
-					var move_dir = move_delta.normalized()
-					velocity = move_dir * SpeedChase
+					var move_delta = move_target - global_position
+					if move_delta.length_squared() <= distance_to_attack_melee_squared:
+						attack_hit_counter = AnimationHitDelayAttackMelee
+						attack_counter = AnimationDelayAttack
+						change_state_to(States.ATTACK_MELEE)
+					
+					else:
+						var move_target_nav = _find_next_route_target(move_target)
+						if move_target_nav:
+							move_delta = move_target_nav - global_position
+							var move_dir = move_delta.normalized()
+							velocity = move_dir * SpeedChase
 		
 		States.ATTACK_MELEE:
-			if attack_hit_counter > 0:
-				attack_hit_counter -= delta
-				if attack_hit_counter <= 0:
-					attack_hit_melee()
+			if (not current_prey) or (not is_instance_valid(current_prey)):
+				idle_counter = IdleTime
+				change_state_to(States.IDLE)
 			
-			attack_counter -= delta
-			if attack_counter <= 0:
-				change_state_to(States.CHASING)
-	
+			else:
+				if attack_hit_counter > 0:
+					attack_hit_counter -= delta
+					if attack_hit_counter <= 0:
+						attack_hit_melee(current_prey)
+				
+				attack_counter -= delta
+				if attack_counter <= 0:
+					change_state_to(States.CHASING)
+		
+		States.ATTACK_RANGE:
+			if (not current_prey) or (not is_instance_valid(current_prey)):
+				idle_counter = IdleTime
+				change_state_to(States.IDLE)
+			
+			else:
+				must_orient_to_target = true
+				move_target = current_prey.global_position
+				
+				if attack_hit_counter > 0:
+					attack_hit_counter -= delta
+					if attack_hit_counter <= 0:
+						attack_hit_ranged(current_prey)
+				
+				attack_counter -= delta
+				if attack_counter <= 0:
+					change_state_to(States.CHASING)
+		
+		States.HURT:
+			hurt_counter -= delta
+			if hurt_counter <= 0:
+				if health <= 0:
+					die()
+				elif health <= 1.0:
+					stun_counter = StunTime
+					change_state_to(States.STUNNED)
+				else:
+					change_state_to(state_before_hurt)
+					
+
+		
+		States.STUNNED:
+			stun_counter -= delta
+			if stun_counter <= 0:
+				health += 2.0
+				change_state_to(States.IDLE)
+		
+		States.DEATH:
+			pass
+		
+		States.VANISH:
+			vanish_progress -= delta
+			model_no_arm.transparency = clamp(1.0 - vanish_progress, 0.0, 1.0)
+			model_with_arm.transparency = clamp(1.0 - vanish_progress, 0.0, 1.0)
+			if vanish_progress <= 0:
+				queue_free()
+
 	move_and_slide()
 	
 	# ========================================================================
@@ -155,15 +306,14 @@ func _physics_process(delta):
 		rotation_target_y = atan2(-delta_pos.x, -delta_pos.z)
 		rotation.y = lerp_angle(rotation.y, rotation_target_y, delta * TURN_SPEED)
 	
-	# ========================================================================
-	# ANIMATION
+
 
 
 func change_state_to(new_state: States):
 	# Any cleanup before leaving the state
-	match current_state:
-		_:
-			pass
+	if (current_state == States.HURT):
+		if (state_before_hurt == States.STUNNED) and (new_state != States.DEATH):
+			anims.set("parameters/stun/transition_request", "end")
 	
 	# Any setup when entering a state
 	match new_state:
@@ -181,12 +331,31 @@ func change_state_to(new_state: States):
 					confusion_counter = ConfusionTimes["change_chase_target"]
 				_:
 					confusion_counter = ConfusionTimes["chase_from_idle"]
+			ranged_attack_counter = RangedAttackTime
 			anims.set("parameters/walk_speed/scale", anim_chase_speed)
 			anims.set("parameters/movement/transition_request", "walk")
 		
 		States.ATTACK_MELEE:
 			anims.set("parameters/movement/transition_request", "idle")
 			anims.set("parameters/attack_melee/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
+		
+		States.ATTACK_RANGE:
+			anims.set("parameters/movement/transition_request", "idle")
+			anims.set("parameters/attack_ranged/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
+		
+		States.HURT:
+			anims.set("parameters/hit/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
+		
+		States.STUNNED:
+			anims.set("parameters/stun/transition_request", "start")
+		
+		States.DEATH:
+			# Death always happens with HURT as intermediate state, so
+			# we use state_before_hurt instead of current_state
+			if state_before_hurt == States.STUNNED:
+				anims.set("parameters/stun/transition_request", "dead")
+			else:
+				anims.set("parameters/movement/transition_request", "dead")
 		
 		
 		_:
@@ -196,17 +365,38 @@ func change_state_to(new_state: States):
 	current_state = new_state
 
 
+
+
 func assign_prey(new_prey: CharacterBody3D):
 	current_prey = new_prey
 
 func find_next_patrol_target():
-	pass
-	# TODO
-	move_target = global_position + Vector3(
-		randf_range(-1.0, 1.0)*5.0,
-		0.0,
-		randf_range(-1.0, 1.0)*5.0
-	)
+	if patrol_points.size() > 0:
+		var point_list = patrol_points.duplicate()
+		if next_patrol_point:
+			point_list.erase(next_patrol_point)
+		next_patrol_point = point_list[ randi() % point_list.size() ]
+		move_target = next_patrol_point.global_position
+	
+	else:
+		move_target = initial_position + Vector3(
+			randf_range(-1.0, 1.0)*3.0,
+			0.0,
+			randf_range(-1.0, 1.0)*3.0
+		)
+
+
+func _find_next_route_target(destination: Vector3):
+	# First we project the positions to the navigation map
+	var start_point = NavigationServer3D.map_get_closest_point(navigation_map_rid, global_position)
+	var target_point = NavigationServer3D.map_get_closest_point(navigation_map_rid, destination)
+	var point_list = NavigationServer3D.map_get_path(navigation_map_rid, start_point, target_point, true)
+	# The resulting list includes the starting point, so
+	# the very next target checkpoint is index 1, not index 0
+	if point_list.size() < 2:
+		return null # There are no valid checkpoints to go
+	else:
+		return point_list[1] # We take just the immediate next checkpoint
 
 
 func check_prey_line_of_sight(prey) -> bool:
@@ -236,8 +426,68 @@ func check_prey_line_of_sight(prey) -> bool:
 	return false
 
 
-func attack_hit_melee():
-	print("ATTACK")
+func is_harvestable() -> bool:
+	match current_state:
+		States.STUNNED:
+			return true
+		
+		States.DEATH:
+			return blood > 0
+		
+		_:
+			return false
+
+func harvest(amount: float = 0.0) -> bool:
+	match current_state:
+		States.STUNNED:
+			model_no_arm.show()
+			model_with_arm.hide()
+			return true
+		
+		States.DEATH:
+			if blood > 0.0:
+				blood -= amount
+				if blood <= 0:
+					vanish()
+				return true
+			else:
+				return false
+			
+		_:
+			return false
+
+func vanish():
+	vanish_progress = 1.0
+	change_state_to(States.VANISH)
+
+func attack_hit_melee(prey: CharacterBody3D):
+	if attack_melee_area.overlaps_body(prey):
+		prey.hit(DamageMelee)
+		print("ATTACK")
+
+func attack_hit_ranged(prey: CharacterBody3D):
+	var new_spit: Area3D = template_spit.instantiate()
+	get_parent().add_child(new_spit)
+	new_spit.global_transform = attack_spit_source.global_transform
+	new_spit.scale = Vector3.ONE
+	new_spit.setup()
+		
+
+
+func hit(damage: float = 1.0):
+	health -= damage
+	
+	state_before_hurt = current_state
+	
+	hurt_counter = HurtTime
+	change_state_to(States.HURT)
+	
+	
+
+
+
+func die():
+	change_state_to(States.DEATH)
 
 
 func _update_prey_list():
@@ -258,101 +508,4 @@ func _on_prey_detector_body_entered(_body):
 
 func _on_prey_detector_body_exited(_body):
 	_update_prey_list()
-
-
-#
-#const MAX_INTEREST : float = 10.0
-#const MAX_COOLDOWN : float = 4.0
-#
-#enum State {
-#	PATROLLING, 
-#	CHASING_PLAYER, 
-#	CHASING_SCIENTIST, 
-#	SPITTING, 
-#	SLASHING, 
-#	HARVESTING, 
-#	HURT, 
-#	STUNNED, 
-#	LOSING_ARM, 
-#	DYING, 
-#	DEAD
-#}
-#
-#
-#@onready var anim_player : AnimationPlayer = $AnimationPlayer
-#
-#@onready var current_state : int = State.PATROLLING
-#var target : Node3D
-#var last_seen_position : Vector3
-#var interest : float = MAX_INTEREST
-#var attack_cooldown : float = MAX_COOLDOWN
-#
-#func get_arm_type() -> int:
-#	return Constants.ArmType.HEAVY
-#
-#func can_be_ripped() -> bool:
-#	return true
-#	#return current_state == State.STUNNED
-#
-#func get_player_if_seen() -> Node3D:
-#	return null
-#
-#func get_scientist_if_seen() -> Node3D:
-#	return null
-#
-#func patrol(delta : float) -> void:
-#	pass
-#
-#func slash() -> void:
-#	pass
-#
-#func spit() -> void:
-#	pass
-#
-#func ripped(by_whom : Node3D) -> void:
-#	current_state = State.LOSING_ARM
-#	anim_player.play("ripped")
-#
-#func _physics_process_patrolling(delta : float) -> void:
-#	var player : Node3D = get_player_if_seen()
-#	var scientist : Node3D = get_scientist_if_seen()
-#	# A monster will always choose a player over a scientist as a target
-#	if player != null:
-#		target = player
-#		last_seen_position = player.global_position
-#		interest = MAX_INTEREST
-#		current_state = State.CHASING_PLAYER
-#	elif scientist != null:
-#		target = scientist
-#		last_seen_position = scientist.global_position
-#		interest = MAX_INTEREST
-#		current_state = State.CHASING_SCIENTIST
-#	else:
-#		patrol(delta)
-#		pass
-#
-#func _physics_process_chasing_player(delta) -> void:
-#	var player : Node3D = get_player_if_seen()
-#	if player != null:
-#		# Maybe shoot/slash
-#		interest = MAX_INTEREST
-#		attack_cooldown -= delta
-#		if attack_cooldown <= 0.0:
-#			attack_cooldown = MAX_COOLDOWN
-#			var distance_to_player : float = global_position.distance_to(player.global_position)
-#			if distance_to_player < MAX_SLASH_DISTANCE:
-#				slash()
-#			else:
-#				spit()
-#	else:
-#		interest -= delta
-#		if interest <= 0.0:
-#			target = null
-#			current_state = State.PATROLLING
-#
-#func _on_animation_player_animation_finished(anim_name : String) -> void:
-#	match anim_player:
-#		"ripped":
-#			current_state = State.DEAD
-
 

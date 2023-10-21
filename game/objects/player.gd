@@ -57,6 +57,9 @@ func move_and_collide_split(amount : Vector3) -> void:
 	move_and_collide(amount * Vector3(1.0, 0.5, 0.0))
 	move_and_collide(amount * Vector3(0.0, 0.5, 1.0))
 
+func hit(damage: float = 1.0):
+	pass
+
 func _physics_process_normal(delta : float) -> void:
 	var turn_amount : float = Input.get_axis("left", "right")
 	if turn_amount != 0.0:

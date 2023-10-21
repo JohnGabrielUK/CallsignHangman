@@ -352,6 +352,7 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody3D"]
+collision_layer = 3
 script = ExtResource("1_sptsi")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -1059,7 +1060,7 @@ mesh = ExtResource("4_hx3pu")
 skin = SubResource("Skin_dgj65")
 
 [node name="BoneHead" type="BoneAttachment3D" parent="rig_deform/Skeleton3D"]
-transform = Transform3D(1, 1.24345e-14, 2.38419e-07, 5.24387e-08, 0.975513, -0.219944, -2.3258e-07, 0.219944, 0.975513, 3.61641e-15, 1.54757, 0.0271628)
+transform = Transform3D(1, 1.56319e-13, 2.38418e-07, 5.24386e-08, 0.975512, -0.219945, -2.3258e-07, 0.219945, 0.975512, 5.14979e-14, 1.54757, 0.0271629)
 bone_name = "DEF-spine.006"
 bone_idx = 6
 
