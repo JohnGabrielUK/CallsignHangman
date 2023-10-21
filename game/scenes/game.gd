@@ -30,6 +30,12 @@ const _Ambiences : Dictionary = {
 	"ship2": preload("res://audio/amb/ship2.ogg")
 }
 
+const _Music : Dictionary = {
+	"attack": preload("res://audio/music/attack.ogg"),
+	"downtime": preload("res://audio/music/downtime.ogg"),
+	"saferoom": preload("res://audio/music/saferoom.ogg")
+}
+
 const ROOM_AMBIENCE : Dictionary = {
 	"Cafeteria": "ship2",
 	"Corridor1": "microwave",
@@ -57,16 +63,24 @@ enum GameState {IN_GAME, PAUSED, LOADING}
 
 @onready var map : NavigationRegion3D = $Map
 @onready var anim_player : AnimationPlayer = $AnimationPlayer
+@onready var anim_player_music : AnimationPlayer = $AnimationPlayer_Music
 @onready var sfx_voice_clips : AudioStreamPlayer = $HUD/Dialog/SFXVoiceClips
 @onready var audio_ambience : AudioStreamPlayer = $Audio_Ambience
 @onready var audio_bgm : AudioStreamPlayer = $Audio_BGM
 
 var current_room : Node3D
 var current_ambience : String = ""
+var current_music : String = ""
 
 var current_state : int
 var room_to_load : String
 var spawn_id_to_use : int
+
+func get_music_for_room(room : String) -> String:
+	if room.begins_with("Lab"):
+		return "saferoom"
+	else:
+		return "downtime"
 
 func load_room(room : String, spawn_id : int) -> void:
 	room_to_load = room
@@ -91,6 +105,14 @@ func start_room() -> void:
 		audio_ambience.play()
 		current_ambience = room_ambience
 		ambience_change = true
+	# Change music, if needed
+	var music_for_room : String = get_music_for_room(room_to_load)
+	if music_for_room != current_music:
+		audio_bgm.stop()
+		audio_bgm.stream = _Music[music_for_room]
+		audio_bgm.play()
+		anim_player_music.play("fade_in_music")
+		current_music = music_for_room
 	# Get started
 	current_state = GameState.IN_GAME
 	get_tree().paused = false
@@ -101,6 +123,8 @@ func start_room() -> void:
 
 func change_room(room : String, spawn_id : int) -> void:
 	get_tree().paused = true
+	if get_music_for_room(room) != current_music:
+		anim_player_music.play("fade_out_music")
 	if current_ambience != ROOM_AMBIENCE[room]:
 		anim_player.play("fade_out")
 	else:

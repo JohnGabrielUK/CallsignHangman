@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://c0w0dwk2kt8ui"]
+[gd_scene load_steps=27 format=3 uid="uid://c0w0dwk2kt8ui"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_007my"]
 [ext_resource type="Script" path="res://madtalk/madtalk_runtime.gd" id="2_enrov"]
@@ -377,6 +377,44 @@ _data = {
 "fade_out_keep_ambience": SubResource("Animation_u5ov4")
 }
 
+[sub_resource type="Animation" id="Animation_j01aq"]
+resource_name = "fade_out_music"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Audio_BGM:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -40.0]
+}
+
+[sub_resource type="Animation" id="Animation_1xkp2"]
+resource_name = "fade_in_music"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Audio_BGM:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-40.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8q7pw"]
+_data = {
+"fade_in_music": SubResource("Animation_1xkp2"),
+"fade_out_music": SubResource("Animation_j01aq")
+}
+
 [node name="Game" type="Node3D" groups=["game_controller"]]
 process_mode = 3
 script = ExtResource("1_007my")
@@ -512,12 +550,16 @@ bus = &"AMB"
 
 [node name="Audio_BGM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_3p45f")
-autoplay = true
 bus = &"BGM"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_vywsu")
+}
+
+[node name="AnimationPlayer_Music" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8q7pw")
 }
 
 [connection signal="voice_clip_requested" from="MadTalk" to="." method="_on_mad_talk_voice_clip_requested"]
