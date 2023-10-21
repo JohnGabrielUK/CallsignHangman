@@ -1,6 +1,167 @@
-[gd_scene load_steps=2 format=3 uid="uid://x1v6abj5587q"]
+[gd_scene load_steps=16 format=3 uid="uid://x1v6abj5587q"]
 
+[ext_resource type="Script" path="res://scenes/title_screen.gd" id="1_aog8x"]
 [ext_resource type="Texture2D" uid="uid://c0mak7b0qdgv" path="res://textures/logo.png" id="1_id606"]
+[ext_resource type="Texture2D" uid="uid://cpj61h332mmai" path="res://textures/background.png" id="1_t671h"]
+[ext_resource type="Texture2D" uid="uid://co4dg1iax5rjj" path="res://textures/background_blurred.png" id="2_l7wba"]
+[ext_resource type="Texture2D" uid="uid://drxo6p7cpg44o" path="res://textures/jg.png" id="4_gidw4"]
+[ext_resource type="Texture2D" uid="uid://dga0sad3lsli4" path="res://textures/madparrot.png" id="5_o3yyo"]
+[ext_resource type="Texture2D" uid="uid://wytg7devxbf" path="res://textures/and the rest.png" id="6_reelv"]
+[ext_resource type="Texture2D" uid="uid://tyvpkjfmq6fr" path="res://textures/intro.png" id="8_oxmbp"]
+[ext_resource type="AudioStream" uid="uid://padbyrbmbpow" path="res://audio/music/intro.ogg" id="9_1p2sl"]
+[ext_resource type="FontFile" uid="uid://ckhxdr4lr461o" path="res://fonts/BebasNeue-Regular.otf" id="9_q22vi"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ljofy"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jl4di"]
+blend_mode = 1
+
+[sub_resource type="Animation" id="Animation_qtqao"]
+resource_name = "intro"
+length = 54.0
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Blackout:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Logo:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 52, 53),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Background_Blurred:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 50, 54),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("JG:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.5, 2, 3, 3.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MadParrot:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 3, 3.5, 4.5, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AndTheRest:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 4.5, 5, 7, 7.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Background_Blurred:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 48),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -760), Vector2(0, -100)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Intro:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 8, 52),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(190, 720), Vector2(190, 720), Vector2(190, -1080)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Label_Prompt:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 53.5, 54),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.756863, 0.756863, 0.756863, 0), Color(0.756863, 0.756863, 0.756863, 0), Color(0.756863, 0.756863, 0.756863, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_5037s"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Blackout:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Audio_BGM:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -40.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dm5dt"]
+_data = {
+"fade_out": SubResource("Animation_5037s"),
+"intro": SubResource("Animation_qtqao")
+}
 
 [node name="TitleScreen" type="Control"]
 layout_mode = 3
@@ -9,8 +170,44 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_aog8x")
+
+[node name="Background" type="TextureRect" parent="."]
+texture_filter = 5
+texture_repeat = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -0.31
+offset_top = -100.0
+offset_right = 0.309448
+offset_bottom = 558.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_t671h")
+expand_mode = 3
+stretch_mode = 6
+
+[node name="Background_Blurred" type="TextureRect" parent="."]
+texture_filter = 5
+texture_repeat = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -760.0
+offset_right = 0.619507
+offset_bottom = -102.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_l7wba")
+expand_mode = 3
+stretch_mode = 5
 
 [node name="Logo" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+material = SubResource("CanvasItemMaterial_ljofy")
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -24,3 +221,133 @@ grow_vertical = 2
 texture = ExtResource("1_id606")
 expand_mode = 5
 stretch_mode = 5
+
+[node name="JG" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -130.0
+offset_top = -130.0
+offset_right = 130.0
+offset_bottom = 130.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_gidw4")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="MadParrot" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -160.0
+offset_right = 160.0
+offset_bottom = 160.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_o3yyo")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="AndTheRest" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -160.0
+offset_right = 160.0
+offset_bottom = 160.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_reelv")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Intro" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -450.0
+offset_top = 360.0
+offset_right = 450.0
+offset_bottom = 1410.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_oxmbp")
+expand_mode = 3
+
+[node name="Label_Prompt" type="Label" parent="."]
+modulate = Color(0.756863, 0.756863, 0.756863, 0)
+material = SubResource("CanvasItemMaterial_jl4di")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -520.0
+offset_top = 151.0
+offset_right = 550.0
+offset_bottom = 193.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("9_q22vi")
+theme_override_font_sizes/font_size = 32
+text = "P R E S S   E N T E R   T O   S T A R T"
+horizontal_alignment = 2
+
+[node name="Bar1" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 120.0
+color = Color(0, 0, 0, 1)
+
+[node name="Bar2" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -640.0
+offset_top = -120.0
+offset_right = 640.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0, 0, 0, 1)
+
+[node name="Blackout" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Audio_BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_1p2sl")
+bus = &"BGM"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_dm5dt")
+}
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
