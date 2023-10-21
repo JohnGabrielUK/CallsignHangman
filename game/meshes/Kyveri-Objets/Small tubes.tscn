@@ -1,8 +1,24 @@
-[gd_scene load_steps=2 format=3 uid="uid://c0ttbuiij3e7i"]
+[gd_scene load_steps=3 format=3 uid="uid://c0ttbuiij3e7i"]
 
-[ext_resource type="PackedScene" uid="uid://orpfllsclv52" path="res://meshes/Kyveri-Objets/Beaker set.glb" id="1_sbaw7"]
+[ext_resource type="ArrayMesh" uid="uid://c64gblfpnbctm" path="res://meshes/test_tube_set.mesh" id="1_uvcdx"]
+[ext_resource type="ArrayMesh" uid="uid://b4ivxahlhddut" path="res://meshes/test_tube_set_tubes.mesh" id="2_c6o7r"]
 
 [node name="Node3D" type="Node3D"]
 
-[node name="Beaker set" parent="." instance=ExtResource("1_sbaw7")]
+[node name="Beaker set" type="Node3D" parent="."]
 transform = Transform3D(0.189826, 0, 0, 0, 0.189826, 0, 0, 0, 0.189826, 0.0200258, 0, 0.0135766)
+
+[node name="Plane" type="MeshInstance3D" parent="Beaker set"]
+transform = Transform3D(0.294602, 0, 0, 0, 0.509628, 0, 0, 0, 0.509628, -0.169213, 0.247265, 0.133474)
+mesh = ExtResource("1_uvcdx")
+skeleton = NodePath("")
+
+[node name="Cylinder_003" type="MeshInstance3D" parent="Beaker set"]
+transform = Transform3D(0.0657133, 0, 0, 0, 0.107445, 0, 0, 0, 0.0657133, -0.255811, 0.295257, -0.231849)
+mesh = ExtResource("2_c6o7r")
+skeleton = NodePath("")
+
+[node name="Plane_001" type="MeshInstance3D" parent="Beaker set"]
+transform = Transform3D(0.294602, 0, 0, 0, 0.509628, 0, 0, 0, 0.509628, -0.197187, -0.0644849, 0.0973322)
+mesh = ExtResource("1_uvcdx")
+skeleton = NodePath("")

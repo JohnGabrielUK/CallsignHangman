@@ -1,17 +1,20 @@
 [gd_scene load_steps=3 format=3 uid="uid://colje5cjdbrmc"]
 
-[ext_resource type="PackedScene" uid="uid://ru1h7p2fkf5q" path="res://meshes/Kyveri-Objets/Desk.glb" id="1_kbuyo"]
+[ext_resource type="ArrayMesh" uid="uid://cv7fsl1jayrly" path="res://meshes/desk.mesh" id="1_jbmum"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0pawn"]
 size = Vector3(0.78366, 0.95805, 2.08928)
 
-[node name="Node3D" type="Node3D"]
+[node name="Desk" type="Node3D"]
 
-[node name="Desk" parent="." instance=ExtResource("1_kbuyo")]
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
 transform = Transform3D(0.330743, 0, 0, 0, 0.330743, 0, 0, 0, 0.330743, 0.151628, -1.19209e-07, -0.315564)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Desk"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Desk/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(2.93347, 0, 0, 0, 2.93347, 0, 0, 0, 2.93347, -0.43485, 1.33206, 1.25089)
 shape = SubResource("BoxShape3D_0pawn")
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.291159, 0, 0, 0, 0.0285829, 0, 0, 0, 0.247958, 0.0218098, 0.646999, -0.238154)
+mesh = ExtResource("1_jbmum")
+skeleton = NodePath("")
