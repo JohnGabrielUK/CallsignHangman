@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://c0w0dwk2kt8ui"]
+[gd_scene load_steps=24 format=3 uid="uid://c0w0dwk2kt8ui"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_007my"]
 [ext_resource type="Script" path="res://madtalk/madtalk_runtime.gd" id="2_enrov"]
@@ -337,10 +337,44 @@ tracks/1/keys = {
 "values": [0.0, -40.0]
 }
 
+[sub_resource type="Animation" id="Animation_u5ov4"]
+resource_name = "fade_out_keep_ambience"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HUD/Blackout:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_56uf0"]
+resource_name = "fade_in_keep_ambience"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HUD/Blackout:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vywsu"]
 _data = {
 "fade_in": SubResource("Animation_3618s"),
-"fade_out": SubResource("Animation_npnwh")
+"fade_in_keep_ambience": SubResource("Animation_56uf0"),
+"fade_out": SubResource("Animation_npnwh"),
+"fade_out_keep_ambience": SubResource("Animation_u5ov4")
 }
 
 [node name="Game" type="Node3D" groups=["game_controller"]]
@@ -463,6 +497,7 @@ libraries = {
 [node name="SFXVoiceClips" type="AudioStreamPlayer" parent="HUD/Dialog"]
 
 [node name="Blackout" type="ColorRect" parent="HUD"]
+modulate = Color(1, 1, 1, 0)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -473,7 +508,6 @@ metadata/_edit_lock_ = true
 
 [node name="Audio_Ambience" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_jtdcb")
-volume_db = -40.0
 bus = &"AMB"
 
 [node name="Audio_BGM" type="AudioStreamPlayer" parent="."]

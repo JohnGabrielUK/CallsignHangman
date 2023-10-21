@@ -84,22 +84,27 @@ func start_room() -> void:
 	current_room.spawn_scientists()
 	# Change ambience, if needed
 	var room_ambience = ROOM_AMBIENCE[room_to_load]
+	var ambience_change : bool = false
 	if current_ambience != room_ambience:
 		audio_ambience.stop()
 		audio_ambience.stream = _Ambiences[room_ambience]
 		audio_ambience.play()
 		current_ambience = room_ambience
+		ambience_change = true
 	# Get started
 	current_state = GameState.IN_GAME
 	get_tree().paused = false
-	anim_player.play("fade_in")
+	anim_player.play("fade_in" if ambience_change else "fade_in_keep_ambience")
 	await get_tree().create_timer(0.05).timeout # janky hack, m8
 	get_tree().call_group("camera", "check_for_player")
 	GameSession.room_entered(room_to_load)
 
 func change_room(room : String, spawn_id : int) -> void:
 	get_tree().paused = true
-	anim_player.play("fade_out")
+	if current_ambience != ROOM_AMBIENCE[room]:
+		anim_player.play("fade_out")
+	else:
+		anim_player.play("fade_out_keep_ambience")
 	await anim_player.animation_finished
 	current_room.queue_free()
 	load_room(room, spawn_id)
