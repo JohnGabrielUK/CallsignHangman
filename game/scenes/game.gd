@@ -52,6 +52,7 @@ func start_room() -> void:
 	anim_player.play("fade_in")
 	await get_tree().create_timer(0.05).timeout # janky hack, m8
 	get_tree().call_group("camera", "check_for_player")
+	get_tree().call_group("game_session", "room_entered", room_to_load)
 
 func change_room(room : String, spawn_id : int) -> void:
 	get_tree().paused = true

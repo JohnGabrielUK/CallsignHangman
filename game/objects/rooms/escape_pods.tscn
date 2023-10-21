@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bfgu1tbuk3iqa" path="res://objects/fixed_camera.tscn" id="9_od1wv"]
 [ext_resource type="PackedScene" uid="uid://bw5rrpk6hrhtj" path="res://objects/rescue_zone.tscn" id="10_xtv5r"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qnp2w"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mvh53"]
 resource_name = "Wall"
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("3_rekp6")
@@ -33,7 +33,7 @@ script = ExtResource("2_vdglb")
 
 [node name="Mesh" parent="." instance=ExtResource("2_o1ba6")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 16, 0, 13)
-surface_material_override/1 = SubResource("StandardMaterial3D_qnp2w")
+surface_material_override/1 = SubResource("StandardMaterial3D_mvh53")
 
 [node name="PlayerSpawnPoint" parent="." instance=ExtResource("2_q0fnl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 11)
