@@ -11,6 +11,7 @@ const FOLLOW_THRESHOLD : float = 1.5
 enum State {NOT_YET_MET, FOLLOWING_PLAYER, WAITING}
 
 @onready var anim_player : AnimationPlayer = $AnimationPlayer
+@onready var eyes: Marker3D = $rig_deform/Skeleton3D/BoneHead/Eyes
 
 @export var id : int
 

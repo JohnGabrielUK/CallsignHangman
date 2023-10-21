@@ -80,6 +80,10 @@ harvest={
 
 [layer_names]
 
+3d_physics/layer_1="Scenario"
+3d_physics/layer_2="Player"
+3d_physics/layer_3="Enemies"
+3d_physics/layer_4="Scientists"
 3d_physics/layer_5="Interactable"
 
 [rendering]
