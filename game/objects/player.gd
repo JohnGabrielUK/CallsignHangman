@@ -51,13 +51,18 @@ func switch_animation_if_not_current(anim_name : String, blend_amount : float) -
 	if anim_player.current_animation != anim_name:
 		anim_player.play(anim_name, blend_amount)
 
+# The jankiest of janky hacks
+func move_and_collide_split(amount : Vector3) -> void:
+	move_and_collide(amount * Vector3(1.0, 0.5, 0.0))
+	move_and_collide(amount * Vector3(0.0, 0.5, 1.0))
+
 func _physics_process_normal(delta : float) -> void:
 	var turn_amount : float = Input.get_axis("left", "right")
 	if turn_amount != 0.0:
 		rotate_y(-turn_amount * TURN_SPEED * delta)
 	var move_amount : float = Input.get_axis("up", "down")
 	if move_amount != 0.0:
-		move_and_collide(-Vector3.FORWARD.rotated(Vector3.UP, rotation.y) * MOVE_SPEED * delta)
+		move_and_collide_split(-Vector3.FORWARD.rotated(Vector3.UP, rotation.y) * MOVE_SPEED * delta)
 		if anim_player.current_animation != "run":
 			switch_animation_if_not_current("run", 0.25)
 	elif anim_player.current_animation != "idle":
