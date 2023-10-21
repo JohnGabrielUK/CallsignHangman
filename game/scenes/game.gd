@@ -67,4 +67,5 @@ func _physics_process(delta : float) -> void:
 				start_room()
 
 func _ready() -> void:
+	%MadTalk.activate_custom_effect.connect(GameSession._on_mad_talk_activate_custom_effect)
 	load_room("Entrance", 0)

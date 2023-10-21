@@ -1,9 +1,283 @@
-[gd_scene load_steps=7 format=3 uid="uid://c0w0dwk2kt8ui"]
+[gd_scene load_steps=20 format=3 uid="uid://c0w0dwk2kt8ui"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_007my"]
+[ext_resource type="Script" path="res://madtalk/madtalk_runtime.gd" id="2_enrov"]
+[ext_resource type="Script" path="res://madtalk/CharacterData.gd" id="3_6tbuq"]
 [ext_resource type="Environment" uid="uid://ngefto5heafd" path="res://environment.tres" id="4_4mbon"]
 
+[sub_resource type="Resource" id="Resource_2e7i7"]
+script = ExtResource("3_6tbuq")
+id = "hangman"
+name = "Hangman"
+variants = {}
+
+[sub_resource type="Resource" id="Resource_t4ruw"]
+script = ExtResource("3_6tbuq")
+id = "katrina"
+name = "Katrina"
+variants = {}
+
+[sub_resource type="Resource" id="Resource_mhfcj"]
+script = ExtResource("3_6tbuq")
+id = "scientist"
+name = "Scientist"
+variants = {}
+
 [sub_resource type="NavigationMesh" id="NavigationMesh_x8dff"]
+
+[sub_resource type="Animation" id="Animation_ft8p5"]
+resource_name = "DialogFadeIn"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_viapt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MessageBox:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MessageBox:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MenuBox:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MenuBox:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_kykmm"]
+resource_name = "DialogFadeOut"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_cf6ur"]
+resource_name = "MessageBoxFadeIn"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MessageBox:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MessageBox:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_4k3jo"]
+resource_name = "MessageBoxFadeOut"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MessageBox:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MessageBox:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_s4x76"]
+resource_name = "MenuFadeIn"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MenuBox:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MenuBox:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_7ege1"]
+resource_name = "MenuFadeOut"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MenuBox:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MenuBox:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7rqyp"]
+_data = {
+"DialogFadeIn": SubResource("Animation_ft8p5"),
+"DialogFadeOut": SubResource("Animation_kykmm"),
+"MenuFadeIn": SubResource("Animation_s4x76"),
+"MenuFadeOut": SubResource("Animation_7ege1"),
+"MessageBoxFadeIn": SubResource("Animation_cf6ur"),
+"MessageBoxFadeOut": SubResource("Animation_4k3jo"),
+"RESET": SubResource("Animation_viapt")
+}
 
 [sub_resource type="Animation" id="Animation_3618s"]
 resource_name = "fade_in"
@@ -47,6 +321,25 @@ _data = {
 process_mode = 3
 script = ExtResource("1_007my")
 
+[node name="MadTalk" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_enrov")
+ListOfCharacters = [SubResource("Resource_2e7i7"), SubResource("Resource_t4ruw"), SubResource("Resource_mhfcj")]
+DialogMainControl = NodePath("../HUD/Dialog")
+DialogMessageBox = NodePath("../HUD/Dialog/MessageBox")
+DialogMessageLabel = NodePath("../HUD/Dialog/MessageBox/MessageLabel")
+DialogSpeakerLabel = NodePath("../HUD/Dialog/MessageBox/Speaker")
+DialogSpeakerAvatar = NodePath("../HUD/Dialog/MessageBox/Avatar")
+DialogButtonsMenu = NodePath("../HUD/Dialog/MenuBox")
+DialogButtonsContainer = NodePath("../HUD/Dialog/MenuBox/VBox")
+DialogAnimationPlayer = NodePath("../HUD/Dialog/DialogUIAnimationPlayer")
+TransitionAnimationName_DialogFadeIn = "DialogFadeIn"
+TransitionAnimationName_DialogFadeOut = "DialogFadeOut"
+TransitionAnimationName_MessageBoxFadeIn = "MessageBoxFadeIn"
+TransitionAnimationName_MessageBoxFadeOut = "MessageBoxFadeOut"
+TransitionAnimationName_MenuFadeIn = "MenuFadeIn"
+TransitionAnimationName_MenuFadeOut = "MenuFadeOut"
+
 [node name="Map" type="NavigationRegion3D" parent="."]
 process_mode = 1
 navigation_mesh = SubResource("NavigationMesh_x8dff")
@@ -56,7 +349,94 @@ environment = ExtResource("4_4mbon")
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
+[node name="Dialog" type="Control" parent="HUD"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="MessageBox" type="ReferenceRect" parent="HUD/Dialog"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -443.0
+offset_top = -243.0
+offset_right = 443.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Avatar" type="TextureRect" parent="HUD/Dialog/MessageBox"]
+layout_mode = 0
+offset_left = -17.0
+offset_top = -45.0
+offset_right = 200.0
+offset_bottom = 232.0
+metadata/_edit_lock_ = true
+
+[node name="Speaker" type="Label" parent="HUD/Dialog/MessageBox"]
+layout_mode = 0
+offset_left = 216.0
+offset_top = 12.0
+offset_right = 361.0
+offset_bottom = 44.0
+text = "Name"
+metadata/_edit_lock_ = true
+
+[node name="MessageLabel" type="RichTextLabel" parent="HUD/Dialog/MessageBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 215.0
+offset_top = 45.0
+offset_right = -19.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+metadata/_edit_lock_ = true
+
+[node name="MenuBox" type="ReferenceRect" parent="HUD/Dialog"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -210.0
+offset_top = -452.0
+offset_right = 210.0
+offset_bottom = -280.0
+grow_horizontal = 2
+grow_vertical = 0
+metadata/_edit_lock_ = true
+
+[node name="VBox" type="VBoxContainer" parent="HUD/Dialog/MenuBox"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="DialogUIAnimationPlayer" type="AnimationPlayer" parent="HUD/Dialog"]
+libraries = {
+"": SubResource("AnimationLibrary_7rqyp")
+}
+
 [node name="Blackout" type="ColorRect" parent="HUD"]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

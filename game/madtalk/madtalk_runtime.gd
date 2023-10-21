@@ -51,7 +51,7 @@ signal dialog_aborted
 
 # Array containing the character data, one record per character
 # All items in this array must be of type MTCharacterData
-@export var ListOfCharacters := [] # (Array, Resource)
+@export var ListOfCharacters: Array[MTCharacterData] = [] # (Array, Resource)
 
 # This is the main control overlay used to show all dialog activity under
 # MadTalk responsibility. Usually a Control with "Full Rect" layout and mouse
