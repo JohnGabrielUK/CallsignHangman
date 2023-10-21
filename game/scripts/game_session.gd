@@ -104,6 +104,7 @@ func scientist_following_player(scientist_id : int) -> void:
 	player_tagalong = scientist_id
 
 func terminal_activated(terminal_id : String) -> void:
+	get_tree().call_group("game_controller", "set_prompts_visible", false, false)
 	match terminal_id:
 		"cafeteria_a":
 			madtalk.start_dialog("terminal_message_a")

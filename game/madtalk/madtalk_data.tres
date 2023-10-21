@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="DialogData" load_steps=132 format=3 uid="uid://dxkjjrap15vxu"]
+[gd_resource type="Resource" script_class="DialogData" load_steps=131 format=3 uid="uid://dxkjjrap15vxu"]
 
 [ext_resource type="Script" path="res://addons/madtalk/components/resources/DialogNodeData.gd" id="1"]
 [ext_resource type="Script" path="res://addons/madtalk/components/resources/DialogSheetData.gd" id="2"]
@@ -1364,7 +1364,7 @@ connected_to_id = -1
 message_speaker_id = "computer"
 message_speaker_variant = ""
 message_voice_clip = ""
-message_text = "Attention all staff: we have received reports that certain members of the team have attempted to ingest some of the Remo samples."
+message_text = "[color=#AEF]Attention all staff: we have received reports that certain members of the team have attempted to ingest some of the Remo samples.[/color]"
 message_hide_on_end = 0
 condition_type = 10
 condition_values = []
@@ -1378,7 +1378,7 @@ connected_to_id = -1
 message_speaker_id = "computer"
 message_speaker_variant = ""
 message_voice_clip = ""
-message_text = "We're not going to say you shouldn't do this, of course."
+message_text = "[color=#AEF]We're not going to say you shouldn't do this, of course.[/color]"
 message_hide_on_end = 0
 condition_type = 10
 condition_values = []
@@ -1392,7 +1392,7 @@ connected_to_id = -1
 message_speaker_id = "computer"
 message_speaker_variant = ""
 message_voice_clip = ""
-message_text = "But we are going to say that you should check your health insurance plan before you do, because it almost certainly isn't covered."
+message_text = "[color=#AEF]But we are going to say that you should check your health insurance plan before you do, because it almost certainly isn't covered.[/color]"
 message_hide_on_end = 0
 condition_type = 10
 condition_values = []
@@ -1437,7 +1437,7 @@ connected_to_id = -1
 message_speaker_id = "computer"
 message_speaker_variant = ""
 message_voice_clip = ""
-message_text = "Attention all staff: Like many of you, we were interested to hear the recent reports of prehistoric cavemen piloting interstellar vehicles."
+message_text = "[color=#AEF]Attention all staff: Like many of you, we were interested to hear the recent reports of prehistoric cavemen piloting interstellar vehicles.[/color]"
 message_hide_on_end = 0
 condition_type = 10
 condition_values = []
@@ -1451,7 +1451,7 @@ connected_to_id = -1
 message_speaker_id = "computer"
 message_speaker_variant = ""
 message_voice_clip = ""
-message_text = "We would like to set the record straight: we have no idea what that's about, either."
+message_text = "[color=#AEF]We would like to set the record straight: we have no idea what that's about, either.[/color]"
 message_hide_on_end = 0
 condition_type = 10
 condition_values = []
@@ -1496,7 +1496,7 @@ connected_to_id = -1
 message_speaker_id = "computer"
 message_speaker_variant = ""
 message_voice_clip = ""
-message_text = "Attention all staff: We appreciate the difficulties of your current working environment, and we try to keep an open-mind regarding what you do with your free time."
+message_text = "[color=#AEF]Attention all staff: We appreciate the difficulties of your current working environment, and we try to keep an open-mind regarding what you do with your free time.[/color]"
 message_hide_on_end = 0
 condition_type = 10
 condition_values = []
@@ -1510,7 +1510,7 @@ connected_to_id = -1
 message_speaker_id = "computer"
 message_speaker_variant = ""
 message_voice_clip = ""
-message_text = "That being said, we do have to draw the line somewhere."
+message_text = "[color=#AEF]That being said, we do have to draw the line somewhere.[/color]"
 message_hide_on_end = 0
 condition_type = 10
 condition_values = []
@@ -1524,21 +1524,7 @@ connected_to_id = -1
 message_speaker_id = "computer"
 message_speaker_variant = ""
 message_voice_clip = ""
-message_text = "Going forward, we will be exercising greater scrutiny over the \"guests\" that are brought on board."
-message_hide_on_end = 0
-condition_type = 10
-condition_values = []
-effect_type = 10
-effect_values = []
-
-[sub_resource type="Resource" id="Resource_oqxma"]
-script = ExtResource("4")
-item_type = 0
-connected_to_id = -1
-message_speaker_id = "computer"
-message_speaker_variant = ""
-message_voice_clip = ""
-message_text = "Disciplinary measures have already been used in some cases."
+message_text = "[color=#AEF]Going forward, we will be exercising greater scrutiny over the \"guests\" that are brought on board. Disciplinary measures have already been used in some cases.[/color]"
 message_hide_on_end = 0
 condition_type = 10
 condition_values = []
@@ -1552,7 +1538,7 @@ connected_to_id = -1
 message_speaker_id = "computer"
 message_speaker_variant = ""
 message_voice_clip = ""
-message_text = "P.S. Yes, Conrad. That means you."
+message_text = "[color=#AEF]P.S. Yes, Conrad. That means you.[/color]"
 message_hide_on_end = 0
 condition_type = 10
 condition_values = []
@@ -1564,7 +1550,7 @@ script = ExtResource("1")
 sequence_id = 0
 position = Vector2(0, 0)
 comment = ""
-items = [SubResource("Resource_0wnsf"), SubResource("Resource_65460"), SubResource("Resource_raf0y"), SubResource("Resource_a8nkd"), SubResource("Resource_oqxma"), SubResource("Resource_blf1s")]
+items = [SubResource("Resource_0wnsf"), SubResource("Resource_65460"), SubResource("Resource_raf0y"), SubResource("Resource_a8nkd"), SubResource("Resource_blf1s")]
 options = []
 continue_sequence_id = -1
 continue_port_index = 0

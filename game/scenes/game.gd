@@ -68,6 +68,9 @@ enum GameState {IN_GAME, PAUSED, LOADING}
 @onready var audio_ambience : AudioStreamPlayer = $Audio_Ambience
 @onready var audio_bgm : AudioStreamPlayer = $Audio_BGM
 
+@onready var label_prompt_interact : RichTextLabel = $HUD/Label_Prompt_Interact
+@onready var label_prompt_harvest : RichTextLabel = $HUD/Label_Prompt_Harvest
+
 var current_room : Node3D
 var current_ambience : String = ""
 var current_music : String = ""
@@ -133,6 +136,10 @@ func change_room(room : String, spawn_id : int) -> void:
 	current_room.queue_free()
 	load_room(room, spawn_id)
 
+func set_prompts_visible(can_interact : bool, can_harvest : bool) -> void:
+	label_prompt_interact.visible = can_interact
+	label_prompt_harvest.visible = can_harvest
+
 func _physics_process(delta : float) -> void:
 	get_tree().call_group("camera", "check_for_player") # Janky hack, m8
 	match current_state:
@@ -147,5 +154,6 @@ func _ready() -> void:
 	load_room("Entrance", 0)
 
 func _on_mad_talk_voice_clip_requested(speaker_id, clip_path):
-	sfx_voice_clips.stream = load(clip_path)
-	sfx_voice_clips.play()
+	if ResourceLoader.exists(clip_path):
+		sfx_voice_clips.stream = load(clip_path)
+		sfx_voice_clips.play()

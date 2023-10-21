@@ -564,6 +564,44 @@ libraries = {
 
 [node name="SFXVoiceClips" type="AudioStreamPlayer" parent="HUD/Dialog"]
 
+[node name="Label_Prompt_Interact" type="RichTextLabel" parent="HUD"]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -65.0
+offset_top = -142.0
+offset_right = 72.0
+offset_bottom = -109.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/normal_font = ExtResource("7_orrm4")
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "[color=#aaa][E][/color]  [color=#fff]I n t e r a c t[/color]"
+autowrap_mode = 0
+
+[node name="Label_Prompt_Harvest" type="RichTextLabel" parent="HUD"]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -65.0
+offset_top = -117.0
+offset_right = 72.0
+offset_bottom = -84.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/normal_font = ExtResource("7_orrm4")
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "[color=#aaa][Z][/color]  [color=#fff]H a r v e s t[/color]"
+autowrap_mode = 0
+
 [node name="Blackout" type="ColorRect" parent="HUD"]
 modulate = Color(1, 1, 1, 0)
 anchors_preset = 15

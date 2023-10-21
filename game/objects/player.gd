@@ -24,6 +24,12 @@ enum State {NORMAL, DRAWING_WEAPON, WEAPON_DRAWN, HOLSTERING_WEAPON, SHOOTING, K
 @onready var current_state : int = State.NORMAL
 @onready var current_arm : int = Constants.ArmType.NONE
 
+func can_interact() -> bool:
+	return raycast_interactable.is_colliding()
+
+func can_harvest() -> bool:
+	return false
+
 func make_sound(which : AudioStream, volume : float) -> void:
 	var sound : AudioStreamPlayer3D = _FleetingSound.instantiate()
 	sound.stream = which
@@ -94,6 +100,7 @@ func _physics_process(delta : float) -> void:
 		if Input.is_action_just_pressed("interact"):
 			GameSession.madtalk.dialog_acknowledge()
 		return
+	get_tree().call_group("game_controller", "set_prompts_visible", can_interact(), can_harvest())
 	match current_state:
 		State.NORMAL: _physics_process_normal(delta)
 		State.WEAPON_DRAWN: _physics_process_weapon_drawn(delta)
