@@ -105,6 +105,7 @@ func change_room(room : String, spawn_id : int) -> void:
 	load_room(room, spawn_id)
 
 func _physics_process(delta : float) -> void:
+	get_tree().call_group("camera", "check_for_player") # Janky hack, m8
 	match current_state:
 		GameState.LOADING:
 			if ResourceLoader.has_cached(_Rooms[room_to_load]):

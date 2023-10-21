@@ -32,7 +32,7 @@ func make_sound(which : AudioStream, volume : float) -> void:
 	sound.play()
 
 func do_footstep_sound() -> void:
-	make_sound(_StepSounds.pick_random(), -5.0)
+	make_sound(_StepSounds.pick_random(), -10.0)
 
 func try_to_interact() -> void:
 	if raycast_interactable.is_colliding():
@@ -52,11 +52,6 @@ func switch_animation_if_not_current(anim_name : String, blend_amount : float) -
 		anim_player.play(anim_name, blend_amount)
 
 func _physics_process_normal(delta : float) -> void:
-	if MadTalkGlobals.is_during_dialog:
-		if Input.is_action_just_pressed("interact"):
-			GameSession.madtalk.dialog_acknowledge()
-		return
-
 	var turn_amount : float = Input.get_axis("left", "right")
 	if turn_amount != 0.0:
 		rotate_y(-turn_amount * TURN_SPEED * delta)
@@ -87,6 +82,12 @@ func _physics_process_weapon_drawn(delta : float) -> void:
 		current_state = State.SHOOTING
 
 func _physics_process(delta : float) -> void:
+	if MadTalkGlobals.is_during_dialog:
+		current_state = State.NORMAL
+		switch_animation_if_not_current("idle", 0.25)
+		if Input.is_action_just_pressed("interact"):
+			GameSession.madtalk.dialog_acknowledge()
+		return
 	match current_state:
 		State.NORMAL: _physics_process_normal(delta)
 		State.WEAPON_DRAWN: _physics_process_weapon_drawn(delta)
