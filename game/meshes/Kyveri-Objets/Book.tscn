@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cnsbe8nhdxvth"]
 
-[ext_resource type="Texture2D" uid="uid://ci22v04amta4g" path="res://meshes/Kyveri-Objets/Book_book.png" id="1_841vp"]
+[ext_resource type="Texture2D" uid="uid://ci22v04amta4g" path="res://textures/book_colour.png" id="1_841vp"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x8b5i"]
 resource_name = "Material.012"

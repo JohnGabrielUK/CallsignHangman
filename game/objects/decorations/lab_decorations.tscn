@@ -1,21 +1,21 @@
 [gd_scene load_steps=17 format=3 uid="uid://d36ghnoyyovan"]
 
-[ext_resource type="PackedScene" uid="uid://cypqvlwaos8yi" path="res://meshes/Kyveri-Objets/Exam Table.tscn" id="1_030ev"]
-[ext_resource type="PackedScene" uid="uid://bdan348oa8hdf" path="res://meshes/Kyveri-Objets/Bench.tscn" id="2_yexbx"]
-[ext_resource type="PackedScene" uid="uid://cw41m5crnycrn" path="res://meshes/Kyveri-Objets/Test Tube.tscn" id="3_gpaqy"]
-[ext_resource type="PackedScene" uid="uid://bs6eiluux6hfo" path="res://objects/rooms/Tv_Screen New.tscn" id="4_utr8m"]
-[ext_resource type="PackedScene" uid="uid://colje5cjdbrmc" path="res://meshes/Kyveri-Objets/Desk.tscn" id="5_obl8a"]
-[ext_resource type="PackedScene" uid="uid://c0ttbuiij3e7i" path="res://meshes/Kyveri-Objets/Small tubes.tscn" id="6_g83am"]
+[ext_resource type="PackedScene" uid="uid://cypqvlwaos8yi" path="res://meshes/Kyveri-Objets/exam_table.tscn" id="1_030ev"]
+[ext_resource type="PackedScene" uid="uid://bdan348oa8hdf" path="res://meshes/Kyveri-Objets/bench.tscn" id="2_yexbx"]
+[ext_resource type="PackedScene" uid="uid://cw41m5crnycrn" path="res://meshes/Kyveri-Objets/test_tube.tscn" id="3_gpaqy"]
+[ext_resource type="PackedScene" uid="uid://bs6eiluux6hfo" path="res://meshes/Kyveri-Objets/screen.tscn" id="4_utr8m"]
+[ext_resource type="PackedScene" uid="uid://colje5cjdbrmc" path="res://meshes/Kyveri-Objets/desk.tscn" id="5_obl8a"]
+[ext_resource type="PackedScene" uid="uid://c0ttbuiij3e7i" path="res://meshes/Kyveri-Objets/small_tubes.tscn" id="6_g83am"]
 [ext_resource type="PackedScene" uid="uid://sdjqvhplqyso" path="res://meshes/Kyveri-Objets/cup.tscn" id="7_y0om6"]
 [ext_resource type="PackedScene" uid="uid://00syjrlwwvq8" path="res://meshes/Kyveri-Objets/bottle.tscn" id="8_sr5jj"]
 [ext_resource type="PackedScene" uid="uid://bti55it0qbl4q" path="res://meshes/Kyveri-Objets/laptop.tscn" id="9_ln2yf"]
-[ext_resource type="PackedScene" uid="uid://kdobjsis0f3u" path="res://meshes/Kyveri-Objets/Chair.tscn" id="10_rutp5"]
-[ext_resource type="PackedScene" uid="uid://bkwlwef8kjepr" path="res://meshes/Kyveri-Objets/Shelf.tscn" id="11_0nqan"]
-[ext_resource type="PackedScene" uid="uid://cnsbe8nhdxvth" path="res://meshes/Kyveri-Objets/Book.tscn" id="12_1xmim"]
-[ext_resource type="PackedScene" uid="uid://e6m3h0gho8c7" path="res://meshes/Kyveri-Objets/Canister.tscn" id="13_nef33"]
-[ext_resource type="PackedScene" uid="uid://bmpl4lv2ptyqw" path="res://meshes/Kyveri-Objets/Create.tscn" id="14_nvim2"]
-[ext_resource type="Texture2D" uid="uid://divewewhbixq0" path="res://meshes/Kyveri-Objets/Decals/Stacks of paper.png" id="15_aev2i"]
-[ext_resource type="Texture2D" uid="uid://dgrd5pc30w73i" path="res://meshes/Kyveri-Objets/Decals/blood4.png" id="16_l5vab"]
+[ext_resource type="PackedScene" uid="uid://kdobjsis0f3u" path="res://meshes/Kyveri-Objets/chair.tscn" id="10_rutp5"]
+[ext_resource type="PackedScene" uid="uid://bkwlwef8kjepr" path="res://meshes/Kyveri-Objets/shelf.tscn" id="11_0nqan"]
+[ext_resource type="PackedScene" uid="uid://cnsbe8nhdxvth" path="res://meshes/Kyveri-Objets/book.tscn" id="12_1xmim"]
+[ext_resource type="PackedScene" uid="uid://e6m3h0gho8c7" path="res://meshes/Kyveri-Objets/canister.tscn" id="13_nef33"]
+[ext_resource type="PackedScene" uid="uid://bmpl4lv2ptyqw" path="res://meshes/Kyveri-Objets/crate.tscn" id="14_nvim2"]
+[ext_resource type="Texture2D" uid="uid://divewewhbixq0" path="res://textures/paper.png" id="15_aev2i"]
+[ext_resource type="Texture2D" uid="uid://dgrd5pc30w73i" path="res://textures/blood4.png" id="16_l5vab"]
 
 [node name="LabDecorations" type="Node3D"]
 
@@ -71,7 +71,7 @@ transform = Transform3D(-0.93138, 0, 0.364048, 0, 1, 0, -0.364048, 0, -0.93138, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 0, 10)
 
 [node name="Node3D6" parent="Shelf" instance=ExtResource("11_0nqan")]
-transform = Transform3D(-1.21952, 0, 0.017199, 0, 1.21964, 0, -0.017199, 0, -1.21952, 27.0962, 0.0122821, -9.22203)
+transform = Transform3D(-0.314969, 0, 0.00444202, 0, 0.315, 0, -0.00444202, 0, -0.314969, 27.0962, 0.0122821, -9.22203)
 
 [node name="Book" parent="Shelf/Node3D6" instance=ExtResource("12_1xmim")]
 transform = Transform3D(1, -4.65661e-09, 1.16415e-10, 0, -0.00462505, 0.999989, 0, -0.999989, -0.00462506, -0.066967, 0.6955, -0.408865)
@@ -98,10 +98,10 @@ transform = Transform3D(1, -2.60843e-08, 2.79397e-09, 0, 0.999985, 0.00551514, 0
 transform = Transform3D(0.562704, -2.6077e-08, 0.826658, -0.00455914, 0.999985, 0.00310342, -0.826646, -0.00551513, 0.562695, 6.3898, 0.497447, 0.724922)
 
 [node name="Node3D7" parent="Shelf" instance=ExtResource("11_0nqan")]
-transform = Transform3D(-1.21952, 0, 0.017199, 0, 1.21964, 0, -0.017199, 0, -1.21952, 27.1163, 0.0122821, -10.6419)
+transform = Transform3D(-0.314969, 0, 0.00444202, 0, 0.315, 0, -0.00444202, 0, -0.314969, 27.1163, 0.0122821, -10.6419)
 
 [node name="Node3D8" parent="Shelf" instance=ExtResource("11_0nqan")]
-transform = Transform3D(-1.21952, 0, 0.017199, 0, 1.21964, 0, -0.017199, 0, -1.21952, 27.1377, 0.0122821, -12.1629)
+transform = Transform3D(-0.314969, 0, 0.00444202, 0, 0.315, 0, -0.00444202, 0, -0.314969, 27.1377, 0.0122821, -12.1629)
 
 [node name="Canister" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 0, 10)

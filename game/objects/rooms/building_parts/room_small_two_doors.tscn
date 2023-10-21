@@ -1,14 +1,14 @@
 [gd_scene load_steps=13 format=3 uid="uid://cqcyia287f2iq"]
 
-[ext_resource type="Texture2D" uid="uid://jt70f64wlu7s" path="res://materials/rooms/scifi_parts_wall_albedo.png" id="1_kvpdv"]
+[ext_resource type="Texture2D" uid="uid://jt70f64wlu7s" path="res://textures/scifi_parts_wall_albedo.png" id="1_kvpdv"]
 [ext_resource type="ArrayMesh" uid="uid://co1uq3y8kxplk" path="res://meshes/rooms/room_small_two_doors.mesh" id="1_sp1xn"]
-[ext_resource type="Texture2D" uid="uid://43ydho607sr1" path="res://materials/rooms/scifi_parts_wall_emission_lights_on.png" id="2_w8854"]
+[ext_resource type="Texture2D" uid="uid://43ydho607sr1" path="res://textures/scifi_parts_wall_emission_lights_on.png" id="2_w8854"]
 [ext_resource type="Script" path="res://objects/rooms/building_parts/building_part.gd" id="3_gdv4d"]
-[ext_resource type="Texture2D" uid="uid://cls2cel8gtflj" path="res://materials/rooms/scifi_parts_wall_normal.png" id="3_xseab"]
+[ext_resource type="Texture2D" uid="uid://cls2cel8gtflj" path="res://textures/scifi_parts_wall_normal.png" id="3_xseab"]
 [ext_resource type="ArrayMesh" uid="uid://bltp53yg3tyyg" path="res://meshes/rooms/door.mesh" id="6_tapxn"]
-[ext_resource type="Texture2D" uid="uid://dqdfcnkuwcssb" path="res://materials/rooms/scifi_parts_walldoor1_albedo.png" id="7_es2uc"]
-[ext_resource type="Texture2D" uid="uid://cvd4ojjqjue7u" path="res://materials/rooms/scifi_parts_walldoor1_emission_lights_on.png" id="8_820n5"]
-[ext_resource type="Texture2D" uid="uid://tbcr4auav4kp" path="res://materials/rooms/scifi_parts_walldoor1_normal.png" id="9_g5egb"]
+[ext_resource type="Texture2D" uid="uid://dqdfcnkuwcssb" path="res://textures/scifi_parts_walldoor1_albedo.png" id="7_es2uc"]
+[ext_resource type="Texture2D" uid="uid://cvd4ojjqjue7u" path="res://textures/scifi_parts_walldoor1_emission_lights_on.png" id="8_820n5"]
+[ext_resource type="Texture2D" uid="uid://tbcr4auav4kp" path="res://textures/scifi_parts_walldoor1_normal.png" id="9_g5egb"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_80gnd"]
 resource_name = "Wall"

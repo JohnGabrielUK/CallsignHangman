@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://c0ttbuiij3e7i"]
+
+[ext_resource type="ArrayMesh" uid="uid://c64gblfpnbctm" path="res://meshes/test_tube_set.mesh" id="1_uvcdx"]
+[ext_resource type="ArrayMesh" uid="uid://b4ivxahlhddut" path="res://meshes/test_tube_set_tubes.mesh" id="2_c6o7r"]
+
+[node name="SmallTubes" type="Node3D"]
+
+[node name="Plane" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.0559231, 0, 0, 0, 0.0967406, 0, 0, 0, 0.0967406, -0.0120952, 0.0469373, 0.0389134)
+mesh = ExtResource("1_uvcdx")
+skeleton = NodePath("")
+
+[node name="Tubes" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.0124741, 0, 0, 0, 0.0203959, 0, 0, 0, 0.0124741, -0.0285338, 0.0560475, -0.0304344)
+mesh = ExtResource("2_c6o7r")
+skeleton = NodePath("")
+
+[node name="Plane_001" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.0559231, 0, 0, 0, 0.0967406, 0, 0, 0, 0.0967406, -0.0174054, -0.0122409, 0.0320528)
+mesh = ExtResource("1_uvcdx")
+skeleton = NodePath("")

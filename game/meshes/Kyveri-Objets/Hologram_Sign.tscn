@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://b5npnvyjn223e"]
 
-[ext_resource type="Texture2D" uid="uid://dgabc1qgu1epk" path="res://meshes/Kyveri-Objets/Hologram_Sign_Projection.png" id="1_m4b71"]
-[ext_resource type="Texture2D" uid="uid://cs3rd5w8hyufg" path="res://meshes/Kyveri-Objets/Hologram_Sign_Projection_E.png" id="2_chofj"]
+[ext_resource type="Texture2D" uid="uid://dgabc1qgu1epk" path="res://textures/hologram_sign_colour.png" id="1_oglyy"]
+[ext_resource type="Texture2D" uid="uid://cs3rd5w8hyufg" path="res://textures/hologram_sign_colour2.png" id="2_2tm38"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7hg5e"]
 resource_name = "Material.004"
@@ -44,10 +44,10 @@ shadow_mesh = SubResource("ArrayMesh_3k077")
 resource_name = "Material.003"
 cull_mode = 2
 vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("1_m4b71")
+albedo_texture = ExtResource("1_oglyy")
 roughness = 0.0
 emission_energy_multiplier = 0.0
-emission_texture = ExtResource("2_chofj")
+emission_texture = ExtResource("2_2tm38")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_1h12a"]
 _surfaces = [{

@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://cypqvlwaos8yi"]
+
+[ext_resource type="ArrayMesh" uid="uid://0qs21buxdlg" path="res://meshes/exam_table.mesh" id="1_nns37"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ubigs"]
+size = Vector3(3.2199, 3.79087, 8.54164)
+
+[node name="ExamTable" type="Node3D"]
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.334817, 0, 0, 0, 0.035888, 0, 0, 0, 0.949291, 0.122403, 0.598999, -0.0194366)
+mesh = ExtResource("1_nns37")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(0.225433, 0, 0, 0, 0.225433, 0, 0, 0, 0.225433, 0.158651, -0.0542072, 0.0108408)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.58592, 0)
+shape = SubResource("BoxShape3D_ubigs")

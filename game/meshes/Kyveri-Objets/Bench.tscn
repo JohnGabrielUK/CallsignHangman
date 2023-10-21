@@ -1,17 +1,20 @@
 [gd_scene load_steps=3 format=3 uid="uid://bdan348oa8hdf"]
 
-[ext_resource type="PackedScene" uid="uid://dm13rtp5nfacl" path="res://meshes/Kyveri-Objets/Bench.glb" id="1_gwe2i"]
+[ext_resource type="ArrayMesh" uid="uid://c7usu6p07ytvl" path="res://meshes/bench.mesh" id="1_g4nq8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yr5o2"]
 size = Vector3(1.4689, 2.25505, 5.11386)
 
-[node name="Node3D" type="Node3D"]
+[node name="Bench" type="Node3D"]
 
-[node name="Bench" parent="." instance=ExtResource("1_gwe2i")]
+[node name="Mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.145808, 0, 0, 0, 0.0162203, 0, 0, 0, 0.487789, -0.163802, 0.373375, 0.098005)
+mesh = ExtResource("1_g4nq8")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
 transform = Transform3D(0.21742, 0, 0, 0, 0.21742, 0, 0, 0, 0.21742, -0.302631, 0, 0.209045)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Bench"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Bench/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.536313, 0.988755, -0.531678)
 shape = SubResource("BoxShape3D_yr5o2")

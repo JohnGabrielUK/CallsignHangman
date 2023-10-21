@@ -1,14 +1,14 @@
 [gd_scene load_steps=12 format=3 uid="uid://bd026w72txmjb"]
 
-[ext_resource type="Texture2D" uid="uid://jt70f64wlu7s" path="res://materials/rooms/scifi_parts_wall_albedo.png" id="1_gt2f5"]
+[ext_resource type="Texture2D" uid="uid://jt70f64wlu7s" path="res://textures/scifi_parts_wall_albedo.png" id="1_gt2f5"]
 [ext_resource type="ArrayMesh" uid="uid://dxiqgjobhauja" path="res://meshes/rooms/lab.mesh" id="1_krf35"]
-[ext_resource type="Texture2D" uid="uid://43ydho607sr1" path="res://materials/rooms/scifi_parts_wall_emission_lights_on.png" id="2_b6nx5"]
+[ext_resource type="Texture2D" uid="uid://43ydho607sr1" path="res://textures/scifi_parts_wall_emission_lights_on.png" id="2_b6nx5"]
 [ext_resource type="Script" path="res://objects/rooms/building_parts/building_part.gd" id="3_eebcy"]
-[ext_resource type="Texture2D" uid="uid://cls2cel8gtflj" path="res://materials/rooms/scifi_parts_wall_normal.png" id="3_ja2d8"]
+[ext_resource type="Texture2D" uid="uid://cls2cel8gtflj" path="res://textures/scifi_parts_wall_normal.png" id="3_ja2d8"]
 [ext_resource type="ArrayMesh" uid="uid://bltp53yg3tyyg" path="res://meshes/rooms/door.mesh" id="6_m7o6s"]
-[ext_resource type="Texture2D" uid="uid://dqdfcnkuwcssb" path="res://materials/rooms/scifi_parts_walldoor1_albedo.png" id="7_f44hb"]
-[ext_resource type="Texture2D" uid="uid://cvd4ojjqjue7u" path="res://materials/rooms/scifi_parts_walldoor1_emission_lights_on.png" id="8_hpu64"]
-[ext_resource type="Texture2D" uid="uid://tbcr4auav4kp" path="res://materials/rooms/scifi_parts_walldoor1_normal.png" id="9_0g77o"]
+[ext_resource type="Texture2D" uid="uid://dqdfcnkuwcssb" path="res://textures/scifi_parts_walldoor1_albedo.png" id="7_f44hb"]
+[ext_resource type="Texture2D" uid="uid://cvd4ojjqjue7u" path="res://textures/scifi_parts_walldoor1_emission_lights_on.png" id="8_hpu64"]
+[ext_resource type="Texture2D" uid="uid://tbcr4auav4kp" path="res://textures/scifi_parts_walldoor1_normal.png" id="9_0g77o"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vfo8i"]
 resource_name = "Wall"

@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dxdsf8jm7rapi"]
 
-[ext_resource type="Texture2D" uid="uid://b4t7wa4gl5o5" path="res://meshes/Kyveri-Objets/Terminal_Terminal.png" id="1_v7epv"]
+[ext_resource type="Texture2D" uid="uid://b4t7wa4gl5o5" path="res://textures/terminal_colour.png" id="1_v7epv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wf81f"]
 resource_name = "Material.005"

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://qgt6p4bw4i4s"]
+
+[ext_resource type="ArrayMesh" uid="uid://s81jffuxt4uc" path="res://meshes/dinner_tray.mesh" id="1_7q2hk"]
+
+[node name="DinnerTray" type="Node3D"]
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.121437, 0, 0, 0, 0.004586, 0, 0, 0, 0.0738764, -0.0370436, 0.00549936, 0.00160708)
+mesh = ExtResource("1_7q2hk")
+skeleton = NodePath("")
