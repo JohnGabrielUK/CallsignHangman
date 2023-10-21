@@ -22,7 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://dnj02i88sr1hw" path="res://meshes/Kyveri-Objets/Decals/blood2.png" id="20_qb470"]
 [ext_resource type="Texture2D" uid="uid://dv3pdagm4rc2a" path="res://meshes/Kyveri-Objets/Decals/Blood1.png" id="21_6nhch"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lglk8"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ig7q0"]
 resource_name = "Wall"
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("3_12lxb")
@@ -50,7 +50,8 @@ size = Vector3(6, 2, 9)
 script = ExtResource("2_quymt")
 
 [node name="Mesh" parent="." instance=ExtResource("2_52kq6")]
-surface_material_override/1 = SubResource("StandardMaterial3D_lglk8")
+layers = 2
+surface_material_override/1 = SubResource("StandardMaterial3D_ig7q0")
 WallLightsColor = Color(0, 0.686275, 0.631373, 1)
 DoorLightColors = Array[Color]([Color(0, 0.611765, 0.14902, 1), Color(0.752941, 0.584314, 0, 1), Color(0.741176, 0, 0.733333, 1), Color(0.301961, 0.427451, 1, 1), Color(0.713726, 0.105882, 0.164706, 1)])
 
@@ -75,7 +76,7 @@ point_towards = Vector3(-1, 0, 0)
 
 [node name="PlayerSpawnPoint5" parent="." instance=ExtResource("2_wlvad")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 2)
-spawn_id = 3
+spawn_id = 4
 point_towards = Vector3(-1, 0, 0)
 
 [node name="RoomExit1" parent="." instance=ExtResource("3_kkqhd")]
@@ -258,21 +259,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0549055, 0.0908317, -0.8670
 
 [node name="Sprite3D" type="Sprite3D" parent="Objects/Small objects"]
 transform = Transform3D(0.0282934, 0.104053, -0.00225625, 0.0008637, -0.0025728, -0.10782, -0.104073, 0.0282664, -0.00150818, 0.0595839, 0.569727, 0.291006)
+layers = 2
 shaded = true
 texture = ExtResource("17_6sibv")
 
 [node name="Sprite3D2" type="Sprite3D" parent="Objects/Small objects"]
 transform = Transform3D(-0.0517027, 0.0944998, 0.00539914, -0.00833454, 0.00158305, -0.10752, -0.0942863, -0.0519598, 0.00654369, -0.153923, 0.567423, -0.519018)
+layers = 2
 shaded = true
 texture = ExtResource("17_6sibv")
 
 [node name="Sprite3D3" type="Sprite3D" parent="Objects/Small objects"]
 transform = Transform3D(-0.0888444, -0.0611484, -0.00030256, -0.000740067, 0.00160885, -0.10784, 0.0611447, -0.0888303, -0.00174486, 1.99513, 0.561133, -2.28995)
+layers = 2
 shaded = true
 texture = ExtResource("17_6sibv")
 
 [node name="Sprite3D4" type="Sprite3D" parent="Objects/Small objects"]
 transform = Transform3D(0.0172632, -0.106431, -0.00264089, 0.00176942, 0.00296183, -0.107799, 0.106449, 0.017211, 0.00222014, 2.28453, 0.557601, 1.40212)
+layers = 2
 shaded = true
 texture = ExtResource("17_6sibv")
 
@@ -295,12 +300,14 @@ transform = Transform3D(1, 0, 0, 0, 0.999718, -0.0237517, 0, 0.0237517, 0.999718
 
 [node name="Decal" type="Decal" parent="Objects/decal"]
 transform = Transform3D(0.724605, -0.689164, 0, -0.236906, -0.249089, 0.939058, -0.647166, -0.680446, -0.343758, 6.3882, 1.6846, 4.40868)
+layers = 2
 size = Vector3(2.63102, 1.75357, 2.19615)
 texture_albedo = ExtResource("20_qb470")
 modulate = Color(0.352941, 0.352941, 0.352941, 1)
 
 [node name="Decal2" type="Decal" parent="Objects/decal"]
 transform = Transform3D(0.589219, -1.44044, -0.0315879, 0.79129, 1.04286, -0.179448, 0.163342, 0.14405, 0.98326, 7.19247, -0.292685, 1.9117)
+layers = 2
 size = Vector3(1.74116, 1.89404, 2.19615)
 texture_albedo = ExtResource("21_6nhch")
 modulate = Color(0.352941, 0.352941, 0.352941, 1)

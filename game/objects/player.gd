@@ -26,9 +26,18 @@ func try_to_harvest() -> void:
 			candidate.ripped(self)
 			current_arm = candidate.get_arm_type()
 			current_state = State.RIPPING
-			anim_player.play("rip_arm")
+			switch_animation_if_not_current("riparm", 0.25)
+
+func switch_animation_if_not_current(anim_name : String, blend_amount : float) -> void:
+	if anim_player.current_animation != anim_name:
+		anim_player.play(anim_name, blend_amount)
 
 func _physics_process_normal(delta : float) -> void:
+	if MadTalkGlobals.is_during_dialog:
+		if Input.is_action_just_pressed("interact"):
+			GameSession.madtalk.dialog_acknowledge()
+		return
+
 	var turn_amount : float = Input.get_axis("left", "right")
 	if turn_amount != 0.0:
 		rotate_y(-turn_amount * TURN_SPEED * delta)
@@ -36,35 +45,27 @@ func _physics_process_normal(delta : float) -> void:
 	if move_amount != 0.0:
 		move_and_collide(-Vector3.FORWARD.rotated(Vector3.UP, rotation.y) * MOVE_SPEED * delta)
 		if anim_player.current_animation != "run":
-			anim_player.play("run", 0.25)
+			switch_animation_if_not_current("run", 0.25)
 	elif anim_player.current_animation != "idle":
-		anim_player.play("idle", 0.25)
+		switch_animation_if_not_current("idle", 0.25)
 	if Input.is_action_just_pressed("interact"):
 		try_to_interact()
 	elif Input.is_action_just_pressed("harvest"):
 		try_to_harvest()
 	elif Input.is_action_just_pressed("draw_weapon"):
-		anim_player.play("draw_weapon")
+		anim_player.play("aim_start")
 		current_state = State.DRAWING_WEAPON
 
 func _physics_process_weapon_drawn(delta : float) -> void:
 	var turn_amount : float = Input.get_axis("left", "right")
 	if turn_amount != 0.0:
 		rotate_y(-turn_amount * TURN_WITH_WEAPON_SPEED * delta)
-	var move_amount : float = Input.get_axis("up", "down")
-	if move_amount != 0.0:
-		move_and_collide(-Vector3.FORWARD.rotated(Vector3.UP, rotation.y) * MOVE_WITH_WEAPON_SPEED * delta)
-		if anim_player.current_animation != "run_with_weapon":
-			anim_player.play("run_with_weapon", 0.25)
-	elif anim_player.current_animation != "idle_with_weapon":
-		anim_player.play("idle_with_weapon", 0.25)
 	if Input.is_action_just_pressed("draw_weapon"):
-		anim_player.play("holster_weapon")
+		anim_player.play("aim_end")
 		current_state = State.HOLSTERING_WEAPON
 	elif Input.is_action_just_pressed("attack"):
-		anim_player.play("shoot")
+		anim_player.play("shoot_heavy")
 		current_state = State.SHOOTING
-		
 
 func _physics_process(delta : float) -> void:
 	match current_state:
@@ -72,18 +73,18 @@ func _physics_process(delta : float) -> void:
 		State.WEAPON_DRAWN: _physics_process_weapon_drawn(delta)
 
 func _ready() -> void:
-	anim_player.play("idle")
+	switch_animation_if_not_current("idle", 0.0)
 
 func _on_animation_player_animation_finished(anim_name : String) -> void:
 	match anim_name:
 		"rip_arm":
 			current_state = State.NORMAL
-		"draw_weapon":
-			anim_player.play("idle_with_weapon")
+		"aim_start":
+			switch_animation_if_not_current("aim", 0.0)
 			current_state = State.WEAPON_DRAWN
-		"holster_weapon":
-			anim_player.play("idle")
+		"aim_end":
+			switch_animation_if_not_current("idle", 0.0)
 			current_state = State.NORMAL
-		"shoot":
-			anim_player.play("idle_with_weapon")
+		"shoot_heavy":
+			switch_animation_if_not_current("aim", 0.0)
 			current_state = State.WEAPON_DRAWN

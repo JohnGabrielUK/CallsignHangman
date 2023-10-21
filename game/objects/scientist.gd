@@ -31,8 +31,7 @@ func follow_player_from_spawn(player : Node3D) -> void:
 	current_state = State.FOLLOWING_PLAYER
 
 func rescue() -> void:
-	get_tree().call_group("scenario_controller", "_on_scientist_rescued", id)
-	queue_free()
+	GameSession.scientist_rescued(id)
 
 func switch_animation_if_not_current(anim_name : String, blend_amount : float) -> void:
 	if anim_player.current_animation != anim_name:
@@ -44,6 +43,7 @@ func interact(by_whom : Node3D) -> void:
 			if not GameSession.is_scientist_following_player():
 				current_state = State.FOLLOWING_PLAYER
 				following = by_whom
+				GameSession.scientist_met(id)
 				GameSession.scientist_following_player(id)
 			else:
 				pass # TODO: Add flavour text for why this can't be done
@@ -83,8 +83,14 @@ func _physics_process_following_player(delta : float) -> void:
 		look_at(horizontal_position, Vector3(0, 1, 0), true)
 		switch_animation_if_not_current("idle", 0.25)
 		
+		
 
 func _physics_process(delta : float) -> void:
+	if MadTalkGlobals.is_during_dialog:
+		# Forces soft-pause state during dialogs
+		switch_animation_if_not_current("idle", 0.25)
+		return
+	
 	match current_state:
 		State.FOLLOWING_PLAYER: _physics_process_following_player(delta)
 

@@ -5,6 +5,7 @@ enum ScientistState {ALIVE, DEAD, RESCUED}
 var scientist_states : Array
 var player_tagalong : int
 
+var madtalk
 
 func _on_mad_talk_activate_custom_effect(effect_id: String, data: Array):
 	# data is an Array of strings, in this project we only use data[0]
@@ -40,11 +41,30 @@ func _on_mad_talk_activate_custom_effect(effect_id: String, data: Array):
 			# arg == "killed_some" in `If At Least One Scientist is Extracted And The Rest Killed`
 			pass
 
+func get_scientists_saved() -> int:
+	var result : int = 0
+	for state in scientist_states:
+		if state == ScientistState.RESCUED:
+			result += 1
+	return result
+
 func is_scientist_alive(scientist_id : int) -> bool:
 	return scientist_states[scientist_id] == ScientistState.ALIVE
 
 func is_scientist_following_player() -> bool:
 	return player_tagalong != -1
+
+func scientist_met(scientist_id : int) -> void:
+	match scientist_id:
+		0: 
+			print("Playing scientist_a_found")
+			madtalk.start_dialog("scientist_a_found")
+		1: 
+			print("Playing scientist_b_found")
+			madtalk.start_dialog("scientist_b_found")
+		2: 
+			print("Playing scientist_c_found")
+			madtalk.start_dialog("scientist_c_found")
 
 func scientist_dead(scientist_id : int) -> void:
 	scientist_states[scientist_id] = ScientistState.DEAD
@@ -55,6 +75,27 @@ func scientist_rescued(scientist_id : int) -> void:
 	scientist_states[scientist_id] = ScientistState.RESCUED
 	if player_tagalong == scientist_id:
 		player_tagalong = -1
+	if get_scientists_saved() != 3:
+		match scientist_id:
+			0: 
+				print("Playing scientist_a_pod")
+				madtalk.start_dialog("scientist_a_pod")
+			1: 
+				print("Playing scientist_b_pod")
+				madtalk.start_dialog("scientist_b_pod")
+			2: 
+				print("Playing scientist_c_pod")
+				madtalk.start_dialog("scientist_c_pod")
+		scientist_in_pod()
+	else:
+		print("Playing last_pod")
+		madtalk.start_dialog("last_pod")
+
+func scientist_in_pod() -> void:
+	get_tree().call_group("scientist", "queue_free")
+	if get_scientists_saved() == 1:
+		print("Playing one_escapes")
+		madtalk.start_dialog("one_escapes")
 
 func scientist_following_player(scientist_id : int) -> void:
 	player_tagalong = scientist_id

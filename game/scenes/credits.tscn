@@ -1,23 +1,52 @@
-[gd_scene load_steps=5 format=3 uid="uid://cqmki2uw7d7x7"]
+[gd_scene load_steps=7 format=3 uid="uid://cqmki2uw7d7x7"]
 
 [ext_resource type="Texture2D" uid="uid://c5vcntoua4b3t" path="res://textures/credits.png" id="1_d42bu"]
 [ext_resource type="Script" path="res://scenes/credits.gd" id="1_hk0pd"]
+[ext_resource type="AudioStream" uid="uid://cjirt2prta3iy" path="res://audio/music/saferoom.ogg" id="3_60211"]
+[ext_resource type="FontFile" uid="uid://ckhxdr4lr461o" path="res://fonts/BebasNeue-Regular.otf" id="3_mrwm2"]
 
 [sub_resource type="Animation" id="Animation_mcxrb"]
 resource_name = "credits"
-length = 30.0
-step = 10.0
+length = 35.0
+step = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("TextureRect:position")
+tracks/0/path = NodePath("Texture_Credits:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 30),
+"times": PackedFloat32Array(2, 27),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(320, 720), Vector2(320, -1600)]
+"values": [Vector2(320, 720), Vector2(320, -1400)]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_60211")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Ending:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 27.5, 28),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5ksqp"]
@@ -43,17 +72,68 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Texture_Credits" type="TextureRect" parent="."]
 layout_mode = 0
 offset_left = 320.0
 offset_top = 720.0
 offset_right = 960.0
-offset_bottom = 2319.99
+offset_bottom = 2320.0
 texture = ExtResource("1_d42bu")
 expand_mode = 4
 stretch_mode = 4
+
+[node name="Ending" type="Control" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -147.5
+offset_top = -120.0
+offset_right = 147.5
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label_Ending" type="Label" parent="Ending"]
+layout_mode = 0
+offset_top = 33.0
+offset_right = 221.0
+offset_bottom = 156.0
+theme_override_colors/font_color = Color(0.501961, 0.501961, 0.501961, 1)
+theme_override_fonts/font = ExtResource("3_mrwm2")
+theme_override_font_sizes/font_size = 100
+text = "Ending"
+
+[node name="Label_Letter" type="Label" parent="Ending"]
+layout_mode = 0
+offset_left = 230.0
+offset_right = 286.0
+offset_bottom = 171.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_mrwm2")
+theme_override_font_sizes/font_size = 140
+text = "A"
+
+[node name="Label_Description" type="Label" parent="Ending"]
+layout_mode = 0
+offset_top = 130.0
+offset_right = 295.0
+offset_bottom = 200.0
+theme_override_colors/font_color = Color(0.752941, 0.752941, 0.752941, 1)
+theme_override_constants/line_spacing = -10
+theme_override_fonts/font = ExtResource("3_mrwm2")
+theme_override_font_sizes/font_size = 32
+text = "All scientists saved...
+at a cost."
+horizontal_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_5ksqp")
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"BGM"

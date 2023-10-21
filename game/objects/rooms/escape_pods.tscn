@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bcyywqdke0c30"]
+[gd_scene load_steps=14 format=3 uid="uid://bcyywqdke0c30"]
 
 [ext_resource type="PackedScene" uid="uid://btuujek5w5yxf" path="res://objects/rooms/building_parts/escape_pods.tscn" id="2_o1ba6"]
 [ext_resource type="PackedScene" uid="uid://bvhxtxnr14j3l" path="res://objects/player_spawn_point.tscn" id="2_q0fnl"]
@@ -9,14 +9,14 @@
 [ext_resource type="PackedScene" uid="uid://cxpjmmqyln5gd" path="res://objects/room_exit.tscn" id="7_ai8k5"]
 [ext_resource type="PackedScene" uid="uid://b3xs7myw6t33d" path="res://objects/camera_trigger.tscn" id="8_xo12r"]
 [ext_resource type="PackedScene" uid="uid://bfgu1tbuk3iqa" path="res://objects/fixed_camera.tscn" id="9_od1wv"]
+[ext_resource type="PackedScene" uid="uid://bw5rrpk6hrhtj" path="res://objects/rescue_zone.tscn" id="10_xtv5r"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x7qrm"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mvh53"]
 resource_name = "Wall"
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("3_rekp6")
 roughness = 0.5
 emission_enabled = true
-emission = Color(0.501961, 0.752941, 1, 1)
 emission_operator = 1
 emission_texture = ExtResource("4_4jonf")
 normal_enabled = true
@@ -32,9 +32,8 @@ size = Vector3(5, 2, 5)
 script = ExtResource("2_vdglb")
 
 [node name="Mesh" parent="." instance=ExtResource("2_o1ba6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 13)
-surface_material_override/1 = SubResource("StandardMaterial3D_x7qrm")
-WallLightsColor = Color(0.501961, 0.752941, 1, 1)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 16, 0, 13)
+surface_material_override/1 = SubResource("StandardMaterial3D_mvh53")
 
 [node name="PlayerSpawnPoint" parent="." instance=ExtResource("2_q0fnl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 11)
@@ -77,10 +76,8 @@ omni_range = 4.0
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 2, 15)
-light_color = Color(0.501961, 0.752941, 1, 1)
-light_energy = 0.5
+light_color = Color(0.85098, 1, 0.85098, 1)
 shadow_enabled = true
-omni_range = 4.0
 
 [node name="OmniLight3D3" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 2, 15)
@@ -88,6 +85,9 @@ light_color = Color(0.501961, 0.752941, 1, 1)
 light_energy = 0.5
 shadow_enabled = true
 omni_range = 4.0
+
+[node name="RescueZone" parent="." instance=ExtResource("10_xtv5r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 16)
 
 [connection signal="player_entered" from="CameraTrigger1" to="CameraTrigger1/FixedCamera" method="_on_player_entered"]
 [connection signal="player_entered" from="CameraTrigger2" to="CameraTrigger2/FixedCamera" method="_on_player_entered"]
