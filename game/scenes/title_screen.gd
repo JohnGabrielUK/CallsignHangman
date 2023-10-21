@@ -15,7 +15,7 @@ func _process(delta : float) -> void:
 		anim_player.play("fade_out")
 
 func _ready() -> void:
-	await get_tree().create_timer(3.0).timeout
+	await get_tree().create_timer(1.0).timeout
 	audio_bgm.play()
 	anim_player.play("intro")
 
@@ -24,4 +24,4 @@ func _on_animation_player_animation_finished(anim_name):
 		"intro":
 			current_state = State.WAITING
 		"fade_out":
-			get_tree().change_scene_to_file("res://scenes/game.tscn")
+			get_tree().change_scene_to_file("res://scenes/intro.tscn")

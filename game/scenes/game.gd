@@ -125,6 +125,7 @@ func start_room() -> void:
 	GameSession.room_entered(room_to_load)
 
 func change_room(room : String, spawn_id : int) -> void:
+	set_prompts_visible(false, false)
 	get_tree().paused = true
 	if get_music_for_room(room) != current_music:
 		anim_player_music.play("fade_out_music")
@@ -153,7 +154,17 @@ func _ready() -> void:
 	
 	load_room("Entrance", 0)
 
-func _on_mad_talk_voice_clip_requested(speaker_id, clip_path):
+func _on_mad_talk_voice_clip_requested(speaker_id, clip_path) -> void:
 	if ResourceLoader.exists(clip_path):
 		sfx_voice_clips.stream = load(clip_path)
 		sfx_voice_clips.play()
+
+func _on_sfx_voice_clips_finished() -> void:
+	%MadTalk.dialog_acknowledge()
+
+# For stopping voice clips if the player skips the line manually
+func _on_mad_talk_dialog_acknowledged() -> void:
+	sfx_voice_clips.stop()
+
+func _on_mad_talk_dialog_started(sheet_name, sequence_id):
+	set_prompts_visible(false, false)

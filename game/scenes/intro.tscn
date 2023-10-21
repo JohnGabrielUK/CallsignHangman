@@ -1,9 +1,46 @@
-[gd_scene load_steps=13 format=3 uid="uid://co3oyyl3e5mjx"]
+[gd_scene load_steps=24 format=3 uid="uid://bpoy5m1sp32o7"]
 
-[ext_resource type="Texture2D" uid="uid://oktbr7f5wsr" path="res://textures/message_box.png" id="1_bqx38"]
-[ext_resource type="Texture2D" uid="uid://rcapne5t1l5q" path="res://textures/mugshot_placeholder.png" id="2_nbqiw"]
-[ext_resource type="FontFile" uid="uid://ckhxdr4lr461o" path="res://fonts/BebasNeue-Regular.otf" id="3_0ggub"]
-[ext_resource type="FontFile" uid="uid://cyshajh7d2psd" path="res://fonts/Roboto-Light.ttf" id="4_ri72j"]
+[ext_resource type="Texture2D" uid="uid://oktbr7f5wsr" path="res://textures/message_box.png" id="1_w8iix"]
+[ext_resource type="Script" path="res://scenes/intro.gd" id="1_wu5ir"]
+[ext_resource type="Texture2D" uid="uid://rcapne5t1l5q" path="res://textures/mugshot_placeholder.png" id="2_3301s"]
+[ext_resource type="Script" path="res://madtalk/madtalk_runtime.gd" id="2_jn242"]
+[ext_resource type="FontFile" uid="uid://ckhxdr4lr461o" path="res://fonts/BebasNeue-Regular.otf" id="3_b1d7w"]
+[ext_resource type="Script" path="res://madtalk/CharacterData.gd" id="4_ci2vk"]
+[ext_resource type="FontFile" uid="uid://cyshajh7d2psd" path="res://fonts/Roboto-Light.ttf" id="4_h8mkb"]
+[ext_resource type="AudioStream" uid="uid://balh0xa8n5cci" path="res://audio/amb/intro.ogg" id="5_q4sg6"]
+
+[sub_resource type="Resource" id="Resource_2e7i7"]
+script = ExtResource("4_ci2vk")
+id = "hangman"
+name = "H A N G M A N"
+avatar = ExtResource("2_3301s")
+variants = {}
+
+[sub_resource type="Resource" id="Resource_t4ruw"]
+script = ExtResource("4_ci2vk")
+id = "katrina"
+name = "K A T R I N A"
+avatar = ExtResource("2_3301s")
+variants = {}
+
+[sub_resource type="Resource" id="Resource_mhfcj"]
+script = ExtResource("4_ci2vk")
+id = "scientist"
+name = "S C I E N T I S T"
+avatar = ExtResource("2_3301s")
+variants = {}
+
+[sub_resource type="Resource" id="Resource_qcper"]
+script = ExtResource("4_ci2vk")
+id = "narrator"
+name = ""
+variants = {}
+
+[sub_resource type="Resource" id="Resource_0fmqo"]
+script = ExtResource("4_ci2vk")
+id = "computer"
+name = ""
+variants = {}
 
 [sub_resource type="Animation" id="Animation_ft8p5"]
 resource_name = "DialogFadeIn"
@@ -64,58 +101,10 @@ tracks/1/keys = {
 [sub_resource type="Animation" id="Animation_s4x76"]
 resource_name = "MenuFadeIn"
 length = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MenuBox:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("MenuBox:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
 
 [sub_resource type="Animation" id="Animation_7ege1"]
 resource_name = "MenuFadeOut"
 length = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MenuBox:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("MenuBox:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
 
 [sub_resource type="Animation" id="Animation_cf6ur"]
 resource_name = "MessageBoxFadeIn"
@@ -223,30 +212,6 @@ tracks/3/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
 }
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("MenuBox:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("MenuBox:modulate")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7rqyp"]
 _data = {
@@ -259,7 +224,83 @@ _data = {
 "RESET": SubResource("Animation_viapt")
 }
 
-[node name="Dialog" type="Control"]
+[sub_resource type="Animation" id="Animation_rv3i2"]
+resource_name = "fade_out"
+length = 2.0
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HUD/Blackout:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Audio_Ambience:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -40.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3sem7"]
+_data = {
+"fade_out": SubResource("Animation_rv3i2")
+}
+
+[node name="Intro" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wu5ir")
+
+[node name="MadTalk" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_jn242")
+ListOfCharacters = Array[ExtResource("4_ci2vk")]([SubResource("Resource_2e7i7"), SubResource("Resource_t4ruw"), SubResource("Resource_mhfcj"), SubResource("Resource_qcper"), SubResource("Resource_0fmqo")])
+DialogMainControl = NodePath("../HUD/Dialog")
+DialogMessageBox = NodePath("../HUD/Dialog/MessageBox")
+DialogMessageLabel = NodePath("../HUD/Dialog/MessageBox/MessageLabel")
+DialogSpeakerLabel = NodePath("../HUD/Dialog/MessageBox/Speaker")
+DialogSpeakerAvatar = NodePath("../HUD/Dialog/MessageBox/Avatar")
+DialogButtonsMenu = NodePath("../HUD/Dialog/MenuBox")
+DialogButtonsContainer = NodePath("../HUD/Dialog/MenuBox/VBox")
+DialogAnimationPlayer = NodePath("../HUD/Dialog/DialogUIAnimationPlayer")
+TransitionAnimationName_DialogFadeIn = "DialogFadeIn"
+TransitionAnimationName_DialogFadeOut = "DialogFadeOut"
+TransitionAnimationName_MessageBoxFadeIn = "MessageBoxFadeIn"
+TransitionAnimationName_MessageBoxFadeOut = "MessageBoxFadeOut"
+TransitionAnimationName_MenuFadeIn = "MenuFadeIn"
+TransitionAnimationName_MenuFadeOut = "MenuFadeOut"
+AnimateText = false
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Dialog" type="Control" parent="HUD"]
+visible = false
+modulate = Color(1, 1, 1, 0)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -268,7 +309,9 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_lock_ = true
 
-[node name="MessageBox" type="ReferenceRect" parent="."]
+[node name="MessageBox" type="ReferenceRect" parent="HUD/Dialog"]
+visible = false
+modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -278,34 +321,34 @@ offset_right = 720.0
 offset_bottom = -51.0
 grow_vertical = 0
 
-[node name="MessageBackground" type="TextureRect" parent="MessageBox"]
+[node name="MessageBackground" type="TextureRect" parent="HUD/Dialog/MessageBox"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-texture = ExtResource("1_bqx38")
+texture = ExtResource("1_w8iix")
 
-[node name="Avatar" type="TextureRect" parent="MessageBox"]
+[node name="Avatar" type="TextureRect" parent="HUD/Dialog/MessageBox"]
 layout_mode = 0
 offset_left = 16.0
 offset_top = 16.0
 offset_right = 144.0
 offset_bottom = 144.0
-texture = ExtResource("2_nbqiw")
+texture = ExtResource("2_3301s")
 metadata/_edit_lock_ = true
 
-[node name="Speaker" type="Label" parent="MessageBox"]
+[node name="Speaker" type="Label" parent="HUD/Dialog/MessageBox"]
 layout_mode = 0
 offset_left = 160.0
 offset_top = 12.0
 offset_right = 305.0
 offset_bottom = 45.0
 theme_override_colors/font_color = Color(0.501961, 0.501961, 0.501961, 1)
-theme_override_fonts/font = ExtResource("3_0ggub")
+theme_override_fonts/font = ExtResource("3_b1d7w")
 theme_override_font_sizes/font_size = 24
 text = "K A T R I N A"
 metadata/_edit_lock_ = true
 
-[node name="MessageLabel" type="RichTextLabel" parent="MessageBox"]
+[node name="MessageLabel" type="RichTextLabel" parent="HUD/Dialog/MessageBox"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -316,38 +359,39 @@ offset_right = -40.0
 offset_bottom = -35.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/normal_font = ExtResource("4_ri72j")
+theme_override_fonts/normal_font = ExtResource("4_h8mkb")
 theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
 text = "Thrilled to hear it. You'll puncture through the outer hull. Intel confirms no survivors in the living quarters, so we've depressurised them remotely."
 metadata/_edit_lock_ = true
 
-[node name="MenuBox" type="ReferenceRect" parent="."]
-visible = false
-modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -210.0
-offset_top = -452.0
-offset_right = 210.0
-offset_bottom = -280.0
-grow_horizontal = 2
-grow_vertical = 0
-metadata/_edit_lock_ = true
-
-[node name="VBox" type="VBoxContainer" parent="MenuBox"]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-grow_horizontal = 2
-
-[node name="DialogUIAnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="DialogUIAnimationPlayer" type="AnimationPlayer" parent="HUD/Dialog"]
 libraries = {
 "": SubResource("AnimationLibrary_7rqyp")
 }
 
-[node name="SFXVoiceClips" type="AudioStreamPlayer" parent="."]
+[node name="SFXVoiceClips" type="AudioStreamPlayer" parent="HUD/Dialog"]
+
+[node name="Blackout" type="ColorRect" parent="HUD"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
+
+[node name="Audio_Ambience" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_q4sg6")
+bus = &"AMB"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_3sem7")
+}
+
+[connection signal="dialog_finished" from="MadTalk" to="." method="_on_mad_talk_dialog_finished"]
+[connection signal="voice_clip_requested" from="MadTalk" to="." method="_on_mad_talk_voice_clip_requested"]
+[connection signal="finished" from="HUD/Dialog/SFXVoiceClips" to="." method="_on_sfx_voice_clips_finished"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
