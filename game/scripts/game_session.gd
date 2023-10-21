@@ -103,6 +103,15 @@ func scientist_in_pod() -> void:
 func scientist_following_player(scientist_id : int) -> void:
 	player_tagalong = scientist_id
 
+func terminal_activated(terminal_id : String) -> void:
+	match terminal_id:
+		"cafeteria_a":
+			madtalk.start_dialog("terminal_message_a")
+		"cafeteria_b":
+			madtalk.start_dialog("terminal_message_b")
+		"cafeteria_c":
+			madtalk.start_dialog("terminal_message_c")
+
 func room_entered(which : String) -> void:
 	if which == "Entrance" and not intro_played:
 		madtalk.start_dialog("intro")

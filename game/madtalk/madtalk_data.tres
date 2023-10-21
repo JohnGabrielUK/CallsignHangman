@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="DialogData" load_steps=113 format=3 uid="uid://dxkjjrap15vxu"]
+[gd_resource type="Resource" script_class="DialogData" load_steps=132 format=3 uid="uid://dxkjjrap15vxu"]
 
 [ext_resource type="Script" path="res://addons/madtalk/components/resources/DialogNodeData.gd" id="1"]
 [ext_resource type="Script" path="res://addons/madtalk/components/resources/DialogSheetData.gd" id="2"]
@@ -1343,6 +1343,239 @@ sheet_description = "At least one scientist is saved, the rest killed"
 next_sequence_id = 1
 nodes = [SubResource("Resource_8fqr5")]
 
+[sub_resource type="Resource" id="Resource_bf2iu"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "narrator"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "There's a message displayed here..."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_noxnh"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "computer"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "Attention all staff: we have received reports that certain members of the team have attempted to ingest some of the Remo samples."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_embwr"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "computer"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "We're not going to say you shouldn't do this, of course."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_o2ubj"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "computer"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "But we are going to say that you should check your health insurance plan before you do, because it almost certainly isn't covered."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_4ehto"]
+script = ExtResource("1")
+sequence_id = 0
+position = Vector2(0, 0)
+comment = ""
+items = [SubResource("Resource_bf2iu"), SubResource("Resource_noxnh"), SubResource("Resource_embwr"), SubResource("Resource_o2ubj")]
+options = []
+continue_sequence_id = -1
+continue_port_index = 0
+
+[sub_resource type="Resource" id="Resource_r4a12"]
+script = ExtResource("2")
+sheet_id = "terminal_message_a"
+sheet_description = "Flavour text found on a computer terminal"
+next_sequence_id = 1
+nodes = [SubResource("Resource_4ehto")]
+
+[sub_resource type="Resource" id="Resource_lahso"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "narrator"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "There's a message displayed here..."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_g8nu6"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "computer"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "Attention all staff: Like many of you, we were interested to hear the recent reports of prehistoric cavemen piloting interstellar vehicles."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_sw7sy"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "computer"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "We would like to set the record straight: we have no idea what that's about, either."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_dj07x"]
+script = ExtResource("1")
+sequence_id = 0
+position = Vector2(0, 0)
+comment = ""
+items = [SubResource("Resource_lahso"), SubResource("Resource_g8nu6"), SubResource("Resource_sw7sy")]
+options = []
+continue_sequence_id = -1
+continue_port_index = 0
+
+[sub_resource type="Resource" id="Resource_jsetm"]
+script = ExtResource("2")
+sheet_id = "terminal_message_b"
+sheet_description = "Flavour text found on a computer terminal"
+next_sequence_id = 1
+nodes = [SubResource("Resource_dj07x")]
+
+[sub_resource type="Resource" id="Resource_0wnsf"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "narrator"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "There's a message displayed here..."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_65460"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "computer"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "Attention all staff: We appreciate the difficulties of your current working environment, and we try to keep an open-mind regarding what you do with your free time."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_raf0y"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "computer"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "That being said, we do have to draw the line somewhere."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_a8nkd"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "computer"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "Going forward, we will be exercising greater scrutiny over the \"guests\" that are brought on board."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_oqxma"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "computer"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "Disciplinary measures have already been used in some cases."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_blf1s"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "computer"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "P.S. Yes, Conrad. That means you."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_treho"]
+script = ExtResource("1")
+sequence_id = 0
+position = Vector2(0, 0)
+comment = ""
+items = [SubResource("Resource_0wnsf"), SubResource("Resource_65460"), SubResource("Resource_raf0y"), SubResource("Resource_a8nkd"), SubResource("Resource_oqxma"), SubResource("Resource_blf1s")]
+options = []
+continue_sequence_id = -1
+continue_port_index = 0
+
+[sub_resource type="Resource" id="Resource_rddxw"]
+script = ExtResource("2")
+sheet_id = "terminal_message_c"
+sheet_description = ""
+next_sequence_id = 1
+nodes = [SubResource("Resource_treho")]
+
 [resource]
 script = ExtResource("3")
 version = 1.0
@@ -1359,5 +1592,8 @@ sheets = {
 "scientist_b_pod": SubResource("Resource_sg4he"),
 "scientist_c_found": SubResource("Resource_s70ww"),
 "scientist_c_pod": SubResource("Resource_2l5rs"),
-"some_killed": SubResource("Resource_8ic8s")
+"some_killed": SubResource("Resource_8ic8s"),
+"terminal_message_a": SubResource("Resource_r4a12"),
+"terminal_message_b": SubResource("Resource_jsetm"),
+"terminal_message_c": SubResource("Resource_rddxw")
 }

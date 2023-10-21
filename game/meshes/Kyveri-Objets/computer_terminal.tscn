@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://dxdsf8jm7rapi"]
+[gd_scene load_steps=8 format=3 uid="uid://dxdsf8jm7rapi"]
 
+[ext_resource type="Script" path="res://meshes/Kyveri-Objets/computer_terminal.gd" id="1_s0buy"]
 [ext_resource type="Texture2D" uid="uid://b4t7wa4gl5o5" path="res://textures/terminal_colour.png" id="1_v7epv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wf81f"]
@@ -43,13 +44,20 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_y1c3s")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1s2e1"]
-size = Vector3(1.99209, 5.32544, 3.37451)
+size = Vector3(2, 5, 3)
 
-[node name="Terminal" type="Node3D"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_4wcgm"]
+height = 8.0
+radius = 2.0
+
+[node name="Terminal" type="StaticBody3D" groups=["interactable"]]
 transform = Transform3D(0.208074, 0, 0, 0, 0.208074, 0, 0, 0, 0.208074, 0, 0, 0)
+collision_layer = 16
+collision_mask = 16
+script = ExtResource("1_s0buy")
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1.53531, 0, 0, 0, 1.00213, -0.755375, 1.56396, 0.0329253)
+transform = Transform3D(1, 0, 0, 0, 1.53531, 0, 0, 0, 1.00213, -0.755, 1.564, 0)
 mesh = SubResource("ArrayMesh_5ixdw")
 skeleton = NodePath("")
 
@@ -57,5 +65,9 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.626, 1.19209e-07, -0.091948)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.629899, 2.68018, -0.0053933)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.63, 2.68, 0)
 shape = SubResource("BoxShape3D_1s2e1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+shape = SubResource("CylinderShape3D_4wcgm")

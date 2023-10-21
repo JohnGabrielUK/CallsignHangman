@@ -1,13 +1,15 @@
-[gd_scene load_steps=21 format=3 uid="uid://c0w0dwk2kt8ui"]
+[gd_scene load_steps=33 format=3 uid="uid://c0w0dwk2kt8ui"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_007my"]
 [ext_resource type="Script" path="res://madtalk/madtalk_runtime.gd" id="2_enrov"]
 [ext_resource type="Script" path="res://madtalk/CharacterData.gd" id="3_6tbuq"]
 [ext_resource type="Environment" uid="uid://ngefto5heafd" path="res://environment.tres" id="4_4mbon"]
 [ext_resource type="AudioStream" uid="uid://11veopiqmgfu" path="res://audio/amb/ship1.ogg" id="5_jtdcb"]
+[ext_resource type="Texture2D" uid="uid://oktbr7f5wsr" path="res://textures/message_box.png" id="5_utyuc"]
 [ext_resource type="Texture2D" uid="uid://rcapne5t1l5q" path="res://textures/mugshot_placeholder.png" id="6_0q8n5"]
 [ext_resource type="AudioStream" uid="uid://vd5w60jgjqaa" path="res://audio/music/downtime.ogg" id="6_3p45f"]
-[ext_resource type="PackedScene" uid="uid://co3oyyl3e5mjx" path="res://objects/dialog.tscn" id="6_vat61"]
+[ext_resource type="FontFile" uid="uid://ckhxdr4lr461o" path="res://fonts/BebasNeue-Regular.otf" id="7_orrm4"]
+[ext_resource type="FontFile" uid="uid://cyshajh7d2psd" path="res://fonts/Roboto-Light.ttf" id="7_tw648"]
 
 [sub_resource type="Resource" id="Resource_2e7i7"]
 script = ExtResource("3_6tbuq")
@@ -30,7 +32,273 @@ name = "S C I E N T I S T"
 avatar = ExtResource("6_0q8n5")
 variants = {}
 
+[sub_resource type="Resource" id="Resource_qcper"]
+script = ExtResource("3_6tbuq")
+id = "narrator"
+name = ""
+variants = {}
+
+[sub_resource type="Resource" id="Resource_0fmqo"]
+script = ExtResource("3_6tbuq")
+id = "computer"
+name = ""
+variants = {}
+
 [sub_resource type="NavigationMesh" id="NavigationMesh_x8dff"]
+
+[sub_resource type="Animation" id="Animation_ft8p5"]
+resource_name = "DialogFadeIn"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_kykmm"]
+resource_name = "DialogFadeOut"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_s4x76"]
+resource_name = "MenuFadeIn"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MenuBox:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MenuBox:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_7ege1"]
+resource_name = "MenuFadeOut"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MenuBox:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MenuBox:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_cf6ur"]
+resource_name = "MessageBoxFadeIn"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MessageBox:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MessageBox:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_4k3jo"]
+resource_name = "MessageBoxFadeOut"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MessageBox:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MessageBox:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_viapt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MessageBox:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MessageBox:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MenuBox:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MenuBox:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7rqyp"]
+_data = {
+"DialogFadeIn": SubResource("Animation_ft8p5"),
+"DialogFadeOut": SubResource("Animation_kykmm"),
+"MenuFadeIn": SubResource("Animation_s4x76"),
+"MenuFadeOut": SubResource("Animation_7ege1"),
+"MessageBoxFadeIn": SubResource("Animation_cf6ur"),
+"MessageBoxFadeOut": SubResource("Animation_4k3jo"),
+"RESET": SubResource("Animation_viapt")
+}
 
 [sub_resource type="Animation" id="Animation_3618s"]
 resource_name = "fade_in"
@@ -173,7 +441,7 @@ script = ExtResource("1_007my")
 [node name="MadTalk" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("2_enrov")
-ListOfCharacters = Array[ExtResource("3_6tbuq")]([SubResource("Resource_2e7i7"), SubResource("Resource_t4ruw"), SubResource("Resource_mhfcj")])
+ListOfCharacters = Array[ExtResource("3_6tbuq")]([SubResource("Resource_2e7i7"), SubResource("Resource_t4ruw"), SubResource("Resource_mhfcj"), SubResource("Resource_qcper"), SubResource("Resource_0fmqo")])
 DialogMainControl = NodePath("../HUD/Dialog")
 DialogMessageBox = NodePath("../HUD/Dialog/MessageBox")
 DialogMessageLabel = NodePath("../HUD/Dialog/MessageBox/MessageLabel")
@@ -199,9 +467,102 @@ environment = ExtResource("4_4mbon")
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
-[node name="Dialog" parent="HUD" instance=ExtResource("6_vat61")]
+[node name="Dialog" type="Control" parent="HUD"]
 visible = false
 modulate = Color(1, 1, 1, 0)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="MessageBox" type="ReferenceRect" parent="HUD/Dialog"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -211.0
+offset_right = 720.0
+offset_bottom = -51.0
+grow_vertical = 0
+
+[node name="MessageBackground" type="TextureRect" parent="HUD/Dialog/MessageBox"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("5_utyuc")
+
+[node name="Avatar" type="TextureRect" parent="HUD/Dialog/MessageBox"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 144.0
+offset_bottom = 144.0
+texture = ExtResource("6_0q8n5")
+metadata/_edit_lock_ = true
+
+[node name="Speaker" type="Label" parent="HUD/Dialog/MessageBox"]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 12.0
+offset_right = 305.0
+offset_bottom = 45.0
+theme_override_colors/font_color = Color(0.501961, 0.501961, 0.501961, 1)
+theme_override_fonts/font = ExtResource("7_orrm4")
+theme_override_font_sizes/font_size = 24
+text = "K A T R I N A"
+metadata/_edit_lock_ = true
+
+[node name="MessageLabel" type="RichTextLabel" parent="HUD/Dialog/MessageBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 160.0
+offset_top = 45.0
+offset_right = -40.0
+offset_bottom = -35.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("7_tw648")
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "Thrilled to hear it. You'll puncture through the outer hull. Intel confirms no survivors in the living quarters, so we've depressurised them remotely."
+metadata/_edit_lock_ = true
+
+[node name="MenuBox" type="ReferenceRect" parent="HUD/Dialog"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -210.0
+offset_top = -452.0
+offset_right = 210.0
+offset_bottom = -280.0
+grow_horizontal = 2
+grow_vertical = 0
+metadata/_edit_lock_ = true
+
+[node name="VBox" type="VBoxContainer" parent="HUD/Dialog/MenuBox"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="DialogUIAnimationPlayer" type="AnimationPlayer" parent="HUD/Dialog"]
+libraries = {
+"": SubResource("AnimationLibrary_7rqyp")
+}
+
+[node name="SFXVoiceClips" type="AudioStreamPlayer" parent="HUD/Dialog"]
 
 [node name="Blackout" type="ColorRect" parent="HUD"]
 modulate = Color(1, 1, 1, 0)

@@ -22,7 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://dnj02i88sr1hw" path="res://textures/blood2.png" id="20_qb470"]
 [ext_resource type="Texture2D" uid="uid://dv3pdagm4rc2a" path="res://textures/blood1.png" id="21_6nhch"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2mgnc"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4wvg6"]
 resource_name = "Wall"
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("3_12lxb")
@@ -54,7 +54,7 @@ script = ExtResource("2_quymt")
 
 [node name="Mesh" parent="." instance=ExtResource("2_52kq6")]
 layers = 2
-surface_material_override/1 = SubResource("StandardMaterial3D_2mgnc")
+surface_material_override/1 = SubResource("StandardMaterial3D_4wvg6")
 WallLightsColor = Color(0, 0.686275, 0.631373, 1)
 DoorLightColors = Array[Color]([Color(0, 0.611765, 0.14902, 1), Color(0.752941, 0.584314, 0, 1), Color(0.741176, 0, 0.733333, 1), Color(0.301961, 0.427451, 1, 1), Color(0.713726, 0.105882, 0.164706, 1)])
 
@@ -247,12 +247,15 @@ transform = Transform3D(0.915985, 0, 0.401213, 0, 1, 0, -0.401213, 0, 0.915985, 
 
 [node name="Computer_Terminal" parent="Objects/Terminals" instance=ExtResource("15_hrw5s")]
 transform = Transform3D(0.0149999, 0, -0.207533, 0, 0.208074, 0, 0.207533, 0, 0.0149999, -2.52156, 0, -7.16464)
+terminal_id = "cafeteria_a"
 
 [node name="Computer_Terminal2" parent="Objects/Terminals" instance=ExtResource("15_hrw5s")]
 transform = Transform3D(0.0149999, 0, -0.207533, 0, 0.208074, 0, 0.207533, 0, 0.0149999, -1.32442, 0, -7.25117)
+terminal_id = "cafeteria_b"
 
 [node name="Computer_Terminal3" parent="Objects/Terminals" instance=ExtResource("15_hrw5s")]
 transform = Transform3D(0.0149999, 0, -0.207533, 0, 0.208074, 0, 0.207533, 0, 0.0149999, 0.0174155, 0, -7.34815)
+terminal_id = "cafeteria_c"
 
 [node name="Holograms" type="Node3D" parent="Objects"]
 
