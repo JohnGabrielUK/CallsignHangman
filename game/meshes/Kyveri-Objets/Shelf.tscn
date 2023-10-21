@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://bkwlwef8kjepr"]
+
+[ext_resource type="PackedScene" uid="uid://b4hd1dpuo5e4e" path="res://meshes/Kyveri-Objets/Shelf.glb" id="1_3tll4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_imxmo"]
+transparency = 1
+albedo_color = Color(0.619608, 1, 1, 0.254902)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_x6rms"]
+material = SubResource("StandardMaterial3D_imxmo")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5lsfv"]
+size = Vector3(1.22944, 2.93078, 2.01721)
+
+[sub_resource type="BoxMesh" id="BoxMesh_6jf84"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Shelf" parent="." instance=ExtResource("1_3tll4")]
+transform = Transform3D(0.259153, 0, 0, 0, 0.259153, 0, 0, 0, 0.259153, 0.098542, 1.19209e-07, -0.0839543)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Shelf"]
+transform = Transform3D(0.0158399, 2.09584, 0, -1.42468, 0.023302, 0, 0, 0, 1.79761, 0.0380061, 3.47934, -0.389471)
+mesh = SubResource("PlaneMesh_x6rms")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Shelf"]
+transform = Transform3D(2.09597, 0, 0, 0, 2.09597, 0, 0, 0, 2.09597, -0.206541, -2.49859e-07, 0.175966)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Shelf/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.465047, 1.24126, -0.156502)
+shape = SubResource("BoxShape3D_5lsfv")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Shelf"]
+transform = Transform3D(2.09597, 0, 0, 0, 0.21114, 0, 0, 0, 3.79366, -1.36383, 3.33834, -0.0962813)
+mesh = SubResource("BoxMesh_6jf84")
+skeleton = NodePath("../..")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://5sipovm1dr7i"]
+[gd_scene load_steps=27 format=3 uid="uid://5sipovm1dr7i"]
 
 [ext_resource type="PackedScene" uid="uid://bpw4p7saapb2s" path="res://objects/rooms/building_parts/cafeteria.tscn" id="2_52kq6"]
 [ext_resource type="Script" path="res://objects/room.gd" id="2_quymt"]
@@ -9,8 +9,20 @@
 [ext_resource type="PackedScene" uid="uid://b3xs7myw6t33d" path="res://objects/camera_trigger.tscn" id="5_13rbo"]
 [ext_resource type="Texture2D" uid="uid://cls2cel8gtflj" path="res://materials/rooms/scifi_parts_wall_normal.png" id="5_vgyb7"]
 [ext_resource type="PackedScene" uid="uid://bfgu1tbuk3iqa" path="res://objects/fixed_camera.tscn" id="6_vgrdf"]
+[ext_resource type="PackedScene" uid="uid://cf8bgnsbthcvk" path="res://meshes/Kyveri-Objets/Table2.tscn" id="10_8gf2p"]
+[ext_resource type="PackedScene" uid="uid://bs6eiluux6hfo" path="res://objects/rooms/Tv_Screen New.tscn" id="11_4jr5p"]
+[ext_resource type="PackedScene" uid="uid://bty2d35qogr4u" path="res://meshes/Kyveri-Objets/Vending Machine .tscn" id="12_vkbrs"]
+[ext_resource type="PackedScene" uid="uid://kdobjsis0f3u" path="res://meshes/Kyveri-Objets/Chair.tscn" id="13_vqqaa"]
+[ext_resource type="PackedScene" uid="uid://bmpl4lv2ptyqw" path="res://meshes/Kyveri-Objets/Create.tscn" id="14_3odie"]
+[ext_resource type="PackedScene" uid="uid://dxdsf8jm7rapi" path="res://meshes/Kyveri-Objets/computer_terminal.tscn" id="15_hrw5s"]
+[ext_resource type="PackedScene" uid="uid://b5npnvyjn223e" path="res://meshes/Kyveri-Objets/Hologram_Sign.tscn" id="16_ywm01"]
+[ext_resource type="Texture2D" uid="uid://divewewhbixq0" path="res://meshes/Kyveri-Objets/Decals/Stacks of paper.png" id="17_6sibv"]
+[ext_resource type="PackedScene" uid="uid://bti55it0qbl4q" path="res://meshes/Kyveri-Objets/laptop.tscn" id="18_lprth"]
+[ext_resource type="PackedScene" uid="uid://cnsbe8nhdxvth" path="res://meshes/Kyveri-Objets/Book.tscn" id="19_u0ln1"]
+[ext_resource type="Texture2D" uid="uid://dnj02i88sr1hw" path="res://meshes/Kyveri-Objets/Decals/blood2.png" id="20_qb470"]
+[ext_resource type="Texture2D" uid="uid://dv3pdagm4rc2a" path="res://meshes/Kyveri-Objets/Decals/Blood1.png" id="21_6nhch"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m3jfj"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lglk8"]
 resource_name = "Wall"
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("3_12lxb")
@@ -38,7 +50,7 @@ size = Vector3(6, 2, 9)
 script = ExtResource("2_quymt")
 
 [node name="Mesh" parent="." instance=ExtResource("2_52kq6")]
-surface_material_override/1 = SubResource("StandardMaterial3D_m3jfj")
+surface_material_override/1 = SubResource("StandardMaterial3D_lglk8")
 WallLightsColor = Color(0, 0.686275, 0.631373, 1)
 DoorLightColors = Array[Color]([Color(0, 0.611765, 0.14902, 1), Color(0.752941, 0.584314, 0, 1), Color(0.741176, 0, 0.733333, 1), Color(0.301961, 0.427451, 1, 1), Color(0.713726, 0.105882, 0.164706, 1)])
 
@@ -137,6 +149,161 @@ shadow_enabled = true
 [node name="OmniLight3D3" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, -6.5)
 shadow_enabled = true
+
+[node name="Objects" type="Node3D" parent="."]
+
+[node name="Tables" type="Node3D" parent="Objects"]
+
+[node name="Table" parent="Objects/Tables" instance=ExtResource("10_8gf2p")]
+transform = Transform3D(1.30171, 0, 0, 0, 1.30171, 0, 0, 0, 1.30171, 0.408823, 0, -0.955174)
+
+[node name="Table2" parent="Objects/Tables" instance=ExtResource("10_8gf2p")]
+transform = Transform3D(1.30171, 0, 0, 0, 1.30171, 0, 0, 0, 1.30171, 0.629599, 0, 3.59405)
+
+[node name="Table3" parent="Objects/Tables" instance=ExtResource("10_8gf2p")]
+transform = Transform3D(1.30171, 0, 0, 0, 1.30171, 0, 0, 0, 1.30171, 1.96117, 0, 0.878575)
+
+[node name="Table4" parent="Objects/Tables" instance=ExtResource("10_8gf2p")]
+transform = Transform3D(1.30171, 0, 0, 0, 1.30171, 0, 0, 0, 1.30171, 1.96117, 0, -2.93675)
+
+[node name="Screens" type="Node3D" parent="Objects"]
+
+[node name="Node3D" parent="Objects/Screens" instance=ExtResource("11_4jr5p")]
+transform = Transform3D(0.0962024, 0.0290537, -1.30744, -0.157538, 1.30168, 0.0173339, 1.29824, 0.155803, 0.0989877, -2.78291, 2.08962, -7.66761)
+
+[node name="Node3D4" parent="Objects/Screens" instance=ExtResource("11_4jr5p")]
+transform = Transform3D(1.30796, -0.0299657, 0.0884869, -0.0884458, 0.0028063, 1.30831, -0.0300867, -1.31095, 0.000778034, -3.40454, 2.29482, 0.198394)
+
+[node name="Node3D2" parent="Objects/Screens" instance=ExtResource("11_4jr5p")]
+transform = Transform3D(0.0716564, 0.0290537, -1.30901, -0.157185, 1.30168, 0.0202865, 1.29987, 0.155803, 0.0746138, -1.2098, 2.05648, -7.68407)
+
+[node name="Node3D3" parent="Objects/Screens" instance=ExtResource("11_4jr5p")]
+transform = Transform3D(0.0819394, 0.0132649, -1.30867, -0.154417, 1.30217, 0.00353046, 1.29959, 0.153887, 0.082931, 0.314924, 2.03553, -7.77969)
+
+[node name="Vending Machine" type="Node3D" parent="Objects"]
+
+[node name="Vending Machine " parent="Objects/Vending Machine" instance=ExtResource("12_vkbrs")]
+transform = Transform3D(-0.999061, 0, -0.0433229, 0, 1, 0, 0.0433229, 0, -0.999061, 5.83513, -0.124353, -7.22725)
+
+[node name="Vending Machine 2" parent="Objects/Vending Machine" instance=ExtResource("12_vkbrs")]
+transform = Transform3D(-0.999061, 0, -0.0433229, 0, 1, 0, 0.0433229, 0, -0.999061, 5.87647, -0.124353, -6.27407)
+
+[node name="Vending Machine 3" parent="Objects/Vending Machine" instance=ExtResource("12_vkbrs")]
+transform = Transform3D(-0.999061, 0, -0.0433229, 0, 1, 0, 0.0433229, 0, -0.999061, 5.9194, -0.124353, -5.28395)
+
+[node name="Chairs" type="Node3D" parent="Objects"]
+
+[node name="Chair" parent="Objects/Chairs" instance=ExtResource("13_vqqaa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.06831, 0.136584, -0.885602)
+
+[node name="Chair9" parent="Objects/Chairs" instance=ExtResource("13_vqqaa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.795232, 0, 0.830063)
+
+[node name="Chair2" parent="Objects/Chairs" instance=ExtResource("13_vqqaa")]
+transform = Transform3D(0.0293522, 0, -0.999569, 0, 1, 0, 0.999569, 0, 0.0293522, 0.108973, 0, -2.10276)
+
+[node name="Chair3" parent="Objects/Chairs" instance=ExtResource("13_vqqaa")]
+transform = Transform3D(-0.994087, 0, 0.108589, 0, 1, 0, -0.108589, 0, -0.994087, 1.13822, 0, -1.00718)
+
+[node name="Chair4" parent="Objects/Chairs" instance=ExtResource("13_vqqaa")]
+transform = Transform3D(-0.999945, 0, -0.0104892, 0, 1, 0, 0.0104892, 0, -0.999945, 2.80091, 0, -3.51716)
+
+[node name="Chair5" parent="Objects/Chairs" instance=ExtResource("13_vqqaa")]
+transform = Transform3D(0.0594632, 0, -0.99823, 0, 1, 0, 0.99823, 0, 0.0594632, 1.31288, -0.0173893, -4.54041)
+
+[node name="Chair6" parent="Objects/Chairs" instance=ExtResource("13_vqqaa")]
+transform = Transform3D(0.999848, 0, -0.017435, 0, 1, 0, 0.017435, 0, 0.999848, 0.549357, -0.0173893, -3.15039)
+
+[node name="Chair7" parent="Objects/Chairs" instance=ExtResource("13_vqqaa")]
+transform = Transform3D(-0.998464, 0, -0.0554033, 0, 1, 0, 0.0554033, 0, -0.998464, 2.62286, -0.0173893, 0.717782)
+
+[node name="Chair8" parent="Objects/Chairs" instance=ExtResource("13_vqqaa")]
+transform = Transform3D(-0.998464, -0.0551213, -0.0055825, 0, 0.100761, -0.994911, 0.0554033, -0.993383, -0.100606, 1.27028, 0.135103, 2.77638)
+
+[node name="Creates" type="Node3D" parent="Objects"]
+
+[node name="Create" parent="Objects/Creates" instance=ExtResource("14_3odie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.92266, 0.265385, -4.21992)
+
+[node name="Create4" parent="Objects/Creates" instance=ExtResource("14_3odie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.92266, 0.265385, 4.25863)
+
+[node name="Create2" parent="Objects/Creates" instance=ExtResource("14_3odie")]
+transform = Transform3D(0.915985, 0, 0.401213, 0, 1, 0, -0.401213, 0, 0.915985, 5.92266, 0.791113, -4.21992)
+
+[node name="Create3" parent="Objects/Creates" instance=ExtResource("14_3odie")]
+transform = Transform3D(0.915985, 0, 0.401213, 0, 1, 0, -0.401213, 0, 0.915985, 5.60758, 2.07071, -6.96441)
+
+[node name="Terminals" type="Node3D" parent="Objects"]
+
+[node name="Computer_Terminal" parent="Objects/Terminals" instance=ExtResource("15_hrw5s")]
+transform = Transform3D(0.0149999, 0, -0.207533, 0, 0.208074, 0, 0.207533, 0, 0.0149999, -2.52156, 0, -7.16464)
+
+[node name="Computer_Terminal2" parent="Objects/Terminals" instance=ExtResource("15_hrw5s")]
+transform = Transform3D(0.0149999, 0, -0.207533, 0, 0.208074, 0, 0.207533, 0, 0.0149999, -1.32442, 0, -7.25117)
+
+[node name="Computer_Terminal3" parent="Objects/Terminals" instance=ExtResource("15_hrw5s")]
+transform = Transform3D(0.0149999, 0, -0.207533, 0, 0.208074, 0, 0.207533, 0, 0.0149999, 0.0174155, 0, -7.34815)
+
+[node name="Holograms" type="Node3D" parent="Objects"]
+
+[node name="Hologram_Sign" parent="Objects/Holograms" instance=ExtResource("16_ywm01")]
+transform = Transform3D(1.44115, 0, 0, 0, 1.44115, 0, 0, 0, 1.44115, 5.90664, 0.0492294, -0.127327)
+
+[node name="Hologram_Sign2" parent="Objects/Holograms" instance=ExtResource("16_ywm01")]
+transform = Transform3D(1.44115, 0, 0, 0, 1.44115, 0, 0, 0, 1.44115, -3.13911, 0.0492294, -4.69753)
+
+[node name="Small objects" type="Node3D" parent="Objects"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0549055, 0.0908317, -0.867002)
+
+[node name="Sprite3D" type="Sprite3D" parent="Objects/Small objects"]
+transform = Transform3D(0.0282934, 0.104053, -0.00225625, 0.0008637, -0.0025728, -0.10782, -0.104073, 0.0282664, -0.00150818, 0.0595839, 0.569727, 0.291006)
+shaded = true
+texture = ExtResource("17_6sibv")
+
+[node name="Sprite3D2" type="Sprite3D" parent="Objects/Small objects"]
+transform = Transform3D(-0.0517027, 0.0944998, 0.00539914, -0.00833454, 0.00158305, -0.10752, -0.0942863, -0.0519598, 0.00654369, -0.153923, 0.567423, -0.519018)
+shaded = true
+texture = ExtResource("17_6sibv")
+
+[node name="Sprite3D3" type="Sprite3D" parent="Objects/Small objects"]
+transform = Transform3D(-0.0888444, -0.0611484, -0.00030256, -0.000740067, 0.00160885, -0.10784, 0.0611447, -0.0888303, -0.00174486, 1.99513, 0.561133, -2.28995)
+shaded = true
+texture = ExtResource("17_6sibv")
+
+[node name="Sprite3D4" type="Sprite3D" parent="Objects/Small objects"]
+transform = Transform3D(0.0172632, -0.106431, -0.00264089, 0.00176942, 0.00296183, -0.107799, 0.106449, 0.017211, 0.00222014, 2.28453, 0.557601, 1.40212)
+shaded = true
+texture = ExtResource("17_6sibv")
+
+[node name="Laptop" parent="Objects/Small objects" instance=ExtResource("18_lprth")]
+transform = Transform3D(-0.760371, 0, 0.106004, 0, 1, 0, -0.0810588, 0, -0.994366, -0.156021, 0.519493, -0.0166325)
+
+[node name="Laptop2" parent="Objects/Small objects" instance=ExtResource("18_lprth")]
+transform = Transform3D(-0.210541, -0.0243742, 0.96104, -0.0674306, 0.996104, 1.86265e-09, -0.732024, -0.084746, -0.276409, 1.5619, 0.515382, -2.68172)
+
+[node name="Book" parent="Objects/Small objects" instance=ExtResource("19_u0ln1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.708404, 0.561394, 0)
+
+[node name="Book2" parent="Objects/Small objects" instance=ExtResource("19_u0ln1")]
+transform = Transform3D(1, 0, 0, 0, 0.97739, 0.211444, 0, -0.211444, 0.97739, 0.769436, 0.565993, -0.15374)
+
+[node name="Book3" parent="Objects/Small objects" instance=ExtResource("19_u0ln1")]
+transform = Transform3D(1, 0, 0, 0, 0.999718, -0.0237517, 0, 0.0237517, 0.999718, 1.77134, 0.543234, -1.94767)
+
+[node name="decal" type="Node3D" parent="Objects"]
+
+[node name="Decal" type="Decal" parent="Objects/decal"]
+transform = Transform3D(0.724605, -0.689164, 0, -0.236906, -0.249089, 0.939058, -0.647166, -0.680446, -0.343758, 6.3882, 1.6846, 4.40868)
+size = Vector3(2.63102, 1.75357, 2.19615)
+texture_albedo = ExtResource("20_qb470")
+modulate = Color(0.352941, 0.352941, 0.352941, 1)
+
+[node name="Decal2" type="Decal" parent="Objects/decal"]
+transform = Transform3D(0.589219, -1.44044, -0.0315879, 0.79129, 1.04286, -0.179448, 0.163342, 0.14405, 0.98326, 7.19247, -0.292685, 1.9117)
+size = Vector3(1.74116, 1.89404, 2.19615)
+texture_albedo = ExtResource("21_6nhch")
+modulate = Color(0.352941, 0.352941, 0.352941, 1)
 
 [connection signal="player_entered" from="CameraTrigger1" to="CameraTrigger1/FixedCamera" method="_on_player_entered"]
 [connection signal="player_entered" from="CameraTrigger2" to="CameraTrigger2/FixedCamera" method="_on_player_entered"]

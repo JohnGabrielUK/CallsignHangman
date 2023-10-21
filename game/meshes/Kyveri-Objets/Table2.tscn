@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cf8bgnsbthcvk"]
 
-[ext_resource type="PackedScene" path="res://meshes/Kyveri-Objets/Table_New.glb" id="1_2emcy"]
+[ext_resource type="PackedScene" uid="uid://xt1gdh2xnm7f" path="res://meshes/Kyveri-Objets/Table_New.glb" id="1_2emcy"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_w2342"]
 size = Vector3(5.50584, 4.31013, 4.67096)
