@@ -1,13 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://2kjotohysb5m"]
+[gd_scene load_steps=3 format=3 uid="uid://cgpnsaub2ky1c"]
 
-[ext_resource type="PackedScene" uid="uid://bgo2o4fobojh2" path="res://meshes/Kyveri-Objets/Table.glb" id="1_xgxj5"]
+[ext_resource type="PackedScene" uid="uid://bgo2o4fobojh2" path="res://meshes/Kyveri-Objets/Table.glb" id="1_l6wkj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_t4f6n"]
 size = Vector3(7.4816, 4.95638, 8.52517)
 
 [node name="Table" type="Node3D"]
 
-[node name="Table" parent="." instance=ExtResource("1_xgxj5")]
+[node name="Table" parent="." instance=ExtResource("1_l6wkj")]
 transform = Transform3D(0.26, 0, 0, 0, 0.26, 0, 0, 0, 0.26, -0.194645, -0.226693, 0.259623)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Table"]

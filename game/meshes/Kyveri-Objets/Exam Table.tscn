@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cypqvlwaos8yi"]
+
+[ext_resource type="PackedScene" uid="uid://bkmikx3euqkjb" path="res://meshes/Kyveri-Objets/Exam Table .glb" id="1_qu863"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ubigs"]
+size = Vector3(3.2199, 3.79087, 8.54164)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Exam Table " parent="." instance=ExtResource("1_qu863")]
+transform = Transform3D(0.225433, 0, 0, 0, 0.225433, 0, 0, 0, 0.225433, 0.158651, -0.0542072, 0.0108408)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Exam Table "]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Exam Table /StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.58592, 0)
+shape = SubResource("BoxShape3D_ubigs")

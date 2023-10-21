@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c32lgth5kw3tp"]
+[gd_scene load_steps=24 format=3 uid="uid://c32lgth5kw3tp"]
 
 [ext_resource type="PackedScene" uid="uid://bvhxtxnr14j3l" path="res://objects/player_spawn_point.tscn" id="2_dk3l4"]
 [ext_resource type="PackedScene" uid="uid://bd026w72txmjb" path="res://objects/rooms/building_parts/lab.tscn" id="2_guc4g"]
@@ -6,8 +6,24 @@
 [ext_resource type="Texture2D" uid="uid://jt70f64wlu7s" path="res://materials/rooms/scifi_parts_wall_albedo.png" id="3_idhvy"]
 [ext_resource type="Texture2D" uid="uid://43ydho607sr1" path="res://materials/rooms/scifi_parts_wall_emission_lights_on.png" id="4_h6c54"]
 [ext_resource type="Texture2D" uid="uid://cls2cel8gtflj" path="res://materials/rooms/scifi_parts_wall_normal.png" id="5_e21ph"]
+[ext_resource type="PackedScene" uid="uid://cypqvlwaos8yi" path="res://meshes/Kyveri-Objets/Exam Table.tscn" id="7_1ax7p"]
+[ext_resource type="PackedScene" uid="uid://bdan348oa8hdf" path="res://meshes/Kyveri-Objets/Bench.tscn" id="8_q32q3"]
+[ext_resource type="PackedScene" uid="uid://cw41m5crnycrn" path="res://meshes/Kyveri-Objets/Test Tube.tscn" id="9_3romh"]
+[ext_resource type="PackedScene" uid="uid://bs6eiluux6hfo" path="res://objects/rooms/Tv_Screen New.tscn" id="10_6hb2s"]
+[ext_resource type="PackedScene" uid="uid://colje5cjdbrmc" path="res://meshes/Kyveri-Objets/Desk.tscn" id="11_y25qn"]
+[ext_resource type="PackedScene" uid="uid://c0ttbuiij3e7i" path="res://meshes/Kyveri-Objets/Small tubes.tscn" id="12_qray1"]
+[ext_resource type="PackedScene" uid="uid://sdjqvhplqyso" path="res://meshes/Kyveri-Objets/cup.tscn" id="13_eechj"]
+[ext_resource type="PackedScene" uid="uid://bti55it0qbl4q" path="res://meshes/Kyveri-Objets/laptop.tscn" id="13_px464"]
+[ext_resource type="PackedScene" uid="uid://kdobjsis0f3u" path="res://meshes/Kyveri-Objets/Chair.tscn" id="14_rbiil"]
+[ext_resource type="PackedScene" uid="uid://00syjrlwwvq8" path="res://meshes/Kyveri-Objets/bottle.tscn" id="14_uliei"]
+[ext_resource type="PackedScene" uid="uid://bkwlwef8kjepr" path="res://meshes/Kyveri-Objets/Shelf.tscn" id="15_bqr2u"]
+[ext_resource type="PackedScene" uid="uid://cnsbe8nhdxvth" path="res://meshes/Kyveri-Objets/Book.tscn" id="16_qx2ug"]
+[ext_resource type="PackedScene" uid="uid://e6m3h0gho8c7" path="res://meshes/Kyveri-Objets/Canister.tscn" id="17_rftte"]
+[ext_resource type="PackedScene" uid="uid://bmpl4lv2ptyqw" path="res://meshes/Kyveri-Objets/Create.tscn" id="18_htom2"]
+[ext_resource type="Texture2D" uid="uid://divewewhbixq0" path="res://meshes/Kyveri-Objets/Decals/Stacks of paper.png" id="19_vm7iu"]
+[ext_resource type="Texture2D" uid="uid://dgrd5pc30w73i" path="res://meshes/Kyveri-Objets/Decals/blood4.png" id="20_q23ws"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8dgc5"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fsc08"]
 resource_name = "Wall"
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("3_idhvy")
@@ -23,8 +39,131 @@ script = ExtResource("2_sr378")
 
 [node name="Mesh" parent="." instance=ExtResource("2_guc4g")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 23, 0, -10)
-surface_material_override/1 = SubResource("StandardMaterial3D_8dgc5")
+surface_material_override/1 = SubResource("StandardMaterial3D_fsc08")
 
 [node name="PlayerSpawnPoint" parent="." instance=ExtResource("2_dk3l4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 0, -9)
 point_towards = Vector3(0, 0, -1)
+
+[node name="Objects" type="Node3D" parent="."]
+
+[node name="Exam Table" type="Node3D" parent="Objects"]
+
+[node name="Node3D" parent="Objects/Exam Table" instance=ExtResource("7_1ax7p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.1681, 0.0576286, -12.3093)
+
+[node name="Node3D2" parent="Objects/Exam Table" instance=ExtResource("7_1ax7p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.3588, 0.0576286, -12.3093)
+
+[node name="Bench" type="Node3D" parent="Objects"]
+
+[node name="Node3D" parent="Objects/Bench" instance=ExtResource("8_q32q3")]
+transform = Transform3D(-0.0134038, 0, -0.99991, 0, 1, 0, 0.99991, 0, -0.0134038, 21.0174, 0, -13.0273)
+
+[node name="Test tube" type="Node3D" parent="Objects"]
+
+[node name="Test Tube" parent="Objects/Test tube" instance=ExtResource("9_3romh")]
+transform = Transform3D(0.67157, 0, 0, 0, 0.67157, 0, 0, 0, 0.67157, 19.6517, -0.104393, -12.342)
+
+[node name="screens" type="Node3D" parent="Objects"]
+
+[node name="Node3D" parent="Objects/screens" instance=ExtResource("10_6hb2s")]
+transform = Transform3D(-0.0367135, 0, -0.999326, 0, 1, 0, 0.999326, 0, -0.0367135, 21.1743, 2.12252, -13.4428)
+
+[node name="Node3D2" parent="Objects/screens" instance=ExtResource("10_6hb2s")]
+transform = Transform3D(1.65372, 0, -0.0228897, 0, 1.65388, 0, 0.0228897, 0, 1.65372, 18.4681, 1.03745, -9.84072)
+
+[node name="Node3D" parent="Objects" instance=ExtResource("11_y25qn")]
+transform = Transform3D(1.19945, 0, 0, 0, 1, 0, 0, 0, 1.33464, 19.094, -0.00974596, -9.882)
+
+[node name="Node3D" parent="Objects/Node3D" instance=ExtResource("12_qray1")]
+transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 1, -0.145679, 0.713209, -0.210535)
+
+[node name="Node3D2" parent="Objects/Node3D" instance=ExtResource("13_eechj")]
+transform = Transform3D(0.785482, 0, 0, 0, 0.999999, 0, 0, 0, 0.696354, 0, 0.692398, -0.492703)
+
+[node name="Node3D3" parent="Objects/Node3D" instance=ExtResource("14_uliei")]
+transform = Transform3D(0.910652, 0.00120428, 0, -0.00109668, 0.999999, 0, 0, 0, 1, -0.112116, 0.717559, 0.097712)
+
+[node name="Laptop" parent="Objects" instance=ExtResource("13_px464")]
+transform = Transform3D(0.652466, 0, 0.569939, 0, 1, 0, -0.452564, 0, 0.821687, 19.1099, 0.673461, -9.33393)
+
+[node name="Chair" parent="Objects" instance=ExtResource("14_rbiil")]
+transform = Transform3D(-0.93138, 0, 0.364048, 0, 1, 0, -0.364048, 0, -0.93138, 19.6904, 0, -9.33946)
+
+[node name="Shelf" type="Node3D" parent="Objects"]
+
+[node name="Node3D6" parent="Objects/Shelf" instance=ExtResource("15_bqr2u")]
+transform = Transform3D(-1.21952, 0, 0.017199, 0, 1.21964, 0, -0.017199, 0, -1.21952, 27.0962, 0.0122821, -9.22203)
+
+[node name="Book" parent="Objects/Shelf/Node3D6" instance=ExtResource("16_qx2ug")]
+transform = Transform3D(1, -4.65661e-09, 1.16415e-10, 0, -0.00462505, 0.999989, 0, -0.999989, -0.00462506, -0.066967, 0.6955, -0.408865)
+
+[node name="Book2" parent="Objects/Shelf/Node3D6" instance=ExtResource("16_qx2ug")]
+transform = Transform3D(1, -7.45058e-09, 1.16415e-10, 0, -0.00462505, 0.999989, 0, -0.999989, -0.00462506, -0.0669651, 0.69584, -0.335526)
+
+[node name="Book3" parent="Objects/Shelf/Node3D6" instance=ExtResource("16_qx2ug")]
+transform = Transform3D(1, -1.11759e-08, 1.16415e-10, 0, -0.00462505, 0.999989, 0, -0.999989, -0.00462506, -0.0669651, 0.69615, -0.268393)
+
+[node name="Book4" parent="Objects/Shelf/Node3D6" instance=ExtResource("16_qx2ug")]
+transform = Transform3D(1, -1.39698e-08, 1.16415e-10, 0, -0.00462505, 0.999989, 0, -0.999989, -0.00462506, -0.0669651, 0.696375, -0.219753)
+
+[node name="Book5" parent="Objects/Shelf/Node3D6" instance=ExtResource("16_qx2ug")]
+transform = Transform3D(1, -1.67638e-08, 1.16415e-10, 0, -0.00462505, 0.999989, 0, -0.999989, -0.00462506, -0.0669651, 0.696375, -0.219753)
+
+[node name="Book6" parent="Objects/Shelf/Node3D6" instance=ExtResource("16_qx2ug")]
+transform = Transform3D(1, -2.32831e-08, 1.16415e-10, 0, -0.00462505, 0.999989, 0, -0.999989, -0.00462506, -0.0669651, 0.696712, -0.146871)
+
+[node name="Book7" parent="Objects/Shelf/Node3D6" instance=ExtResource("16_qx2ug")]
+transform = Transform3D(1, -2.60843e-08, 2.79397e-09, 0, 0.999985, 0.00551514, 0, -0.00551513, 0.999985, -0.0353298, 0.561479, -0.0284386)
+
+[node name="Book8" parent="Objects/Shelf/Node3D6" instance=ExtResource("16_qx2ug")]
+transform = Transform3D(0.562704, -2.6077e-08, 0.826658, -0.00455914, 0.999985, 0.00310342, -0.826646, -0.00551513, 0.562695, 6.3898, 0.497447, 0.724922)
+
+[node name="Node3D7" parent="Objects/Shelf" instance=ExtResource("15_bqr2u")]
+transform = Transform3D(-1.21952, 0, 0.017199, 0, 1.21964, 0, -0.017199, 0, -1.21952, 27.1163, 0.0122821, -10.6419)
+
+[node name="Node3D8" parent="Objects/Shelf" instance=ExtResource("15_bqr2u")]
+transform = Transform3D(-1.21952, 0, 0.017199, 0, 1.21964, 0, -0.017199, 0, -1.21952, 27.1377, 0.0122821, -12.1629)
+
+[node name="Canister" type="Node3D" parent="Objects"]
+
+[node name="Node3D2" parent="Objects/Canister" instance=ExtResource("17_rftte")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.2395, 0.0147551, -13.1448)
+
+[node name="Node3D3" parent="Objects/Canister" instance=ExtResource("17_rftte")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.8404, 0.0147551, -13.1448)
+
+[node name="Node3D4" parent="Objects/Canister" instance=ExtResource("17_rftte")]
+transform = Transform3D(1, 0, 0, 0, -0.0195988, -0.999808, 0, 0.999808, -0.0195988, 26.8404, 0.0930802, -12.6835)
+
+[node name="Node3D5" parent="Objects/Canister" instance=ExtResource("17_rftte")]
+transform = Transform3D(1, 0, 0, 0, 0.999997, -0.00237365, 0, 0.00237365, 0.999997, 19.0092, 0.0892945, -11.2421)
+
+[node name="Create" parent="Objects" instance=ExtResource("18_htom2")]
+transform = Transform3D(-0.978379, 0, 0.206819, 0, 1, 0, -0.206819, 0, -0.978379, 27.3194, 2.01864, -8.98948)
+
+[node name="Sprite3D" type="Sprite3D" parent="Objects"]
+transform = Transform3D(0.0779518, -0.120095, 0, 0.00511701, 0.00332138, 0.143046, -0.119986, -0.077881, 0.00610044, 19.1568, 0.700408, -9.96699)
+shaded = true
+texture = ExtResource("19_vm7iu")
+
+[node name="Sprite3D2" type="Sprite3D" parent="Objects"]
+transform = Transform3D(0.0779518, -0.120095, 0, 0.00511701, 0.00332138, 0.143046, -0.119986, -0.077881, 0.00610044, 22.424, 0.0142137, -10.652)
+shaded = true
+texture = ExtResource("19_vm7iu")
+
+[node name="Sprite3D3" type="Sprite3D" parent="Objects"]
+transform = Transform3D(0.14046, 0.0277533, 4.65661e-10, -0.00118251, 0.00598473, 0.143046, 0.027728, -0.140332, 0.00610044, 22.1535, 0.0272597, -10.9579)
+shaded = true
+texture = ExtResource("19_vm7iu")
+
+[node name="Decal" type="Decal" parent="Objects"]
+transform = Transform3D(1, 0, 0, 0, -0.0309398, 0.999521, 0, -0.999521, -0.0309398, 20.2418, 1.28663, -8.23993)
+size = Vector3(2, 0.186845, 2)
+texture_albedo = ExtResource("20_q23ws")
+
+[node name="Decal2" type="Decal" parent="Objects"]
+transform = Transform3D(0.0270985, -0.999613, 0.00635789, -0.25842, -0.000861188, 0.966032, -0.965653, -0.027821, -0.258343, 24.4745, 1.30046, -7.79341)
+size = Vector3(0.916162, 0.186845, 2)
+texture_albedo = ExtResource("20_q23ws")

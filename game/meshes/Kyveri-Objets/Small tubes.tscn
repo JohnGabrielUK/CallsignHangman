@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c0ttbuiij3e7i"]
+
+[ext_resource type="PackedScene" uid="uid://orpfllsclv52" path="res://meshes/Kyveri-Objets/Beaker set.glb" id="1_sbaw7"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Beaker set" parent="." instance=ExtResource("1_sbaw7")]
+transform = Transform3D(0.189826, 0, 0, 0, 0.189826, 0, 0, 0, 0.189826, 0.0200258, 0, 0.0135766)

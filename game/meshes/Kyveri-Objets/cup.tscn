@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://sdjqvhplqyso"]
+
+[ext_resource type="PackedScene" uid="uid://34neuwcvswgu" path="res://meshes/Kyveri-Objets/cup.glb" id="1_xt20m"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="cup" parent="." instance=ExtResource("1_xt20m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0160286, -0.0162229, 0.0071708)
