@@ -2,13 +2,13 @@
 
 [ext_resource type="Texture2D" uid="uid://c5vcntoua4b3t" path="res://textures/credits.png" id="1_d42bu"]
 [ext_resource type="Script" path="res://scenes/credits.gd" id="1_hk0pd"]
-[ext_resource type="AudioStream" uid="uid://cjirt2prta3iy" path="res://audio/music/saferoom.ogg" id="3_60211"]
 [ext_resource type="FontFile" uid="uid://ckhxdr4lr461o" path="res://fonts/BebasNeue-Regular.otf" id="3_mrwm2"]
+[ext_resource type="AudioStream" uid="uid://buwm4u7fwt5j4" path="res://audio/music/credits.ogg" id="4_ml3jx"]
 
 [sub_resource type="Animation" id="Animation_mcxrb"]
 resource_name = "credits"
-length = 35.0
-step = 0.5
+length = 48.0
+step = 0.25
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -16,7 +16,7 @@ tracks/0/path = NodePath("Texture_Credits:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(2, 27),
+"times": PackedFloat32Array(0, 29.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(320, 720), Vector2(320, -1400)]
@@ -31,7 +31,7 @@ tracks/1/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource("3_60211")
+"stream": ExtResource("4_ml3jx")
 }],
 "times": PackedFloat32Array(0)
 }
@@ -43,10 +43,10 @@ tracks/2/path = NodePath("Ending:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 27.5, 28),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 28.75, 29.25, 40, 45),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5ksqp"]
@@ -77,7 +77,7 @@ layout_mode = 0
 offset_left = 320.0
 offset_top = 720.0
 offset_right = 960.0
-offset_bottom = 2320.0
+offset_bottom = 2320.01
 texture = ExtResource("1_d42bu")
 expand_mode = 4
 stretch_mode = 4
@@ -137,3 +137,5 @@ libraries = {
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 bus = &"BGM"
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
