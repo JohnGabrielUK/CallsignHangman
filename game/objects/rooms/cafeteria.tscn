@@ -22,7 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://dnj02i88sr1hw" path="res://meshes/Kyveri-Objets/Decals/blood2.png" id="20_qb470"]
 [ext_resource type="Texture2D" uid="uid://dv3pdagm4rc2a" path="res://meshes/Kyveri-Objets/Decals/Blood1.png" id="21_6nhch"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lglk8"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ig7q0"]
 resource_name = "Wall"
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("3_12lxb")
@@ -50,7 +50,7 @@ size = Vector3(6, 2, 9)
 script = ExtResource("2_quymt")
 
 [node name="Mesh" parent="." instance=ExtResource("2_52kq6")]
-surface_material_override/1 = SubResource("StandardMaterial3D_lglk8")
+surface_material_override/1 = SubResource("StandardMaterial3D_ig7q0")
 WallLightsColor = Color(0, 0.686275, 0.631373, 1)
 DoorLightColors = Array[Color]([Color(0, 0.611765, 0.14902, 1), Color(0.752941, 0.584314, 0, 1), Color(0.741176, 0, 0.733333, 1), Color(0.301961, 0.427451, 1, 1), Color(0.713726, 0.105882, 0.164706, 1)])
 
@@ -75,7 +75,7 @@ point_towards = Vector3(-1, 0, 0)
 
 [node name="PlayerSpawnPoint5" parent="." instance=ExtResource("2_wlvad")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 2)
-spawn_id = 3
+spawn_id = 4
 point_towards = Vector3(-1, 0, 0)
 
 [node name="RoomExit1" parent="." instance=ExtResource("3_kkqhd")]

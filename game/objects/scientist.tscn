@@ -137,7 +137,7 @@ _data = {
 "walk": ExtResource("14_xjstl")
 }
 
-[node name="Scientist" type="CharacterBody3D" groups=["interactable"]]
+[node name="Scientist" type="CharacterBody3D" groups=["interactable", "scientist"]]
 collision_layer = 17
 script = ExtResource("1_nfk56")
 

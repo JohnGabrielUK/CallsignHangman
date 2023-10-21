@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bfgu1tbuk3iqa" path="res://objects/fixed_camera.tscn" id="5_m411u"]
 [ext_resource type="PackedScene" uid="uid://dynfxgvv5no81" path="res://objects/scientist_spawn_point.tscn" id="7_tlvnw"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0mhs8"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ra6jr"]
 resource_name = "Wall"
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("3_col70")
@@ -32,7 +32,7 @@ script = ExtResource("2_32u0f")
 
 [node name="Mesh" parent="." instance=ExtResource("2_yb7f4")]
 transform = Transform3D(-1, 0, -8.74226e-08, 0, 1, 0, 8.74226e-08, 0, -1, -6, 0, -16)
-surface_material_override/1 = SubResource("StandardMaterial3D_0mhs8")
+surface_material_override/1 = SubResource("StandardMaterial3D_ra6jr")
 
 [node name="PlayerSpawnPoint" parent="." instance=ExtResource("2_22ll8")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -7, 0, -16)
