@@ -8,6 +8,7 @@ var intro_played : bool
 var microwave_warning_played : bool
 
 var madtalk
+var player
 
 func _on_mad_talk_activate_custom_effect(effect_id: String, data: Array):
 	# data is an Array of strings, in this project we only use data[0]

@@ -19,6 +19,7 @@ enum State {NORMAL, DRAWING_WEAPON, WEAPON_DRAWN, HOLSTERING_WEAPON, SHOOTING, K
 
 @onready var raycast_interactable : RayCast3D = $RayCast_Interactable
 @onready var anim_player : AnimationPlayer = $AnimationPlayer
+@onready var eyes: Marker3D = $rig_deform/Skeleton3D/BoneHead/Eyes
 
 @onready var current_state : int = State.NORMAL
 @onready var current_arm : int = Constants.ArmType.NONE
@@ -98,6 +99,7 @@ func _physics_process(delta : float) -> void:
 		State.WEAPON_DRAWN: _physics_process_weapon_drawn(delta)
 
 func _ready() -> void:
+	GameSession.player = self
 	switch_animation_if_not_current("idle", 0.0)
 
 func _on_animation_player_animation_finished(anim_name : String) -> void:
