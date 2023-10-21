@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://ccexjyj26gt3u"]
+
+[ext_resource type="Script" path="res://objects/fleeting_sound.gd" id="1_3kqb5"]
+
+[node name="FleetingSound" type="AudioStreamPlayer3D"]
+bus = &"SFX"
+script = ExtResource("1_3kqb5")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

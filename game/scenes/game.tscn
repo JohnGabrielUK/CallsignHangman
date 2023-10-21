@@ -1,9 +1,11 @@
-[gd_scene load_steps=20 format=3 uid="uid://c0w0dwk2kt8ui"]
+[gd_scene load_steps=22 format=3 uid="uid://c0w0dwk2kt8ui"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_007my"]
 [ext_resource type="Script" path="res://madtalk/madtalk_runtime.gd" id="2_enrov"]
 [ext_resource type="Script" path="res://madtalk/CharacterData.gd" id="3_6tbuq"]
 [ext_resource type="Environment" uid="uid://ngefto5heafd" path="res://environment.tres" id="4_4mbon"]
+[ext_resource type="AudioStream" uid="uid://11veopiqmgfu" path="res://audio/amb/ship1.ogg" id="5_jtdcb"]
+[ext_resource type="AudioStream" uid="uid://vd5w60jgjqaa" path="res://audio/music/downtime.ogg" id="6_3p45f"]
 
 [sub_resource type="Resource" id="Resource_2e7i7"]
 script = ExtResource("3_6tbuq")
@@ -294,6 +296,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Audio_Ambience:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-40.0, 0.0]
+}
 
 [sub_resource type="Animation" id="Animation_npnwh"]
 resource_name = "fade_out"
@@ -309,6 +323,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Audio_Ambience:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -40.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vywsu"]
@@ -444,6 +470,16 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 metadata/_edit_lock_ = true
+
+[node name="Audio_Ambience" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_jtdcb")
+volume_db = -40.0
+bus = &"AMB"
+
+[node name="Audio_BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_3p45f")
+autoplay = true
+bus = &"BGM"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

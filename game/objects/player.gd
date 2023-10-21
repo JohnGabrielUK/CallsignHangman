@@ -1,6 +1,14 @@
 extends CharacterBody3D
 class_name Player
 
+const _StepSounds : Array = [
+	preload("res://audio/sfx/step1.ogg"),
+	preload("res://audio/sfx/step2.ogg"),
+	preload("res://audio/sfx/step3.ogg")
+]
+
+const _FleetingSound : PackedScene = preload("res://objects/fleeting_sound.tscn")
+
 const TURN_SPEED : float = 4.0
 const MOVE_SPEED : float = 3.0
 const TURN_WITH_WEAPON_SPEED : float = 2.0
@@ -14,6 +22,17 @@ enum State {NORMAL, DRAWING_WEAPON, WEAPON_DRAWN, HOLSTERING_WEAPON, SHOOTING, K
 
 @onready var current_state : int = State.NORMAL
 @onready var current_arm : int = Constants.ArmType.NONE
+
+func make_sound(which : AudioStream, volume : float) -> void:
+	var sound : AudioStreamPlayer3D = _FleetingSound.instantiate()
+	sound.stream = which
+	sound.volume_db = volume
+	get_parent().add_child(sound)
+	sound.global_position = global_position
+	sound.play()
+
+func do_footstep_sound() -> void:
+	make_sound(_StepSounds.pick_random(), -5.0)
 
 func try_to_interact() -> void:
 	if raycast_interactable.is_colliding():
