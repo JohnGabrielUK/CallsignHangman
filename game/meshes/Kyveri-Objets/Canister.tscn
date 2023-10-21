@@ -1,6 +1,5 @@
-[gd_scene load_steps=8 format=3 uid="uid://e6m3h0gho8c7"]
+[gd_scene load_steps=7 format=3 uid="uid://e6m3h0gho8c7"]
 
-[ext_resource type="PackedScene" uid="uid://dq5knvy6mn0dl" path="res://meshes/Kyveri-Objets/Canister.glb" id="1_pc2u3"]
 [ext_resource type="Texture2D" uid="uid://c28ll5aalimrn" path="res://meshes/Kyveri-Objets/Canister_CAnister.png" id="2_8nrkg"]
 [ext_resource type="Texture2D" uid="uid://3kfwc2clwj20" path="res://meshes/Kyveri-Objets/Canister_Canister_e.png" id="3_jy4yl"]
 
@@ -52,18 +51,15 @@ shadow_mesh = SubResource("ArrayMesh_68hjk")
 [sub_resource type="BoxShape3D" id="BoxShape3D_m4a8b"]
 size = Vector3(0.371889, 0.614232, 0.415749)
 
-[node name="Node3D" type="Node3D"]
+[node name="Canister" type="Node3D"]
 
-[node name="Canister" parent="." instance=ExtResource("1_pc2u3")]
-transform = Transform3D(0.189337, 0, 0, 0, 0.21165, 0, 0, 0, 0.189337, -0.119522, 0, -0.0586826)
-
-[node name="CAnister" parent="Canister" index="0"]
+[node name="Mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.16373, 0, 0, 0, 0.219751, 0, 0, 0, 0.16373, -0.107815, 0.259799, -0.0356251)
 mesh = SubResource("ArrayMesh_uq4sn")
+skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.117928, 0.254409, -0.027285)
 shape = SubResource("BoxShape3D_m4a8b")
-
-[editable path="Canister"]
