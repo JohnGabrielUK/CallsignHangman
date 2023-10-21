@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://x1v6abj5587q"]
+
+[ext_resource type="Texture2D" uid="uid://c0mak7b0qdgv" path="res://textures/logo.png" id="1_id606"]
+
+[node name="TitleScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Logo" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 480.0
+offset_top = 120.0
+offset_right = -80.0
+offset_bottom = -140.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_id606")
+expand_mode = 5
+stretch_mode = 5

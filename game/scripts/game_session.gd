@@ -4,6 +4,8 @@ enum ScientistState {ALIVE, DEAD, RESCUED}
 
 var scientist_states : Array
 var player_tagalong : int
+var intro_played : bool
+var microwave_warning_played : bool
 
 var madtalk
 var player
@@ -101,6 +103,14 @@ func scientist_in_pod() -> void:
 func scientist_following_player(scientist_id : int) -> void:
 	player_tagalong = scientist_id
 
+func room_entered(which : String) -> void:
+	if which == "Entrance" and not intro_played:
+		madtalk.start_dialog("intro")
+		intro_played = true
+	elif which == "RoomTwodoors" and not microwave_warning_played:
+		madtalk.start_dialog("before_microwave")
+		microwave_warning_played = true
+
 func evaluate_game_state() -> void:
 	var all_dead : bool = true
 	var all_rescued : bool = true
@@ -117,6 +127,8 @@ func evaluate_game_state() -> void:
 func new_game() -> void:
 	scientist_states = [ScientistState.ALIVE, ScientistState.ALIVE, ScientistState.ALIVE]
 	player_tagalong = -1
+	intro_played = false
+	microwave_warning_played = false
 
 func _ready() -> void:
 	new_game()

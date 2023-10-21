@@ -15,6 +15,7 @@ func spawn_player(which_spawn : int) -> void:
 				var scientist : Node3D = _Scientist.instantiate()
 				add_child(scientist)
 				scientist.global_position = player_spawn_point.global_position
+				scientist.id = GameSession.player_tagalong
 				scientist.look_at(player_spawn_point.global_position + player_spawn_point.point_towards, Vector3(0, 1, 0), true)
 				scientist.follow_player_from_spawn(player)
 
