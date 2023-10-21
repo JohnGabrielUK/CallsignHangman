@@ -95,7 +95,7 @@ func start_room() -> void:
 	anim_player.play("fade_in")
 	await get_tree().create_timer(0.05).timeout # janky hack, m8
 	get_tree().call_group("camera", "check_for_player")
-	get_tree().call_group("game_session", "room_entered", room_to_load)
+	GameSession.room_entered(room_to_load)
 
 func change_room(room : String, spawn_id : int) -> void:
 	get_tree().paused = true
@@ -116,7 +116,6 @@ func _ready() -> void:
 	%MadTalk.activate_custom_effect.connect(GameSession._on_mad_talk_activate_custom_effect)
 	
 	load_room("Entrance", 0)
-
 
 func _on_mad_talk_voice_clip_requested(speaker_id, clip_path):
 	sfx_voice_clips.stream = load(clip_path)

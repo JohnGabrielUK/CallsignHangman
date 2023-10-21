@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b566dpoism678"]
+[gd_scene load_steps=16 format=3 uid="uid://b566dpoism678"]
 
 [ext_resource type="PackedScene" uid="uid://bvhxtxnr14j3l" path="res://objects/player_spawn_point.tscn" id="2_22ll8"]
 [ext_resource type="Script" path="res://objects/room.gd" id="2_32u0f"]
@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://cls2cel8gtflj" path="res://materials/rooms/scifi_parts_wall_normal.png" id="5_32sjg"]
 [ext_resource type="PackedScene" uid="uid://bfgu1tbuk3iqa" path="res://objects/fixed_camera.tscn" id="5_m411u"]
 [ext_resource type="PackedScene" uid="uid://dynfxgvv5no81" path="res://objects/scientist_spawn_point.tscn" id="7_tlvnw"]
+[ext_resource type="PackedScene" uid="uid://cxpjmmqyln5gd" path="res://objects/room_exit.tscn" id="10_8enhk"]
+[ext_resource type="PackedScene" uid="uid://d36ghnoyyovan" path="res://objects/decorations/lab_decorations.tscn" id="11_4xexe"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ra6jr"]
 resource_name = "Wall"
@@ -47,7 +49,7 @@ transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -7, 0, -
 point_towards = Vector3(1, 0, 0)
 
 [node name="ScientistSpawnPoint" parent="." instance=ExtResource("7_tlvnw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -19)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -17)
 scientist_id = 1
 
 [node name="CameraTrigger1" parent="." instance=ExtResource("4_1o4u1")]
@@ -71,6 +73,11 @@ shape = SubResource("BoxShape3D_3csep")
 transform = Transform3D(-0.766044, 0.219846, -0.604023, 1.3505e-08, 0.939693, 0.34202, 0.642788, 0.262003, -0.719846, -2, 1.5, -6)
 current = true
 fov = 60.0
+
+[node name="RoomExit" parent="." instance=ExtResource("10_8enhk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, -16)
+destination_room = "CorridorThreeway2"
+destination_spawn_id = 1
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 2.5, -13)
@@ -96,6 +103,9 @@ light_energy = 0.25
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 2.5, -16)
 light_color = Color(1, 1, 0.866667, 1)
 light_energy = 2.0
+
+[node name="LabDecorations" parent="." instance=ExtResource("11_4xexe")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6, 0, -16)
 
 [connection signal="player_entered" from="CameraTrigger1" to="CameraTrigger1/FixedCamera" method="_on_player_entered"]
 [connection signal="player_entered" from="CameraTrigger2" to="CameraTrigger2/FixedCamera" method="_on_player_entered"]
