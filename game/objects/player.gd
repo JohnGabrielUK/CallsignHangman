@@ -19,7 +19,7 @@ enum State {NORMAL, DRAWING_WEAPON, WEAPON_DRAWN, HOLSTERING_WEAPON, SHOOTING, K
 
 @onready var raycast_interactable : RayCast3D = $RayCast_Interactable
 @onready var anim_player : AnimationPlayer = $AnimationPlayer
-@onready var eyes: Marker3D = $Eyes
+@onready var eyes: Marker3D = $rig_deform/Skeleton3D/BoneHead/Eyes
 
 @onready var current_state : int = State.NORMAL
 @onready var current_arm : int = Constants.ArmType.NONE
