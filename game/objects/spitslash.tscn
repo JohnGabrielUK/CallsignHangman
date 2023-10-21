@@ -219,7 +219,7 @@ input_4/reset = true
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_7je3h"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_kerqs"]
-graph_offset = Vector2(-61.3333, -9.33333)
+graph_offset = Vector2(391.685, -69.4988)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_dweqd")
 nodes/Animation/position = Vector2(53.3333, 0)
 "nodes/Animation 10/node" = SubResource("AnimationNodeAnimation_m176s")
@@ -264,7 +264,7 @@ radius = 5.0
 height = 0.638479
 radius = 0.388289
 
-[node name="Spitslash" type="CharacterBody3D" groups=["rippable"]]
+[node name="Spitslash" type="CharacterBody3D" groups=["enemy", "rippable"]]
 script = ExtResource("1_ysgay")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

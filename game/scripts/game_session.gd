@@ -114,7 +114,7 @@ func terminal_activated(terminal_id : String) -> void:
 
 func room_entered(which : String) -> void:
 	if which == "Entrance" and not intro_played:
-		madtalk.start_dialog("intro")
+		#madtalk.start_dialog("intro") TODO: put this back in before you ship!
 		intro_played = true
 	elif which == "RoomTwodoors" and not microwave_warning_played:
 		madtalk.start_dialog("before_microwave")

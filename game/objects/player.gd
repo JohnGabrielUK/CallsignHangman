@@ -20,6 +20,7 @@ enum State {NORMAL, DRAWING_WEAPON, WEAPON_DRAWN, HOLSTERING_WEAPON, SHOOTING, K
 @onready var raycast_interactable : RayCast3D = $RayCast_Interactable
 @onready var anim_player : AnimationPlayer = $AnimationPlayer
 @onready var eyes: Marker3D = $rig_deform/Skeleton3D/BoneHead/Eyes
+@onready var raycasts_gun : Node3D = $RayCasts_Gun
 
 @onready var current_state : int = State.NORMAL
 @onready var current_arm : int = Constants.ArmType.NONE
@@ -29,6 +30,17 @@ func can_interact() -> bool:
 
 func can_harvest() -> bool:
 	return false
+
+func get_gunfire_target() -> Node3D:
+	var friendly_target : Node3D = null
+	for raycast in raycasts_gun.get_children():
+		if raycast.is_colliding():
+			var target = raycast.get_collider()
+			if target.is_in_group("enemy") and target.can_be_shot():
+				return target
+			if target.is_in_group("ally"):
+				friendly_target = target
+	return friendly_target
 
 func make_sound(which : AudioStream, volume : float) -> void:
 	var sound : AudioStreamPlayer3D = _FleetingSound.instantiate()
@@ -95,6 +107,9 @@ func _physics_process_weapon_drawn(delta : float) -> void:
 	elif Input.is_action_just_pressed("attack"):
 		anim_player.play("shoot_heavy")
 		current_state = State.SHOOTING
+		var target : Node3D = get_gunfire_target()
+		if target != null:
+			target.hit(1.0)
 
 func _physics_process(delta : float) -> void:
 	if MadTalkGlobals.is_during_dialog:

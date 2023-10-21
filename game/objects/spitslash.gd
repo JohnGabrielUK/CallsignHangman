@@ -426,6 +426,10 @@ func check_prey_line_of_sight(prey) -> bool:
 	return false
 
 
+func can_be_shot() -> bool:
+	return health > 0.0
+
+
 func is_harvestable() -> bool:
 	match current_state:
 		States.STUNNED:
@@ -487,6 +491,8 @@ func hit(damage: float = 1.0):
 
 
 func die():
+	set_collision_layer_value(1, false)
+	set_collision_mask_value(1, false)
 	change_state_to(States.DEATH)
 
 
