@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://dumv1d5cfx5u8"]
+
+[ext_resource type="Script" path="res://objects/spit.gd" id="1_02oiv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p8cju"]
+blend_mode = 1
+albedo_color = Color(0.360784, 0.615686, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_v3c4s"]
+material = SubResource("StandardMaterial3D_p8cju")
+radius = 0.03
+height = 0.5
+is_hemisphere = true
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hr8tx"]
+radius = 0.125754
+height = 0.52197
+
+[node name="Spit" type="Area3D"]
+collision_layer = 0
+collision_mask = 10
+script = ExtResource("1_02oiv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("SphereMesh_v3c4s")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0.239974)
+shape = SubResource("CapsuleShape3D_hr8tx")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

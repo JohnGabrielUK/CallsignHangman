@@ -352,6 +352,7 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody3D"]
+collision_layer = 3
 script = ExtResource("1_sptsi")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -1041,7 +1042,7 @@ bones/95/scale = Vector3(1, 1, 1)
 
 [node name="Character" type="MeshInstance3D" parent="rig_deform/Skeleton3D"]
 mesh = ExtResource("2_lccrg")
-skin = SubResource("Skin_dgj65")
+skin = SubResource("Skin_dgjs65")
 
 [node name="Character_GrabArm" type="MeshInstance3D" parent="rig_deform/Skeleton3D"]
 visible = false
@@ -1057,6 +1058,14 @@ skin = SubResource("Skin_dgj65")
 visible = false
 mesh = ExtResource("4_hx3pu")
 skin = SubResource("Skin_dgj65")
+
+[node name="BoneHead" type="BoneAttachment3D" parent="rig_deform/Skeleton3D"]
+transform = Transform3D(1, 1.56319e-13, 2.38418e-07, 5.24386e-08, 0.975512, -0.219945, -2.3258e-07, 0.219945, 0.975512, 5.14979e-14, 1.54757, 0.0271629)
+bone_name = "DEF-spine.006"
+bone_idx = 6
+
+[node name="Eyes" type="Marker3D" parent="rig_deform/Skeleton3D/BoneHead"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.10785e-08, 0.102316, 0.0884092)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 speed_scale = 1.5
