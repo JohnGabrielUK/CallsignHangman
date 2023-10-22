@@ -72,6 +72,7 @@ var next_patrol_point
 @onready var model_no_arm = $rig_deform/Skeleton3D/model_no_arm
 
 @onready var initial_position = global_position
+@onready var sfx_rip = $SFXRip
 
 @onready var navigation_map_rid = NavigationServer3D.get_maps()[0]
 
@@ -490,6 +491,7 @@ func rip() -> void:
 	if current_state == States.STUNNED:
 		model_no_arm.show()
 		model_with_arm.hide()
+		sfx_rip.play()
 		
 		state_before_hurt = current_state
 		health = 0.0
