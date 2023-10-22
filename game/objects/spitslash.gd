@@ -487,7 +487,11 @@ func rip() -> void:
 	if current_state == States.STUNNED:
 		model_no_arm.show()
 		model_with_arm.hide()
-		die()
+		
+		state_before_hurt = current_state
+		health = 0.0
+		hurt_counter = HurtTime
+		change_state_to(States.HURT)
 
 func vanish():
 	vanish_progress = 1.0
