@@ -9,9 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://cxpjmmqyln5gd" path="res://objects/room_exit.tscn" id="7_nu4j2"]
 [ext_resource type="PackedScene" uid="uid://b3xs7myw6t33d" path="res://objects/camera_trigger.tscn" id="8_blase"]
 [ext_resource type="PackedScene" uid="uid://bfgu1tbuk3iqa" path="res://objects/fixed_camera.tscn" id="9_4vfo2"]
-[ext_resource type="PackedScene" uid="uid://cdyuudhi3uony" path="res://objects/spitslash.tscn" id="10_8r64q"]
+[ext_resource type="PackedScene" uid="uid://bedvx6ti8fk45" path="res://objects/snake.tscn" id="10_hdnk2"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wewgg"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hgfug"]
 resource_name = "Wall"
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("3_b8em6")
@@ -39,7 +39,7 @@ script = ExtResource("2_q6iwi")
 
 [node name="Mesh" parent="." instance=ExtResource("2_3qt62")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 13, 0, 5)
-surface_material_override/1 = SubResource("StandardMaterial3D_wewgg")
+surface_material_override/1 = SubResource("StandardMaterial3D_hgfug")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Mesh"]
 
@@ -112,8 +112,8 @@ light_energy = 0.5
 shadow_enabled = true
 omni_range = 4.0
 
-[node name="Spitslash" parent="." instance=ExtResource("10_8r64q")]
-transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 16, 0, 3)
+[node name="Spitslash" parent="." instance=ExtResource("10_hdnk2")]
+transform = Transform3D(-0.642346, 0, -0.766415, 0, 1, 0, 0.766415, 0, -0.642346, 15.632, 0, 2.265)
 PatrolPoints = NodePath("../PatrolPoints")
 
 [node name="PatrolPoints" type="Node3D" parent="."]

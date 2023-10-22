@@ -103,11 +103,14 @@ func get_music_for_room(room : String) -> String:
 	else:
 		return "downtime"
 
-func change_ambience_if_needed(room : String) -> bool:
-	# Change ambience, if needed
+func get_ambience_for_room(room : String) -> String:
 	var room_ambience = ROOM_AMBIENCE[room]
 	if room == "Corridor1":
 		room_ambience = "microwave" if GameSession.microwave_active else "ship2"
+	return room_ambience
+
+func change_ambience_if_needed(room : String) -> bool:
+	var room_ambience : String = get_ambience_for_room(room)
 	var ambience_change : bool = false
 	if current_ambience != room_ambience:
 		audio_ambience.stop()
@@ -153,7 +156,7 @@ func change_room(room : String, spawn_id : int) -> void:
 	get_tree().paused = true
 	if get_music_for_room(room) != current_music:
 		anim_player_music.play("fade_out_music")
-	if current_ambience != ROOM_AMBIENCE[room]:
+	if current_ambience != get_ambience_for_room(room):
 		anim_player.play("fade_out")
 	else:
 		anim_player.play("fade_out_keep_ambience")

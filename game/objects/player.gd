@@ -200,6 +200,12 @@ func pistol_whip() -> void:
 		sfx_gunwhip.play()
 		target.hit(1.0)
 
+func arm_attack() -> void:
+	current_state = State.ARM_ATTACK
+	var target : Node3D = get_gunfire_target(MELEE_RANGE)
+	if target != null:
+		target.hit(3.0)
+
 func _physics_process_normal(delta : float) -> void:
 	var turn_amount : float = Input.get_axis("left", "right")
 	if turn_amount != 0.0:
@@ -225,9 +231,11 @@ func _physics_process_normal(delta : float) -> void:
 		get_tree().call_group("fov_camera", "_on_player_weapon_drawn")
 	elif Input.is_action_just_pressed("melee") and current_arm == Constants.ArmType.HEAVY:
 		switch_animation_if_not_current("attack_slash", 0.1)
+		arm_attack()
 		current_state = State.ARM_ATTACK
 	elif Input.is_action_just_pressed("melee") and current_arm == Constants.ArmType.GRABBER:
 		switch_animation_if_not_current("attack_grab", 0.1)
+		arm_attack()
 		current_state = State.ARM_ATTACK
 
 func _physics_process_weapon_drawn(delta : float) -> void:

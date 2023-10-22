@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bfgu1tbuk3iqa" path="res://objects/fixed_camera.tscn" id="6_ajge2"]
 [ext_resource type="PackedScene" uid="uid://cdyuudhi3uony" path="res://objects/spitslash.tscn" id="10_m5u12"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1j3ww"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jsc0a"]
 resource_name = "Wall"
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("3_mq7xt")
@@ -42,7 +42,7 @@ script = ExtResource("2_ompyw")
 
 [node name="Mesh" parent="." instance=ExtResource("2_ifbw0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -6)
-surface_material_override/1 = SubResource("StandardMaterial3D_1j3ww")
+surface_material_override/1 = SubResource("StandardMaterial3D_jsc0a")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Mesh"]
 
@@ -102,7 +102,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 1, -8)
 shape = SubResource("BoxShape3D_eg3mk")
 
 [node name="FixedCamera" parent="CameraTrigger3" instance=ExtResource("6_ajge2")]
-transform = Transform3D(0.965926, -0.0449435, 0.254887, 0, 0.984808, 0.173648, -0.258819, -0.167731, 0.951251, 1, 1, 4)
+transform = Transform3D(0.985922, 0.106938, 0.128543, -0.128543, 0.976383, 0.173648, -0.106938, -0.187727, 0.976382, 1, 0.75, 6.5)
 current = true
 fov = 60.0
 
