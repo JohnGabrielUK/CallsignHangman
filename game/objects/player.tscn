@@ -1070,7 +1070,7 @@ mesh = ExtResource("4_hx3pu")
 skin = SubResource("Skin_dgj65")
 
 [node name="BoneHead" type="BoneAttachment3D" parent="rig_deform/Skeleton3D"]
-transform = Transform3D(1, -3.55271e-15, 2.38419e-07, 2.38382e-07, 0.0176397, -0.999844, -4.20563e-09, 0.999844, 0.0176397, -1.68077e-14, 0.72986, 0.4714)
+transform = Transform3D(1, 7.49623e-13, 2.38419e-07, 2.38382e-07, 0.0176394, -0.999844, -4.20633e-09, 0.999844, 0.0176394, 3.90811e-13, 0.72986, 0.471401)
 bone_name = "DEF-spine.006"
 bone_idx = 6
 

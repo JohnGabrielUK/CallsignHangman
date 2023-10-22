@@ -75,9 +75,9 @@ color = Color(0, 0, 0, 1)
 [node name="Texture_Credits" type="TextureRect" parent="."]
 layout_mode = 0
 offset_left = 320.0
-offset_top = 720.0
+offset_top = -1400.0
 offset_right = 960.0
-offset_bottom = 2320.01
+offset_bottom = 200.01
 texture = ExtResource("1_d42bu")
 expand_mode = 4
 stretch_mode = 4

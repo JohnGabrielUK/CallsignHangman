@@ -9,20 +9,20 @@
 [ext_resource type="PackedScene" uid="uid://b3xs7myw6t33d" path="res://objects/camera_trigger.tscn" id="5_13rbo"]
 [ext_resource type="Texture2D" uid="uid://cls2cel8gtflj" path="res://textures/scifi_parts_wall_normal.png" id="5_vgyb7"]
 [ext_resource type="PackedScene" uid="uid://bfgu1tbuk3iqa" path="res://objects/fixed_camera.tscn" id="6_vgrdf"]
-[ext_resource type="PackedScene" uid="uid://cf8bgnsbthcvk" path="res://meshes/Kyveri-Objets/Table.tscn" id="10_8gf2p"]
+[ext_resource type="PackedScene" uid="uid://cf8bgnsbthcvk" path="res://meshes/Kyveri-Objets/table.tscn" id="10_8gf2p"]
 [ext_resource type="PackedScene" uid="uid://bs6eiluux6hfo" path="res://meshes/Kyveri-Objets/screen.tscn" id="11_4jr5p"]
 [ext_resource type="PackedScene" uid="uid://bty2d35qogr4u" path="res://meshes/Kyveri-Objets/vending_machine.tscn" id="12_vkbrs"]
-[ext_resource type="PackedScene" uid="uid://kdobjsis0f3u" path="res://meshes/Kyveri-Objets/Chair.tscn" id="13_vqqaa"]
+[ext_resource type="PackedScene" uid="uid://kdobjsis0f3u" path="res://meshes/Kyveri-Objets/chair.tscn" id="13_vqqaa"]
 [ext_resource type="PackedScene" uid="uid://bmpl4lv2ptyqw" path="res://meshes/Kyveri-Objets/crate.tscn" id="14_3odie"]
 [ext_resource type="PackedScene" uid="uid://dxdsf8jm7rapi" path="res://meshes/Kyveri-Objets/computer_terminal.tscn" id="15_hrw5s"]
-[ext_resource type="PackedScene" uid="uid://b5npnvyjn223e" path="res://meshes/Kyveri-Objets/Hologram_Sign.tscn" id="16_ywm01"]
+[ext_resource type="PackedScene" uid="uid://b5npnvyjn223e" path="res://meshes/Kyveri-Objets/hologram_sign.tscn" id="16_ywm01"]
 [ext_resource type="Texture2D" uid="uid://divewewhbixq0" path="res://textures/paper.png" id="17_6sibv"]
 [ext_resource type="PackedScene" uid="uid://bti55it0qbl4q" path="res://meshes/Kyveri-Objets/laptop.tscn" id="18_lprth"]
-[ext_resource type="PackedScene" uid="uid://cnsbe8nhdxvth" path="res://meshes/Kyveri-Objets/Book.tscn" id="19_u0ln1"]
+[ext_resource type="PackedScene" uid="uid://cnsbe8nhdxvth" path="res://meshes/Kyveri-Objets/book.tscn" id="19_u0ln1"]
 [ext_resource type="Texture2D" uid="uid://dnj02i88sr1hw" path="res://textures/blood2.png" id="20_qb470"]
 [ext_resource type="Texture2D" uid="uid://dv3pdagm4rc2a" path="res://textures/blood1.png" id="21_6nhch"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6suvf"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k8lv3"]
 resource_name = "Wall"
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("3_12lxb")
@@ -54,7 +54,7 @@ script = ExtResource("2_quymt")
 
 [node name="Mesh" parent="." instance=ExtResource("2_52kq6")]
 layers = 2
-surface_material_override/1 = SubResource("StandardMaterial3D_6suvf")
+surface_material_override/1 = SubResource("StandardMaterial3D_k8lv3")
 WallLightsColor = Color(0, 0.686275, 0.631373, 1)
 DoorLightColors = Array[Color]([Color(0, 0.611765, 0.14902, 1), Color(0.752941, 0.584314, 0, 1), Color(0.741176, 0, 0.733333, 1), Color(0.301961, 0.427451, 1, 1), Color(0.713726, 0.105882, 0.164706, 1)])
 

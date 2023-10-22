@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://b3xs7myw6t33d" path="res://objects/camera_trigger.tscn" id="8_05glu"]
 [ext_resource type="PackedScene" uid="uid://bfgu1tbuk3iqa" path="res://objects/fixed_camera.tscn" id="9_c2m1u"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ckshn"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sibmb"]
 resource_name = "Wall"
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("3_nrw21")
@@ -39,7 +39,7 @@ script = ExtResource("2_fjfk5")
 
 [node name="Mesh" parent="." instance=ExtResource("2_2iltc")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3, 0, -28)
-surface_material_override/1 = SubResource("StandardMaterial3D_ckshn")
+surface_material_override/1 = SubResource("StandardMaterial3D_sibmb")
 WallLightsColor = Color(1, 0.878431, 0, 1)
 DoorLightColors = Array[Color]([Color(0.25098, 1, 0, 1), Color(1, 0, 0.501961, 1), Color(1, 0.501961, 0, 1)])
 
