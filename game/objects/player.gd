@@ -16,10 +16,12 @@ const MOVE_WITH_WEAPON_SPEED : float = 1.35
 const INTERACT_DISTANCE : float = 2.0
 const MAX_BLOOD : float = 10.0
 const HARVEST_AMOUNT : float = 1.0
-const BLOOD_DRAIN_RATE : float = 0.1
+const BLOOD_DRAIN_RATE : float = 0.05
 const MICROWAVE_DAMAGE_RATE : float = 2.5
+const GUN_RANGE : float = 10.0
+const MELEE_RANGE : float = 2.0
 
-enum State {NORMAL, DRAWING_WEAPON, WEAPON_DRAWN, HOLSTERING_WEAPON, SHOOTING, KNIFE_ATTACK, HARVEST_START, HARVESTING, HARVEST_END, RIPPING, HIT, HIT_WHILE_AIMING, DEAD}
+enum State {NORMAL, DRAWING_WEAPON, WEAPON_DRAWN, HOLSTERING_WEAPON, SHOOTING, PISTOL_WHIP, HARVEST_START, HARVESTING, HARVEST_END, RIPPING, HIT, HIT_WHILE_AIMING, DEAD}
 
 @onready var mesh : MeshInstance3D = $rig_deform/Skeleton3D/Character
 @onready var mesh_grab_arm : MeshInstance3D = $rig_deform/Skeleton3D/Character_GrabArm
@@ -94,9 +96,11 @@ func can_rip() -> bool:
 	else:
 		return false
 
-func get_gunfire_target() -> Node3D:
+func get_gunfire_target(range : float) -> Node3D:
 	var friendly_target : Node3D = null
 	for raycast in raycasts_gun.get_children():
+		raycast.target_position.z = range
+		raycast.force_raycast_update()
 		if raycast.is_colliding():
 			var target = raycast.get_collider()
 			if target.is_in_group("enemy") and target.can_be_shot():
@@ -147,6 +151,8 @@ func switch_animation_if_not_current(anim_name : String, blend_amount : float) -
 		match anim_name:
 			"walk": anim_player.speed_scale = 1.9
 			"walk_aim": anim_player.speed_scale = 1.0
+			"pistol_whip": anim_player.speed_scale = 0.75
+			"shoot_heavy": anim_player.speed_scale = 1.25
 			_: anim_player.speed_scale = 1.5
 		anim_player.play(anim_name, blend_amount)
 
@@ -161,13 +167,20 @@ func hit(damage: float = 1.0):
 	anim_player.play("hit", 0.25)
 
 func fire() -> void:
-	anim_player.play("shoot_heavy")
+	switch_animation_if_not_current("shoot_heavy", 0.1)
 	current_state = State.SHOOTING
-	var target : Node3D = get_gunfire_target()
+	var target : Node3D = get_gunfire_target(GUN_RANGE)
 	if target != null:
 		target.hit(1.0)
 	# Waugh, loud noises
 	get_tree().call_group("enemy", "force_chase_player")
+
+func pistol_whip() -> void:
+	switch_animation_if_not_current("pistol_whip", 0.1)
+	current_state = State.PISTOL_WHIP
+	var target : Node3D = get_gunfire_target(MELEE_RANGE)
+	if target != null:
+		target.hit(1.0)
 
 func _physics_process_normal(delta : float) -> void:
 	var turn_amount : float = Input.get_axis("left", "right")
@@ -205,6 +218,8 @@ func _physics_process_weapon_drawn(delta : float) -> void:
 		current_state = State.HOLSTERING_WEAPON
 	elif Input.is_action_just_pressed("attack"):
 		fire()
+	elif Input.is_action_just_pressed("melee"):
+		pistol_whip()
 
 func _physics_process_harvesting(delta : float) -> void:
 	var harvest_amount : float = HARVEST_AMOUNT * delta
@@ -262,3 +277,6 @@ func _on_animation_player_animation_finished(anim_name : String) -> void:
 		"hit":
 			switch_animation_if_not_current("aim" if current_state == State.HIT_WHILE_AIMING else "idle", 0.25)
 			current_state = State.WEAPON_DRAWN if current_state == State.HIT_WHILE_AIMING else State.NORMAL
+		"pistol_whip":
+			switch_animation_if_not_current("aim", 0.0)
+			current_state = State.WEAPON_DRAWN
