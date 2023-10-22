@@ -17,6 +17,7 @@ const INTERACT_DISTANCE : float = 2.0
 const MAX_BLOOD : float = 10.0
 const HARVEST_AMOUNT : float = 1.0
 const BLOOD_DRAIN_RATE : float = 0.1
+const MICROWAVE_DAMAGE_RATE : float = 2.5
 
 enum State {NORMAL, DRAWING_WEAPON, WEAPON_DRAWN, HOLSTERING_WEAPON, SHOOTING, KNIFE_ATTACK, HARVEST_START, HARVESTING, HARVEST_END, RIPPING, HIT, DYING, DEAD}
 
@@ -57,6 +58,13 @@ func remove_blood(amount : float) -> void:
 	var total_blood : float = get_blood_amount()
 	var blood_ratio = bloods / total_blood
 	bloods -= amount * blood_ratio
+
+func check_for_microwave_damage(delta : float) -> void:
+	var room_has_microwaves : bool = get_tree().get_nodes_in_group("microwaves").size() != 0
+	var microwaves_disabled : bool = !GameSession.microwave_active
+	var player_immune : bool = get_dominant_blood_type() == Constants.BloodType.HEAT_RESISTANT
+	if room_has_microwaves and not (microwaves_disabled or player_immune):
+		remove_blood(MICROWAVE_DAMAGE_RATE * delta)
 
 func can_interact() -> bool:
 	return raycast_interactable.is_colliding()
@@ -183,6 +191,7 @@ func _physics_process(delta : float) -> void:
 		State.NORMAL: _physics_process_normal(delta)
 		State.WEAPON_DRAWN: _physics_process_weapon_drawn(delta)
 		State.HARVESTING: _physics_process_harvesting(delta)
+	check_for_microwave_damage(delta)
 	remove_blood(BLOOD_DRAIN_RATE * delta)
 	GameSession.player_blood = bloods
 	print(snapped(bloods.x, 0.1), "\t", snapped(bloods.y, 0.1), "\t", snapped(bloods.z, 0.1), "\t", snapped(get_blood_amount(), 0.1), "\t", get_dominant_blood_type())
