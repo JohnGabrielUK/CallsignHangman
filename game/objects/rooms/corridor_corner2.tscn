@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bfgu1tbuk3iqa" path="res://objects/fixed_camera.tscn" id="9_4vfo2"]
 [ext_resource type="PackedScene" uid="uid://cdyuudhi3uony" path="res://objects/spitslash.tscn" id="10_8r64q"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ex5f3"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wewgg"]
 resource_name = "Wall"
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("3_b8em6")
@@ -39,7 +39,7 @@ script = ExtResource("2_q6iwi")
 
 [node name="Mesh" parent="." instance=ExtResource("2_3qt62")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 13, 0, 5)
-surface_material_override/1 = SubResource("StandardMaterial3D_ex5f3")
+surface_material_override/1 = SubResource("StandardMaterial3D_wewgg")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Mesh"]
 

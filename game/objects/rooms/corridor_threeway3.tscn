@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dtr6l5ak43dfq"]
+[gd_scene load_steps=17 format=3 uid="uid://dtr6l5ak43dfq"]
 
 [ext_resource type="Script" path="res://objects/room.gd" id="2_0sexl"]
 [ext_resource type="PackedScene" uid="uid://dsl2k67hr7co4" path="res://objects/rooms/building_parts/corridor_threeway.tscn" id="2_humca"]
@@ -9,8 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://cxpjmmqyln5gd" path="res://objects/room_exit.tscn" id="6_ckdsh"]
 [ext_resource type="PackedScene" uid="uid://b3xs7myw6t33d" path="res://objects/camera_trigger.tscn" id="7_wlyyd"]
 [ext_resource type="PackedScene" uid="uid://bfgu1tbuk3iqa" path="res://objects/fixed_camera.tscn" id="8_vhj8n"]
+[ext_resource type="PackedScene" uid="uid://bedvx6ti8fk45" path="res://objects/snake.tscn" id="10_ixh7k"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bs43m"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d8e7u"]
 resource_name = "Wall"
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("3_fblr1")
@@ -41,7 +42,7 @@ script = ExtResource("2_0sexl")
 
 [node name="Mesh" parent="." instance=ExtResource("2_humca")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 23, 0, -3)
-surface_material_override/1 = SubResource("StandardMaterial3D_bs43m")
+surface_material_override/1 = SubResource("StandardMaterial3D_d8e7u")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Mesh"]
 
@@ -94,7 +95,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 20, 1,
 shape = SubResource("BoxShape3D_5ayb6")
 
 [node name="FixedCamera" parent="CameraTrigger1" instance=ExtResource("8_vhj8n")]
-transform = Transform3D(-0.984807, 0.0301537, -0.17101, 0, 0.984808, 0.173648, 0.173648, 0.17101, -0.969846, -0.5, 1, -4)
+transform = Transform3D(-0.824002, -0.0441569, -0.564862, -0.17101, 0.969846, 0.173648, 0.540162, 0.239684, -0.806707, -0.5, 1, -4.25)
 current = true
 fov = 60.0
 
@@ -138,6 +139,9 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 19, 2.
 light_energy = 0.5
 shadow_enabled = true
 omni_range = 4.0
+
+[node name="Spitslash" parent="." instance=ExtResource("10_ixh7k")]
+transform = Transform3D(-0.923692, 0, -0.383135, 0, 1, 0, 0.383135, 0, -0.923692, 23, 0, -1.19211)
 
 [connection signal="player_entered" from="CameraTrigger1" to="CameraTrigger1/FixedCamera" method="_on_player_entered"]
 [connection signal="player_entered" from="CameraTrigger2" to="CameraTrigger2/FixedCamera" method="_on_player_entered"]
