@@ -210,7 +210,8 @@ func _physics_process(delta : float) -> void:
 	check_for_microwave_damage(delta)
 	remove_blood(BLOOD_DRAIN_RATE * delta)
 	GameSession.player_blood = bloods
-	print(snapped(bloods.x, 0.1), "\t", snapped(bloods.y, 0.1), "\t", snapped(bloods.z, 0.1), "\t", snapped(get_blood_amount(), 0.1), "\t", get_dominant_blood_type())
+	get_tree().call_group("health_bar", "update_health_bar", bloods / MAX_BLOOD, get_dominant_blood_type())
+	#print(snapped(bloods.x, 0.1), "\t", snapped(bloods.y, 0.1), "\t", snapped(bloods.z, 0.1), "\t", snapped(get_blood_amount(), 0.1), "\t", get_dominant_blood_type())
 
 func _ready() -> void:
 	GameSession.player = self

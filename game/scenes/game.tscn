@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://c0w0dwk2kt8ui"]
+[gd_scene load_steps=39 format=3 uid="uid://c0w0dwk2kt8ui"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_007my"]
 [ext_resource type="Script" path="res://madtalk/madtalk_runtime.gd" id="2_enrov"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dsenikov13blj" path="res://textures/portrait_scientist.png" id="6_ywb7c"]
 [ext_resource type="FontFile" uid="uid://ckhxdr4lr461o" path="res://fonts/BebasNeue-Regular.otf" id="7_orrm4"]
 [ext_resource type="FontFile" uid="uid://cyshajh7d2psd" path="res://fonts/Roboto-Light.ttf" id="7_tw648"]
+[ext_resource type="PackedScene" uid="uid://dq8xbmwjlysg7" path="res://objects/health_bar.tscn" id="8_a016b"]
 [ext_resource type="FontFile" uid="uid://dkgg4p5fjox4d" path="res://fonts/Roboto-Condensed.ttf" id="11_eds5f"]
 
 [sub_resource type="Resource" id="Resource_2e7i7"]
@@ -453,6 +454,8 @@ navigation_mesh = SubResource("NavigationMesh_x8dff")
 environment = ExtResource("4_4mbon")
 
 [node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="HealthBar" parent="HUD" instance=ExtResource("8_a016b")]
 
 [node name="Dialog" type="Control" parent="HUD"]
 visible = false
