@@ -73,6 +73,7 @@ var next_patrol_point
 
 @onready var initial_position = global_position
 @onready var sfx_rip = $SFXRip
+@onready var sfx_slice_player = $SFXSlicePlayer
 
 @onready var navigation_map_rid = NavigationServer3D.get_maps()[0]
 
@@ -505,6 +506,7 @@ func vanish():
 func attack_hit_melee(prey: CharacterBody3D):
 	if attack_melee_area.overlaps_body(prey):
 		prey.hit(DamageMelee)
+		sfx_slice_player.play()
 		print("ATTACK")
 
 func attack_hit_ranged(prey: CharacterBody3D):
