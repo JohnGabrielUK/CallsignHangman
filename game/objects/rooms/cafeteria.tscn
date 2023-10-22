@@ -23,7 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://dv3pdagm4rc2a" path="res://textures/blood1.png" id="21_6nhch"]
 [ext_resource type="PackedScene" uid="uid://cdyuudhi3uony" path="res://objects/spitslash.tscn" id="22_o5v23"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_plyjk"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rh7gs"]
 resource_name = "Wall"
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("3_12lxb")
@@ -58,7 +58,7 @@ script = ExtResource("2_quymt")
 
 [node name="Mesh" parent="." instance=ExtResource("2_52kq6")]
 layers = 2
-surface_material_override/1 = SubResource("StandardMaterial3D_plyjk")
+surface_material_override/1 = SubResource("StandardMaterial3D_rh7gs")
 WallLightsColor = Color(0, 0.686275, 0.631373, 1)
 DoorLightColors = Array[Color]([Color(0, 0.611765, 0.14902, 1), Color(0.752941, 0.584314, 0, 1), Color(0.741176, 0, 0.733333, 1), Color(0.301961, 0.427451, 1, 1), Color(0.713726, 0.105882, 0.164706, 1)])
 
@@ -366,10 +366,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.581978, 0, 1.81458)
 
 [node name="Spitslash" parent="." instance=ExtResource("22_o5v23")]
 transform = Transform3D(0.940181, 0, 0.340675, 0, 1, 0, -0.340675, 0, 0.940181, -1.42696, 0, -4.56049)
-PatrolPoints = NodePath("../PatrolPoints")
-
-[node name="Spitslash2" parent="." instance=ExtResource("22_o5v23")]
-transform = Transform3D(-0.995616, 0, 0.0935348, 0, 1, 0, -0.0935348, 0, -0.995616, 2.7087, 0, -1.08418)
 PatrolPoints = NodePath("../PatrolPoints")
 
 [connection signal="player_entered" from="CameraTrigger1" to="CameraTrigger1/FixedCamera" method="_on_player_entered"]

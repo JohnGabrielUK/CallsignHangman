@@ -49,6 +49,7 @@ name = ""
 variants = {}
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_x8dff"]
+geometry_parsed_geometry_type = 1
 
 [sub_resource type="Theme" id="Theme_4vjhe"]
 default_font = ExtResource("11_eds5f")
