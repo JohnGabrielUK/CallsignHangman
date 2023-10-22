@@ -37,8 +37,8 @@ enum State {NORMAL, DRAWING_WEAPON, WEAPON_DRAWN, HOLSTERING_WEAPON, SHOOTING, P
 @onready var current_state : int = State.NORMAL
 @onready var current_arm : int = GameSession.player_arm
 
-@onready var sfx_gunshot = $SFXGunshot
-@onready var spark_gunshot = $rig_deform/Skeleton3D/BoneGun/Gunshot
+@onready var sfx_gunshot = $rig_deform/Skeleton3D/BoneHand/Spark/SFXGunshot
+@onready var spark_gunshot = $rig_deform/Skeleton3D/BoneHand/Spark
 
 var harvest_target : Node3D
 var arm_to_get : int
