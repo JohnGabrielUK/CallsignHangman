@@ -334,6 +334,8 @@ func change_state_to(new_state: States):
 			ranged_attack_counter = RangedAttackTime
 			anims.set("parameters/walk_speed/scale", anim_chase_speed)
 			anims.set("parameters/movement/transition_request", "walk")
+			
+			get_tree().call_group("game_controller", "on_enemy_aggression")
 		
 		States.ATTACK_MELEE:
 			anims.set("parameters/movement/transition_request", "idle")
@@ -356,6 +358,7 @@ func change_state_to(new_state: States):
 				anims.set("parameters/stun/transition_request", "dead")
 			else:
 				anims.set("parameters/movement/transition_request", "dead")
+			get_tree().call_group("game_controller", "on_enemy_dead")
 		
 		
 		_:
@@ -429,6 +432,8 @@ func check_prey_line_of_sight(prey) -> bool:
 func can_be_shot() -> bool:
 	return health > 0.0
 
+func is_alive() -> bool:
+	return health > 0.0
 
 func is_harvestable() -> bool:
 	match current_state:

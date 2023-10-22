@@ -32,6 +32,7 @@ const _Ambiences : Dictionary = {
 
 const _Music : Dictionary = {
 	"attack": preload("res://audio/music/attack.ogg"),
+	"attack_over": preload("res://audio/music/stinger.ogg"),
 	"downtime": preload("res://audio/music/downtime.ogg"),
 	"saferoom": preload("res://audio/music/saferoom.ogg")
 }
@@ -78,6 +79,22 @@ var current_music : String = ""
 var current_state : int
 var room_to_load : String
 var spawn_id_to_use : int
+
+func change_music_immediately(new_music : String) -> void:
+	if current_music != new_music:
+		audio_bgm.stop()
+		audio_bgm.stream = _Music[new_music]
+		audio_bgm.play()
+		current_music = new_music
+
+func on_enemy_aggression() -> void:
+	change_music_immediately("attack")
+
+func on_enemy_dead() -> void:
+	var all_dead : bool = true
+	for enemy in get_tree().get_nodes_in_group("enemy"):
+		if enemy.is_alive(): all_dead = false
+	if all_dead: change_music_immediately("attack_over")
 
 func get_music_for_room(room : String) -> String:
 	if room.begins_with("Lab"):
