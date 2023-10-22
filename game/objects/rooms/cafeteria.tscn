@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://5sipovm1dr7i"]
+[gd_scene load_steps=30 format=3 uid="uid://5sipovm1dr7i"]
 
 [ext_resource type="PackedScene" uid="uid://bpw4p7saapb2s" path="res://objects/rooms/building_parts/cafeteria.tscn" id="2_52kq6"]
 [ext_resource type="Script" path="res://objects/room.gd" id="2_quymt"]
@@ -9,20 +9,21 @@
 [ext_resource type="PackedScene" uid="uid://b3xs7myw6t33d" path="res://objects/camera_trigger.tscn" id="5_13rbo"]
 [ext_resource type="Texture2D" uid="uid://cls2cel8gtflj" path="res://textures/scifi_parts_wall_normal.png" id="5_vgyb7"]
 [ext_resource type="PackedScene" uid="uid://bfgu1tbuk3iqa" path="res://objects/fixed_camera.tscn" id="6_vgrdf"]
-[ext_resource type="PackedScene" uid="uid://cf8bgnsbthcvk" path="res://meshes/Kyveri-Objets/Table.tscn" id="10_8gf2p"]
+[ext_resource type="PackedScene" uid="uid://cf8bgnsbthcvk" path="res://meshes/Kyveri-Objets/table.tscn" id="10_8gf2p"]
 [ext_resource type="PackedScene" uid="uid://bs6eiluux6hfo" path="res://meshes/Kyveri-Objets/screen.tscn" id="11_4jr5p"]
-[ext_resource type="PackedScene" path="res://meshes/Kyveri-Objets/vending_machine.tscn" id="12_vkbrs"]
-[ext_resource type="PackedScene" uid="uid://kdobjsis0f3u" path="res://meshes/Kyveri-Objets/Chair.tscn" id="13_vqqaa"]
-[ext_resource type="PackedScene" path="res://meshes/Kyveri-Objets/crate.tscn" id="14_3odie"]
+[ext_resource type="PackedScene" uid="uid://bty2d35qogr4u" path="res://meshes/Kyveri-Objets/vending_machine.tscn" id="12_vkbrs"]
+[ext_resource type="PackedScene" uid="uid://kdobjsis0f3u" path="res://meshes/Kyveri-Objets/chair.tscn" id="13_vqqaa"]
+[ext_resource type="PackedScene" uid="uid://bmpl4lv2ptyqw" path="res://meshes/Kyveri-Objets/crate.tscn" id="14_3odie"]
 [ext_resource type="PackedScene" uid="uid://dxdsf8jm7rapi" path="res://meshes/Kyveri-Objets/computer_terminal.tscn" id="15_hrw5s"]
-[ext_resource type="PackedScene" uid="uid://b5npnvyjn223e" path="res://meshes/Kyveri-Objets/Hologram_Sign.tscn" id="16_ywm01"]
+[ext_resource type="PackedScene" uid="uid://b5npnvyjn223e" path="res://meshes/Kyveri-Objets/hologram_sign.tscn" id="16_ywm01"]
 [ext_resource type="Texture2D" uid="uid://divewewhbixq0" path="res://textures/paper.png" id="17_6sibv"]
 [ext_resource type="PackedScene" uid="uid://bti55it0qbl4q" path="res://meshes/Kyveri-Objets/laptop.tscn" id="18_lprth"]
-[ext_resource type="PackedScene" uid="uid://cnsbe8nhdxvth" path="res://meshes/Kyveri-Objets/Book.tscn" id="19_u0ln1"]
+[ext_resource type="PackedScene" uid="uid://cnsbe8nhdxvth" path="res://meshes/Kyveri-Objets/book.tscn" id="19_u0ln1"]
 [ext_resource type="Texture2D" uid="uid://dnj02i88sr1hw" path="res://textures/blood2.png" id="20_qb470"]
 [ext_resource type="Texture2D" uid="uid://dv3pdagm4rc2a" path="res://textures/blood1.png" id="21_6nhch"]
+[ext_resource type="PackedScene" uid="uid://cdyuudhi3uony" path="res://objects/spitslash.tscn" id="22_o5v23"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1hd0d"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_plyjk"]
 resource_name = "Wall"
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("3_12lxb")
@@ -57,7 +58,7 @@ script = ExtResource("2_quymt")
 
 [node name="Mesh" parent="." instance=ExtResource("2_52kq6")]
 layers = 2
-surface_material_override/1 = SubResource("StandardMaterial3D_1hd0d")
+surface_material_override/1 = SubResource("StandardMaterial3D_plyjk")
 WallLightsColor = Color(0, 0.686275, 0.631373, 1)
 DoorLightColors = Array[Color]([Color(0, 0.611765, 0.14902, 1), Color(0.752941, 0.584314, 0, 1), Color(0.741176, 0, 0.733333, 1), Color(0.301961, 0.427451, 1, 1), Color(0.713726, 0.105882, 0.164706, 1)])
 
@@ -137,7 +138,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, 2)
 shape = SubResource("BoxShape3D_iviiy")
 
 [node name="FixedCamera" parent="CameraTrigger1" instance=ExtResource("6_vgrdf")]
-transform = Transform3D(0.939693, -0.17101, 0.296198, 0, 0.866025, 0.5, -0.34202, -0.469846, 0.813798, 0, 1.5, 2)
+transform = Transform3D(0.974664, 0.158939, -0.157379, -0.0789899, 0.902859, 0.422618, 0.209261, -0.399479, 0.892539, -1, 1.5, 2)
 current = true
 
 [node name="CameraTrigger2" parent="." instance=ExtResource("5_13rbo")]
@@ -345,6 +346,31 @@ layers = 2
 size = Vector3(1.74116, 1.89404, 2.19615)
 texture_albedo = ExtResource("21_6nhch")
 modulate = Color(0.352941, 0.352941, 0.352941, 1)
+
+[node name="PatrolPoints" type="Node3D" parent="."]
+
+[node name="Marker3D" type="Marker3D" parent="PatrolPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.23579, 0, -5.42899)
+
+[node name="Marker3D2" type="Marker3D" parent="PatrolPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.249, 0, -6.59035)
+
+[node name="Marker3D3" type="Marker3D" parent="PatrolPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.50967, 0, -1.42052)
+
+[node name="Marker3D4" type="Marker3D" parent="PatrolPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.35289, 0, 2.44465)
+
+[node name="Marker3D5" type="Marker3D" parent="PatrolPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.581978, 0, 1.81458)
+
+[node name="Spitslash" parent="." instance=ExtResource("22_o5v23")]
+transform = Transform3D(0.940181, 0, 0.340675, 0, 1, 0, -0.340675, 0, 0.940181, -1.42696, 0, -4.56049)
+PatrolPoints = NodePath("../PatrolPoints")
+
+[node name="Spitslash2" parent="." instance=ExtResource("22_o5v23")]
+transform = Transform3D(-0.995616, 0, 0.0935348, 0, 1, 0, -0.0935348, 0, -0.995616, 2.7087, 0, -1.08418)
+PatrolPoints = NodePath("../PatrolPoints")
 
 [connection signal="player_entered" from="CameraTrigger1" to="CameraTrigger1/FixedCamera" method="_on_player_entered"]
 [connection signal="player_entered" from="CameraTrigger2" to="CameraTrigger2/FixedCamera" method="_on_player_entered"]

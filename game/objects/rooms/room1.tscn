@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://bmpl4lv2ptyqw" path="res://meshes/Kyveri-Objets/crate.tscn" id="11_j7x01"]
 [ext_resource type="PackedScene" uid="uid://bti55it0qbl4q" path="res://meshes/Kyveri-Objets/laptop.tscn" id="12_852ql"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2h2ou"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_asb7x"]
 resource_name = "Wall"
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("3_cxeq8")
@@ -39,7 +39,7 @@ script = ExtResource("2_w4qh7")
 
 [node name="Mesh" parent="." instance=ExtResource("2_jp6tf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, -4.3)
-surface_material_override/1 = SubResource("StandardMaterial3D_2h2ou")
+surface_material_override/1 = SubResource("StandardMaterial3D_asb7x")
 WallLightsColor = Color(0, 1, 0.501961, 1)
 DoorLightColors = Array[Color]([Color(0, 1, 0.501961, 1)])
 

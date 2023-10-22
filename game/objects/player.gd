@@ -84,6 +84,8 @@ func can_interact() -> bool:
 	return raycast_interactable.is_colliding()
 
 func can_harvest() -> bool:
+	if current_state != State.NORMAL:
+		return false
 	var candidate : Node3D = raycast_harvestable.get_collider()
 	if candidate != null:
 		return candidate.is_harvestable()
@@ -91,6 +93,8 @@ func can_harvest() -> bool:
 		return false
 
 func can_rip() -> bool:
+	if current_state != State.NORMAL:
+		return false
 	var candidate : Node3D = raycast_rippable.get_collider()
 	if candidate != null:
 		return candidate.is_rippable()
