@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://t6dpi31d2sex"]
+[gd_scene load_steps=41 format=3 uid="uid://t6dpi31d2sex"]
 
 [ext_resource type="Script" path="res://objects/player.gd" id="1_sptsi"]
 [ext_resource type="ArrayMesh" uid="uid://caexlwkwhyar5" path="res://meshes/player.mesh" id="2_lccrg"]
@@ -15,6 +15,7 @@
 [ext_resource type="Animation" uid="uid://b8icgd8ugwqip" path="res://anims/player_drain_start.anim" id="9_o0vvc"]
 [ext_resource type="Animation" uid="uid://cua05lg0nxv80" path="res://anims/player_hit.anim" id="10_kofln"]
 [ext_resource type="AudioStream" uid="uid://boteu7uxqlucw" path="res://audio/sfx/gunshots/gunshot3.wav" id="10_uylvg"]
+[ext_resource type="AudioStream" uid="uid://bnkmlh2p1pirg" path="res://audio/sfx/player_melee.wav" id="11_grxpj"]
 [ext_resource type="Animation" uid="uid://bn7ybvr46jy1g" path="res://anims/player_drain_end_death.anim" id="11_oelut"]
 [ext_resource type="Animation" uid="uid://wsdbfpxexlbc" path="res://anims/player_harvest_end.anim" id="11_orr2q"]
 [ext_resource type="Animation" uid="uid://c3dlv2nv17ljx" path="res://anims/player_harvest_start.anim" id="12_ru12g"]
@@ -1100,6 +1101,10 @@ transform = Transform3D(-0.999072, 0.0170998, 0.0395435, 0.03818, -0.0738119, 0.
 bone_name = "DEF-hand.L"
 bone_idx = 12
 
+[node name="SFXGunWhip" type="AudioStreamPlayer3D" parent="rig_deform/Skeleton3D/BoneHand"]
+transform = Transform3D(1, -2.23517e-08, -6.49597e-08, -6.70552e-08, 1, 0, 1.03493e-07, -6.70552e-08, 1, 0.0342658, 0.135514, -0.044237)
+stream = ExtResource("11_grxpj")
+
 [node name="Pistol" type="MeshInstance3D" parent="rig_deform/Skeleton3D/BoneHand"]
 transform = Transform3D(-0.99652, 0.0542942, 0.0632474, 0.0542943, -0.152937, 0.986744, 0.0632473, 0.986744, 0.149457, 0.0270476, 0.0956779, 0.0321636)
 visible = false
@@ -1146,5 +1151,7 @@ collision_mask = 13
 transform = Transform3D(0.996195, 0, -0.0871557, 0, 1, 0, 0.0871557, 0, 0.996195, 0, 1.35, 0)
 target_position = Vector3(0, 0, 10)
 collision_mask = 13
+
+[node name="SFXHitFloor" type="AudioStreamPlayer3D" parent="."]
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

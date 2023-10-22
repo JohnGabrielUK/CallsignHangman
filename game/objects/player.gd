@@ -38,6 +38,7 @@ enum State {NORMAL, DRAWING_WEAPON, WEAPON_DRAWN, HOLSTERING_WEAPON, SHOOTING, P
 @onready var current_arm : int = GameSession.player_arm
 
 @onready var sfx_gunshot = $rig_deform/Skeleton3D/BoneHand/Spark/SFXGunshot
+@onready var sfx_gunwhip = $rig_deform/Skeleton3D/BoneHand/SFXGunWhip
 @onready var spark_gunshot = $rig_deform/Skeleton3D/BoneHand/Spark
 
 var harvest_target : Node3D
@@ -196,6 +197,7 @@ func pistol_whip() -> void:
 	current_state = State.PISTOL_WHIP
 	var target : Node3D = get_gunfire_target(MELEE_RANGE)
 	if target != null:
+		sfx_gunwhip.play()
 		target.hit(1.0)
 
 func _physics_process_normal(delta : float) -> void:
