@@ -56,6 +56,8 @@ var health = MaxHealth
 @export var MaxBlood := 5.0
 var blood = MaxBlood
 
+@export var ForceChasePlayerStopsChasingScientist := false
+
 @export_node_path var PatrolPoints: NodePath = ""
 var patrol_points := []
 var next_patrol_point
@@ -97,6 +99,8 @@ var is_player_at_sight_range := false
 var is_scientist_at_sight_range := false
 var bodies_at_sight_range := []
 
+var force_chase_player_requested := false
+
 var vanish_progress := 0.0
 
 func _ready():
@@ -115,7 +119,7 @@ func _physics_process(delta):
 	# Does not involve any calculations
 	
 	if current_state == States.VANISH:
-		pass
+		return
 	
 	
 	# ========================================================================
@@ -149,7 +153,12 @@ func _physics_process(delta):
 	match current_state:
 		States.IDLE:
 			# Player is always priority
-			if is_player_visible:
+			if force_chase_player_requested:
+				force_chase_player_requested = false
+				assign_prey(GameSession.player)
+				change_state_to(States.CHASING)
+			
+			elif is_player_visible:
 				assign_prey(GameSession.player)
 				change_state_to(States.CHASING)
 			
@@ -173,7 +182,12 @@ func _physics_process(delta):
 							change_state_to(States.PATROLLING)
 			
 		States.PATROLLING:
-			if is_player_visible:
+			if force_chase_player_requested:
+				force_chase_player_requested = false
+				assign_prey(GameSession.player)
+				change_state_to(States.CHASING)
+			
+			elif is_player_visible:
 				assign_prey(GameSession.player)
 				change_state_to(States.CHASING)
 			else:
@@ -202,7 +216,14 @@ func _physics_process(delta):
 								velocity = move_dir * SpeedPatrol
 		
 		States.CHASING:
-			if confusion_counter > 0:
+			
+			if force_chase_player_requested:
+				force_chase_player_requested = false
+				if ForceChasePlayerStopsChasingScientist:
+					assign_prey(GameSession.player)
+					change_state_to(States.CHASING)
+			
+			elif confusion_counter > 0:
 				confusion_counter -= delta
 			
 			elif is_player_visible and (current_prey != GameSession.player):
@@ -212,10 +233,12 @@ func _physics_process(delta):
 				must_orient_to_target = true
 				move_target = current_prey.global_position
 				
+				var is_prey_still_visible = check_prey_line_of_sight(current_prey)
+				
 				ranged_attack_counter -= delta
 				if ranged_attack_counter <= 0:
 					ranged_attack_counter = RangedAttackTime
-					if (global_position - current_prey.global_position).length_squared() <= distance_to_attack_ranged_squared:
+					if is_prey_still_visible and (global_position - current_prey.global_position).length_squared() <= distance_to_attack_ranged_squared:
 						attack_hit_counter = AnimationHitDelayAttackRanged
 						attack_counter = AnimationDelayAttack
 						change_state_to(States.ATTACK_RANGE)
@@ -483,15 +506,26 @@ func attack_hit_ranged(prey: CharacterBody3D):
 
 
 func hit(damage: float = 1.0):
+	if (current_state in [States.DEATH, States.VANISH]):
+		return
+	
 	health -= damage
 	
-	state_before_hurt = current_state
+	match current_state:
+		States.IDLE, States.PATROLLING:
+			assign_prey(GameSession.player)
+			state_before_hurt = States.CHASING
+		States.CHASING:
+			assign_prey(GameSession.player)
+		_:
+			state_before_hurt = current_state
 	
 	hurt_counter = HurtTime
 	change_state_to(States.HURT)
-	
-	
 
+
+func force_chase_player():
+	force_chase_player_requested = true
 
 
 func die():
