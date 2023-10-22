@@ -21,6 +21,9 @@ const MICROWAVE_DAMAGE_RATE : float = 2.5
 
 enum State {NORMAL, DRAWING_WEAPON, WEAPON_DRAWN, HOLSTERING_WEAPON, SHOOTING, KNIFE_ATTACK, HARVEST_START, HARVESTING, HARVEST_END, RIPPING, HIT, DYING, DEAD}
 
+@onready var mesh : MeshInstance3D = $rig_deform/Skeleton3D/Character
+@onready var mesh_grab_arm : MeshInstance3D = $rig_deform/Skeleton3D/Character_GrabArm
+@onready var mesh_heavy_arm : MeshInstance3D = $rig_deform/Skeleton3D/Character_HeavyArm
 @onready var raycast_interactable : RayCast3D = $RayCast_Interactable
 @onready var raycast_rippable : RayCast3D = $RayCast_Rippable
 @onready var raycast_harvestable : RayCast3D = $RayCast_Harvestable
@@ -32,6 +35,7 @@ enum State {NORMAL, DRAWING_WEAPON, WEAPON_DRAWN, HOLSTERING_WEAPON, SHOOTING, K
 @onready var current_arm : int = Constants.ArmType.NONE
 
 var harvest_target : Node3D
+var arm_to_get : int
 
 var bloods : Vector3 = GameSession.player_blood
 
@@ -105,6 +109,12 @@ func make_sound(which : AudioStream, volume : float) -> void:
 func do_footstep_sound() -> void:
 	make_sound(_StepSounds.pick_random(), -10.0)
 
+func change_arm_type() -> void:
+	current_arm = arm_to_get
+	mesh.visible = current_arm == Constants.ArmType.HUMAN
+	mesh_grab_arm.visible = current_arm == Constants.ArmType.GRABBER
+	mesh_heavy_arm.visible = current_arm == Constants.ArmType.HEAVY
+
 func try_to_interact() -> void:
 	if raycast_interactable.is_colliding():
 		var candidate = raycast_interactable.get_collider()
@@ -118,12 +128,12 @@ func try_to_harvest() -> void:
 		current_state = State.HARVEST_START
 
 func try_to_rip() -> void:
-	for candidate in get_tree().get_nodes_in_group("rippable"):
-		if candidate.can_be_ripped() and candidate.global_position.distance_to(global_position) < INTERACT_DISTANCE:
-			candidate.ripped(self)
-			current_arm = candidate.get_arm_type()
-			current_state = State.RIPPING
-			switch_animation_if_not_current("riparm", 0.25)
+	var candidate : Node3D = raycast_rippable.get_collider()
+	if candidate and candidate.is_rippable():
+		candidate.rip()
+		arm_to_get = candidate.get_arm_type()
+		switch_animation_if_not_current("riparm", 0.1)
+		current_state = State.RIPPING
 
 func switch_animation_if_not_current(anim_name : String, blend_amount : float) -> void:
 	if anim_player.current_animation != anim_name:
@@ -161,6 +171,7 @@ func _physics_process_normal(delta : float) -> void:
 		try_to_interact()
 	elif Input.is_action_pressed("harvest"):
 		try_to_harvest()
+		try_to_rip()
 	elif Input.is_action_just_pressed("draw_weapon"):
 		anim_player.play("aim_start")
 		current_state = State.DRAWING_WEAPON
@@ -207,8 +218,9 @@ func _ready() -> void:
 
 func _on_animation_player_animation_finished(anim_name : String) -> void:
 	match anim_name:
-		"rip_arm":
+		"riparm":
 			current_state = State.NORMAL
+			change_arm_type()
 		"aim_start":
 			switch_animation_if_not_current("aim", 0.0)
 			current_state = State.WEAPON_DRAWN

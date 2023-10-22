@@ -568,7 +568,7 @@ grow_vertical = 0
 theme_override_fonts/normal_font = ExtResource("7_orrm4")
 theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
-text = "[color=#aaa][E][/color]  [color=#fff]I n t e r a c t[/color]"
+text = "[color=#aaa][V][/color]  [color=#fff]I n t e r a c t[/color]"
 autowrap_mode = 0
 
 [node name="Label_Prompt_Harvest" type="RichTextLabel" parent="HUD"]

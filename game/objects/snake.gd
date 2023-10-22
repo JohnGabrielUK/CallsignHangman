@@ -1,5 +1,5 @@
 extends CharacterBody3D
-class_name SpitSlash
+class_name Snake
 
 const TURN_SPEED : float = 8.0
 const PATROL_SPEED : float = 2.0
