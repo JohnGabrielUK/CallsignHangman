@@ -579,6 +579,7 @@ libraries = {
 "": SubResource("AnimationLibrary_8q7pw")
 }
 
+[connection signal="activate_custom_effect" from="MadTalk" to="." method="_on_mad_talk_activate_custom_effect"]
 [connection signal="dialog_acknowledged" from="MadTalk" to="." method="_on_mad_talk_dialog_acknowledged"]
 [connection signal="dialog_started" from="MadTalk" to="." method="_on_mad_talk_dialog_started"]
 [connection signal="voice_clip_requested" from="MadTalk" to="." method="_on_mad_talk_voice_clip_requested"]

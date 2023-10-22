@@ -225,8 +225,9 @@ var custom_condition_method = ""
 
 # Holds the target object and method name to be called when
 # activating custom effects
-var custom_effect_object = null
-var custom_effect_method = ""
+var custom_effect_signal = null
+var custom_effect_callable = null
+var custom_effect_flags = -1
 
 # Flags set when a request to abort or skip the dialog are issued
 # The difference between them is: when a dialog is skipped, messages are not
@@ -266,8 +267,9 @@ func _ready():
 
 	var effect_connection_array = get_signal_connection_list("activate_custom_effect")
 	if effect_connection_array.size() > 0:
-		custom_effect_object = effect_connection_array[0]["target"]
-		custom_effect_method = effect_connection_array[0]["method"]
+		custom_effect_signal = effect_connection_array[0]["signal"]
+		custom_effect_callable = effect_connection_array[0]["callable"]
+		custom_effect_flags = effect_connection_array[0]["flags"]
 	
 	MadTalkGlobals.set_game_year(YearOfReference)
 	
@@ -860,12 +862,13 @@ func run_dialog_item(sheet_name: String = "", sequence_id: int = 0, item_index: 
 							MadTalkGlobals.is_during_cinematic = false
 							
 					elif dialog_item.effect_type == MTDefs.EffectTypes.Custom:
-						if custom_effect_object and (custom_effect_method != ""):
+						if custom_effect_callable:
 							var custom_id = dialog_item.effect_values[0]
 							var custom_data_array = MadTalkGlobals.split_string_autodetect_rn(dialog_item.effect_values[1])
 							
 							#emit_signal("activate_custom_effect", custom_id, custom_data_array)
-							await custom_effect_object.call(custom_effect_method, custom_id, custom_data_array)
+							
+							await custom_effect_callable.call(custom_id, custom_data_array)
 						
 					else:
 						# All other effects have global scope and are

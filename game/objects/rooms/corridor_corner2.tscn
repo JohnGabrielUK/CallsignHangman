@@ -3,14 +3,14 @@
 [ext_resource type="PackedScene" uid="uid://ncje24em2dug" path="res://objects/rooms/building_parts/corridor_corner.tscn" id="2_3qt62"]
 [ext_resource type="Script" path="res://objects/room.gd" id="2_q6iwi"]
 [ext_resource type="PackedScene" uid="uid://bvhxtxnr14j3l" path="res://objects/player_spawn_point.tscn" id="2_uyiuo"]
-[ext_resource type="Texture2D" uid="uid://jt70f64wlu7s" path="res://materials/rooms/scifi_parts_wall_albedo.png" id="3_b8em6"]
-[ext_resource type="Texture2D" uid="uid://43ydho607sr1" path="res://materials/rooms/scifi_parts_wall_emission_lights_on.png" id="4_7khw6"]
-[ext_resource type="Texture2D" uid="uid://cls2cel8gtflj" path="res://materials/rooms/scifi_parts_wall_normal.png" id="5_gc7qj"]
+[ext_resource type="Texture2D" uid="uid://jt70f64wlu7s" path="res://textures/scifi_parts_wall_albedo.png" id="3_b8em6"]
+[ext_resource type="Texture2D" uid="uid://43ydho607sr1" path="res://textures/scifi_parts_wall_emission_lights_on.png" id="4_7khw6"]
+[ext_resource type="Texture2D" uid="uid://cls2cel8gtflj" path="res://textures/scifi_parts_wall_normal.png" id="5_gc7qj"]
 [ext_resource type="PackedScene" uid="uid://cxpjmmqyln5gd" path="res://objects/room_exit.tscn" id="7_nu4j2"]
 [ext_resource type="PackedScene" uid="uid://b3xs7myw6t33d" path="res://objects/camera_trigger.tscn" id="8_blase"]
 [ext_resource type="PackedScene" uid="uid://bfgu1tbuk3iqa" path="res://objects/fixed_camera.tscn" id="9_4vfo2"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sobmb"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c6v6q"]
 resource_name = "Wall"
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("3_b8em6")
@@ -35,7 +35,7 @@ script = ExtResource("2_q6iwi")
 
 [node name="Mesh" parent="." instance=ExtResource("2_3qt62")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 13, 0, 5)
-surface_material_override/1 = SubResource("StandardMaterial3D_sobmb")
+surface_material_override/1 = SubResource("StandardMaterial3D_c6v6q")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Mesh"]
 
@@ -54,7 +54,7 @@ point_towards = Vector3(0, 0, -1)
 [node name="RoomExit1" parent="." instance=ExtResource("7_nu4j2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 2)
 destination_room = "Cafeteria"
-destination_spawn_id = 3
+destination_spawn_id = 4
 
 [node name="RoomExit2" parent="." instance=ExtResource("7_nu4j2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 10)

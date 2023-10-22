@@ -175,8 +175,7 @@ func _physics_process(delta : float) -> void:
 
 func _ready() -> void:
 	GameSession.madtalk = %MadTalk
-	%MadTalk.activate_custom_effect.connect(GameSession._on_mad_talk_activate_custom_effect)
-	
+	GameSession.anim_player = anim_player
 	load_room("Entrance", 0)
 
 func _on_mad_talk_voice_clip_requested(speaker_id, clip_path) -> void:
@@ -194,3 +193,7 @@ func _on_mad_talk_dialog_acknowledged() -> void:
 
 func _on_mad_talk_dialog_started(sheet_name, sequence_id):
 	set_prompts_visible(false, false, false)
+
+# Fixes a _ready race
+func _on_mad_talk_activate_custom_effect(custom_id, custom_data):
+	GameSession._on_mad_talk_activate_custom_effect(custom_id, custom_data)

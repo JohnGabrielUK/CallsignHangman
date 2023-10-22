@@ -11,6 +11,7 @@ var player_blood : Vector3
 
 var madtalk
 var player
+var anim_player
 
 func _on_mad_talk_activate_custom_effect(effect_id: String, data: Array):
 	# data is an Array of strings, in this project we only use data[0]
@@ -26,7 +27,10 @@ func _on_mad_talk_activate_custom_effect(effect_id: String, data: Array):
 		"post_escape_pod":
 			# called after each of the dialogues where a scientist reaches a pod.
 			# arg contains "A", "B" or "C"
-			pass
+			anim_player.play("fade_out_keep_ambience")
+			await anim_player.animation_finished
+			scientist_in_pod()
+			anim_player.play("fade_in_keep_ambience")
 		
 		"save_scientist":
 			# called immediately after selecting the menu option, before showing the first message of the saved the scientist route
@@ -91,7 +95,6 @@ func scientist_rescued(scientist_id : int) -> void:
 			2: 
 				print("Playing scientist_c_pod")
 				madtalk.start_dialog("scientist_c_pod")
-		scientist_in_pod()
 	else:
 		print("Playing last_pod")
 		madtalk.start_dialog("last_pod")
