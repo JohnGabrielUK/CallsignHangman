@@ -73,6 +73,7 @@ var next_patrol_point
 
 @onready var initial_position = global_position
 @onready var sfx_rip = $SFXRip
+@onready var sfx_slice_player = $SFXSlicePlayer
 
 @onready var navigation_map_rid = NavigationServer3D.get_maps()[0]
 
@@ -111,7 +112,13 @@ func _ready():
 		patrol_points = patrol_node.get_children()
 
 func _physics_process(delta):
-	anims.active = not MadTalkGlobals.is_during_dialog
+	if MadTalkGlobals.is_during_dialog and anims.active:
+		anims.active = false
+		
+	if (not anims.active) and (not MadTalkGlobals.is_during_dialog):
+		if current_state != States.DEATH:
+			anims.active = true
+		
 	if MadTalkGlobals.is_during_dialog:
 		return
 	
@@ -505,6 +512,7 @@ func vanish():
 func attack_hit_melee(prey: CharacterBody3D):
 	if attack_melee_area.overlaps_body(prey):
 		prey.hit(DamageMelee)
+		sfx_slice_player.play()
 		print("ATTACK")
 
 func attack_hit_ranged(prey: CharacterBody3D):

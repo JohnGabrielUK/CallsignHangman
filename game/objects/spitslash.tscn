@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://cdyuudhi3uony"]
+[gd_scene load_steps=44 format=3 uid="uid://cdyuudhi3uony"]
 
 [ext_resource type="Script" path="res://objects/spitslash.gd" id="1_ysgay"]
 [ext_resource type="ArrayMesh" uid="uid://by5uqiif7qgng" path="res://meshes/spitslash.mesh" id="2_8id1j"]
@@ -18,6 +18,7 @@
 [ext_resource type="AudioStream" uid="uid://dclxplq85cj5i" path="res://audio/sfx/spitslash_steps/spitslash_step2.wav" id="16_37udb"]
 [ext_resource type="AudioStream" uid="uid://c44scp50qoyy1" path="res://audio/sfx/spitslash_steps/spitslash_step3.wav" id="17_h61uf"]
 [ext_resource type="AudioStream" uid="uid://bfm3s64xb8kn2" path="res://audio/sfx/meat_rip.wav" id="18_7hhdk"]
+[ext_resource type="AudioStream" uid="uid://djek22wq0ldta" path="res://audio/sfx/slash_hit_player.wav" id="18_myp8l"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_d7avd"]
 radius = 0.506303
@@ -560,7 +561,7 @@ mesh = ExtResource("3_wwrrj")
 skin = SubResource("Skin_1srn0")
 
 [node name="BoneHead" type="BoneAttachment3D" parent="rig_deform/Skeleton3D"]
-transform = Transform3D(1, -6.21725e-14, 2.38419e-07, 2.25788e-07, -0.321165, -0.947023, 7.65716e-08, 0.947023, -0.321165, -3.81471e-14, 0.821478, 0.444294)
+transform = Transform3D(1, 4.86722e-13, 2.38419e-07, 2.25788e-07, -0.321165, -0.947023, 7.65711e-08, 0.947023, -0.321165, 1.88928e-13, 0.821478, 0.444294)
 bone_name = "DEF-spine.006"
 bone_idx = 12
 
@@ -617,6 +618,10 @@ stream = SubResource("AudioStreamRandomizer_lm1rb")
 
 [node name="SFXSlice" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.43983, -0.794827)
+
+[node name="SFXSlicePlayer" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.43983, -0.794827)
+stream = ExtResource("18_myp8l")
 
 [node name="SFXRip" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.166826, 0.901534, -0.309679)

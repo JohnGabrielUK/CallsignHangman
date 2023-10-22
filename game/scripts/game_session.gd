@@ -15,6 +15,8 @@ var madtalk
 var player
 var anim_player
 
+var sfx_terminal = AudioStreamPlayer.new()
+
 func _on_mad_talk_activate_custom_effect(effect_id: String, data: Array):
 	# data is an Array of strings, in this project we only use data[0]
 	# You **CAN** await inside of here, and the dialog will pause
@@ -142,6 +144,7 @@ func terminal_activated(terminal_id : String) -> void:
 				madtalk.start_dialog("microwaves_deactivated")
 			else:
 				madtalk.start_dialog("microwaves_already_off")
+	sfx_terminal.play()
 
 func room_entered(which : String) -> void:
 	if which == "Entrance" and not intro_played:
@@ -174,4 +177,6 @@ func new_game() -> void:
 	player_arm = Constants.ArmType.HUMAN
 
 func _ready() -> void:
+	add_child(sfx_terminal)
+	sfx_terminal.stream = preload("res://audio/sfx/computer_trigger.wav")
 	new_game()

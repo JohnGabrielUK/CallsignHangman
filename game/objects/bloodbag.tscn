@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bf0u88400tj3s"]
+[gd_scene load_steps=5 format=3 uid="uid://dwkini1rxo34q"]
 
-[ext_resource type="ArrayMesh" uid="uid://8e8h16tc21nx" path="res://meshes/bloodbag.mesh" id="1_2sd0y"]
+[ext_resource type="ArrayMesh" path="res://meshes/bloodbag.mesh" id="1_2sd0y"]
 [ext_resource type="Script" path="res://objects/bloodbag.gd" id="1_d0lru"]
+[ext_resource type="AudioStream" uid="uid://copbyugg7bflh" path="res://audio/sfx/item_pick.wav" id="3_obl4b"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_8yga2"]
 
@@ -17,4 +18,8 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("SphereShape3D_8yga2")
 
+[node name="SFXPick" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_obl4b")
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="finished" from="SFXPick" to="." method="_on_sfx_pick_finished"]
