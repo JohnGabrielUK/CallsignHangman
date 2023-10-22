@@ -179,4 +179,5 @@ func new_game() -> void:
 func _ready() -> void:
 	add_child(sfx_terminal)
 	sfx_terminal.stream = preload("res://audio/sfx/computer_trigger.wav")
+	sfx_terminal.volume_db = -5.0
 	new_game()
