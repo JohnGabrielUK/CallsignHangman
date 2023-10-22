@@ -1,9 +1,6 @@
 extends CharacterBody3D
 class_name Scientist
 
-signal dead
-signal rescued
-
 const TURN_SPEED : float = 4.0
 const MOVE_SPEED : float = 2.75
 const FOLLOW_THRESHOLD : float = 1.5
@@ -42,6 +39,16 @@ func get_blood_type() -> int:
 func follow_player_from_spawn(player : Node3D) -> void:
 	following = player
 	current_state = State.FOLLOWING_PLAYER
+
+func check_for_death() -> void:
+	if health <= 0.0 and current_state != State.DEAD:
+		anim_player.play("death")
+		current_state = State.DEAD
+
+func hit(damage : float) -> void:
+	health -= 1.0
+	anim_player.play("hit")
+	check_for_death()
 
 func rescue() -> void:
 	GameSession.scientist_rescued(id)
@@ -95,13 +102,12 @@ func _physics_process_following_player(delta : float) -> void:
 		horizontal_position.y = global_position.y
 		look_at(horizontal_position, Vector3(0, 1, 0), true)
 		switch_animation_if_not_current("idle", 0.25)
-		
-		
 
 func _physics_process(delta : float) -> void:
 	if MadTalkGlobals.is_during_dialog:
 		# Forces soft-pause state during dialogs
-		switch_animation_if_not_current("idle", 0.25)
+		if current_state != State.DEAD:
+			switch_animation_if_not_current("idle", 0.25)
 		return
 	
 	match current_state:
@@ -109,3 +115,7 @@ func _physics_process(delta : float) -> void:
 
 func _ready() -> void:
 	anim_player.play("idle")
+
+func _on_animation_player_animation_finished(anim_name : String) -> void:
+	match anim_name:
+		"death": GameSession.scientist_dead(id)

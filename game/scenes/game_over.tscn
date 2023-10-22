@@ -1,0 +1,371 @@
+[gd_scene load_steps=11 format=3 uid="uid://b86pbmxy44lrm"]
+
+[ext_resource type="Script" path="res://scenes/game_over.gd" id="1_mjrtf"]
+[ext_resource type="FontFile" uid="uid://ckhxdr4lr461o" path="res://fonts/BebasNeue-Regular.otf" id="1_rryps"]
+[ext_resource type="Texture2D" uid="uid://7f6okd1h6mlh" path="res://meshes/Kyveri-Objets/space.png" id="1_u0hsu"]
+[ext_resource type="AudioStream" uid="uid://dya6ei5ji6eh4" path="res://audio/music/game_over.ogg" id="2_ecvdy"]
+[ext_resource type="Texture2D" uid="uid://cdsqiix2px0ts" path="res://meshes/Kyveri-Objets/space_bot.png" id="2_h62ld"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_rcjf8"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_h7ay0"]
+blend_mode = 1
+
+[sub_resource type="Animation" id="Animation_ymo2r"]
+resource_name = "game_over"
+length = 12.0
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Blackout:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label_Prompt:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 11.5, 12),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Label_GameOver_G:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 8, 9, 12),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Label_GameOver_A:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 4.5, 5.5, 12),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Label_GameOver_M:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 9, 10, 12),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Label_GameOver_E:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 7, 8, 12),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Label_GameOver_O:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 10, 11, 12),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Label_GameOver_V:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 3, 4, 12),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Label_GameOver_R:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 5.5, 6.5, 12),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_3p7vp"]
+resource_name = "fade_out"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Blackout:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Audio_BGM:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -40.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j5wp6"]
+_data = {
+"fade_out": SubResource("Animation_3p7vp"),
+"game_over": SubResource("Animation_ymo2r")
+}
+
+[node name="GameOver" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mjrtf")
+
+[node name="TextureRect_Background" type="TextureRect" parent="."]
+modulate = Color(1, 0.12549, 0.25098, 1)
+layout_mode = 0
+offset_left = 769.0
+offset_right = 1280.0
+offset_bottom = 408.0
+texture = ExtResource("1_u0hsu")
+
+[node name="TextureRect_Ship" type="TextureRect" parent="."]
+modulate = Color(1, 0.12549, 0.25098, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_h62ld")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Label_GameOver_G" type="RichTextLabel" parent="."]
+material = SubResource("CanvasItemMaterial_rcjf8")
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -499.0
+offset_top = -73.0
+offset_right = -59.0
+offset_bottom = 74.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_colors/default_color = Color(0.752941, 0.25098, 0.12549, 1)
+theme_override_fonts/normal_font = ExtResource("1_rryps")
+theme_override_font_sizes/normal_font_size = 120
+bbcode_enabled = true
+text = "G"
+
+[node name="Label_GameOver_A" type="RichTextLabel" parent="."]
+material = SubResource("CanvasItemMaterial_rcjf8")
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -499.0
+offset_top = -73.0
+offset_right = -59.0
+offset_bottom = 74.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_colors/default_color = Color(0.752941, 0.25098, 0.12549, 1)
+theme_override_fonts/normal_font = ExtResource("1_rryps")
+theme_override_font_sizes/normal_font_size = 120
+bbcode_enabled = true
+text = "[color=#000]G[/color]a[color=#000]me Over"
+
+[node name="Label_GameOver_M" type="RichTextLabel" parent="."]
+material = SubResource("CanvasItemMaterial_rcjf8")
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -499.0
+offset_top = -73.0
+offset_right = -59.0
+offset_bottom = 74.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_colors/default_color = Color(0.752941, 0.25098, 0.12549, 1)
+theme_override_fonts/normal_font = ExtResource("1_rryps")
+theme_override_font_sizes/normal_font_size = 120
+bbcode_enabled = true
+text = "[color=#000]Ga[/color]m[color=#000]e Over"
+
+[node name="Label_GameOver_E" type="RichTextLabel" parent="."]
+material = SubResource("CanvasItemMaterial_rcjf8")
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -499.0
+offset_top = -73.0
+offset_right = -59.0
+offset_bottom = 74.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_colors/default_color = Color(0.752941, 0.25098, 0.12549, 1)
+theme_override_fonts/normal_font = ExtResource("1_rryps")
+theme_override_font_sizes/normal_font_size = 120
+bbcode_enabled = true
+text = "[color=#000]Gam[/color]e[color=#000] Ov[/color]e"
+
+[node name="Label_GameOver_O" type="RichTextLabel" parent="."]
+material = SubResource("CanvasItemMaterial_rcjf8")
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -499.0
+offset_top = -73.0
+offset_right = -59.0
+offset_bottom = 74.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_colors/default_color = Color(0.752941, 0.25098, 0.12549, 1)
+theme_override_fonts/normal_font = ExtResource("1_rryps")
+theme_override_font_sizes/normal_font_size = 120
+bbcode_enabled = true
+text = "[color=#000]Game [/color]O[color=#000]ver"
+
+[node name="Label_GameOver_V" type="RichTextLabel" parent="."]
+material = SubResource("CanvasItemMaterial_rcjf8")
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -499.0
+offset_top = -73.0
+offset_right = -59.0
+offset_bottom = 74.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_colors/default_color = Color(0.752941, 0.25098, 0.12549, 1)
+theme_override_fonts/normal_font = ExtResource("1_rryps")
+theme_override_font_sizes/normal_font_size = 120
+bbcode_enabled = true
+text = "[color=#000]Game O[/color]v[color=#000]er"
+
+[node name="Label_GameOver_R" type="RichTextLabel" parent="."]
+material = SubResource("CanvasItemMaterial_rcjf8")
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -499.0
+offset_top = -73.0
+offset_right = -59.0
+offset_bottom = 74.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_colors/default_color = Color(0.752941, 0.25098, 0.12549, 1)
+theme_override_fonts/normal_font = ExtResource("1_rryps")
+theme_override_font_sizes/normal_font_size = 120
+bbcode_enabled = true
+text = "[color=#000]Game Ove[/color]r"
+
+[node name="Label_Prompt" type="Label" parent="."]
+material = SubResource("CanvasItemMaterial_h7ay0")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -520.0
+offset_top = 40.0
+offset_right = 550.0
+offset_bottom = 82.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.376471, 0.376471, 1)
+theme_override_fonts/font = ExtResource("1_rryps")
+theme_override_font_sizes/font_size = 32
+text = "P R E S S   E N T E R   T O   R E S T A R T"
+horizontal_alignment = 2
+
+[node name="Blackout" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Audio_BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_ecvdy")
+bus = &"BGM"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+speed_scale = 2.0
+libraries = {
+"": SubResource("AnimationLibrary_j5wp6")
+}
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

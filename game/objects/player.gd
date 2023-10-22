@@ -90,7 +90,7 @@ func get_gunfire_target() -> Node3D:
 			var target = raycast.get_collider()
 			if target.is_in_group("enemy") and target.can_be_shot():
 				return target
-			if target.is_in_group("ally"):
+			if target.is_in_group("friendly"):
 				friendly_target = target
 	return friendly_target
 

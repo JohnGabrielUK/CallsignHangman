@@ -75,9 +75,9 @@ color = Color(0, 0, 0, 1)
 [node name="Texture_Credits" type="TextureRect" parent="."]
 layout_mode = 0
 offset_left = 320.0
-offset_top = -1400.0
+offset_top = 720.0
 offset_right = 960.0
-offset_bottom = 200.01
+offset_bottom = 2320.01
 texture = ExtResource("1_d42bu")
 expand_mode = 4
 stretch_mode = 4
@@ -115,19 +115,19 @@ offset_bottom = 171.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("3_mrwm2")
 theme_override_font_sizes/font_size = 140
-text = "A"
+text = "C"
 
 [node name="Label_Description" type="Label" parent="Ending"]
 layout_mode = 0
 offset_top = 130.0
-offset_right = 295.0
+offset_right = 290.0
 offset_bottom = 200.0
 theme_override_colors/font_color = Color(0.752941, 0.752941, 0.752941, 1)
 theme_override_constants/line_spacing = -10
 theme_override_fonts/font = ExtResource("3_mrwm2")
 theme_override_font_sizes/font_size = 32
-text = "All scientists saved...
-at a cost."
+text = "No sense in asking
+what could have been."
 horizontal_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

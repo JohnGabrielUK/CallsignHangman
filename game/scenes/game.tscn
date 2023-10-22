@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://c0w0dwk2kt8ui"]
+[gd_scene load_steps=38 format=3 uid="uid://c0w0dwk2kt8ui"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_007my"]
 [ext_resource type="Script" path="res://madtalk/madtalk_runtime.gd" id="2_enrov"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dsenikov13blj" path="res://textures/portrait_scientist.png" id="6_ywb7c"]
 [ext_resource type="FontFile" uid="uid://ckhxdr4lr461o" path="res://fonts/BebasNeue-Regular.otf" id="7_orrm4"]
 [ext_resource type="FontFile" uid="uid://cyshajh7d2psd" path="res://fonts/Roboto-Light.ttf" id="7_tw648"]
+[ext_resource type="FontFile" uid="uid://dkgg4p5fjox4d" path="res://fonts/Roboto-Condensed.ttf" id="11_eds5f"]
 
 [sub_resource type="Resource" id="Resource_2e7i7"]
 script = ExtResource("3_6tbuq")
@@ -47,6 +48,10 @@ name = ""
 variants = {}
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_x8dff"]
+
+[sub_resource type="Theme" id="Theme_4vjhe"]
+default_font = ExtResource("11_eds5f")
+default_font_size = 20
 
 [sub_resource type="Animation" id="Animation_ft8p5"]
 resource_name = "DialogFadeIn"
@@ -107,10 +112,34 @@ tracks/1/keys = {
 [sub_resource type="Animation" id="Animation_s4x76"]
 resource_name = "MenuFadeIn"
 length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MenuBox:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_7ege1"]
 resource_name = "MenuFadeOut"
 length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MenuBox:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_cf6ur"]
 resource_name = "MessageBoxFadeIn"
@@ -318,12 +347,42 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_2hya2"]
+resource_name = "fade_out_slow"
+length = 4.0
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HUD/Blackout:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Audio_Ambience:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -40.0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vywsu"]
 _data = {
 "fade_in": SubResource("Animation_3618s"),
 "fade_in_keep_ambience": SubResource("Animation_56uf0"),
 "fade_out": SubResource("Animation_npnwh"),
-"fade_out_keep_ambience": SubResource("Animation_u5ov4")
+"fade_out_keep_ambience": SubResource("Animation_u5ov4"),
+"fade_out_slow": SubResource("Animation_2hya2")
 }
 
 [sub_resource type="Animation" id="Animation_1xkp2"]
@@ -384,8 +443,6 @@ TransitionAnimationName_DialogFadeIn = "DialogFadeIn"
 TransitionAnimationName_DialogFadeOut = "DialogFadeOut"
 TransitionAnimationName_MessageBoxFadeIn = "MessageBoxFadeIn"
 TransitionAnimationName_MessageBoxFadeOut = "MessageBoxFadeOut"
-TransitionAnimationName_MenuFadeIn = "MenuFadeIn"
-TransitionAnimationName_MenuFadeOut = "MenuFadeOut"
 AnimateText = false
 
 [node name="Map" type="NavigationRegion3D" parent="."]
@@ -467,20 +524,19 @@ text = "Thrilled to hear it. You'll puncture through the outer hull. Intel confi
 metadata/_edit_lock_ = true
 
 [node name="MenuBox" type="ReferenceRect" parent="HUD/Dialog"]
-visible = false
-modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -210.0
-offset_top = -452.0
-offset_right = 210.0
-offset_bottom = -280.0
+offset_left = 80.0
+offset_top = -165.0
+offset_right = 360.0
+offset_bottom = -45.0
 grow_horizontal = 2
 grow_vertical = 0
+theme = SubResource("Theme_4vjhe")
 metadata/_edit_lock_ = true
 
 [node name="VBox" type="VBoxContainer" parent="HUD/Dialog/MenuBox"]
@@ -557,12 +613,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 color = Color(0, 0, 0, 1)
 metadata/_edit_lock_ = true
 
 [node name="Audio_Ambience" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_jtdcb")
-volume_db = -40.0
 bus = &"AMB"
 
 [node name="Audio_BGM" type="AudioStreamPlayer" parent="."]

@@ -193,6 +193,8 @@ func _on_mad_talk_dialog_acknowledged() -> void:
 
 func _on_mad_talk_dialog_started(sheet_name, sequence_id):
 	set_prompts_visible(false, false, false)
+	if sheet_name in ["last_pod", "some_killed", "all_killed"]:
+		anim_player_music.play("fade_out_music")
 
 # Fixes a _ready race
 func _on_mad_talk_activate_custom_effect(custom_id, custom_data):

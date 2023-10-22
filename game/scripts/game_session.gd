@@ -8,6 +8,7 @@ var intro_played : bool
 var microwave_warning_played : bool
 var microwave_active : bool
 var player_blood : Vector3
+var ending : String
 
 var madtalk
 var player
@@ -33,14 +34,14 @@ func _on_mad_talk_activate_custom_effect(effect_id: String, data: Array):
 			anim_player.play("fade_in_keep_ambience")
 		
 		"save_scientist":
-			# called immediately after selecting the menu option, before showing the first message of the saved the scientist route
-			# (remember, await works)
-			pass
+			anim_player.play("fade_out_keep_ambience")
+			await anim_player.animation_finished
+			get_tree().call_group("scientist", "queue_free")
+			anim_player.play("fade_in_keep_ambience")
 		
 		"kill_scientist":
-			# called when that option is selected in the menu, before first message, etc. same as above
-			# (remember, await works)
-			pass
+			get_tree().call_group("scientist", "queue_free")
+			anim_player.play("fade_in_keep_ambience")
 		
 		"final":
 			# called after last message
@@ -48,13 +49,28 @@ func _on_mad_talk_activate_custom_effect(effect_id: String, data: Array):
 			# arg == "killed_last" in `If The Player Chooses to Kill the Scientist`,
 			# arg == "killed_all" in `If All Scientists Are Killed`
 			# arg == "killed_some" in `If At Least One Scientist is Extracted And The Rest Killed`
-			pass
+			if arg != "killed_all":
+				ending = arg
+				anim_player.play("fade_out_slow")
+				await anim_player.animation_finished
+				get_tree().change_scene_to_file("res://scenes/credits.tscn")
+			else:
+				anim_player.play("fade_out")
+				await anim_player.animation_finished
+				get_tree().change_scene_to_file("res://scenes/game_over.tscn")
 
 func get_scientists_saved() -> int:
 	var result : int = 0
 	for state in scientist_states:
 		if state == ScientistState.RESCUED:
 			result += 1
+	return result
+
+func no_more_to_save() -> bool:
+	var result : bool = true
+	for state in scientist_states:
+		if state == ScientistState.ALIVE:
+			result = false
 	return result
 
 func is_scientist_alive(scientist_id : int) -> bool:
@@ -65,20 +81,19 @@ func is_scientist_following_player() -> bool:
 
 func scientist_met(scientist_id : int) -> void:
 	match scientist_id:
-		0: 
-			print("Playing scientist_a_found")
-			madtalk.start_dialog("scientist_a_found")
-		1: 
-			print("Playing scientist_b_found")
-			madtalk.start_dialog("scientist_b_found")
-		2: 
-			print("Playing scientist_c_found")
-			madtalk.start_dialog("scientist_c_found")
+		0: madtalk.start_dialog("scientist_a_found")
+		1: madtalk.start_dialog("scientist_b_found")
+		2: madtalk.start_dialog("scientist_c_found")
 
 func scientist_dead(scientist_id : int) -> void:
 	scientist_states[scientist_id] = ScientistState.DEAD
 	if player_tagalong == scientist_id:
 		player_tagalong = -1
+	if no_more_to_save():
+		if get_scientists_saved() > 0:
+			madtalk.start_dialog("some_killed")
+		else:
+			madtalk.start_dialog("all_killed")
 
 func scientist_rescued(scientist_id : int) -> void:
 	scientist_states[scientist_id] = ScientistState.RESCUED
@@ -86,24 +101,18 @@ func scientist_rescued(scientist_id : int) -> void:
 		player_tagalong = -1
 	if get_scientists_saved() != 3:
 		match scientist_id:
-			0: 
-				print("Playing scientist_a_pod")
-				madtalk.start_dialog("scientist_a_pod")
-			1: 
-				print("Playing scientist_b_pod")
-				madtalk.start_dialog("scientist_b_pod")
-			2: 
-				print("Playing scientist_c_pod")
-				madtalk.start_dialog("scientist_c_pod")
+			0: madtalk.start_dialog("scientist_a_pod")
+			1: madtalk.start_dialog("scientist_b_pod")
+			2: madtalk.start_dialog("scientist_c_pod")
 	else:
-		print("Playing last_pod")
 		madtalk.start_dialog("last_pod")
 
 func scientist_in_pod() -> void:
 	get_tree().call_group("scientist", "queue_free")
 	if get_scientists_saved() == 1:
-		print("Playing one_escapes")
 		madtalk.start_dialog("one_escapes")
+	elif no_more_to_save():
+		madtalk.start_dialog("some_killed")
 
 func scientist_following_player(scientist_id : int) -> void:
 	player_tagalong = scientist_id
