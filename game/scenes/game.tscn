@@ -552,7 +552,6 @@ text = "[color=#aaa][Z][/color]  [color=#fff]R i p[/color]"
 autowrap_mode = 0
 
 [node name="Blackout" type="ColorRect" parent="HUD"]
-modulate = Color(1, 1, 1, 0)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -563,6 +562,7 @@ metadata/_edit_lock_ = true
 
 [node name="Audio_Ambience" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_jtdcb")
+volume_db = -40.0
 bus = &"AMB"
 
 [node name="Audio_BGM" type="AudioStreamPlayer" parent="."]
