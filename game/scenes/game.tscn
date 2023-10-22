@@ -1,13 +1,15 @@
-[gd_scene load_steps=33 format=3 uid="uid://c0w0dwk2kt8ui"]
+[gd_scene load_steps=35 format=3 uid="uid://c0w0dwk2kt8ui"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_007my"]
 [ext_resource type="Script" path="res://madtalk/madtalk_runtime.gd" id="2_enrov"]
 [ext_resource type="Script" path="res://madtalk/CharacterData.gd" id="3_6tbuq"]
+[ext_resource type="Texture2D" uid="uid://dwwc0gl6j7lnu" path="res://textures/portrait_hangman.png" id="3_gcri7"]
 [ext_resource type="Environment" uid="uid://ngefto5heafd" path="res://environment.tres" id="4_4mbon"]
+[ext_resource type="Texture2D" uid="uid://4ah1yn2aesrs" path="res://textures/portrait_katrina.png" id="5_ah0da"]
 [ext_resource type="AudioStream" uid="uid://11veopiqmgfu" path="res://audio/amb/ship1.ogg" id="5_jtdcb"]
 [ext_resource type="Texture2D" uid="uid://oktbr7f5wsr" path="res://textures/message_box.png" id="5_utyuc"]
-[ext_resource type="Texture2D" uid="uid://rcapne5t1l5q" path="res://textures/mugshot_placeholder.png" id="6_0q8n5"]
 [ext_resource type="AudioStream" uid="uid://vd5w60jgjqaa" path="res://audio/music/downtime.ogg" id="6_3p45f"]
+[ext_resource type="Texture2D" uid="uid://dsenikov13blj" path="res://textures/portrait_scientist.png" id="6_ywb7c"]
 [ext_resource type="FontFile" uid="uid://ckhxdr4lr461o" path="res://fonts/BebasNeue-Regular.otf" id="7_orrm4"]
 [ext_resource type="FontFile" uid="uid://cyshajh7d2psd" path="res://fonts/Roboto-Light.ttf" id="7_tw648"]
 
@@ -15,21 +17,21 @@
 script = ExtResource("3_6tbuq")
 id = "hangman"
 name = "H A N G M A N"
-avatar = ExtResource("6_0q8n5")
+avatar = ExtResource("3_gcri7")
 variants = {}
 
 [sub_resource type="Resource" id="Resource_t4ruw"]
 script = ExtResource("3_6tbuq")
 id = "katrina"
 name = "K A T R I N A"
-avatar = ExtResource("6_0q8n5")
+avatar = ExtResource("5_ah0da")
 variants = {}
 
 [sub_resource type="Resource" id="Resource_mhfcj"]
 script = ExtResource("3_6tbuq")
 id = "scientist"
 name = "S C I E N T I S T"
-avatar = ExtResource("6_0q8n5")
+avatar = ExtResource("6_ywb7c")
 variants = {}
 
 [sub_resource type="Resource" id="Resource_qcper"]
@@ -427,10 +429,12 @@ texture = ExtResource("5_utyuc")
 [node name="Avatar" type="TextureRect" parent="HUD/Dialog/MessageBox"]
 layout_mode = 0
 offset_left = 16.0
-offset_top = 16.0
+offset_top = -16.0
 offset_right = 144.0
 offset_bottom = 144.0
-texture = ExtResource("6_0q8n5")
+texture = ExtResource("3_gcri7")
+expand_mode = 4
+stretch_mode = 4
 metadata/_edit_lock_ = true
 
 [node name="Speaker" type="Label" parent="HUD/Dialog/MessageBox"]
@@ -494,40 +498,57 @@ libraries = {
 
 [node name="Label_Prompt_Interact" type="RichTextLabel" parent="HUD"]
 visible = false
-anchors_preset = 7
-anchor_left = 0.5
+anchors_preset = 3
+anchor_left = 1.0
 anchor_top = 1.0
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -65.0
-offset_top = -142.0
-offset_right = 72.0
-offset_bottom = -109.0
-grow_horizontal = 2
+offset_left = -232.0
+offset_top = -112.0
+offset_right = -32.0
+offset_bottom = -72.0
+grow_horizontal = 0
 grow_vertical = 0
 theme_override_fonts/normal_font = ExtResource("7_orrm4")
-theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "[color=#aaa][E][/color]  [color=#fff]I n t e r a c t[/color]"
 autowrap_mode = 0
 
 [node name="Label_Prompt_Harvest" type="RichTextLabel" parent="HUD"]
 visible = false
-anchors_preset = 7
-anchor_left = 0.5
+anchors_preset = 3
+anchor_left = 1.0
 anchor_top = 1.0
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -65.0
-offset_top = -117.0
-offset_right = 72.0
-offset_bottom = -84.0
-grow_horizontal = 2
+offset_left = -200.0
+offset_top = -40.0
+grow_horizontal = 0
 grow_vertical = 0
 theme_override_fonts/normal_font = ExtResource("7_orrm4")
-theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "[color=#aaa][Z][/color]  [color=#fff]H a r v e s t[/color]"
+autowrap_mode = 0
+
+[node name="Label_Prompt_Rip" type="RichTextLabel" parent="HUD"]
+visible = false
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -232.0
+offset_top = -80.0
+offset_right = -32.0
+offset_bottom = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/normal_font = ExtResource("7_orrm4")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[color=#aaa][Z][/color]  [color=#fff]R i p[/color]"
 autowrap_mode = 0
 
 [node name="Blackout" type="ColorRect" parent="HUD"]

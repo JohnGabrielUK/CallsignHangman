@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="DialogData" load_steps=131 format=3 uid="uid://dxkjjrap15vxu"]
+[gd_resource type="Resource" script_class="DialogData" load_steps=139 format=3 uid="uid://dxkjjrap15vxu"]
 
 [ext_resource type="Script" path="res://addons/madtalk/components/resources/DialogNodeData.gd" id="1"]
 [ext_resource type="Script" path="res://addons/madtalk/components/resources/DialogSheetData.gd" id="2"]
@@ -1562,6 +1562,96 @@ sheet_description = ""
 next_sequence_id = 1
 nodes = [SubResource("Resource_treho")]
 
+[sub_resource type="Resource" id="Resource_6ag5f"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "narrator"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "This terminal appears to control the microwave emitters."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_1s8d8"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "computer"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "[color=#aef]Disabling microwave security measures.[/color]"
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_2l1s8"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "narrator"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "You're still not sure why those were there in the first place."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_inbue"]
+script = ExtResource("1")
+sequence_id = 0
+position = Vector2(0, 0)
+comment = ""
+items = [SubResource("Resource_6ag5f"), SubResource("Resource_1s8d8"), SubResource("Resource_2l1s8")]
+options = []
+continue_sequence_id = -1
+continue_port_index = 0
+
+[sub_resource type="Resource" id="Resource_2jfo1"]
+script = ExtResource("2")
+sheet_id = "microwaves_deactivated"
+sheet_description = "When the player turns off the microwaves"
+next_sequence_id = 1
+nodes = [SubResource("Resource_inbue")]
+
+[sub_resource type="Resource" id="Resource_6tq0r"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "narrator"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "This terminal controls the microwave emitters, but you've already turned them off."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_g7hn4"]
+script = ExtResource("1")
+sequence_id = 0
+position = Vector2(0, 0)
+comment = ""
+items = [SubResource("Resource_6tq0r")]
+options = []
+continue_sequence_id = -1
+continue_port_index = 0
+
+[sub_resource type="Resource" id="Resource_g3vq0"]
+script = ExtResource("2")
+sheet_id = "microwaves_already_off"
+sheet_description = ""
+next_sequence_id = 1
+nodes = [SubResource("Resource_g7hn4")]
+
 [resource]
 script = ExtResource("3")
 version = 1.0
@@ -1571,6 +1661,8 @@ sheets = {
 "briefing": SubResource("Resource_xrub7"),
 "intro": SubResource("Resource_632yu"),
 "last_pod": SubResource("Resource_74ncy"),
+"microwaves_already_off": SubResource("Resource_g3vq0"),
+"microwaves_deactivated": SubResource("Resource_2jfo1"),
 "one_escapes": SubResource("Resource_fxfr7"),
 "scientist_a_found": SubResource("Resource_vccdo"),
 "scientist_a_pod": SubResource("Resource_82gf4"),

@@ -1,33 +1,35 @@
-[gd_scene load_steps=24 format=3 uid="uid://bpoy5m1sp32o7"]
+[gd_scene load_steps=26 format=3 uid="uid://bpoy5m1sp32o7"]
 
 [ext_resource type="Texture2D" uid="uid://oktbr7f5wsr" path="res://textures/message_box.png" id="1_w8iix"]
 [ext_resource type="Script" path="res://scenes/intro.gd" id="1_wu5ir"]
-[ext_resource type="Texture2D" uid="uid://rcapne5t1l5q" path="res://textures/mugshot_placeholder.png" id="2_3301s"]
 [ext_resource type="Script" path="res://madtalk/madtalk_runtime.gd" id="2_jn242"]
 [ext_resource type="FontFile" uid="uid://ckhxdr4lr461o" path="res://fonts/BebasNeue-Regular.otf" id="3_b1d7w"]
+[ext_resource type="Texture2D" uid="uid://dwwc0gl6j7lnu" path="res://textures/portrait_hangman.png" id="3_wovry"]
 [ext_resource type="Script" path="res://madtalk/CharacterData.gd" id="4_ci2vk"]
 [ext_resource type="FontFile" uid="uid://cyshajh7d2psd" path="res://fonts/Roboto-Light.ttf" id="4_h8mkb"]
 [ext_resource type="AudioStream" uid="uid://balh0xa8n5cci" path="res://audio/amb/intro.ogg" id="5_q4sg6"]
+[ext_resource type="Texture2D" uid="uid://4ah1yn2aesrs" path="res://textures/portrait_katrina.png" id="5_rr1ci"]
+[ext_resource type="Texture2D" uid="uid://dsenikov13blj" path="res://textures/portrait_scientist.png" id="6_ostgy"]
 
 [sub_resource type="Resource" id="Resource_2e7i7"]
 script = ExtResource("4_ci2vk")
 id = "hangman"
 name = "H A N G M A N"
-avatar = ExtResource("2_3301s")
+avatar = ExtResource("3_wovry")
 variants = {}
 
 [sub_resource type="Resource" id="Resource_t4ruw"]
 script = ExtResource("4_ci2vk")
 id = "katrina"
 name = "K A T R I N A"
-avatar = ExtResource("2_3301s")
+avatar = ExtResource("5_rr1ci")
 variants = {}
 
 [sub_resource type="Resource" id="Resource_mhfcj"]
 script = ExtResource("4_ci2vk")
 id = "scientist"
 name = "S C I E N T I S T"
-avatar = ExtResource("2_3301s")
+avatar = ExtResource("6_ostgy")
 variants = {}
 
 [sub_resource type="Resource" id="Resource_qcper"]
@@ -330,10 +332,12 @@ texture = ExtResource("1_w8iix")
 [node name="Avatar" type="TextureRect" parent="HUD/Dialog/MessageBox"]
 layout_mode = 0
 offset_left = 16.0
-offset_top = 16.0
+offset_top = -16.0
 offset_right = 144.0
 offset_bottom = 144.0
-texture = ExtResource("2_3301s")
+texture = ExtResource("3_wovry")
+expand_mode = 4
+stretch_mode = 4
 metadata/_edit_lock_ = true
 
 [node name="Speaker" type="Label" parent="HUD/Dialog/MessageBox"]

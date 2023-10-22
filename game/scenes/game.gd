@@ -32,6 +32,7 @@ const _Ambiences : Dictionary = {
 
 const _Music : Dictionary = {
 	"attack": preload("res://audio/music/attack.ogg"),
+	"attack_over": preload("res://audio/music/stinger.ogg"),
 	"downtime": preload("res://audio/music/downtime.ogg"),
 	"saferoom": preload("res://audio/music/saferoom.ogg")
 }
@@ -70,6 +71,7 @@ enum GameState {IN_GAME, PAUSED, LOADING}
 
 @onready var label_prompt_interact : RichTextLabel = $HUD/Label_Prompt_Interact
 @onready var label_prompt_harvest : RichTextLabel = $HUD/Label_Prompt_Harvest
+@onready var label_prompt_rip : RichTextLabel = $HUD/Label_Prompt_Rip
 
 var current_room : Node3D
 var current_ambience : String = ""
@@ -79,11 +81,41 @@ var current_state : int
 var room_to_load : String
 var spawn_id_to_use : int
 
+func change_music_immediately(new_music : String) -> void:
+	if current_music != new_music:
+		audio_bgm.stop()
+		audio_bgm.stream = _Music[new_music]
+		audio_bgm.play()
+		current_music = new_music
+
+func on_enemy_aggression() -> void:
+	change_music_immediately("attack")
+
+func on_enemy_dead() -> void:
+	var all_dead : bool = true
+	for enemy in get_tree().get_nodes_in_group("enemy"):
+		if enemy.is_alive(): all_dead = false
+	if all_dead: change_music_immediately("attack_over")
+
 func get_music_for_room(room : String) -> String:
 	if room.begins_with("Lab"):
 		return "saferoom"
 	else:
 		return "downtime"
+
+func change_ambience_if_needed(room : String) -> bool:
+	# Change ambience, if needed
+	var room_ambience = ROOM_AMBIENCE[room]
+	if room == "Corridor1":
+		room_ambience = "microwave" if GameSession.microwave_active else "ship2"
+	var ambience_change : bool = false
+	if current_ambience != room_ambience:
+		audio_ambience.stop()
+		audio_ambience.stream = _Ambiences[room_ambience]
+		audio_ambience.play()
+		current_ambience = room_ambience
+		ambience_change = true
+	return ambience_change
 
 func load_room(room : String, spawn_id : int) -> void:
 	room_to_load = room
@@ -99,15 +131,7 @@ func start_room() -> void:
 	map.bake_navigation_mesh()
 	current_room.spawn_player(spawn_id_to_use)
 	current_room.spawn_scientists()
-	# Change ambience, if needed
-	var room_ambience = ROOM_AMBIENCE[room_to_load]
-	var ambience_change : bool = false
-	if current_ambience != room_ambience:
-		audio_ambience.stop()
-		audio_ambience.stream = _Ambiences[room_ambience]
-		audio_ambience.play()
-		current_ambience = room_ambience
-		ambience_change = true
+	var ambience_change : bool = change_ambience_if_needed(room_to_load)
 	# Change music, if needed
 	var music_for_room : String = get_music_for_room(room_to_load)
 	if music_for_room != current_music:
@@ -125,7 +149,7 @@ func start_room() -> void:
 	GameSession.room_entered(room_to_load)
 
 func change_room(room : String, spawn_id : int) -> void:
-	set_prompts_visible(false, false)
+	set_prompts_visible(false, false, false)
 	get_tree().paused = true
 	if get_music_for_room(room) != current_music:
 		anim_player_music.play("fade_out_music")
@@ -137,9 +161,10 @@ func change_room(room : String, spawn_id : int) -> void:
 	current_room.queue_free()
 	load_room(room, spawn_id)
 
-func set_prompts_visible(can_interact : bool, can_harvest : bool) -> void:
+func set_prompts_visible(can_interact : bool, can_harvest : bool, can_rip : bool) -> void:
 	label_prompt_interact.visible = can_interact
 	label_prompt_harvest.visible = can_harvest
+	label_prompt_rip.visible = can_rip
 
 func _physics_process(delta : float) -> void:
 	get_tree().call_group("camera", "check_for_player") # Janky hack, m8
@@ -155,6 +180,7 @@ func _ready() -> void:
 	load_room("Entrance", 0)
 
 func _on_mad_talk_voice_clip_requested(speaker_id, clip_path) -> void:
+	sfx_voice_clips.volume_db = -5.0 if speaker_id == "katrina" else 0.0
 	if ResourceLoader.exists(clip_path):
 		sfx_voice_clips.stream = load(clip_path)
 		sfx_voice_clips.play()
@@ -167,4 +193,4 @@ func _on_mad_talk_dialog_acknowledged() -> void:
 	sfx_voice_clips.stop()
 
 func _on_mad_talk_dialog_started(sheet_name, sequence_id):
-	set_prompts_visible(false, false)
+	set_prompts_visible(false, false, false)

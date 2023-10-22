@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://x1v6abj5587q"]
+[gd_scene load_steps=17 format=3 uid="uid://x1v6abj5587q"]
 
 [ext_resource type="Script" path="res://scenes/title_screen.gd" id="1_aog8x"]
 [ext_resource type="Texture2D" uid="uid://c0mak7b0qdgv" path="res://textures/logo.png" id="1_id606"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://drxo6p7cpg44o" path="res://textures/jg.png" id="4_gidw4"]
 [ext_resource type="Texture2D" uid="uid://dga0sad3lsli4" path="res://textures/madparrot.png" id="5_o3yyo"]
 [ext_resource type="Texture2D" uid="uid://wytg7devxbf" path="res://textures/and the rest.png" id="6_reelv"]
+[ext_resource type="Texture2D" uid="uid://dkr454b7c1uq1" path="res://textures/kyveri.png" id="7_m6too"]
 [ext_resource type="Texture2D" uid="uid://tyvpkjfmq6fr" path="res://textures/intro.png" id="8_oxmbp"]
 [ext_resource type="AudioStream" uid="uid://padbyrbmbpow" path="res://audio/music/intro.ogg" id="9_1p2sl"]
 [ext_resource type="FontFile" uid="uid://ckhxdr4lr461o" path="res://fonts/BebasNeue-Regular.otf" id="9_q22vi"]
@@ -16,6 +17,33 @@ blend_mode = 1
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jl4di"]
 blend_mode = 1
+
+[sub_resource type="Animation" id="Animation_5037s"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Blackout:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Audio_BGM:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -40.0]
+}
 
 [sub_resource type="Animation" id="Animation_qtqao"]
 resource_name = "intro"
@@ -88,7 +116,7 @@ tracks/5/path = NodePath("AndTheRest:modulate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 4.5, 5, 7, 7.5),
+"times": PackedFloat32Array(0, 6, 6.5, 8, 8.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
@@ -129,32 +157,17 @@ tracks/8/keys = {
 "update": 0,
 "values": [Color(0.756863, 0.756863, 0.756863, 0), Color(0.756863, 0.756863, 0.756863, 0), Color(0.756863, 0.756863, 0.756863, 1)]
 }
-
-[sub_resource type="Animation" id="Animation_5037s"]
-resource_name = "fade_out"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Blackout:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Kyveri:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(4.5, 5, 6, 6.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Audio_BGM:volume_db")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, -40.0]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dm5dt"]
@@ -255,6 +268,24 @@ offset_bottom = 160.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("5_o3yyo")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Kyveri" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -160.0
+offset_right = 160.0
+offset_bottom = 160.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_m6too")
 expand_mode = 2
 stretch_mode = 5
 

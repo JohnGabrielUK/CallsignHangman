@@ -8,7 +8,7 @@ const TURN_SPEED : float = 4.0
 const MOVE_SPEED : float = 2.75
 const FOLLOW_THRESHOLD : float = 1.5
 
-enum State {NOT_YET_MET, FOLLOWING_PLAYER, WAITING}
+enum State {NOT_YET_MET, FOLLOWING_PLAYER, WAITING, DEAD}
 
 @onready var anim_player : AnimationPlayer = $AnimationPlayer
 @onready var eyes: Marker3D = $rig_deform/Skeleton3D/BoneHead/Eyes
@@ -18,6 +18,12 @@ enum State {NOT_YET_MET, FOLLOWING_PLAYER, WAITING}
 @onready var current_state : int = State.NOT_YET_MET
 var following : Node3D
 
+@export var MaxHealth := 2.0
+var health = MaxHealth
+
+@export var MaxBlood := 3.0
+var blood = MaxBlood
+
 # I do not use NavigationAgent as I found it to be less reliable, sometimes
 # the NPCs getting stuck in polygon edges
 # Instead I retrieve a path straight from NavigationServer3D and get
@@ -26,6 +32,12 @@ var following : Node3D
 # We can use NavigationAgent if we find them colliding too much with
 # each other
 @onready var navigation_map_rid = NavigationServer3D.get_maps()[0]
+
+func is_harvestable() -> bool:
+	return current_state == State.DEAD and blood > 0.0
+
+func get_blood_type() -> int:
+	return Constants.BloodType.SOMETHING_ELSE
 
 func follow_player_from_spawn(player : Node3D) -> void:
 	following = player

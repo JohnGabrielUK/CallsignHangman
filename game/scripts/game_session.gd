@@ -6,6 +6,8 @@ var scientist_states : Array
 var player_tagalong : int
 var intro_played : bool
 var microwave_warning_played : bool
+var microwave_active : bool
+var player_blood : Vector3
 
 var madtalk
 var player
@@ -111,10 +113,16 @@ func terminal_activated(terminal_id : String) -> void:
 			madtalk.start_dialog("terminal_message_b")
 		"cafeteria_c":
 			madtalk.start_dialog("terminal_message_c")
+		"microwave_terminal":
+			if GameSession.microwave_active:
+				GameSession.microwave_active = false
+				madtalk.start_dialog("microwaves_deactivated")
+			else:
+				madtalk.start_dialog("microwaves_already_off")
 
 func room_entered(which : String) -> void:
 	if which == "Entrance" and not intro_played:
-		#madtalk.start_dialog("intro") TODO: put this back in before you ship!
+		madtalk.start_dialog("intro")
 		intro_played = true
 	elif which == "RoomTwodoors" and not microwave_warning_played:
 		madtalk.start_dialog("before_microwave")
@@ -138,6 +146,8 @@ func new_game() -> void:
 	player_tagalong = -1
 	intro_played = false
 	microwave_warning_played = false
+	microwave_active = true
+	player_blood = Vector3(10.0, 0.0, 0.0)
 
 func _ready() -> void:
 	new_game()
