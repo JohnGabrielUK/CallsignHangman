@@ -215,6 +215,7 @@ func _physics_process_normal(delta : float) -> void:
 	elif Input.is_action_just_pressed("draw_weapon"):
 		anim_player.play("aim_start")
 		current_state = State.DRAWING_WEAPON
+		get_tree().call_group("fov_camera", "_on_player_weapon_drawn")
 	elif Input.is_action_just_pressed("melee") and current_arm == Constants.ArmType.HEAVY:
 		switch_animation_if_not_current("attack_slash", 0.1)
 		current_state = State.ARM_ATTACK
@@ -236,6 +237,7 @@ func _physics_process_weapon_drawn(delta : float) -> void:
 	if Input.is_action_just_pressed("draw_weapon"):
 		anim_player.play("aim_end")
 		current_state = State.HOLSTERING_WEAPON
+		get_tree().call_group("fov_camera", "_on_player_weapon_stowed")
 	elif Input.is_action_just_pressed("attack"):
 		fire()
 	elif Input.is_action_just_pressed("melee"):

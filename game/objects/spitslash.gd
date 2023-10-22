@@ -470,7 +470,7 @@ func get_arm_type() -> int:
 	return Constants.ArmType.HEAVY
 
 func get_blood_type() -> int:
-	return Constants.BloodType.HEAT_RESISTANT
+	return Constants.BloodType.SOMETHING_ELSE
 
 func harvest(amount: float = 0.0) -> bool:
 	match current_state:

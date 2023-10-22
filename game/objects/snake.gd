@@ -436,6 +436,9 @@ func is_harvestable() -> bool:
 func is_rippable() -> bool:
 	return current_state == States.STUNNED
 
+func get_arm_type() -> int:
+	return Constants.ArmType.GRABBER
+
 func get_blood_type() -> int:
 	return Constants.BloodType.HEAT_RESISTANT
 
