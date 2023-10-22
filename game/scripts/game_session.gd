@@ -27,6 +27,7 @@ func _on_mad_talk_activate_custom_effect(effect_id: String, data: Array):
 	match effect_id:
 		"map_fix":
 			# called when katrina talks about the fix for the scientists and tells stickyman to check the map
+			minimap.show()
 			minimap.show_scientist(0)
 		
 		"map_fix2":
