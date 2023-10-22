@@ -10,9 +10,9 @@ const _StepSounds : Array = [
 const _FleetingSound : PackedScene = preload("res://objects/fleeting_sound.tscn")
 
 const TURN_SPEED : float = 4.0
-const MOVE_SPEED : float = 3.0
+const MOVE_SPEED : float = 1.35
 const TURN_WITH_WEAPON_SPEED : float = 2.0
-const MOVE_WITH_WEAPON_SPEED : float = 2.0
+const MOVE_WITH_WEAPON_SPEED : float = 1.35
 const INTERACT_DISTANCE : float = 2.0
 const MAX_BLOOD : float = 10.0
 const HARVEST_AMOUNT : float = 1.0
@@ -144,6 +144,10 @@ func try_to_rip() -> void:
 
 func switch_animation_if_not_current(anim_name : String, blend_amount : float) -> void:
 	if anim_player.current_animation != anim_name:
+		match anim_name:
+			"walk": anim_player.speed_scale = 1.9
+			"walk_aim": anim_player.speed_scale = 1.0
+			_: anim_player.speed_scale = 1.5
 		anim_player.play(anim_name, blend_amount)
 
 # The jankiest of janky hacks
@@ -172,8 +176,8 @@ func _physics_process_normal(delta : float) -> void:
 	var move_amount : float = Input.get_axis("up", "down")
 	if move_amount != 0.0:
 		move_and_collide_split(-Vector3.FORWARD.rotated(Vector3.UP, rotation.y) * MOVE_SPEED * delta)
-		if anim_player.current_animation != "run":
-			switch_animation_if_not_current("run", 0.25)
+		if anim_player.current_animation != "walk":
+			switch_animation_if_not_current("walk", 0.25)
 	elif anim_player.current_animation != "idle":
 		switch_animation_if_not_current("idle", 0.25)
 	if Input.is_action_just_pressed("interact"):
@@ -189,6 +193,13 @@ func _physics_process_weapon_drawn(delta : float) -> void:
 	var turn_amount : float = Input.get_axis("left", "right")
 	if turn_amount != 0.0:
 		rotate_y(-turn_amount * TURN_WITH_WEAPON_SPEED * delta)
+	var move_amount : float = Input.get_axis("up", "down")
+	if move_amount != 0.0:
+		move_and_collide_split(-Vector3.FORWARD.rotated(Vector3.UP, rotation.y) * MOVE_SPEED * delta)
+		if anim_player.current_animation != "walk_aim":
+			switch_animation_if_not_current("walk_aim", 0.25)
+	elif anim_player.current_animation != "aim":
+		switch_animation_if_not_current("aim", 0.25)
 	if Input.is_action_just_pressed("draw_weapon"):
 		anim_player.play("aim_end")
 		current_state = State.HOLSTERING_WEAPON
