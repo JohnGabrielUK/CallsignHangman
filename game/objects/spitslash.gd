@@ -112,7 +112,13 @@ func _ready():
 		patrol_points = patrol_node.get_children()
 
 func _physics_process(delta):
-	anims.active = not MadTalkGlobals.is_during_dialog
+	if MadTalkGlobals.is_during_dialog and anims.active:
+		anims.active = false
+		
+	if (not anims.active) and (not MadTalkGlobals.is_during_dialog):
+		if current_state != States.DEATH:
+			anims.active = true
+		
 	if MadTalkGlobals.is_during_dialog:
 		return
 	
