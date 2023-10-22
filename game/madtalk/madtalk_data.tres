@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="DialogData" load_steps=145 format=3 uid="uid://dxkjjrap15vxu"]
+[gd_resource type="Resource" script_class="DialogData" load_steps=154 format=3 uid="uid://dxkjjrap15vxu"]
 
 [ext_resource type="Script" path="res://addons/madtalk/components/resources/DialogNodeData.gd" id="1"]
 [ext_resource type="Script" path="res://addons/madtalk/components/resources/DialogSheetData.gd" id="2"]
@@ -1725,6 +1725,121 @@ sheet_description = ""
 next_sequence_id = 1
 nodes = [SubResource("Resource_fo4u6")]
 
+[sub_resource type="Resource" id="Resource_t1p82"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "narrator"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "There's a message displayed here..."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_my5s5"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "computer"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "[color=#AEF]Attention all staff: As you are no doubt aware, we recently opened communications with a group of the notoriously-reclusive Azitrons."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_byruy"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "computer"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "[color=#AEF]With such an unprecedented opportunity presented to us, we spared no effort in searching for a capable translator."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_s1ppu"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "computer"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = " [color=#aef]Naturally, this included the staff of this research station."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_cqyym"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "computer"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "[color=#AEF]While we understand that it is tempting to embellish your CVs, we were somewhat disappointed..."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_ysjjh"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "computer"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "[color=#aef]...at how many of you specified \"fluent in Azitronian\" after merely spending a week on Duolingo."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_3kna8"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "computer"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "[color=#AEF]We don't want directions to the train station. We want to know if they're about to blow us up."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_j2j7b"]
+script = ExtResource("1")
+sequence_id = 0
+position = Vector2(0, 0)
+comment = ""
+items = [SubResource("Resource_t1p82"), SubResource("Resource_my5s5"), SubResource("Resource_byruy"), SubResource("Resource_s1ppu"), SubResource("Resource_cqyym"), SubResource("Resource_ysjjh"), SubResource("Resource_3kna8")]
+options = []
+continue_sequence_id = -1
+continue_port_index = 0
+
+[sub_resource type="Resource" id="Resource_q48q2"]
+script = ExtResource("2")
+sheet_id = "terminal_message_d"
+sheet_description = ""
+next_sequence_id = 1
+nodes = [SubResource("Resource_j2j7b")]
+
 [resource]
 script = ExtResource("3")
 version = 1.0
@@ -1747,5 +1862,6 @@ sheets = {
 "some_killed": SubResource("Resource_8ic8s"),
 "terminal_message_a": SubResource("Resource_r4a12"),
 "terminal_message_b": SubResource("Resource_jsetm"),
-"terminal_message_c": SubResource("Resource_rddxw")
+"terminal_message_c": SubResource("Resource_rddxw"),
+"terminal_message_d": SubResource("Resource_q48q2")
 }

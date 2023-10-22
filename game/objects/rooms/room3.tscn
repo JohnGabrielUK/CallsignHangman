@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bolfgyh55asf5"]
+[gd_scene load_steps=17 format=3 uid="uid://bolfgyh55asf5"]
 
 [ext_resource type="PackedScene" uid="uid://bvhxtxnr14j3l" path="res://objects/player_spawn_point.tscn" id="2_b2ojs"]
 [ext_resource type="Script" path="res://objects/room.gd" id="2_kq6hx"]
@@ -9,8 +9,10 @@
 [ext_resource type="PackedScene" uid="uid://cxpjmmqyln5gd" path="res://objects/room_exit.tscn" id="7_wvyo6"]
 [ext_resource type="PackedScene" uid="uid://b3xs7myw6t33d" path="res://objects/camera_trigger.tscn" id="8_04v1n"]
 [ext_resource type="PackedScene" uid="uid://bfgu1tbuk3iqa" path="res://objects/fixed_camera.tscn" id="9_tl8o3"]
+[ext_resource type="PackedScene" uid="uid://dxdsf8jm7rapi" path="res://meshes/Kyveri-Objets/computer_terminal.tscn" id="10_i58bx"]
+[ext_resource type="PackedScene" uid="uid://bmpl4lv2ptyqw" path="res://meshes/Kyveri-Objets/crate.tscn" id="11_nxkoy"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_22057"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xsbne"]
 resource_name = "Wall"
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("3_r8j8h")
@@ -38,7 +40,7 @@ script = ExtResource("2_kq6hx")
 
 [node name="Mesh" parent="." instance=ExtResource("2_lxhn6")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -19.3, 0, -16)
-surface_material_override/1 = SubResource("StandardMaterial3D_22057")
+surface_material_override/1 = SubResource("StandardMaterial3D_xsbne")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Mesh"]
 
@@ -65,7 +67,8 @@ shadow_enabled = true
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -20, 2.5, -18)
-light_color = Color(0, 0.25098, 0.501961, 1)
+light_color = Color(0.0941176, 0.333333, 0.501961, 1)
+light_energy = 2.0
 shadow_enabled = true
 
 [node name="CameraTrigger1" parent="." instance=ExtResource("8_04v1n")]
@@ -87,6 +90,28 @@ shape = SubResource("BoxShape3D_a841a")
 [node name="FixedCamera" parent="CameraTrigger2" instance=ExtResource("9_tl8o3")]
 transform = Transform3D(0.258819, -0.330366, 0.907673, 0, 0.939693, 0.34202, -0.965926, -0.0885213, 0.24321, 4.25, 1.35, 1.15)
 current = true
+
+[node name="Terminal" parent="." instance=ExtResource("10_i58bx")]
+transform = Transform3D(-9.0952e-09, 0, -0.208074, 0, 0.208074, 0, 0.208074, 0, -9.0952e-09, -20, 0, -18)
+terminal_id = "terminal_message_d"
+
+[node name="Decorations" type="Node3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -22, 0, -13)
+
+[node name="Crate1" parent="Decorations" instance=ExtResource("11_nxkoy")]
+transform = Transform3D(-0.739725, 0, -0.672909, 0, 1, 0, 0.672909, 0, -0.739725, 1.89425, 0.241978, 0.905938)
+
+[node name="Crate4" parent="Decorations" instance=ExtResource("11_nxkoy")]
+transform = Transform3D(0.672909, 0, -0.739725, 0, 1, 0, 0.739725, 0, 0.672909, 4.89425, 0.241978, 0.905937)
+
+[node name="Crate5" parent="Decorations" instance=ExtResource("11_nxkoy")]
+transform = Transform3D(0.976975, 0, 0.213354, 0, 1, 0, -0.213354, 0, 0.976975, 4.89425, 0.820867, 0.905937)
+
+[node name="Crate2" parent="Decorations" instance=ExtResource("11_nxkoy")]
+transform = Transform3D(0.874933, 0, -0.484245, 0, 1, 0, 0.484245, 0, 0.874933, 1.89425, 0.834255, 1.01171)
+
+[node name="Crate3" parent="Decorations" instance=ExtResource("11_nxkoy")]
+transform = Transform3D(0.874933, 0, -0.484245, 0, 1, 0, 0.484245, 0, 0.874933, 1.25512, 0.234411, 1.33484)
 
 [connection signal="player_entered" from="CameraTrigger1" to="CameraTrigger1/FixedCamera" method="_on_player_entered"]
 [connection signal="player_entered" from="CameraTrigger2" to="CameraTrigger2/FixedCamera" method="_on_player_entered"]
