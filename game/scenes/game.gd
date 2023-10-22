@@ -155,6 +155,7 @@ func _ready() -> void:
 	load_room("Entrance", 0)
 
 func _on_mad_talk_voice_clip_requested(speaker_id, clip_path) -> void:
+	sfx_voice_clips.volume_db = -5.0 if speaker_id == "katrina" else 0.0
 	if ResourceLoader.exists(clip_path):
 		sfx_voice_clips.stream = load(clip_path)
 		sfx_voice_clips.play()
