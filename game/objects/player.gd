@@ -37,6 +37,9 @@ enum State {NORMAL, DRAWING_WEAPON, WEAPON_DRAWN, HOLSTERING_WEAPON, SHOOTING, P
 @onready var current_state : int = State.NORMAL
 @onready var current_arm : int = GameSession.player_arm
 
+@onready var sfx_gunshot = $rig_deform/Skeleton3D/BoneHand/Spark/SFXGunshot
+@onready var spark_gunshot = $rig_deform/Skeleton3D/BoneHand/Spark
+
 var harvest_target : Node3D
 var arm_to_get : int
 
@@ -183,6 +186,8 @@ func fire() -> void:
 	var target : Node3D = get_gunfire_target(GUN_RANGE)
 	if target != null:
 		target.hit(1.0)
+	sfx_gunshot.play()
+	spark_gunshot.fire()
 	# Waugh, loud noises
 	get_tree().call_group("enemy", "force_chase_player")
 
