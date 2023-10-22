@@ -23,7 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://dv3pdagm4rc2a" path="res://textures/blood1.png" id="21_6nhch"]
 [ext_resource type="PackedScene" uid="uid://cdyuudhi3uony" path="res://objects/spitslash.tscn" id="22_o5v23"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_46l35"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rhssa"]
 resource_name = "Wall"
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("3_12lxb")
@@ -58,7 +58,7 @@ script = ExtResource("2_quymt")
 
 [node name="Mesh" parent="." instance=ExtResource("2_52kq6")]
 layers = 2
-surface_material_override/1 = SubResource("StandardMaterial3D_46l35")
+surface_material_override/1 = SubResource("StandardMaterial3D_rhssa")
 WallLightsColor = Color(0, 0.686275, 0.631373, 1)
 DoorLightColors = Array[Color]([Color(0, 0.611765, 0.14902, 1), Color(0.752941, 0.584314, 0, 1), Color(0.741176, 0, 0.733333, 1), Color(0.301961, 0.427451, 1, 1), Color(0.713726, 0.105882, 0.164706, 1)])
 
@@ -318,9 +318,11 @@ texture = ExtResource("17_6sibv")
 
 [node name="Laptop" parent="Objects/Small objects" instance=ExtResource("18_lprth")]
 transform = Transform3D(-0.760371, 0, 0.106004, 0, 1, 0, -0.0810588, 0, -0.994366, -0.156021, 0.519493, -0.0166325)
+terminal_id = "log_c"
 
 [node name="Laptop2" parent="Objects/Small objects" instance=ExtResource("18_lprth")]
 transform = Transform3D(-0.210541, -0.0243742, 0.96104, -0.0674306, 0.996104, 1.86265e-09, -0.732024, -0.084746, -0.276409, 1.5619, 0.515382, -2.68172)
+terminal_id = "log_d"
 
 [node name="Book" parent="Objects/Small objects" instance=ExtResource("19_u0ln1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.708404, 0.561394, 0)

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="DialogData" load_steps=160 format=3 uid="uid://dxkjjrap15vxu"]
+[gd_resource type="Resource" script_class="DialogData" load_steps=169 format=3 uid="uid://dxkjjrap15vxu"]
 
 [ext_resource type="Script" path="res://addons/madtalk/components/resources/DialogNodeData.gd" id="1"]
 [ext_resource type="Script" path="res://addons/madtalk/components/resources/DialogSheetData.gd" id="2"]
@@ -716,6 +716,152 @@ sheet_id = "last_pod"
 sheet_description = "When the last scientist reaches an escape pod"
 next_sequence_id = 3
 nodes = [SubResource("Resource_naj1q"), SubResource("Resource_wnct0"), SubResource("Resource_y88fs")]
+
+[sub_resource type="Resource" id="Resource_wuxhl"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "narrator"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "Someone's left a log entry on this computer."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_1hdge"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "computer"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "[color=#aef]I don't know why they're insisting on all these blood drives. It's hard to work when you're two steps from passing out."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_ncnl2"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "computer"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "[color=#aef]Conrad seems to think there's some sort of compatiability between human blood and Remo blood."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_86nq5"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "computer"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "[color=#aef]But even if that's the case, I don't see what good it does us."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_fo4u6"]
+script = ExtResource("1")
+sequence_id = 0
+position = Vector2(0, 0)
+comment = ""
+items = [SubResource("Resource_wuxhl"), SubResource("Resource_1hdge"), SubResource("Resource_ncnl2"), SubResource("Resource_86nq5")]
+options = []
+continue_sequence_id = -1
+continue_port_index = 0
+
+[sub_resource type="Resource" id="Resource_y8jqr"]
+script = ExtResource("2")
+sheet_id = "log_a"
+sheet_description = ""
+next_sequence_id = 1
+nodes = [SubResource("Resource_fo4u6")]
+
+[sub_resource type="Resource" id="Resource_uiu3s"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "narrator"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "Someone's left a log entry on this computer."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_f3uts"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "computer"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "[color=#aef]I thought Conrad was joking when he first told me about his experiments with Type A Remo blood, but I've run the same tests myself."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_eftkr"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "computer"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "[color=#aef]The Type A specimens we've examined don't react at all to radiation under 345GHz. At all!"
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_w343x"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "computer"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "[color=#aef]I can only speculate as to how it works, but the potential uses are incredible. If only we could harness it ourselves..."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_njjvj"]
+script = ExtResource("1")
+sequence_id = 0
+position = Vector2(0, 0)
+comment = ""
+items = [SubResource("Resource_uiu3s"), SubResource("Resource_f3uts"), SubResource("Resource_eftkr"), SubResource("Resource_w343x")]
+options = []
+continue_sequence_id = -1
+continue_port_index = 0
+
+[sub_resource type="Resource" id="Resource_6khfp"]
+script = ExtResource("2")
+sheet_id = "log_b"
+sheet_description = ""
+next_sequence_id = 1
+nodes = [SubResource("Resource_njjvj")]
 
 [sub_resource type="Resource" id="Resource_6tq0r"]
 script = ExtResource("4")
@@ -1652,79 +1798,6 @@ sheet_description = ""
 next_sequence_id = 1
 nodes = [SubResource("Resource_treho")]
 
-[sub_resource type="Resource" id="Resource_wuxhl"]
-script = ExtResource("4")
-item_type = 0
-connected_to_id = -1
-message_speaker_id = "narrator"
-message_speaker_variant = ""
-message_voice_clip = ""
-message_text = "Someone's left a log entry on this computer."
-message_hide_on_end = 0
-condition_type = 10
-condition_values = []
-effect_type = 10
-effect_values = []
-
-[sub_resource type="Resource" id="Resource_1hdge"]
-script = ExtResource("4")
-item_type = 0
-connected_to_id = -1
-message_speaker_id = "computer"
-message_speaker_variant = ""
-message_voice_clip = ""
-message_text = "[color=#aef]I don't know why they're insisting on all these blood drives. It's hard to work when you're two steps from passing out."
-message_hide_on_end = 0
-condition_type = 10
-condition_values = []
-effect_type = 10
-effect_values = []
-
-[sub_resource type="Resource" id="Resource_ncnl2"]
-script = ExtResource("4")
-item_type = 0
-connected_to_id = -1
-message_speaker_id = "computer"
-message_speaker_variant = ""
-message_voice_clip = ""
-message_text = "[color=#aef]Conrad seems to think there's some sort of compatiability between human blood and Remo blood."
-message_hide_on_end = 0
-condition_type = 10
-condition_values = []
-effect_type = 10
-effect_values = []
-
-[sub_resource type="Resource" id="Resource_86nq5"]
-script = ExtResource("4")
-item_type = 0
-connected_to_id = -1
-message_speaker_id = "computer"
-message_speaker_variant = ""
-message_voice_clip = ""
-message_text = "[color=#aef]But even if that's the case, I don't see what good it does us."
-message_hide_on_end = 0
-condition_type = 10
-condition_values = []
-effect_type = 10
-effect_values = []
-
-[sub_resource type="Resource" id="Resource_fo4u6"]
-script = ExtResource("1")
-sequence_id = 0
-position = Vector2(0, 0)
-comment = ""
-items = [SubResource("Resource_wuxhl"), SubResource("Resource_1hdge"), SubResource("Resource_ncnl2"), SubResource("Resource_86nq5")]
-options = []
-continue_sequence_id = -1
-continue_port_index = 0
-
-[sub_resource type="Resource" id="Resource_y8jqr"]
-script = ExtResource("2")
-sheet_id = "log_a"
-sheet_description = ""
-next_sequence_id = 1
-nodes = [SubResource("Resource_fo4u6")]
-
 [sub_resource type="Resource" id="Resource_t1p82"]
 script = ExtResource("4")
 item_type = 0
@@ -1840,7 +1913,7 @@ sheet_description = ""
 next_sequence_id = 1
 nodes = [SubResource("Resource_j2j7b")]
 
-[sub_resource type="Resource" id="Resource_uiu3s"]
+[sub_resource type="Resource" id="Resource_vx6ci"]
 script = ExtResource("4")
 item_type = 0
 connected_to_id = -1
@@ -1854,64 +1927,95 @@ condition_values = []
 effect_type = 10
 effect_values = []
 
-[sub_resource type="Resource" id="Resource_f3uts"]
+[sub_resource type="Resource" id="Resource_w333x"]
 script = ExtResource("4")
 item_type = 0
 connected_to_id = -1
 message_speaker_id = "computer"
 message_speaker_variant = ""
 message_voice_clip = ""
-message_text = "[color=#aef]I thought Conrad was joking when he first told me about his experiments with Type A Remo blood, but I've run the same tests myself."
+message_text = "[color=#aef]I honestly don't know what Conrad was thinking. Experimentation is all well and good, but we can't get to one of our labs anymore!"
 message_hide_on_end = 0
 condition_type = 10
 condition_values = []
 effect_type = 10
 effect_values = []
 
-[sub_resource type="Resource" id="Resource_eftkr"]
+[sub_resource type="Resource" id="Resource_iy1nm"]
 script = ExtResource("4")
 item_type = 0
 connected_to_id = -1
 message_speaker_id = "computer"
 message_speaker_variant = ""
 message_voice_clip = ""
-message_text = "[color=#aef]The Type A specimens we've examined don't react at all to radiation under 345GHz. At all!"
+message_text = "[color=#aef]What I really want to know is how he convinced management let him install microwave emitters in that corridor in the first place..."
 message_hide_on_end = 0
 condition_type = 10
 condition_values = []
 effect_type = 10
 effect_values = []
 
-[sub_resource type="Resource" id="Resource_w343x"]
+[sub_resource type="Resource" id="Resource_xtj0x"]
 script = ExtResource("4")
 item_type = 0
 connected_to_id = -1
 message_speaker_id = "computer"
 message_speaker_variant = ""
 message_voice_clip = ""
-message_text = "[color=#aef]I can only speculate as to how it works, but the potential uses are incredible. If only we could harness it ourselves..."
+message_text = "[color=#aef]If he's so convinced the Remo B's can handle it, maybe he should employ them instead of us."
 message_hide_on_end = 0
 condition_type = 10
 condition_values = []
 effect_type = 10
 effect_values = []
 
-[sub_resource type="Resource" id="Resource_njjvj"]
+[sub_resource type="Resource" id="Resource_noqah"]
 script = ExtResource("1")
 sequence_id = 0
 position = Vector2(0, 0)
 comment = ""
-items = [SubResource("Resource_uiu3s"), SubResource("Resource_f3uts"), SubResource("Resource_eftkr"), SubResource("Resource_w343x")]
+items = [SubResource("Resource_vx6ci"), SubResource("Resource_w333x"), SubResource("Resource_iy1nm"), SubResource("Resource_xtj0x")]
 options = []
 continue_sequence_id = -1
 continue_port_index = 0
 
-[sub_resource type="Resource" id="Resource_6khfp"]
+[sub_resource type="Resource" id="Resource_1ix38"]
 script = ExtResource("2")
-sheet_id = "log_b"
+sheet_id = "log_c"
 sheet_description = ""
 next_sequence_id = 1
-nodes = [SubResource("Resource_njjvj")]
+nodes = [SubResource("Resource_noqah")]
+
+[sub_resource type="Resource" id="Resource_7nbnw"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "narrator"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "A brief inspection of the laptop suggests that its owner spent more time on Reddit than was strictly necessary."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_ucedx"]
+script = ExtResource("1")
+sequence_id = 0
+position = Vector2(0, 0)
+comment = ""
+items = [SubResource("Resource_7nbnw")]
+options = []
+continue_sequence_id = -1
+continue_port_index = 0
+
+[sub_resource type="Resource" id="Resource_jlabq"]
+script = ExtResource("2")
+sheet_id = "log_d"
+sheet_description = ""
+next_sequence_id = 1
+nodes = [SubResource("Resource_ucedx")]
 
 [resource]
 script = ExtResource("3")
@@ -1924,6 +2028,8 @@ sheets = {
 "last_pod": SubResource("Resource_74ncy"),
 "log_a": SubResource("Resource_y8jqr"),
 "log_b": SubResource("Resource_6khfp"),
+"log_c": SubResource("Resource_1ix38"),
+"log_d": SubResource("Resource_jlabq"),
 "microwaves_already_off": SubResource("Resource_g3vq0"),
 "microwaves_deactivated": SubResource("Resource_2jfo1"),
 "one_escapes": SubResource("Resource_fxfr7"),
