@@ -41,3 +41,11 @@ offset_top = 7.0
 offset_right = 113.0
 offset_bottom = 11.0
 color = Color(0, 1, 1, 1)
+
+[node name="Start" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 149.0
+offset_right = 29.0
+offset_bottom = 153.0
+color = Color(1, 0, 0, 0.45098)
