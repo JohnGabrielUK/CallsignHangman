@@ -1,16 +1,16 @@
-[gd_scene load_steps=14 format=3 uid="uid://cw2mpcrq1mrl2"]
+[gd_scene load_steps=15 format=3 uid="uid://cw2mpcrq1mrl2"]
 
 [ext_resource type="PackedScene" uid="uid://bvhxtxnr14j3l" path="res://objects/player_spawn_point.tscn" id="2_4h28i"]
 [ext_resource type="PackedScene" uid="uid://comnorhotcdeg" path="res://objects/rooms/building_parts/corridor_straight.tscn" id="2_eexjq"]
 [ext_resource type="Script" path="res://objects/room.gd" id="2_g8vd3"]
-[ext_resource type="Texture2D" uid="uid://jt70f64wlu7s" path="res://materials/rooms/scifi_parts_wall_albedo.png" id="3_x4a78"]
+[ext_resource type="Texture2D" uid="uid://jt70f64wlu7s" path="res://textures/scifi_parts_wall_albedo.png" id="3_x4a78"]
 [ext_resource type="PackedScene" uid="uid://cxpjmmqyln5gd" path="res://objects/room_exit.tscn" id="4_8xols"]
-[ext_resource type="Texture2D" uid="uid://43ydho607sr1" path="res://materials/rooms/scifi_parts_wall_emission_lights_on.png" id="4_gk8v4"]
+[ext_resource type="Texture2D" uid="uid://43ydho607sr1" path="res://textures/scifi_parts_wall_emission_lights_on.png" id="4_gk8v4"]
 [ext_resource type="PackedScene" uid="uid://b3xs7myw6t33d" path="res://objects/camera_trigger.tscn" id="5_a6ty1"]
-[ext_resource type="Texture2D" uid="uid://cls2cel8gtflj" path="res://materials/rooms/scifi_parts_wall_normal.png" id="5_fl0mt"]
+[ext_resource type="Texture2D" uid="uid://cls2cel8gtflj" path="res://textures/scifi_parts_wall_normal.png" id="5_fl0mt"]
 [ext_resource type="PackedScene" uid="uid://bfgu1tbuk3iqa" path="res://objects/fixed_camera.tscn" id="6_6ckr2"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jwrdc"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jketq"]
 resource_name = "Wall"
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("3_x4a78")
@@ -24,6 +24,9 @@ normal_texture = ExtResource("5_fl0mt")
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_1sa7q"]
 data = PackedVector3Array(-1.3, 0, 0, -0.5, 0, 4.5, -1.3, 0, 4.5, -1.3, 0, 0, -0.5, 0, 0, -0.5, 0, 4.5, 0.5, 0, 0, -0.5, 0, 4.5, -0.5, 0, 0, 0.5, 0, 0, 0.5, 0, 4.5, -0.5, 0, 4.5, 0.5, 0, 0, 1.3, 0, 4.5, 0.5, 0, 4.5, 0.5, 0, 0, 1.3, 0, 0, 1.3, 0, 4.5, 0.5, 0, -4.5, 1.3, 0, 0, 0.5, 0, 0, 0.5, 0, -4.5, 1.3, 0, -4.5, 1.3, 0, 0, 0.5, 0, -4.5, -0.5, 0, 0, -0.5, 0, -4.5, 0.5, 0, -4.5, 0.5, 0, 0, -0.5, 0, 0, -1.3, 0, -4.5, -0.5, 0, 0, -1.3, 0, 0, -1.3, 0, -4.5, -0.5, 0, -4.5, -0.5, 0, 0, -1.5, 0.2, 0, -1.5, 2.8, -4.5, -1.5, 0.2, -4.5, -1.5, 0.2, 0, -1.5, 2.8, 0, -1.5, 2.8, -4.5, 1.5, 0.2, 0, 1.5, 2.8, 4.5, 1.5, 0.2, 4.5, 1.5, 0.2, 0, 1.5, 2.8, 0, 1.5, 2.8, 4.5, 1.5, 0.2, -4.5, 1.5, 2.8, 0, 1.5, 0.2, 0, 1.5, 0.2, -4.5, 1.5, 2.8, -4.5, 1.5, 2.8, 0, -1.5, 0.2, 4.5, -1.5, 2.8, 0, -1.5, 0.2, 0, -1.5, 0.2, 4.5, -1.5, 2.8, 4.5, -1.5, 2.8, 0, 1.3, 3, 0, 1.5, 2.8, 4.5, 1.5, 2.8, 0, 1.3, 3, 0, 1.3, 3, 4.5, 1.5, 2.8, 4.5, -1.5, 0.2, 0, -1.3, 0, -4.5, -1.3, 0, 0, -1.5, 0.2, 0, -1.5, 0.2, -4.5, -1.3, 0, -4.5, 1.5, 0.2, 0, 1.3, 0, 4.5, 1.3, 0, 0, 1.5, 0.2, 0, 1.5, 0.2, 4.5, 1.3, 0, 4.5, -1.3, 3, 0, -1.5, 2.8, -4.5, -1.5, 2.8, 0, -1.3, 3, 0, -1.3, 3, -4.5, -1.5, 2.8, -4.5, -1.3, 3, 4.5, -1.5, 2.8, 0, -1.5, 2.8, 4.5, -1.3, 3, 4.5, -1.3, 3, 0, -1.5, 2.8, 0, 1.5, 0.2, -4.5, 1.3, 0, 0, 1.3, 0, -4.5, 1.5, 0.2, -4.5, 1.5, 0.2, 0, 1.3, 0, 0, -1.5, 0.2, 4.5, -1.3, 0, 0, -1.3, 0, 4.5, -1.5, 0.2, 4.5, -1.5, 0.2, 0, -1.3, 0, 0, 1.3, 3, -4.5, 1.5, 2.8, 0, 1.5, 2.8, -4.5, 1.3, 3, -4.5, 1.3, 3, 0, 1.5, 2.8, 0, -0.5, 3, 0, 0.5, 3, 4.5, 0.5, 3, 0, -0.5, 3, 0, -0.5, 3, 4.5, 0.5, 3, 4.5, -0.5, 3, 0, -1.3, 3, 4.5, -0.5, 3, 4.5, -0.5, 3, 0, -1.3, 3, 0, -1.3, 3, 4.5, 1.3, 3, 0, 0.5, 3, 4.5, 1.3, 3, 4.5, 1.3, 3, 0, 0.5, 3, 0, 0.5, 3, 4.5, 1.3, 3, -4.5, 0.5, 3, 0, 1.3, 3, 0, 1.3, 3, -4.5, 0.5, 3, -4.5, 0.5, 3, 0, -0.5, 3, -4.5, -1.3, 3, 0, -0.5, 3, 0, -0.5, 3, -4.5, -1.3, 3, -4.5, -1.3, 3, 0, -0.5, 3, -4.5, 0.5, 3, 0, 0.5, 3, -4.5, -0.5, 3, -4.5, -0.5, 3, 0, 0.5, 3, 0)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_2wpr3"]
+size = Vector3(1, 2.91861, 3.02389)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_l708r"]
 size = Vector3(2, 2, 5)
 
@@ -35,12 +38,20 @@ script = ExtResource("2_g8vd3")
 
 [node name="Mesh" parent="." instance=ExtResource("2_eexjq")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10, 0, 2)
-surface_material_override/1 = SubResource("StandardMaterial3D_jwrdc")
+surface_material_override/1 = SubResource("StandardMaterial3D_jketq")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Mesh"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_1sa7q")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Mesh/StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.012171, 1.41546, -5.01265)
+shape = SubResource("BoxShape3D_2wpr3")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Mesh/StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.0121706, 1.41546, 5.01474)
+shape = SubResource("BoxShape3D_2wpr3")
 
 [node name="PlayerSpawnPoint1" parent="." instance=ExtResource("2_4h28i")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6, 0, 2)

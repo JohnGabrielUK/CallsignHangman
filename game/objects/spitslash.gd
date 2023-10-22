@@ -321,6 +321,7 @@ func _physics_process(delta):
 		
 
 	move_and_slide()
+	global_position.y = 0.0 # Should not be needed as linear axis y is locked, but doesn't hurt
 	
 	# ========================================================================
 	# ORIENTATION
