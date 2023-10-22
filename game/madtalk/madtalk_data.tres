@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="DialogData" load_steps=154 format=3 uid="uid://dxkjjrap15vxu"]
+[gd_resource type="Resource" script_class="DialogData" load_steps=160 format=3 uid="uid://dxkjjrap15vxu"]
 
 [ext_resource type="Script" path="res://addons/madtalk/components/resources/DialogNodeData.gd" id="1"]
 [ext_resource type="Script" path="res://addons/madtalk/components/resources/DialogSheetData.gd" id="2"]
@@ -1840,6 +1840,79 @@ sheet_description = ""
 next_sequence_id = 1
 nodes = [SubResource("Resource_j2j7b")]
 
+[sub_resource type="Resource" id="Resource_uiu3s"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "narrator"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "Someone's left a log entry on this computer."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_f3uts"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "computer"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "[color=#aef]I thought Conrad was joking when he first told me about his experiments with Type A Remo blood, but I've run the same tests myself."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_eftkr"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "computer"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "[color=#aef]The Type A specimens we've examined don't react at all to radiation under 345GHz. At all!"
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_w343x"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "computer"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "[color=#aef]I can only speculate as to how it works, but the potential uses are incredible. If only we could harness it ourselves..."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_njjvj"]
+script = ExtResource("1")
+sequence_id = 0
+position = Vector2(0, 0)
+comment = ""
+items = [SubResource("Resource_uiu3s"), SubResource("Resource_f3uts"), SubResource("Resource_eftkr"), SubResource("Resource_w343x")]
+options = []
+continue_sequence_id = -1
+continue_port_index = 0
+
+[sub_resource type="Resource" id="Resource_6khfp"]
+script = ExtResource("2")
+sheet_id = "log_b"
+sheet_description = ""
+next_sequence_id = 1
+nodes = [SubResource("Resource_njjvj")]
+
 [resource]
 script = ExtResource("3")
 version = 1.0
@@ -1850,6 +1923,7 @@ sheets = {
 "intro": SubResource("Resource_632yu"),
 "last_pod": SubResource("Resource_74ncy"),
 "log_a": SubResource("Resource_y8jqr"),
+"log_b": SubResource("Resource_6khfp"),
 "microwaves_already_off": SubResource("Resource_g3vq0"),
 "microwaves_deactivated": SubResource("Resource_2jfo1"),
 "one_escapes": SubResource("Resource_fxfr7"),

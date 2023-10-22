@@ -1,18 +1,18 @@
 [gd_scene load_steps=17 format=3 uid="uid://d36ghnoyyovan"]
 
 [ext_resource type="PackedScene" uid="uid://cypqvlwaos8yi" path="res://meshes/Kyveri-Objets/exam_table.tscn" id="1_030ev"]
-[ext_resource type="PackedScene" uid="uid://bdan348oa8hdf" path="res://meshes/Kyveri-Objets/Bench.tscn" id="2_yexbx"]
+[ext_resource type="PackedScene" uid="uid://bdan348oa8hdf" path="res://meshes/Kyveri-Objets/bench.tscn" id="2_yexbx"]
 [ext_resource type="PackedScene" uid="uid://cw41m5crnycrn" path="res://meshes/Kyveri-Objets/test_tube.tscn" id="3_gpaqy"]
 [ext_resource type="PackedScene" uid="uid://bs6eiluux6hfo" path="res://meshes/Kyveri-Objets/screen.tscn" id="4_utr8m"]
-[ext_resource type="PackedScene" uid="uid://colje5cjdbrmc" path="res://meshes/Kyveri-Objets/Desk.tscn" id="5_obl8a"]
+[ext_resource type="PackedScene" uid="uid://colje5cjdbrmc" path="res://meshes/Kyveri-Objets/desk.tscn" id="5_obl8a"]
 [ext_resource type="PackedScene" uid="uid://c0ttbuiij3e7i" path="res://meshes/Kyveri-Objets/small_tubes.tscn" id="6_g83am"]
 [ext_resource type="PackedScene" uid="uid://sdjqvhplqyso" path="res://meshes/Kyveri-Objets/cup.tscn" id="7_y0om6"]
 [ext_resource type="PackedScene" uid="uid://00syjrlwwvq8" path="res://meshes/Kyveri-Objets/bottle.tscn" id="8_sr5jj"]
 [ext_resource type="PackedScene" uid="uid://bti55it0qbl4q" path="res://meshes/Kyveri-Objets/laptop.tscn" id="9_ln2yf"]
-[ext_resource type="PackedScene" uid="uid://kdobjsis0f3u" path="res://meshes/Kyveri-Objets/Chair.tscn" id="10_rutp5"]
-[ext_resource type="PackedScene" uid="uid://bkwlwef8kjepr" path="res://meshes/Kyveri-Objets/Shelf.tscn" id="11_0nqan"]
-[ext_resource type="PackedScene" uid="uid://cnsbe8nhdxvth" path="res://meshes/Kyveri-Objets/Book.tscn" id="12_1xmim"]
-[ext_resource type="PackedScene" uid="uid://e6m3h0gho8c7" path="res://meshes/Kyveri-Objets/Canister.tscn" id="13_nef33"]
+[ext_resource type="PackedScene" uid="uid://kdobjsis0f3u" path="res://meshes/Kyveri-Objets/chair.tscn" id="10_rutp5"]
+[ext_resource type="PackedScene" uid="uid://bkwlwef8kjepr" path="res://meshes/Kyveri-Objets/shelf.tscn" id="11_0nqan"]
+[ext_resource type="PackedScene" uid="uid://cnsbe8nhdxvth" path="res://meshes/Kyveri-Objets/book.tscn" id="12_1xmim"]
+[ext_resource type="PackedScene" uid="uid://e6m3h0gho8c7" path="res://meshes/Kyveri-Objets/canister.tscn" id="13_nef33"]
 [ext_resource type="PackedScene" uid="uid://bmpl4lv2ptyqw" path="res://meshes/Kyveri-Objets/crate.tscn" id="14_nvim2"]
 [ext_resource type="Texture2D" uid="uid://divewewhbixq0" path="res://textures/paper.png" id="15_aev2i"]
 [ext_resource type="Texture2D" uid="uid://dgrd5pc30w73i" path="res://textures/blood4.png" id="16_l5vab"]
@@ -63,6 +63,7 @@ transform = Transform3D(0.910652, 0.00120428, 0, -0.00109668, 0.999999, 0, 0, 0,
 
 [node name="Laptop" parent="." instance=ExtResource("9_ln2yf")]
 transform = Transform3D(0.652466, 0, 0.569939, 0, 1, 0, -0.452564, 0, 0.821687, -3.8901, 0.673461, 0.66607)
+terminal_id = "log_b"
 
 [node name="Chair" parent="." instance=ExtResource("10_rutp5")]
 transform = Transform3D(-0.93138, 0, 0.364048, 0, 1, 0, -0.364048, 0, -0.93138, -3.3096, 0, 0.66054)
