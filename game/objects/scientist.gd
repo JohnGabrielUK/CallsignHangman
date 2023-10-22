@@ -4,6 +4,7 @@ class_name Scientist
 const TURN_SPEED : float = 4.0
 const MOVE_SPEED : float = 2.75
 const FOLLOW_THRESHOLD : float = 1.5
+const MICROWAVE_DAMAGE_RATE : float = 2.5
 
 enum State {NOT_YET_MET, FOLLOWING_PLAYER, WAITING, DEAD, DESPAWN}
 
@@ -51,6 +52,13 @@ func hit(damage : float) -> void:
 	health -= 1.0
 	anim_player.play("hit")
 	check_for_death()
+
+func check_for_microwave_damage(delta : float) -> void:
+	var room_has_microwaves : bool = get_tree().get_nodes_in_group("microwaves").size() != 0
+	var microwaves_disabled : bool = !GameSession.microwave_active
+	if room_has_microwaves and not microwaves_disabled:
+		health -= MICROWAVE_DAMAGE_RATE * delta
+		check_for_death()
 
 func harvest(amount: float = 0.0) -> bool:
 	blood -= amount
@@ -112,6 +120,8 @@ func _physics_process_following_player(delta : float) -> void:
 		horizontal_position.y = global_position.y
 		look_at(horizontal_position, Vector3(0, 1, 0), true)
 		switch_animation_if_not_current("idle", 0.25)
+	
+	check_for_microwave_damage(delta)
 
 func _physics_process_despawn(delta : float) -> void:
 	mesh.transparency += delta
