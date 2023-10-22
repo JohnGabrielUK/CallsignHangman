@@ -436,23 +436,16 @@ func is_alive() -> bool:
 	return health > 0.0
 
 func is_harvestable() -> bool:
-	match current_state:
-		States.STUNNED:
-			return true
-		
-		States.DEATH:
-			return blood > 0
-		
-		_:
-			return false
+	return current_state == States.DEATH and blood > 0.0
+
+func is_rippable() -> bool:
+	return current_state == States.STUNNED
+
+func get_blood_type() -> int:
+	return Constants.BloodType.HEAT_RESISTANT
 
 func harvest(amount: float = 0.0) -> bool:
 	match current_state:
-		States.STUNNED:
-			model_no_arm.show()
-			model_with_arm.hide()
-			return true
-		
 		States.DEATH:
 			if blood > 0.0:
 				blood -= amount
@@ -464,6 +457,12 @@ func harvest(amount: float = 0.0) -> bool:
 			
 		_:
 			return false
+
+func rip() -> void:
+	if current_state == States.STUNNED:
+		model_no_arm.show()
+		model_with_arm.hide()
+		die()
 
 func vanish():
 	vanish_progress = 1.0

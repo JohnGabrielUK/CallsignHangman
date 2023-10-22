@@ -265,6 +265,7 @@ height = 0.638479
 radius = 0.388289
 
 [node name="Spitslash" type="CharacterBody3D" groups=["enemy", "rippable"]]
+collision_layer = 97
 script = ExtResource("1_ysgay")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

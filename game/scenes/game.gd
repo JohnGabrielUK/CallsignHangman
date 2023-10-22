@@ -71,6 +71,7 @@ enum GameState {IN_GAME, PAUSED, LOADING}
 
 @onready var label_prompt_interact : RichTextLabel = $HUD/Label_Prompt_Interact
 @onready var label_prompt_harvest : RichTextLabel = $HUD/Label_Prompt_Harvest
+@onready var label_prompt_rip : RichTextLabel = $HUD/Label_Prompt_Rip
 
 var current_room : Node3D
 var current_ambience : String = ""
@@ -142,7 +143,7 @@ func start_room() -> void:
 	GameSession.room_entered(room_to_load)
 
 func change_room(room : String, spawn_id : int) -> void:
-	set_prompts_visible(false, false)
+	set_prompts_visible(false, false, false)
 	get_tree().paused = true
 	if get_music_for_room(room) != current_music:
 		anim_player_music.play("fade_out_music")
@@ -154,9 +155,10 @@ func change_room(room : String, spawn_id : int) -> void:
 	current_room.queue_free()
 	load_room(room, spawn_id)
 
-func set_prompts_visible(can_interact : bool, can_harvest : bool) -> void:
+func set_prompts_visible(can_interact : bool, can_harvest : bool, can_rip : bool) -> void:
 	label_prompt_interact.visible = can_interact
 	label_prompt_harvest.visible = can_harvest
+	label_prompt_rip.visible = can_rip
 
 func _physics_process(delta : float) -> void:
 	get_tree().call_group("camera", "check_for_player") # Janky hack, m8
@@ -185,4 +187,4 @@ func _on_mad_talk_dialog_acknowledged() -> void:
 	sfx_voice_clips.stop()
 
 func _on_mad_talk_dialog_started(sheet_name, sequence_id):
-	set_prompts_visible(false, false)
+	set_prompts_visible(false, false, false)

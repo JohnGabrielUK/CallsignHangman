@@ -6,6 +6,7 @@ var scientist_states : Array
 var player_tagalong : int
 var intro_played : bool
 var microwave_warning_played : bool
+var player_blood : Vector3
 
 var madtalk
 var player
@@ -138,6 +139,7 @@ func new_game() -> void:
 	player_tagalong = -1
 	intro_played = false
 	microwave_warning_played = false
+	player_blood = Vector3(10.0, 0.0, 0.0)
 
 func _ready() -> void:
 	new_game()
