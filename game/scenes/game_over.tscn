@@ -189,6 +189,7 @@ expand_mode = 2
 stretch_mode = 4
 
 [node name="Label_GameOver_G" type="RichTextLabel" parent="."]
+modulate = Color(1, 1, 1, 0)
 material = SubResource("CanvasItemMaterial_rcjf8")
 layout_mode = 1
 anchors_preset = 6
@@ -209,6 +210,7 @@ bbcode_enabled = true
 text = "G"
 
 [node name="Label_GameOver_A" type="RichTextLabel" parent="."]
+modulate = Color(1, 1, 1, 0)
 material = SubResource("CanvasItemMaterial_rcjf8")
 layout_mode = 1
 anchors_preset = 6
@@ -229,6 +231,7 @@ bbcode_enabled = true
 text = "[color=#000]G[/color]a[color=#000]me Over"
 
 [node name="Label_GameOver_M" type="RichTextLabel" parent="."]
+modulate = Color(1, 1, 1, 0)
 material = SubResource("CanvasItemMaterial_rcjf8")
 layout_mode = 1
 anchors_preset = 6
@@ -249,6 +252,7 @@ bbcode_enabled = true
 text = "[color=#000]Ga[/color]m[color=#000]e Over"
 
 [node name="Label_GameOver_E" type="RichTextLabel" parent="."]
+modulate = Color(1, 1, 1, 0)
 material = SubResource("CanvasItemMaterial_rcjf8")
 layout_mode = 1
 anchors_preset = 6
@@ -269,6 +273,7 @@ bbcode_enabled = true
 text = "[color=#000]Gam[/color]e[color=#000] Ov[/color]e"
 
 [node name="Label_GameOver_O" type="RichTextLabel" parent="."]
+modulate = Color(1, 1, 1, 0)
 material = SubResource("CanvasItemMaterial_rcjf8")
 layout_mode = 1
 anchors_preset = 6
@@ -289,6 +294,7 @@ bbcode_enabled = true
 text = "[color=#000]Game [/color]O[color=#000]ver"
 
 [node name="Label_GameOver_V" type="RichTextLabel" parent="."]
+modulate = Color(1, 1, 1, 0)
 material = SubResource("CanvasItemMaterial_rcjf8")
 layout_mode = 1
 anchors_preset = 6
@@ -309,6 +315,7 @@ bbcode_enabled = true
 text = "[color=#000]Game O[/color]v[color=#000]er"
 
 [node name="Label_GameOver_R" type="RichTextLabel" parent="."]
+modulate = Color(1, 1, 1, 0)
 material = SubResource("CanvasItemMaterial_rcjf8")
 layout_mode = 1
 anchors_preset = 6
@@ -329,6 +336,7 @@ bbcode_enabled = true
 text = "[color=#000]Game Ove[/color]r"
 
 [node name="Label_Prompt" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0)
 material = SubResource("CanvasItemMaterial_h7ay0")
 layout_mode = 1
 anchors_preset = 8
@@ -349,7 +357,6 @@ text = "P R E S S   E N T E R   T O   R E S T A R T"
 horizontal_alignment = 2
 
 [node name="Blackout" type="ColorRect" parent="."]
-modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

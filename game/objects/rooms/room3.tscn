@@ -42,6 +42,10 @@ surface_material_override/1 = SubResource("StandardMaterial3D_0alqb")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_7h3x1")
 
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Mesh/StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.000255585, 1.41546, 2.44141)
+shape = SubResource("BoxShape3D_ao6pw")
+
 [node name="PlayerSpawnPoint" parent="." instance=ExtResource("2_b2ojs")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -19, 0, -16)
 point_towards = Vector3(-1, 0, 0)
