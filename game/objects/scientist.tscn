@@ -385,7 +385,7 @@ mesh = ExtResource("2_by5w3")
 skin = SubResource("Skin_vqtvi")
 
 [node name="BoneHead" type="BoneAttachment3D" parent="rig_deform/Skeleton3D"]
-transform = Transform3D(1, 2.2693e-13, 2.38418e-07, 5.24384e-08, 0.975513, -0.219944, -2.3258e-07, 0.219944, 0.975513, 3.43529e-14, 1.49546, 0.055103)
+transform = Transform3D(1, 5.19584e-14, 2.38419e-07, 5.24385e-08, 0.975513, -0.219943, -2.3258e-07, 0.219943, 0.975513, -8.49789e-15, 1.49546, 0.0551029)
 bone_name = "DEF-spine.006"
 bone_idx = 6
 
@@ -397,3 +397,5 @@ root_node = NodePath(".")
 libraries = {
 "": SubResource("AnimationLibrary_jq010")
 }
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

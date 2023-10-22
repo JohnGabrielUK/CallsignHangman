@@ -90,7 +90,7 @@ func get_gunfire_target() -> Node3D:
 			var target = raycast.get_collider()
 			if target.is_in_group("enemy") and target.can_be_shot():
 				return target
-			if target.is_in_group("ally"):
+			if target.is_in_group("friendly"):
 				friendly_target = target
 	return friendly_target
 
@@ -137,6 +137,15 @@ func move_and_collide_split(amount : Vector3) -> void:
 func hit(damage: float = 1.0):
 	pass
 
+func fire() -> void:
+	anim_player.play("shoot_heavy")
+	current_state = State.SHOOTING
+	var target : Node3D = get_gunfire_target()
+	if target != null:
+		target.hit(1.0)
+	# Waugh, loud noises
+	get_tree().call_group("enemy", "force_chase_player")
+
 func _physics_process_normal(delta : float) -> void:
 	var turn_amount : float = Input.get_axis("left", "right")
 	if turn_amount != 0.0:
@@ -164,11 +173,7 @@ func _physics_process_weapon_drawn(delta : float) -> void:
 		anim_player.play("aim_end")
 		current_state = State.HOLSTERING_WEAPON
 	elif Input.is_action_just_pressed("attack"):
-		anim_player.play("shoot_heavy")
-		current_state = State.SHOOTING
-		var target : Node3D = get_gunfire_target()
-		if target != null:
-			target.hit(1.0)
+		fire()
 
 func _physics_process_harvesting(delta : float) -> void:
 	var harvest_amount : float = HARVEST_AMOUNT * delta
