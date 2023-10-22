@@ -1,0 +1,73 @@
+[gd_scene load_steps=3 format=3 uid="uid://dq8xbmwjlysg7"]
+
+[ext_resource type="Script" path="res://objects/health_bar.gd" id="1_ydxb7"]
+[ext_resource type="FontFile" uid="uid://ckhxdr4lr461o" path="res://fonts/BebasNeue-Regular.otf" id="2_kgje3"]
+
+[node name="HealthBar" type="Control" groups=["health_bar"]]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ydxb7")
+
+[node name="BloodBar_Back" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 20.0
+offset_right = 416.0
+offset_bottom = 42.0
+
+[node name="BloodBar_Fill" type="ColorRect" parent="BloodBar_Back"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 399.0
+offset_bottom = 21.0
+color = Color(0, 0, 0, 1)
+
+[node name="BloodBar_Human" type="ColorRect" parent="BloodBar_Back"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 33.0
+offset_bottom = 21.0
+color = Color(0.705882, 0.12549, 0.164706, 1)
+
+[node name="BloodBar_RemoA" type="ColorRect" parent="BloodBar_Back"]
+layout_mode = 0
+offset_left = 33.0
+offset_top = 1.0
+offset_right = 65.0
+offset_bottom = 21.0
+color = Color(0.0784314, 0.627451, 0.180392, 1)
+
+[node name="BloodBar_RemoB" type="ColorRect" parent="BloodBar_Back"]
+layout_mode = 0
+offset_left = 65.0
+offset_top = 1.0
+offset_right = 97.0
+offset_bottom = 21.0
+color = Color(0.156863, 0.360784, 0.768627, 1)
+
+[node name="Label_Blood_Label" type="Label" parent="BloodBar_Back"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = -2.0
+offset_right = 194.0
+offset_bottom = 31.0
+theme_override_fonts/font = ExtResource("2_kgje3")
+theme_override_font_sizes/font_size = 23
+text = "B L O O D"
+
+[node name="Label_BloodType_Value" type="Label" parent="."]
+layout_mode = 0
+offset_left = 156.0
+offset_top = 18.0
+offset_right = 414.0
+offset_bottom = 51.0
+theme_override_fonts/font = ExtResource("2_kgje3")
+theme_override_font_sizes/font_size = 23
+text = "H U M A N  (no effect)"
+horizontal_alignment = 2

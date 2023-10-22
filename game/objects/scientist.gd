@@ -4,11 +4,13 @@ class_name Scientist
 const TURN_SPEED : float = 4.0
 const MOVE_SPEED : float = 2.75
 const FOLLOW_THRESHOLD : float = 1.5
+const MICROWAVE_DAMAGE_RATE : float = 2.5
 
-enum State {NOT_YET_MET, FOLLOWING_PLAYER, WAITING, DEAD}
+enum State {NOT_YET_MET, FOLLOWING_PLAYER, WAITING, DEAD, DESPAWN}
 
 @onready var anim_player : AnimationPlayer = $AnimationPlayer
-@onready var eyes: Marker3D = $rig_deform/Skeleton3D/BoneHead/Eyes
+@onready var eyes : Marker3D = $rig_deform/Skeleton3D/BoneHead/Eyes
+@onready var mesh : MeshInstance3D = $rig_deform/Skeleton3D/Mesh
 
 @export var id : int
 
@@ -18,7 +20,7 @@ var following : Node3D
 @export var MaxHealth := 2.0
 var health = MaxHealth
 
-@export var MaxBlood := 3.0
+@export var MaxBlood := 5.0
 var blood = MaxBlood
 
 # I do not use NavigationAgent as I found it to be less reliable, sometimes
@@ -34,7 +36,7 @@ func is_harvestable() -> bool:
 	return current_state == State.DEAD and blood > 0.0
 
 func get_blood_type() -> int:
-	return Constants.BloodType.SOMETHING_ELSE
+	return Constants.BloodType.HUMAN
 
 func follow_player_from_spawn(player : Node3D) -> void:
 	following = player
@@ -44,11 +46,27 @@ func check_for_death() -> void:
 	if health <= 0.0 and current_state != State.DEAD:
 		anim_player.play("death")
 		current_state = State.DEAD
+		set_collision_layer_value(5, false)
 
 func hit(damage : float) -> void:
 	health -= 1.0
 	anim_player.play("hit")
 	check_for_death()
+
+func check_for_microwave_damage(delta : float) -> void:
+	var room_has_microwaves : bool = get_tree().get_nodes_in_group("microwaves").size() != 0
+	var microwaves_disabled : bool = !GameSession.microwave_active
+	if room_has_microwaves and not microwaves_disabled:
+		health -= MICROWAVE_DAMAGE_RATE * delta
+		check_for_death()
+
+func harvest(amount: float = 0.0) -> bool:
+	blood -= amount
+	if blood > 0.0:
+		return true
+	else:
+		current_state = State.DESPAWN
+		return false
 
 func rescue() -> void:
 	GameSession.scientist_rescued(id)
@@ -102,6 +120,14 @@ func _physics_process_following_player(delta : float) -> void:
 		horizontal_position.y = global_position.y
 		look_at(horizontal_position, Vector3(0, 1, 0), true)
 		switch_animation_if_not_current("idle", 0.25)
+	
+	check_for_microwave_damage(delta)
+
+func _physics_process_despawn(delta : float) -> void:
+	mesh.transparency += delta
+	if mesh.transparency >= 1.0:
+		set_physics_process(false)
+		queue_free()
 
 func _physics_process(delta : float) -> void:
 	if MadTalkGlobals.is_during_dialog:
@@ -112,6 +138,7 @@ func _physics_process(delta : float) -> void:
 	
 	match current_state:
 		State.FOLLOWING_PLAYER: _physics_process_following_player(delta)
+		State.DESPAWN: _physics_process_despawn(delta)
 
 func _ready() -> void:
 	anim_player.play("idle")

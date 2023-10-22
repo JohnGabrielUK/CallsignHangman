@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="DialogData" load_steps=139 format=3 uid="uid://dxkjjrap15vxu"]
+[gd_resource type="Resource" script_class="DialogData" load_steps=145 format=3 uid="uid://dxkjjrap15vxu"]
 
 [ext_resource type="Script" path="res://addons/madtalk/components/resources/DialogNodeData.gd" id="1"]
 [ext_resource type="Script" path="res://addons/madtalk/components/resources/DialogSheetData.gd" id="2"]
@@ -1652,6 +1652,79 @@ sheet_description = ""
 next_sequence_id = 1
 nodes = [SubResource("Resource_treho")]
 
+[sub_resource type="Resource" id="Resource_wuxhl"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "narrator"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "Someone's left a log entry on this computer."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_1hdge"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "computer"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "[color=#aef]I don't know why they're insisting on all these blood drives. It's hard to work when you're two steps from passing out."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_ncnl2"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "computer"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "[color=#aef]Conrad seems to think there's some sort of compatiability between human blood and Remo blood."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_86nq5"]
+script = ExtResource("4")
+item_type = 0
+connected_to_id = -1
+message_speaker_id = "computer"
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = "[color=#aef]But even if that's the case, I don't see what good it does us."
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = []
+
+[sub_resource type="Resource" id="Resource_fo4u6"]
+script = ExtResource("1")
+sequence_id = 0
+position = Vector2(0, 0)
+comment = ""
+items = [SubResource("Resource_wuxhl"), SubResource("Resource_1hdge"), SubResource("Resource_ncnl2"), SubResource("Resource_86nq5")]
+options = []
+continue_sequence_id = -1
+continue_port_index = 0
+
+[sub_resource type="Resource" id="Resource_y8jqr"]
+script = ExtResource("2")
+sheet_id = "log_a"
+sheet_description = ""
+next_sequence_id = 1
+nodes = [SubResource("Resource_fo4u6")]
+
 [resource]
 script = ExtResource("3")
 version = 1.0
@@ -1661,6 +1734,7 @@ sheets = {
 "briefing": SubResource("Resource_xrub7"),
 "intro": SubResource("Resource_632yu"),
 "last_pod": SubResource("Resource_74ncy"),
+"log_a": SubResource("Resource_y8jqr"),
 "microwaves_already_off": SubResource("Resource_g3vq0"),
 "microwaves_deactivated": SubResource("Resource_2jfo1"),
 "one_escapes": SubResource("Resource_fxfr7"),

@@ -8,6 +8,7 @@ var intro_played : bool
 var microwave_warning_played : bool
 var microwave_active : bool
 var player_blood : Vector3
+var player_arm : int
 var ending : String
 
 var madtalk
@@ -125,6 +126,8 @@ func terminal_activated(terminal_id : String) -> void:
 			madtalk.start_dialog("terminal_message_b")
 		"cafeteria_c":
 			madtalk.start_dialog("terminal_message_c")
+		"log_a":
+			madtalk.start_dialog("log_a")
 		"microwave_terminal":
 			if GameSession.microwave_active:
 				GameSession.microwave_active = false
@@ -160,6 +163,7 @@ func new_game() -> void:
 	microwave_warning_played = false
 	microwave_active = true
 	player_blood = Vector3(10.0, 0.0, 0.0)
+	player_arm = Constants.ArmType.HUMAN
 
 func _ready() -> void:
 	new_game()

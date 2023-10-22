@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bfgu1tbuk3iqa" path="res://objects/fixed_camera.tscn" id="6_nmtkj"]
 [ext_resource type="PackedScene" uid="uid://cdyuudhi3uony" path="res://objects/spitslash.tscn" id="10_y7bho"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lw4aq"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_85g4x"]
 resource_name = "Wall"
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("3_1m4by")
@@ -40,7 +40,7 @@ script = ExtResource("2_d80a7")
 
 [node name="Mesh" parent="." instance=ExtResource("2_s2ytn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 2)
-surface_material_override/1 = SubResource("StandardMaterial3D_lw4aq")
+surface_material_override/1 = SubResource("StandardMaterial3D_85g4x")
 WallLightsColor = Color(1, 0.501961, 0.501961, 1)
 DoorLightColors = Array[Color]([Color(0, 1, 0.501961, 1), Color(1, 0, 0, 1), Color(0.752941, 1, 1, 1)])
 
@@ -107,7 +107,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -20, 1
 shape = SubResource("BoxShape3D_a2jx6")
 
 [node name="FixedCamera" parent="CameraTrigger2" instance=ExtResource("6_nmtkj")]
-transform = Transform3D(-0.333581, 0.111397, 0.936117, 0.0868241, 0.992404, -0.0871557, -0.938715, 0.052204, -0.340719, 4.41, -0.5, 0)
+transform = Transform3D(0.0941071, -0.375196, 0.922157, -0.0805214, 0.920364, 0.382684, -0.992301, -0.110267, 0.0564015, 4.275, 1.53, 0.88)
 current = true
 fov = 60.0
 
@@ -133,7 +133,19 @@ light_color = Color(1, 0.501961, 0.501961, 1)
 shadow_enabled = true
 
 [node name="Spitslash" parent="." instance=ExtResource("10_y7bho")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -20, 0, 2)
+PatrolPoints = NodePath("../PatrolPoints")
+
+[node name="PatrolPoints" type="Node3D" parent="."]
+
+[node name="Marker3D" type="Marker3D" parent="PatrolPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 0, 2)
+
+[node name="Marker3D2" type="Marker3D" parent="PatrolPoints"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, -1)
+
+[node name="Marker3D3" type="Marker3D" parent="PatrolPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 5)
 
 [connection signal="player_entered" from="CameraTrigger1" to="CameraTrigger1/FixedCamera" method="_on_player_entered"]
 [connection signal="player_entered" from="CameraTrigger2" to="CameraTrigger2/FixedCamera" method="_on_player_entered"]
