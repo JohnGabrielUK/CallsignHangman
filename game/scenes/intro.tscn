@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bpoy5m1sp32o7"]
+[gd_scene load_steps=28 format=3 uid="uid://bpoy5m1sp32o7"]
 
 [ext_resource type="Texture2D" uid="uid://oktbr7f5wsr" path="res://textures/message_box.png" id="1_w8iix"]
 [ext_resource type="Script" path="res://scenes/intro.gd" id="1_wu5ir"]
@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://balh0xa8n5cci" path="res://audio/amb/intro.ogg" id="5_q4sg6"]
 [ext_resource type="Texture2D" uid="uid://4ah1yn2aesrs" path="res://textures/portrait_katrina.png" id="5_rr1ci"]
 [ext_resource type="Texture2D" uid="uid://dsenikov13blj" path="res://textures/portrait_scientist.png" id="6_ostgy"]
+[ext_resource type="PackedScene" uid="uid://cbnffggqog4tf" path="res://objects/briefing_scene.tscn" id="7_oguo8"]
 
 [sub_resource type="Resource" id="Resource_2e7i7"]
 script = ExtResource("4_ci2vk")
@@ -255,8 +256,26 @@ tracks/1/keys = {
 "values": [0.0, -40.0]
 }
 
+[sub_resource type="Animation" id="Animation_mkqlm"]
+resource_name = "fade_in"
+length = 5.0
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HUD/Blackout:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3sem7"]
 _data = {
+"fade_in": SubResource("Animation_mkqlm"),
 "fade_out": SubResource("Animation_rv3i2")
 }
 
@@ -297,6 +316,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
+
+[node name="BriefingScene" parent="." instance=ExtResource("7_oguo8")]
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
@@ -377,7 +398,6 @@ libraries = {
 [node name="SFXVoiceClips" type="AudioStreamPlayer" parent="HUD/Dialog"]
 
 [node name="Blackout" type="ColorRect" parent="HUD"]
-modulate = Color(1, 1, 1, 0)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

@@ -11,10 +11,12 @@ func _process(delta : float) -> void:
 
 func _ready() -> void:
 	audio_ambience.play()
+	anim_player.play("fade_in")
 	await get_tree().create_timer(3.0).timeout
 	%MadTalk.start_dialog("briefing")
 
 func _on_mad_talk_voice_clip_requested(speaker_id, clip_path):
+	sfx_voice_clips.volume_db = -5.0 if speaker_id == "katrina" else 0.0
 	if ResourceLoader.exists(clip_path):
 		sfx_voice_clips.stream = load(clip_path)
 		sfx_voice_clips.play()
