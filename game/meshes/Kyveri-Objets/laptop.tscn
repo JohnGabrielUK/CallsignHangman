@@ -1,10 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://bti55it0qbl4q"]
+[gd_scene load_steps=4 format=3 uid="uid://bti55it0qbl4q"]
 
+[ext_resource type="Script" path="res://meshes/Kyveri-Objets/laptop.gd" id="1_erqdu"]
 [ext_resource type="ArrayMesh" uid="uid://bemj3ykwhgnsl" path="res://meshes/laptop.mesh" id="1_f0js8"]
 
-[node name="Laptop" type="Node3D"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_8fhwy"]
+radius = 1.0
+
+[node name="Laptop" type="StaticBody3D"]
+collision_layer = 16
+collision_mask = 16
+script = ExtResource("1_erqdu")
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(-0.00108495, 0.00515125, 0.113466, -6.27123e-09, 0.00801979, -0.0728833, -0.210425, -2.65596e-05, -0.000585021, 0.258967, 0.131921, -0.00446326)
 mesh = ExtResource("1_f0js8")
 skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CylinderShape3D_8fhwy")

@@ -125,6 +125,8 @@ func terminal_activated(terminal_id : String) -> void:
 			madtalk.start_dialog("terminal_message_b")
 		"cafeteria_c":
 			madtalk.start_dialog("terminal_message_c")
+		"log_a":
+			madtalk.start_dialog("log_a")
 		"microwave_terminal":
 			if GameSession.microwave_active:
 				GameSession.microwave_active = false

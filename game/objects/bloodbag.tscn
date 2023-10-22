@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bf0u88400tj3s"]
+
+[ext_resource type="ArrayMesh" uid="uid://8e8h16tc21nx" path="res://meshes/bloodbag.mesh" id="1_2sd0y"]
+[ext_resource type="Script" path="res://objects/bloodbag.gd" id="1_d0lru"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_8yga2"]
+
+[node name="Bloodbag" type="Area3D"]
+script = ExtResource("1_d0lru")
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, 0.5, 0, -0.5, -2.18557e-08, 0, 0.5, 0)
+mesh = ExtResource("1_2sd0y")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("SphereShape3D_8yga2")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
