@@ -1,0 +1,90 @@
+[gd_scene load_steps=8 format=3 uid="uid://bdegvsr3i7e2t"]
+
+[ext_resource type="Texture2D" uid="uid://dlwjjwfu3hmo6" path="res://vfx/gunshots/Spark1_I.jpg" id="1_qrfx8"]
+[ext_resource type="Script" path="res://objects/spark.gd" id="2_widl1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fhep4"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+albedo_texture = ExtResource("1_qrfx8")
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_kyoio"]
+size = Vector2(0.5, 0.5)
+
+[sub_resource type="Animation" id="Animation_uvclp"]
+resource_name = "Fire"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("OmniLight3D:light_energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 3),
+"points": PackedFloat32Array(0.5, -0.25, 0, 0.05, -0.0194189, 0, -0.2, 0.0137402, 0.2, -0.0137402),
+"times": PackedFloat32Array(0, 0.2)
+}
+
+[sub_resource type="Animation" id="Animation_qgky3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("OmniLight3D:light_energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2da5g"]
+_data = {
+"Fire": SubResource("Animation_uvclp"),
+"RESET": SubResource("Animation_qgky3")
+}
+
+[node name="Spark" type="MeshInstance3D"]
+visible = false
+material_override = SubResource("StandardMaterial3D_fhep4")
+mesh = SubResource("QuadMesh_kyoio")
+script = ExtResource("2_widl1")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_2da5g")
+}
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_color = Color(1, 1, 0.647059, 1)
+light_energy = 0.0
+omni_range = 3.0
