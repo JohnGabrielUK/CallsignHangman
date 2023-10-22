@@ -3,7 +3,10 @@ extends Area3D
 @export var ForwardSpeed := 7.0
 @export var Gravity := -9.8
 
+@onready var sfx_hit = $SFXHit
+
 var velocity := Vector3.ZERO
+
 
 func _ready():
 	set_physics_process(false)
@@ -26,4 +29,13 @@ func _physics_process(delta):
 func _on_body_entered(body):
 	if (body is Player) or (body is Scientist):
 		body.hit(1.0)
+	set_physics_process(false)
+	hide()
+	
+	sfx_hit.play()
+	
+	
+
+
+func _on_sfx_hit_finished():
 	queue_free()
