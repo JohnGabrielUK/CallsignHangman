@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bfgu1tbuk3iqa" path="res://objects/fixed_camera.tscn" id="9_ftxxe"]
 [ext_resource type="PackedScene" uid="uid://d36ghnoyyovan" path="res://objects/decorations/lab_decorations.tscn" id="11_jje4s"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8hmc1"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7bw4t"]
 resource_name = "Wall"
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("3_o71ng")
@@ -42,7 +42,7 @@ destination_spawn_id = 2
 
 [node name="Mesh" parent="." instance=ExtResource("2_y7vbq")]
 transform = Transform3D(-1, 0, -8.74226e-08, 0, 1, 0, 8.74226e-08, 0, -1, 10, 0, -28)
-surface_material_override/1 = SubResource("StandardMaterial3D_8hmc1")
+surface_material_override/1 = SubResource("StandardMaterial3D_7bw4t")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Mesh"]
 

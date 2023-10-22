@@ -1,0 +1,116 @@
+[gd_scene load_steps=9 format=3 uid="uid://bd7d8ltb8xiyv"]
+
+[ext_resource type="Texture2D" uid="uid://7f6okd1h6mlh" path="res://meshes/Kyveri-Objets/space.png" id="1_n83ok"]
+[ext_resource type="Texture2D" uid="uid://dj4fdtqw5a1j0" path="res://meshes/Kyveri-Objets/star_particle 2.png" id="2_p16f8"]
+[ext_resource type="Texture2D" uid="uid://cpftd1jdfmmgf" path="res://meshes/Kyveri-Objets/space_bot.png" id="3_whmss"]
+[ext_resource type="Texture2D" uid="uid://1be788rj4rde" path="res://meshes/Kyveri-Objets/Space_mid.png" id="4_afu38"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6w8jl"]
+lifetime_randomness = 0.63
+emission_shape = 1
+emission_sphere_radius = 128.0
+particle_flag_disable_z = true
+gravity = Vector3(-50, 8.515, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+linear_accel_max = 56.15
+scale_min = 0.01
+scale_max = 0.3
+turbulence_noise_strength = 10.05
+
+[sub_resource type="Animation" id="Animation_it6x3"]
+resource_name = "Motion"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpaceBot:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(658, 349), Vector2(671, 369)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpaceMid:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(646, 364), Vector2(643, 377)]
+}
+
+[sub_resource type="Animation" id="Animation_6ogs0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpaceBot:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(658, 349)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpaceMid:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(646, 364)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_etom3"]
+_data = {
+"Motion": SubResource("Animation_it6x3"),
+"RESET": SubResource("Animation_6ogs0")
+}
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Space" type="Sprite2D" parent="."]
+position = Vector2(1032, 186)
+scale = Vector2(1.27313, 1.2352)
+texture = ExtResource("1_n83ok")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(1322, 250)
+rotation = -0.291035
+scale = Vector2(1, 3.08)
+amount = 20
+process_material = SubResource("ParticleProcessMaterial_6w8jl")
+texture = ExtResource("2_p16f8")
+lifetime = 6.0
+preprocess = 18.36
+speed_scale = 7.71
+randomness = 0.33
+
+[node name="SpaceBot" type="Sprite2D" parent="."]
+position = Vector2(658, 349)
+scale = Vector2(0.715278, 0.715278)
+texture = ExtResource("3_whmss")
+
+[node name="SpaceMid" type="Sprite2D" parent="."]
+position = Vector2(646, 364)
+scale = Vector2(0.675, 0.675)
+texture = ExtResource("4_afu38")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Motion"
+speed_scale = 0.25
+libraries = {
+"": SubResource("AnimationLibrary_etom3")
+}
