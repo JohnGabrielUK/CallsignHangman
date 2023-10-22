@@ -2,8 +2,10 @@ extends CharacterBody3D
 class_name Scientist
 
 const TURN_SPEED : float = 4.0
-const MOVE_SPEED : float = 2.75
+const RUN_SPEED : float = 2.75
+const WALK_SPEED : float = 1.25
 const FOLLOW_THRESHOLD : float = 1.5
+const RUN_THRESHOLD : float = 2.5
 const MICROWAVE_DAMAGE_RATE : float = 2.5
 
 enum State {NOT_YET_MET, FOLLOWING_PLAYER, WAITING, DEAD, DESPAWN}
@@ -104,7 +106,8 @@ func _find_next_route_target():
 	
 
 func _physics_process_following_player(delta : float) -> void:
-	if following.global_position.distance_to(global_position) > FOLLOW_THRESHOLD:
+	var distance : float = following.global_position.distance_to(global_position)
+	if distance > FOLLOW_THRESHOLD:
 		var next_target = _find_next_route_target()
 		# We don't want the scientist to pitch and roll, only yaw, so we use 
 		# look_at not to the target point but to a projection of that
@@ -113,8 +116,12 @@ func _physics_process_following_player(delta : float) -> void:
 		var horizontal_position = next_target
 		horizontal_position.y = global_position.y
 		look_at(horizontal_position, Vector3(0, 1, 0), true)
-		move_and_collide(-Vector3.FORWARD.rotated(Vector3.UP, rotation.y) * MOVE_SPEED * delta)
-		switch_animation_if_not_current("jog", 0.25)
+		if distance > RUN_THRESHOLD:
+			move_and_collide(-Vector3.FORWARD.rotated(Vector3.UP, rotation.y) * RUN_SPEED * delta)
+			switch_animation_if_not_current("jog", 0.25)
+		else:
+			move_and_collide(-Vector3.FORWARD.rotated(Vector3.UP, rotation.y) * WALK_SPEED * delta)
+			switch_animation_if_not_current("walk", 0.25)
 	else:
 		var horizontal_position = following.global_position
 		horizontal_position.y = global_position.y
