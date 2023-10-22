@@ -10,6 +10,7 @@ const _StepSounds : Array = [
 const _FleetingSound : PackedScene = preload("res://objects/fleeting_sound.tscn")
 
 const TURN_SPEED : float = 4.0
+const RUN_SPEED : float = 3.0
 const MOVE_SPEED : float = 1.35
 const TURN_WITH_WEAPON_SPEED : float = 2.0
 const MOVE_WITH_WEAPON_SPEED : float = 1.35
@@ -21,7 +22,7 @@ const MICROWAVE_DAMAGE_RATE : float = 2.5
 const GUN_RANGE : float = 10.0
 const MELEE_RANGE : float = 2.0
 
-enum State {NORMAL, DRAWING_WEAPON, WEAPON_DRAWN, HOLSTERING_WEAPON, SHOOTING, PISTOL_WHIP, HARVEST_START, HARVESTING, HARVEST_END, RIPPING, HIT, HIT_WHILE_AIMING, DEAD}
+enum State {NORMAL, DRAWING_WEAPON, WEAPON_DRAWN, HOLSTERING_WEAPON, SHOOTING, PISTOL_WHIP, HARVEST_START, HARVESTING, HARVEST_END, RIPPING, HIT, HIT_WHILE_AIMING, ARM_ATTACK, DEAD}
 
 @onready var mesh : MeshInstance3D = $rig_deform/Skeleton3D/Character
 @onready var mesh_grab_arm : MeshInstance3D = $rig_deform/Skeleton3D/Character_GrabArm
@@ -34,7 +35,7 @@ enum State {NORMAL, DRAWING_WEAPON, WEAPON_DRAWN, HOLSTERING_WEAPON, SHOOTING, P
 @onready var raycasts_gun : Node3D = $RayCasts_Gun
 
 @onready var current_state : int = State.NORMAL
-@onready var current_arm : int = Constants.ArmType.NONE
+@onready var current_arm : int = GameSession.player_arm
 
 var harvest_target : Node3D
 var arm_to_get : int
@@ -117,11 +118,15 @@ func make_sound(which : AudioStream, volume : float) -> void:
 	sound.global_position = global_position
 	sound.play()
 
-func do_footstep_sound() -> void:
+func do_run_step_sound() -> void:
 	make_sound(_StepSounds.pick_random(), -10.0)
+
+func do_walk_step_sound() -> void:
+	make_sound(_StepSounds.pick_random(), -15.0)
 
 func change_arm_type() -> void:
 	current_arm = arm_to_get
+	GameSession.player_arm = current_arm
 	mesh.visible = current_arm == Constants.ArmType.HUMAN
 	mesh_grab_arm.visible = current_arm == Constants.ArmType.GRABBER
 	mesh_heavy_arm.visible = current_arm == Constants.ArmType.HEAVY
@@ -153,6 +158,8 @@ func switch_animation_if_not_current(anim_name : String, blend_amount : float) -
 			"walk_aim": anim_player.speed_scale = 1.0
 			"pistol_whip": anim_player.speed_scale = 0.75
 			"shoot_heavy": anim_player.speed_scale = 1.25
+			"attack_slash": anim_player.speed_scale = 0.85
+			"run": anim_player.speed_scale = 1.8
 			_: anim_player.speed_scale = 1.5
 		anim_player.play(anim_name, blend_amount)
 
@@ -188,8 +195,11 @@ func _physics_process_normal(delta : float) -> void:
 		rotate_y(-turn_amount * TURN_SPEED * delta)
 	var move_amount : float = Input.get_axis("up", "down")
 	if move_amount != 0.0:
-		move_and_collide_split(-Vector3.FORWARD.rotated(Vector3.UP, rotation.y) * MOVE_SPEED * delta)
-		if anim_player.current_animation != "walk":
+		if Input.is_action_pressed("run"):
+			move_and_collide_split(-Vector3.FORWARD.rotated(Vector3.UP, rotation.y) * RUN_SPEED * delta)
+			switch_animation_if_not_current("run", 0.25)
+		else:
+			move_and_collide_split(-Vector3.FORWARD.rotated(Vector3.UP, rotation.y) * MOVE_SPEED * delta)
 			switch_animation_if_not_current("walk", 0.25)
 	elif anim_player.current_animation != "idle":
 		switch_animation_if_not_current("idle", 0.25)
@@ -201,6 +211,12 @@ func _physics_process_normal(delta : float) -> void:
 	elif Input.is_action_just_pressed("draw_weapon"):
 		anim_player.play("aim_start")
 		current_state = State.DRAWING_WEAPON
+	elif Input.is_action_just_pressed("melee") and current_arm == Constants.ArmType.HEAVY:
+		switch_animation_if_not_current("attack_slash", 0.1)
+		current_state = State.ARM_ATTACK
+	elif Input.is_action_just_pressed("melee") and current_arm == Constants.ArmType.GRABBER:
+		switch_animation_if_not_current("attack_grab", 0.1)
+		current_state = State.ARM_ATTACK
 
 func _physics_process_weapon_drawn(delta : float) -> void:
 	var turn_amount : float = Input.get_axis("left", "right")
@@ -251,6 +267,11 @@ func _physics_process(delta : float) -> void:
 func _ready() -> void:
 	GameSession.player = self
 	switch_animation_if_not_current("idle", 0.0)
+	
+	current_arm = GameSession.player_arm
+	mesh.visible = current_arm == Constants.ArmType.HUMAN
+	mesh_grab_arm.visible = current_arm == Constants.ArmType.GRABBER
+	mesh_heavy_arm.visible = current_arm == Constants.ArmType.HEAVY
 
 func _on_animation_player_animation_finished(anim_name : String) -> void:
 	match anim_name:
@@ -280,3 +301,9 @@ func _on_animation_player_animation_finished(anim_name : String) -> void:
 		"pistol_whip":
 			switch_animation_if_not_current("aim", 0.0)
 			current_state = State.WEAPON_DRAWN
+		"attack_slash":
+			switch_animation_if_not_current("idle", 0.0)
+			current_state = State.NORMAL
+		"attack_grab":
+			switch_animation_if_not_current("idle", 0.0)
+			current_state = State.NORMAL
