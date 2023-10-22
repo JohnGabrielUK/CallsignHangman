@@ -14,6 +14,7 @@ var ending : String
 var madtalk
 var player
 var anim_player
+var minimap
 
 var sfx_terminal = AudioStreamPlayer.new()
 
@@ -26,7 +27,11 @@ func _on_mad_talk_activate_custom_effect(effect_id: String, data: Array):
 	match effect_id:
 		"map_fix":
 			# called when katrina talks about the fix for the scientists and tells stickyman to check the map
-			pass
+			minimap.show_scientist(0)
+		
+		"map_fix2":
+			minimap.show_scientist(1)
+			minimap.show_scientist(2)
 		
 		"post_escape_pod":
 			# called after each of the dialogues where a scientist reaches a pod.
@@ -83,10 +88,14 @@ func is_scientist_following_player() -> bool:
 	return player_tagalong != -1
 
 func scientist_met(scientist_id : int) -> void:
+	minimap.hide_scientist(scientist_id)
 	match scientist_id:
-		0: madtalk.start_dialog("scientist_a_found")
-		1: madtalk.start_dialog("scientist_b_found")
-		2: madtalk.start_dialog("scientist_c_found")
+		0: 
+			madtalk.start_dialog("scientist_a_found")
+		1: 
+			madtalk.start_dialog("scientist_b_found")
+		2: 
+			madtalk.start_dialog("scientist_c_found")
 
 func scientist_dead(scientist_id : int) -> void:
 	scientist_states[scientist_id] = ScientistState.DEAD

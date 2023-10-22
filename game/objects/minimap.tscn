@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=3 uid="uid://b25u5sin12kxg"]
+
+[ext_resource type="Texture2D" uid="uid://fyfbhjp1qube" path="res://textures/minimap.png" id="1_d4078"]
+[ext_resource type="Script" path="res://objects/minimap.gd" id="2_u0c4m"]
+
+[node name="Minimap" type="TextureRect"]
+self_modulate = Color(1, 1, 1, 0.513726)
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -168.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = 168.0
+grow_horizontal = 0
+texture = ExtResource("1_d4078")
+expand_mode = 1
+stretch_mode = 5
+script = ExtResource("2_u0c4m")
+
+[node name="ScientistA" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 135.0
+offset_top = 65.0
+offset_right = 139.0
+offset_bottom = 69.0
+color = Color(0, 1, 1, 1)
+
+[node name="ScientistB" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 52.0
+offset_right = 63.0
+offset_bottom = 56.0
+color = Color(0, 1, 1, 1)
+
+[node name="ScientistC" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 109.0
+offset_top = 7.0
+offset_right = 113.0
+offset_bottom = 11.0
+color = Color(0, 1, 1, 1)

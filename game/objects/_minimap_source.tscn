@@ -1,0 +1,413 @@
+[gd_scene load_steps=36 format=3 uid="uid://bgd328exfiu2a"]
+
+[ext_resource type="Script" path="res://objects/room.gd" id="1_2iipe"]
+[ext_resource type="PackedScene" uid="uid://bpw4p7saapb2s" path="res://objects/rooms/building_parts/cafeteria.tscn" id="2_vbsl0"]
+[ext_resource type="Texture2D" uid="uid://jt70f64wlu7s" path="res://textures/scifi_parts_wall_albedo.png" id="3_r3bv2"]
+[ext_resource type="Texture2D" uid="uid://43ydho607sr1" path="res://textures/scifi_parts_wall_emission_lights_on.png" id="4_u7kfb"]
+[ext_resource type="Texture2D" uid="uid://cls2cel8gtflj" path="res://textures/scifi_parts_wall_normal.png" id="5_vr1mm"]
+[ext_resource type="PackedScene" uid="uid://comnorhotcdeg" path="res://objects/rooms/building_parts/corridor_straight.tscn" id="6_ovytw"]
+[ext_resource type="PackedScene" uid="uid://ncje24em2dug" path="res://objects/rooms/building_parts/corridor_corner.tscn" id="7_cbqtu"]
+[ext_resource type="PackedScene" uid="uid://dsl2k67hr7co4" path="res://objects/rooms/building_parts/corridor_threeway.tscn" id="8_tsgnv"]
+[ext_resource type="PackedScene" uid="uid://b6pjjq3dvtiof" path="res://objects/rooms/building_parts/corridor_entrance.tscn" id="9_mnlrq"]
+[ext_resource type="PackedScene" uid="uid://btuujek5w5yxf" path="res://objects/rooms/building_parts/escape_pods.tscn" id="10_80iy0"]
+[ext_resource type="PackedScene" uid="uid://bd026w72txmjb" path="res://objects/rooms/building_parts/lab.tscn" id="11_2juvi"]
+[ext_resource type="PackedScene" uid="uid://c2rd6f61gw1hw" path="res://objects/rooms/building_parts/room_small.tscn" id="12_5t776"]
+[ext_resource type="PackedScene" uid="uid://cqcyia287f2iq" path="res://objects/rooms/building_parts/room_small_two_doors.tscn" id="13_8doq5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k4422"]
+resource_name = "Wall"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("3_r3bv2")
+roughness = 0.5
+emission_enabled = true
+emission = Color(0, 0.686275, 0.631373, 1)
+emission_operator = 1
+emission_texture = ExtResource("4_u7kfb")
+normal_enabled = true
+normal_texture = ExtResource("5_vr1mm")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_71i87"]
+resource_name = "Wall"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("3_r3bv2")
+roughness = 0.5
+emission_enabled = true
+emission = Color(1, 0, 0, 1)
+emission_operator = 1
+emission_texture = ExtResource("4_u7kfb")
+normal_enabled = true
+normal_texture = ExtResource("5_vr1mm")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7jxp2"]
+resource_name = "Wall"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("3_r3bv2")
+roughness = 0.5
+emission_enabled = true
+emission_operator = 1
+emission_texture = ExtResource("4_u7kfb")
+normal_enabled = true
+normal_texture = ExtResource("5_vr1mm")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_blbev"]
+resource_name = "Wall"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("3_r3bv2")
+roughness = 0.5
+emission_enabled = true
+emission_operator = 1
+emission_texture = ExtResource("4_u7kfb")
+normal_enabled = true
+normal_texture = ExtResource("5_vr1mm")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n6hd3"]
+resource_name = "Wall"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("3_r3bv2")
+roughness = 0.5
+emission_enabled = true
+emission_operator = 1
+emission_texture = ExtResource("4_u7kfb")
+normal_enabled = true
+normal_texture = ExtResource("5_vr1mm")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pjocp"]
+resource_name = "Wall"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("3_r3bv2")
+roughness = 0.5
+emission_enabled = true
+emission_operator = 1
+emission_texture = ExtResource("4_u7kfb")
+normal_enabled = true
+normal_texture = ExtResource("5_vr1mm")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5gqwc"]
+resource_name = "Wall"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("3_r3bv2")
+roughness = 0.5
+emission_enabled = true
+emission = Color(1, 0.501961, 0.501961, 1)
+emission_operator = 1
+emission_texture = ExtResource("4_u7kfb")
+normal_enabled = true
+normal_texture = ExtResource("5_vr1mm")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aj7rb"]
+resource_name = "Wall"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("3_r3bv2")
+roughness = 0.5
+emission_enabled = true
+emission_operator = 1
+emission_texture = ExtResource("4_u7kfb")
+normal_enabled = true
+normal_texture = ExtResource("5_vr1mm")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j4kvf"]
+resource_name = "Wall"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("3_r3bv2")
+roughness = 0.5
+emission_enabled = true
+emission_operator = 1
+emission_texture = ExtResource("4_u7kfb")
+normal_enabled = true
+normal_texture = ExtResource("5_vr1mm")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kq5n7"]
+resource_name = "Wall"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("3_r3bv2")
+roughness = 0.5
+emission_enabled = true
+emission = Color(1, 0.878431, 0, 1)
+emission_operator = 1
+emission_texture = ExtResource("4_u7kfb")
+normal_enabled = true
+normal_texture = ExtResource("5_vr1mm")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0fw4k"]
+resource_name = "Wall"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("3_r3bv2")
+roughness = 0.5
+emission_enabled = true
+emission = Color(1, 0, 0, 1)
+emission_operator = 1
+emission_texture = ExtResource("4_u7kfb")
+normal_enabled = true
+normal_texture = ExtResource("5_vr1mm")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_21h4q"]
+resource_name = "Wall"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("3_r3bv2")
+roughness = 0.5
+emission_enabled = true
+emission = Color(0.658824, 0.921569, 1, 1)
+emission_operator = 1
+emission_texture = ExtResource("4_u7kfb")
+normal_enabled = true
+normal_texture = ExtResource("5_vr1mm")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2c8u6"]
+resource_name = "Wall"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("3_r3bv2")
+roughness = 0.5
+emission_enabled = true
+emission_operator = 1
+emission_texture = ExtResource("4_u7kfb")
+normal_enabled = true
+normal_texture = ExtResource("5_vr1mm")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bqunj"]
+resource_name = "Wall"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("3_r3bv2")
+roughness = 0.5
+emission_enabled = true
+emission_operator = 1
+emission_texture = ExtResource("4_u7kfb")
+normal_enabled = true
+normal_texture = ExtResource("5_vr1mm")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3lyyv"]
+resource_name = "Wall"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("3_r3bv2")
+roughness = 0.5
+emission_enabled = true
+emission_operator = 1
+emission_texture = ExtResource("4_u7kfb")
+normal_enabled = true
+normal_texture = ExtResource("5_vr1mm")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x4wvj"]
+resource_name = "Wall"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("3_r3bv2")
+roughness = 0.5
+emission_enabled = true
+emission = Color(0, 1, 0.501961, 1)
+emission_operator = 1
+emission_texture = ExtResource("4_u7kfb")
+normal_enabled = true
+normal_texture = ExtResource("5_vr1mm")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ceble"]
+resource_name = "Wall"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("3_r3bv2")
+roughness = 0.5
+emission_enabled = true
+emission_operator = 1
+emission_texture = ExtResource("4_u7kfb")
+normal_enabled = true
+normal_texture = ExtResource("5_vr1mm")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_enx8d"]
+resource_name = "Wall"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("3_r3bv2")
+roughness = 0.5
+emission_enabled = true
+emission_operator = 1
+emission_texture = ExtResource("4_u7kfb")
+normal_enabled = true
+normal_texture = ExtResource("5_vr1mm")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5jaky"]
+resource_name = "Wall"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("3_r3bv2")
+roughness = 0.5
+emission_enabled = true
+emission_operator = 1
+emission_texture = ExtResource("4_u7kfb")
+normal_enabled = true
+normal_texture = ExtResource("5_vr1mm")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ox7ne"]
+resource_name = "Wall"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("3_r3bv2")
+roughness = 0.5
+emission_enabled = true
+emission = Color(0.694118, 1, 0, 1)
+emission_operator = 1
+emission_texture = ExtResource("4_u7kfb")
+normal_enabled = true
+normal_texture = ExtResource("5_vr1mm")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k7t4r"]
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_p70ax"]
+material = SubResource("StandardMaterial3D_k7t4r")
+size = Vector2(100, 100)
+
+[node name="Minimap" type="Node3D"]
+
+[node name="Rooms" type="Node3D" parent="."]
+
+[node name="Cafeteria" type="Node3D" parent="Rooms"]
+script = ExtResource("1_2iipe")
+
+[node name="Mesh" parent="Rooms/Cafeteria" instance=ExtResource("2_vbsl0")]
+layers = 2
+surface_material_override/1 = SubResource("StandardMaterial3D_k4422")
+WallLightsColor = Color(0, 0.686275, 0.631373, 1)
+DoorLightColors = Array[Color]([Color(0, 0.611765, 0.14902, 1), Color(0.752941, 0.584314, 0, 1), Color(0.741176, 0, 0.733333, 1), Color(0.301961, 0.427451, 1, 1), Color(0.713726, 0.105882, 0.164706, 1)])
+
+[node name="Corridor1" type="Node3D" parent="Rooms" groups=["microwaves"]]
+script = ExtResource("1_2iipe")
+
+[node name="Mesh" parent="Rooms/Corridor1" instance=ExtResource("6_ovytw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4606, 0, -20.9566)
+surface_material_override/1 = SubResource("StandardMaterial3D_71i87")
+WallLightsColor = Color(1, 0, 0, 1)
+DoorLightColors = Array[Color]([Color(0, 0.25098, 1, 1), Color(1, 0.501961, 0, 1)])
+
+[node name="Corridor2" type="Node3D" parent="Rooms"]
+script = ExtResource("1_2iipe")
+
+[node name="Mesh" parent="Rooms/Corridor2" instance=ExtResource("6_ovytw")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10, 0, 2)
+surface_material_override/1 = SubResource("StandardMaterial3D_7jxp2")
+
+[node name="Corridor3" type="Node3D" parent="Rooms"]
+script = ExtResource("1_2iipe")
+
+[node name="Mesh" parent="Rooms/Corridor3" instance=ExtResource("6_ovytw")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 13, 0, -3)
+surface_material_override/1 = SubResource("StandardMaterial3D_blbev")
+
+[node name="CorridorCorner1" type="Node3D" parent="Rooms"]
+script = ExtResource("1_2iipe")
+
+[node name="Mesh" parent="Rooms/CorridorCorner1" instance=ExtResource("7_cbqtu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -6)
+surface_material_override/1 = SubResource("StandardMaterial3D_n6hd3")
+
+[node name="CorridorCorner2" type="Node3D" parent="Rooms"]
+script = ExtResource("1_2iipe")
+
+[node name="Mesh" parent="Rooms/CorridorCorner2" instance=ExtResource("7_cbqtu")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 13, 0, 5)
+surface_material_override/1 = SubResource("StandardMaterial3D_pjocp")
+
+[node name="CorridorThreeway1" type="Node3D" parent="Rooms"]
+script = ExtResource("1_2iipe")
+
+[node name="Mesh" parent="Rooms/CorridorThreeway1" instance=ExtResource("8_tsgnv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 2)
+surface_material_override/1 = SubResource("StandardMaterial3D_5gqwc")
+WallLightsColor = Color(1, 0.501961, 0.501961, 1)
+DoorLightColors = Array[Color]([Color(0, 1, 0.501961, 1), Color(1, 0, 0, 1), Color(0.752941, 1, 1, 1)])
+
+[node name="CorridorThreeway2" type="Node3D" parent="Rooms"]
+script = ExtResource("1_2iipe")
+
+[node name="Mesh" parent="Rooms/CorridorThreeway2" instance=ExtResource("8_tsgnv")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -13, 0, -16)
+surface_material_override/1 = SubResource("StandardMaterial3D_aj7rb")
+
+[node name="CorridorThreeway3" type="Node3D" parent="Rooms"]
+script = ExtResource("1_2iipe")
+
+[node name="Mesh" parent="Rooms/CorridorThreeway3" instance=ExtResource("8_tsgnv")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 23, 0, -3)
+surface_material_override/1 = SubResource("StandardMaterial3D_j4kvf")
+
+[node name="CorridorThreeway4" type="Node3D" parent="Rooms"]
+script = ExtResource("1_2iipe")
+
+[node name="Mesh" parent="Rooms/CorridorThreeway4" instance=ExtResource("8_tsgnv")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.4606, 0, -30.9566)
+surface_material_override/1 = SubResource("StandardMaterial3D_kq5n7")
+WallLightsColor = Color(1, 0.878431, 0, 1)
+DoorLightColors = Array[Color]([Color(0.25098, 1, 0, 1), Color(1, 0, 0.501961, 1), Color(1, 0.501961, 0, 1)])
+
+[node name="Entrance" type="Node3D" parent="Rooms"]
+script = ExtResource("1_2iipe")
+
+[node name="Mesh" parent="Rooms/Entrance" instance=ExtResource("9_mnlrq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 0, 12)
+surface_material_override/1 = SubResource("StandardMaterial3D_0fw4k")
+WallLightsColor = Color(1, 0, 0, 1)
+DoorLightColors = Array[Color]([Color(1, 0, 0, 1)])
+
+[node name="EscapePods" type="Node3D" parent="Rooms"]
+script = ExtResource("1_2iipe")
+
+[node name="Mesh" parent="Rooms/EscapePods" instance=ExtResource("10_80iy0")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 16, 0, 13.7481)
+surface_material_override/1 = SubResource("StandardMaterial3D_21h4q")
+
+[node name="Lab1" type="Node3D" parent="Rooms"]
+script = ExtResource("1_2iipe")
+
+[node name="Mesh" parent="Rooms/Lab1" instance=ExtResource("11_2juvi")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 23, 0, -11.6296)
+surface_material_override/1 = SubResource("StandardMaterial3D_2c8u6")
+
+[node name="Lab2" type="Node3D" parent="Rooms"]
+script = ExtResource("1_2iipe")
+
+[node name="Mesh" parent="Rooms/Lab2" instance=ExtResource("11_2juvi")]
+transform = Transform3D(-1, 0, -8.74226e-08, 0, 1, 0, 8.74226e-08, 0, -1, -4.70264, 0, -16)
+surface_material_override/1 = SubResource("StandardMaterial3D_bqunj")
+
+[node name="Lab3" type="Node3D" parent="Rooms"]
+script = ExtResource("1_2iipe")
+
+[node name="Mesh" parent="Rooms/Lab3" instance=ExtResource("11_2juvi")]
+transform = Transform3D(-1, 0, -8.74226e-08, 0, 1, 0, 8.74226e-08, 0, -1, 11.6487, 0, -30.9566)
+surface_material_override/1 = SubResource("StandardMaterial3D_3lyyv")
+
+[node name="Room1" type="Node3D" parent="Rooms"]
+script = ExtResource("1_2iipe")
+
+[node name="Mesh" parent="Rooms/Room1" instance=ExtResource("12_5t776")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, -5.6977)
+surface_material_override/1 = SubResource("StandardMaterial3D_x4wvj")
+WallLightsColor = Color(0, 1, 0.501961, 1)
+DoorLightColors = Array[Color]([Color(0, 1, 0.501961, 1)])
+
+[node name="Room2" type="Node3D" parent="Rooms"]
+script = ExtResource("1_2iipe")
+
+[node name="Mesh" parent="Rooms/Room2" instance=ExtResource("12_5t776")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 23, 0, 4.90006)
+surface_material_override/1 = SubResource("StandardMaterial3D_ceble")
+
+[node name="Room3" type="Node3D" parent="Rooms"]
+script = ExtResource("1_2iipe")
+
+[node name="Mesh" parent="Rooms/Room3" instance=ExtResource("12_5t776")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -20.6461, 0, -16)
+surface_material_override/1 = SubResource("StandardMaterial3D_enx8d")
+
+[node name="Room4" type="Node3D" parent="Rooms"]
+script = ExtResource("1_2iipe")
+
+[node name="Mesh" parent="Rooms/Room4" instance=ExtResource("12_5t776")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.80024, 0, -30.9566)
+surface_material_override/1 = SubResource("StandardMaterial3D_5jaky")
+
+[node name="RoomTwodoors" type="Node3D" parent="Rooms"]
+script = ExtResource("1_2iipe")
+
+[node name="Mesh" parent="Rooms/RoomTwodoors" instance=ExtResource("13_8doq5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.51811, 0, -12.0369)
+surface_material_override/1 = SubResource("StandardMaterial3D_ox7ne")
+WallLightsColor = Color(0.694118, 1, 0, 1)
+DoorLightColors = Array[Color]([Color(0, 0.25098, 0.501961, 1), Color(1, 0, 0, 1)])
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.04905, 0)
+mesh = SubResource("PlaneMesh_p70ax")
