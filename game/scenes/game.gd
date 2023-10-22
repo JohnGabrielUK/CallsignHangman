@@ -174,6 +174,7 @@ func _physics_process(delta : float) -> void:
 				start_room()
 
 func _ready() -> void:
+	GameSession.new_game()
 	GameSession.madtalk = %MadTalk
 	GameSession.anim_player = anim_player
 	load_room("Entrance", 0)
@@ -199,3 +200,11 @@ func _on_mad_talk_dialog_started(sheet_name, sequence_id):
 # Fixes a _ready race
 func _on_mad_talk_activate_custom_effect(custom_id, custom_data):
 	GameSession._on_mad_talk_activate_custom_effect(custom_id, custom_data)
+
+func stop_music() -> void:
+	anim_player_music.stop()
+
+func player_dead() -> void:
+	anim_player.play("fade_out")
+	await anim_player.animation_finished
+	get_tree().change_scene_to_file("res://scenes/game_over.tscn")

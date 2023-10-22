@@ -19,7 +19,7 @@ const HARVEST_AMOUNT : float = 1.0
 const BLOOD_DRAIN_RATE : float = 0.1
 const MICROWAVE_DAMAGE_RATE : float = 2.5
 
-enum State {NORMAL, DRAWING_WEAPON, WEAPON_DRAWN, HOLSTERING_WEAPON, SHOOTING, KNIFE_ATTACK, HARVEST_START, HARVESTING, HARVEST_END, RIPPING, HIT, DYING, DEAD}
+enum State {NORMAL, DRAWING_WEAPON, WEAPON_DRAWN, HOLSTERING_WEAPON, SHOOTING, KNIFE_ATTACK, HARVEST_START, HARVESTING, HARVEST_END, RIPPING, HIT, HIT_WHILE_AIMING, DEAD}
 
 @onready var mesh : MeshInstance3D = $rig_deform/Skeleton3D/Character
 @onready var mesh_grab_arm : MeshInstance3D = $rig_deform/Skeleton3D/Character_GrabArm
@@ -62,6 +62,7 @@ func remove_blood(amount : float) -> void:
 	var total_blood : float = get_blood_amount()
 	var blood_ratio = bloods / total_blood
 	bloods -= amount * blood_ratio
+	check_for_death()
 
 func check_for_microwave_damage(delta : float) -> void:
 	var room_has_microwaves : bool = get_tree().get_nodes_in_group("microwaves").size() != 0
@@ -69,6 +70,12 @@ func check_for_microwave_damage(delta : float) -> void:
 	var player_immune : bool = get_dominant_blood_type() == Constants.BloodType.HEAT_RESISTANT
 	if room_has_microwaves and not (microwaves_disabled or player_immune):
 		remove_blood(MICROWAVE_DAMAGE_RATE * delta)
+
+func check_for_death() -> void:
+	if get_blood_amount() <= 0.0 and current_state != State.DEAD:
+		anim_player.play("death", 0.25)
+		current_state = State.DEAD
+		get_tree().call_group("game_controller", "stop_music")
 
 func can_interact() -> bool:
 	return raycast_interactable.is_colliding()
@@ -145,7 +152,9 @@ func move_and_collide_split(amount : Vector3) -> void:
 	move_and_collide(amount * Vector3(0.0, 0.5, 1.0))
 
 func hit(damage: float = 1.0):
-	pass
+	remove_blood(damage)
+	current_state = State.HIT_WHILE_AIMING if current_state == State.WEAPON_DRAWN else State.HIT
+	anim_player.play("hit", 0.25)
 
 func fire() -> void:
 	anim_player.play("shoot_heavy")
@@ -237,3 +246,8 @@ func _on_animation_player_animation_finished(anim_name : String) -> void:
 		"harvest_end":
 			switch_animation_if_not_current("idle", 0.0)
 			current_state = State.NORMAL
+		"death":
+			get_tree().call_group("game_controller", "player_dead")
+		"hit":
+			switch_animation_if_not_current("aim" if current_state == State.HIT_WHILE_AIMING else "idle", 0.25)
+			current_state = State.WEAPON_DRAWN if current_state == State.HIT_WHILE_AIMING else State.NORMAL
