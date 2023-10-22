@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="DialogData" load_steps=169 format=3 uid="uid://dxkjjrap15vxu"]
+[gd_resource type="Resource" script_class="DialogData" load_steps=170 format=3 uid="uid://dxkjjrap15vxu"]
 
 [ext_resource type="Script" path="res://addons/madtalk/components/resources/DialogNodeData.gd" id="1"]
 [ext_resource type="Script" path="res://addons/madtalk/components/resources/DialogSheetData.gd" id="2"]
@@ -1228,6 +1228,20 @@ condition_values = []
 effect_type = 10
 effect_values = []
 
+[sub_resource type="Resource" id="Resource_ep2vy"]
+script = ExtResource("4")
+item_type = 2
+connected_to_id = -1
+message_speaker_id = ""
+message_speaker_variant = ""
+message_voice_clip = ""
+message_text = ""
+message_hide_on_end = 0
+condition_type = 10
+condition_values = []
+effect_type = 10
+effect_values = ["map_fix2", ""]
+
 [sub_resource type="Resource" id="Resource_j23wg"]
 script = ExtResource("4")
 item_type = 0
@@ -1247,7 +1261,7 @@ script = ExtResource("1")
 sequence_id = 0
 position = Vector2(0, 0)
 comment = ""
-items = [SubResource("Resource_iim00"), SubResource("Resource_6btup"), SubResource("Resource_rhu3a"), SubResource("Resource_gfy57"), SubResource("Resource_dxj8d"), SubResource("Resource_hrh5v"), SubResource("Resource_vbiro"), SubResource("Resource_dvmoo"), SubResource("Resource_j23wg")]
+items = [SubResource("Resource_iim00"), SubResource("Resource_6btup"), SubResource("Resource_rhu3a"), SubResource("Resource_gfy57"), SubResource("Resource_dxj8d"), SubResource("Resource_hrh5v"), SubResource("Resource_vbiro"), SubResource("Resource_dvmoo"), SubResource("Resource_ep2vy"), SubResource("Resource_j23wg")]
 options = []
 continue_sequence_id = -1
 continue_port_index = 0
