@@ -103,6 +103,20 @@ func get_music_for_room(room : String) -> String:
 	else:
 		return "downtime"
 
+func change_ambience_if_needed(room : String) -> bool:
+	# Change ambience, if needed
+	var room_ambience = ROOM_AMBIENCE[room]
+	if room == "Corridor1":
+		room_ambience = "microwave" if GameSession.microwave_active else "ship2"
+	var ambience_change : bool = false
+	if current_ambience != room_ambience:
+		audio_ambience.stop()
+		audio_ambience.stream = _Ambiences[room_ambience]
+		audio_ambience.play()
+		current_ambience = room_ambience
+		ambience_change = true
+	return ambience_change
+
 func load_room(room : String, spawn_id : int) -> void:
 	room_to_load = room
 	spawn_id_to_use = spawn_id
@@ -117,15 +131,7 @@ func start_room() -> void:
 	map.bake_navigation_mesh()
 	current_room.spawn_player(spawn_id_to_use)
 	current_room.spawn_scientists()
-	# Change ambience, if needed
-	var room_ambience = ROOM_AMBIENCE[room_to_load]
-	var ambience_change : bool = false
-	if current_ambience != room_ambience:
-		audio_ambience.stop()
-		audio_ambience.stream = _Ambiences[room_ambience]
-		audio_ambience.play()
-		current_ambience = room_ambience
-		ambience_change = true
+	var ambience_change : bool = change_ambience_if_needed(room_to_load)
 	# Change music, if needed
 	var music_for_room : String = get_music_for_room(room_to_load)
 	if music_for_room != current_music:

@@ -3,14 +3,14 @@
 [ext_resource type="PackedScene" uid="uid://c2rd6f61gw1hw" path="res://objects/rooms/building_parts/room_small.tscn" id="2_jp6tf"]
 [ext_resource type="Script" path="res://objects/room.gd" id="2_w4qh7"]
 [ext_resource type="PackedScene" uid="uid://bvhxtxnr14j3l" path="res://objects/player_spawn_point.tscn" id="2_xt5g2"]
-[ext_resource type="Texture2D" uid="uid://jt70f64wlu7s" path="res://materials/rooms/scifi_parts_wall_albedo.png" id="3_l54fr"]
-[ext_resource type="Texture2D" uid="uid://43ydho607sr1" path="res://materials/rooms/scifi_parts_wall_emission_lights_on.png" id="4_hx07p"]
-[ext_resource type="Texture2D" uid="uid://cls2cel8gtflj" path="res://materials/rooms/scifi_parts_wall_normal.png" id="5_nb2tc"]
+[ext_resource type="Texture2D" uid="uid://jt70f64wlu7s" path="res://textures/scifi_parts_wall_albedo.png" id="3_l54fr"]
+[ext_resource type="Texture2D" uid="uid://43ydho607sr1" path="res://textures/scifi_parts_wall_emission_lights_on.png" id="4_hx07p"]
+[ext_resource type="Texture2D" uid="uid://cls2cel8gtflj" path="res://textures/scifi_parts_wall_normal.png" id="5_nb2tc"]
 [ext_resource type="PackedScene" uid="uid://cxpjmmqyln5gd" path="res://objects/room_exit.tscn" id="7_m816d"]
 [ext_resource type="PackedScene" uid="uid://b3xs7myw6t33d" path="res://objects/camera_trigger.tscn" id="8_aq5ab"]
 [ext_resource type="PackedScene" uid="uid://bfgu1tbuk3iqa" path="res://objects/fixed_camera.tscn" id="9_hs0t3"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jc8hj"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pnjw3"]
 resource_name = "Wall"
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("3_l54fr")
@@ -33,7 +33,7 @@ script = ExtResource("2_w4qh7")
 
 [node name="Mesh" parent="." instance=ExtResource("2_jp6tf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, -4.3)
-surface_material_override/1 = SubResource("StandardMaterial3D_jc8hj")
+surface_material_override/1 = SubResource("StandardMaterial3D_pnjw3")
 WallLightsColor = Color(0, 1, 0.501961, 1)
 DoorLightColors = Array[Color]([Color(0, 1, 0.501961, 1)])
 
