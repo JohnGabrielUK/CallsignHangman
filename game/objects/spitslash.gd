@@ -119,6 +119,13 @@ func _physics_process(delta):
 	# Does not involve any calculations
 	
 	if current_state == States.VANISH:
+		# There is no recovery from this state
+		vanish_progress -= delta
+		model_no_arm.transparency = clamp(1.0 - vanish_progress, 0.0, 1.0)
+		model_with_arm.transparency = clamp(1.0 - vanish_progress, 0.0, 1.0)
+		if vanish_progress <= 0:
+			set_physics_process(false)
+			queue_free()
 		return
 	
 	
@@ -312,12 +319,6 @@ func _physics_process(delta):
 		States.DEATH:
 			pass
 		
-		States.VANISH:
-			vanish_progress -= delta
-			model_no_arm.transparency = clamp(1.0 - vanish_progress, 0.0, 1.0)
-			model_with_arm.transparency = clamp(1.0 - vanish_progress, 0.0, 1.0)
-			if vanish_progress <= 0:
-				queue_free()
 
 	move_and_slide()
 	
