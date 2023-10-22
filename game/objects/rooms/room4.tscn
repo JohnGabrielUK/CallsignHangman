@@ -23,7 +23,6 @@ script = ExtResource("2_8ofrf")
 
 [node name="Mesh" parent="." instance=ExtResource("2_1ngju")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.3, 0, -28)
-surface_material_override/1 = null
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Mesh"]
 

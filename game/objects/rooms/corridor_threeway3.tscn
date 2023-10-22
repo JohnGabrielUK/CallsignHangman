@@ -3,14 +3,14 @@
 [ext_resource type="Script" path="res://objects/room.gd" id="2_0sexl"]
 [ext_resource type="PackedScene" uid="uid://dsl2k67hr7co4" path="res://objects/rooms/building_parts/corridor_threeway.tscn" id="2_humca"]
 [ext_resource type="PackedScene" uid="uid://bvhxtxnr14j3l" path="res://objects/player_spawn_point.tscn" id="2_r1v25"]
-[ext_resource type="Texture2D" uid="uid://jt70f64wlu7s" path="res://materials/rooms/scifi_parts_wall_albedo.png" id="3_fblr1"]
-[ext_resource type="Texture2D" uid="uid://43ydho607sr1" path="res://materials/rooms/scifi_parts_wall_emission_lights_on.png" id="4_r10ay"]
-[ext_resource type="Texture2D" uid="uid://cls2cel8gtflj" path="res://materials/rooms/scifi_parts_wall_normal.png" id="5_dxqqx"]
+[ext_resource type="Texture2D" uid="uid://jt70f64wlu7s" path="res://textures/scifi_parts_wall_albedo.png" id="3_fblr1"]
+[ext_resource type="Texture2D" uid="uid://43ydho607sr1" path="res://textures/scifi_parts_wall_emission_lights_on.png" id="4_r10ay"]
+[ext_resource type="Texture2D" uid="uid://cls2cel8gtflj" path="res://textures/scifi_parts_wall_normal.png" id="5_dxqqx"]
 [ext_resource type="PackedScene" uid="uid://cxpjmmqyln5gd" path="res://objects/room_exit.tscn" id="6_ckdsh"]
 [ext_resource type="PackedScene" uid="uid://b3xs7myw6t33d" path="res://objects/camera_trigger.tscn" id="7_wlyyd"]
 [ext_resource type="PackedScene" uid="uid://bfgu1tbuk3iqa" path="res://objects/fixed_camera.tscn" id="8_vhj8n"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o5i70"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pruib"]
 resource_name = "Wall"
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("3_fblr1")
@@ -38,7 +38,7 @@ script = ExtResource("2_0sexl")
 
 [node name="Mesh" parent="." instance=ExtResource("2_humca")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 23, 0, -3)
-surface_material_override/1 = SubResource("StandardMaterial3D_o5i70")
+surface_material_override/1 = SubResource("StandardMaterial3D_pruib")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Mesh"]
 
